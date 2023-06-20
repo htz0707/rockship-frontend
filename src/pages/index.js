@@ -11,8 +11,10 @@ const HomePage = () => {
   return (
     <div
       style={{
+        backgroundColor: '#00218F',
         paddingTop: 40,
-        paddingBottom: 40
+        paddingBottom: 40,
+        marginBottom: 40,
       }}
     >
       <p style={bigText}>Bring Your <span style={{ color: '#5FFE9F' }}>Software Idea</span> To</p>
