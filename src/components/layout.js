@@ -1,4 +1,4 @@
-import { Layout, Space, Button } from 'antd';
+import { Layout, Divider, Button } from 'antd';
 import styles from '../styles/layout.module.scss'
 import Link from 'next/link';
 import Image from 'next/image';
@@ -16,9 +16,8 @@ const contentStyle = {
   color: '#fff',
 };
 const footerStyle = {
-  textAlign: 'center',
   color: '#fff',
-  backgroundColor: '#7dbcea',
+  backgroundColor: '#00218F',
 };
 const titleStyle = {
   color: '#FFFFFF',
@@ -84,7 +83,25 @@ const MyLayout = ({ children }) => {
         </div>
       </Header>
       <Content style={contentStyle}>{children}</Content>
-      <Footer style={footerStyle}>Footer</Footer>
+      <Footer style={footerStyle}>
+        <div>
+          <Image src={'/rockship.svg'} height={50} width={100} />
+          <p>contact@rockship.co</p>
+          <p>+1 234 456 678 89</p>
+        </div>
+        <Divider
+          style={{
+            backgroundColor: '#FFFFFF'
+          }}
+        />
+        <p
+          style={{
+            textAlign: 'center'
+          }}
+        >
+          Copyright 2022 Rockship.co all rights reserved
+        </p>
+      </Footer>
     </Layout>
   );
 };
