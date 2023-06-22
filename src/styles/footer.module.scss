@@ -1,0 +1,59 @@
+@import './global.module.scss';
+
+.custom-footer {
+  color: $white;
+  background-color: $primary-color;
+  font-size: 16px;
+  padding: 40px 120px;
+
+  .group-contact {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+
+    img {
+      margin-right: 10px;
+    }
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 42px;
+    margin-top: 0
+  }
+
+  .content {
+    font-size: 16px;
+  }
+
+  .button-group {
+    font-size: 16px;
+    padding: 10px 10px 10px 24px;
+    border-radius: 8px;
+    border: 2px solid $white;
+    background: $primary-color;
+    align-items: center;
+
+    button {
+      font-weight: 800;
+      font-size: 16px;
+      line-height: 17px;
+      height: 52px;
+      border-radius: 2px;
+      width: 100%;
+      padding: 0 20px;
+      background-color: $secondary-color;
+    }
+  }
+
+  .text-center {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .bg-white {
+    background-color: $white;
+  }
+}

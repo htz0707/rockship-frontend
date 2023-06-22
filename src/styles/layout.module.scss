@@ -1,0 +1,11 @@
+@import './global.module.scss';
+
+.custom-layout {
+  font-size: 16px;
+
+  .custom-content {
+    min-height: 100vh;
+    text-align: center;
+    font-size: 16px;
+  }
+}
