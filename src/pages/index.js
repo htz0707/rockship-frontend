@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Button, Col, Row, Input } from 'antd';
 import CustomLayout from '@/components/layout';
-// import '@/styles/global.css';
 import styles from '@/styles/index.module.scss';
 
 const { TextArea } = Input;
