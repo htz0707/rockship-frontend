@@ -1,9 +1,9 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
-use node 20
-npm install
-npm run dev
+1. install node 16+ (tested 16 & 20)
+2. cmd: npm install
+3. cmd: npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 

@@ -1,0 +1,245 @@
+@import './global.module.scss';
+
+.homepage {
+  .box-1 {
+    color: $white;
+    background-color: $primary-color;
+    padding-top: 40px;
+    margin-bottom: 40px;
+    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+
+    .homepage-big-text {
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 81px;
+      margin: 0;
+
+      span {
+        color: $secondary-color;
+      }
+    }
+
+    .homepage-small-text {
+      margin-bottom: 0;
+      line-height: 32px;
+    }
+
+    .homepage-small-text+p {
+      margin-top: 0;
+      margin-bottom: 48px;
+    }
+
+    .button-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box-relative {
+      min-height: 300px;
+      background-color: $primary-color;
+      position: relative;
+      border-bottom-right-radius: 100px;
+      border-bottom-left-radius: 100px;
+
+      img {
+        position: absolute;
+        transform: translate(-50%, 10%);
+      }
+    }
+  }
+
+  .box-1+div {
+    margin-top: 400px;
+  }
+
+  .text-title {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 50px;
+  }
+
+  .clients-image {
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
+
+  .col-padding {
+    padding: 8px 0;
+  }
+
+  .text-col-header {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 30px;
+    margin-bottom: 0;
+  }
+
+  .text-col-content {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .box-2 {
+    margin-left: 120px;
+    margin-right: 120px;
+  }
+
+  .box-3,
+  .box-4 {
+    margin-top: 103px;
+    margin-bottom: 51px;
+    display: flex;
+    justify-content: space-between;
+
+    .title {
+      justify-content: flex-start;
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 50px;
+      margin: 0
+    }
+  }
+
+  .box-5 {
+    position: relative;
+    margin-bottom: 100px;
+
+    img {
+      width: 100%;
+    }
+
+    div {
+      position: absolute;
+      left: 70%;
+      bottom: -10%;
+      border-radius: 7px;
+      color: $white;
+      background-color: $primary-color;
+      text-align: start;
+      padding: 30px;
+
+      .header {
+        margin-top: 0;
+        font-weight: 700;
+      }
+
+      .content {
+        margin: 0;
+      }
+    }
+  }
+
+  .box-6 {
+    background-image: url('/bg_blue_white.svg');
+    background-size: cover;
+
+    .custom-row {
+      text-align: start;
+      margin-bottom: 100px;
+      margin-left: 120px;
+      margin-right: 120px;
+      padding-top: 120px;
+      padding-bottom: 120px;
+
+      .custom-label {
+        font-weight: 500;
+        font-size: 18px;
+      }
+
+      .custom-input {
+        max-width: 440px;
+      }
+
+      .custom-button {
+        width: 440px;
+        margin-top: 24px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .box-7 {
+    margin-right: 308px;
+    margin-left: 308px;
+
+    .title-1 {
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .title-2 {
+      margin: 0;
+    }
+
+    .content {
+      font-weight: 500;
+      font-size: 18px;
+    }
+
+    .mt-2 {
+      margin-top: 50px;
+    }
+  }
+
+  .homepage-button-1 {
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 17px;
+    height: 52px;
+    border-radius: 2px;
+    padding: 0 20px;
+    background-color: $secondary-color;
+  }
+
+  .homepage-button-2 {
+    color: $white !important;
+    border-color: $white !important;
+    font-size: 16px;
+    line-height: 17px;
+    height: 52px;
+    border-radius: 2px;
+    padding: 0 20px;
+    background-color: $primary-color;
+    margin-left: 25px;
+  }
+
+  .arrow-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .arrow-icon {
+    margin-left: 10px;
+  }
+
+  .text-start {
+    text-align: start;
+  }
+
+  .text-end {
+    text-align: end;
+  }
+
+  .app-image {
+    width: calc(100% - 72px);
+  }
+
+  .text-title-app {
+    margin-top: 36px;
+    margin-bottom: 36px;
+  }
+
+  .text-app {
+    margin: 0;
+  }
+
+  .text-app-last {
+    margin-bottom: 64px;
+  }
+}

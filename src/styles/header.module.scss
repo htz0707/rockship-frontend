@@ -1,0 +1,42 @@
+@import './global.module.scss';
+
+.custom-header {
+  background-color: $primary-color;
+  display: flex;
+  align-items: center;
+  padding: 40px 120px !important;
+  height: 130px;
+  font-size: 16px;
+
+
+  .custom-header-container {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .text-header {
+      line-height: 50px;
+      color: $white;
+      margin: 0 20px;
+    }
+
+    .font-700 {
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .start-building-button {
+      color: $black;
+      font-weight: 800;
+      font-size: 16px;
+      line-height: 17px;
+      height: 52px;
+      border-radius: 2px;
+      padding: 0 20px;
+      background-color: $secondary-color;
+      justify-content: center
+    }
+  }
+}

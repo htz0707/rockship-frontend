@@ -1,11 +1,11 @@
-import MyLayout from '@/components/layout';
+import CustomLayout from '@/components/layout';
 import '@/styles/global.css';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <MyLayout>
+    <CustomLayout>
       <Component {...pageProps} />
-    </MyLayout>
+    </CustomLayout>
   );
 };
 
