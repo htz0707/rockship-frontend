@@ -1,337 +1,279 @@
 import * as React from 'react';
 import { Button, Col, Row, Input } from 'antd';
+import CustomLayout from '@/components/layout';
 import styles from '@/styles/index.module.scss';
+
 const { TextArea } = Input;
 
 const HomePage = () => {
   return (
-    <div className={styles['homepage']}>
-      <div className={styles['box-1']}>
-        <p className={styles['homepage-big-text']}>Bring Your <span>Software Idea</span> To</p>
-        <p className={styles['homepage-big-text']}>Life In High Quality.</p>
-        <p className={styles['homepage-small-text']}>
-          We provide many features that you can use cheaply and easily.
-        </p>
-        <p>
-          Try it now and get an interesting promo
-        </p>
-        <div className={styles['button-group']}>
-          <Button className={styles['homepage-button-1']}
-          >
-            START BUILDING
-          </Button>
-          <Button className={styles['homepage-button-2']}>
-            Watch A Demo
-          </Button>
+    <CustomLayout link={'solutions'}>
+      <div className={styles['homepage']}>
+        <div className={styles['text-title']}>
+          More than 25,000 Clients Trust Us
         </div>
-        <div className={styles['box-relative']}>
-          <img
-            src={'/chat.svg'}
-            alt='chat'
-          />
-        </div>
-      </div>
-      <div className={styles['text-title']}>
-        More than 25,000 Clients Trust Us
-      </div>
-      <img
-        src={'/clients.svg'}
-        alt='clients'
-        className={styles['clients-image']}
-      />
-      <div className={styles['box-2']}>
-        <Row>
-          <Col span={6}>
-            <div className={styles['col-padding']}>
-              <img
-                src={'/clock.svg'}
-                alt='clock'
-              />
-              <p className={styles['text-col-header']}>
-                99.9% Up Time
-              </p>
-              <p className={styles['text-col-content']}>
-                We Keep Your Web build Online 24x7x365.
-              </p>
-              <p className={styles['text-col-content']}>
-                Downtime not only costs you lost visitors
-              </p>
-              <p className={styles['text-col-content']}>
-                but also damages your reputation and
-              </p>
-              <p className={styles['text-col-content']}>
-                search engine rankings.
-              </p>
-            </div>
-          </Col>
-          <Col span={6}>
-            <div className={styles['col-padding']}>
-              <img
-                src={'/cloud.svg'}
-                alt='cloud'
-              />
-              <p className={styles['text-col-header']}>
-                Blazing Fast Web Hosting
-              </p>
-              <p className={styles['text-col-content']}>
-                We Keep Your Web build Online 24x7x365.
-              </p>
-              <p className={styles['text-col-content']}>
-                Downtime not only costs you lost visitors
-              </p>
-              <p className={styles['text-col-content']}>
-                but also damages your reputation and
-              </p>
-              <p className={styles['text-col-content']}>
-                search engine rankings.
-              </p>
-            </div>
-          </Col>
-          <Col span={6}>
-            <div className={styles['col-padding']}>
-              <img
-                src={'/pin.svg'}
-                alt='pin'
-              />
-              <p className={styles['text-col-header']}>
-                Free SSL Certificates
-              </p>
-              <p className={styles['text-col-content']}>
-                We Keep Your Web build Online 24x7x365.
-              </p>
-              <p className={styles['text-col-content']}>
-                Downtime not only costs you lost visitors
-              </p>
-              <p className={styles['text-col-content']}>
-                but also damages your reputation and
-              </p>
-              <p className={styles['text-col-content']}>
-                search engine rankings.
-              </p>
-            </div>
-          </Col>
-          <Col span={6}>
-            <div className={styles['col-padding']}>
-              <img
-                src={'/headphone.svg'}
-                alt='headphone'
-              />
-              <p className={styles['text-col-header']}>
-                24x7 Friendly Support
-              </p>
-              <p className={styles['text-col-content']}>
-                We Keep Your Web build Online 24x7x365.
-              </p>
-              <p className={styles['text-col-content']}>
-                Downtime not only costs you lost visitors
-              </p>
-              <p className={styles['text-col-content']}>
-                but also damages your reputation and
-              </p>
-              <p className={styles['text-col-content']}>
-                search engine rankings.
-              </p>
-            </div>
-          </Col>
-        </Row>
-        <div className={styles['box-3']}>
-          <p className={styles['title']}>
-            Our product
-          </p>
-          <Button className={styles['homepage-button-1'] + ' ' + styles['arrow-button']}>
-            View all
-            <img
-              src='/arrow.svg'
-              alt='arrow'
-              className={styles['arrow-icon']}
-            />
-          </Button>
-        </div>
-        <Row>
-          <Col
-            className={styles['text-start']}
-            span={12}
-          >
-            <img
-              src='/isense.svg'
-              alt='isense'
-              className={styles['app-image']}
-            />
-            <p className={styles['text-title'] + ' ' + styles['text-title-app']}>
-              E-Pay App
+        <img
+          src={'/clients.svg'}
+          alt='clients'
+          className={styles['clients-image']}
+        />
+        <div className={styles['box-2']}>
+          <Row>
+            <Col className={styles['col-style']} span={6}>
+              <div className={styles['col-padding']}>
+                <img
+                  src={'/clock.svg'}
+                  alt='clock'
+                />
+                <p className={styles['text-col-header']}>
+                  Development automation
+                </p>
+                <p className={styles['text-col-content']}>
+                  Our ultimate mission is to fully
+                  automate software development
+                  work, saving our clients millions of
+                  dollar in development cost.
+                </p>
+              </div>
+            </Col>
+            <Col className={styles['col-style']} span={6}>
+              <div className={styles['col-padding']}>
+                <img
+                  src={'/cloud.svg'}
+                  alt='cloud'
+                />
+                <p className={styles['text-col-header']}>
+                  Accumulative Expertise
+                </p>
+                <p className={styles['text-col-content']}>
+                  We have accumulated six-plus years
+                  of software development experience
+                  and organized our expertise into
+                  reusable modules to save time and
+                  effort for our clients.
+                </p>
+              </div>
+            </Col>
+            <Col className={styles['col-style']} span={6}>
+              <div className={styles['col-padding']}>
+                <img
+                  src={'/pin.svg'}
+                  alt='pin'
+                />
+                <p className={styles['text-col-header']}>
+                  Frontier Tech & Cloud Native
+                </p>
+                <p className={styles['text-col-content']}>
+                  We leverage the latest technologies
+                  to deliver our clients the most
+                  powerful capabilities, allowing
+                  them to stay ahead of the competition.
+                  Additionally, we utilize Cloud Native
+                  solutions to ensure the systems can
+                  easily scale.
+                </p>
+              </div>
+            </Col>
+            <Col className={styles['col-style']} span={6}>
+              <div className={styles['col-padding']}>
+                <img
+                  src={'/headphone.svg'}
+                  alt='headphone'
+                />
+                <p className={styles['text-col-header']}>
+                  Diverse capabilities
+                </p>
+                <p className={styles['text-col-content']}>
+                  "Our developer community is
+                  versatile in various technology stacks,
+                  enabling us to solve diverse set o problems.
+                </p>
+              </div>
+            </Col>
+          </Row>
+          <div className={styles['box-3']}>
+            <p className={styles['title']}>
+              Our Solutions
             </p>
-            <p className={styles['text-app']}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-            </p>
-            <p className={styles['text-app']}>
-              industry. Lorem Ipsum has been the industry's standard dummy
-            </p>
-            <p className={styles['text-app'] + ' ' + styles['text-app-last']}>
-              text ever
-            </p>
-            <img
-              src='/isense2.svg'
-              alt='isense2'
-              className={styles['app-image']}
-            />
-            <p className={styles['text-title'] + ' ' + styles['text-title-app']}>
-              E-Pay App
-            </p>
-            <p className={styles['text-app']}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-            </p>
-            <p className={styles['text-app']}>
-              industry. Lorem Ipsum has been the industry's standard dummy
-            </p>
-            <p className={styles['text-app'] + ' ' + styles['text-app-last']}>
-              text ever
-            </p>
-          </Col>
-          <Col
-            style={{
-              textAlign: 'start',
-            }}
-            span={12}
-          >
-            <img
-              src='/isense2.svg'
-              alt='isense2'
-              className={styles['app-image']}
-            />
-            <p className={styles['text-title'] + ' ' + styles['text-title-app']}>
-              E-Pay App
-            </p>
-            <p className={styles['text-app']}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-            </p>
-            <p className={styles['text-app']}>
-              industry. Lorem Ipsum has been the industry's standard dummy
-            </p>
-            <p className={styles['text-app'] + ' ' + styles['text-app-last']}>
-              text ever
-            </p>
-            <img
-              src='/isense.svg'
-              alt='isense'
-              className={styles['app-image']}
-            />
-            <p className={styles['text-title'] + ' ' + styles['text-title-app']}>
-              E-Pay App
-            </p>
-            <p className={styles['text-app']}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-            </p>
-            <p className={styles['text-app']}>
-              industry. Lorem Ipsum has been the industry's standard dummy
-            </p>
-            <p className={styles['text-app'] + ' ' + styles['text-app-last']}>
-              text ever
-            </p>
-          </Col>
-        </Row>
-        <div className={styles['box-4']}>
-          <p className={styles['title']}>
-            About Us
-          </p>
-          <Button className={styles['homepage-button-1'] + ' ' + styles['arrow-button']}>
-            Read more
-            <img
-              src='/arrow.svg'
-              alt='arrow'
-              className={styles['arrow-icon']}
-            />
-          </Button>
-        </div>
-        <div className={styles['box-5']}>
-          <img
-            src='/background_with_people.png'
-            alt='bg-w-people'
-          />
-          <div>
-            <p className={styles['header']}>
-              Lorem Ipsum is simply dummy
-            </p>
-            <p className={styles['content']}>
-              Lorem Ipsum is simply dummy text of
-            </p>
-            <p className={styles['content']}>
-              the printing and typesetting industry.
-            </p>
+            <Row>
+              <Col className={styles['col-box']} span={13}>
+                <p className={styles['title']}>
+                  BUILD SOFTWARES FAST WITH OUR AI
+                </p>
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
+                  <p>
+                    We have done thousands+ of software features and can quickly build
+                    new features for you with accurate estimation
+                  </p>
+                </div>
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
+                  <p>
+                    We made some important automation in our process: idea to
+                    requirements, technical design to codes, tests from specifications
+                  </p>
+                </div>
+                <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
+                  START BUILDING
+                  <img
+                    src='/arrow.svg'
+                    alt='arrow'
+                    className={styles['arrow-icon']}
+                  />
+                </Button>
+              </Col>
+              <Col span={11}>
+                <img src='/solutions.svg' alt='solutions' />
+              </Col>
+            </Row>
+            <Row>
+              <Col span={11}>
+                <img src='/services.svg' alt='services' />
+              </Col>
+              <Col className={styles['col-box'] + ' ' + styles['col-box-right']} span={13}>
+                <p className={styles['title']}>
+                  TEAM AS A SERVICE
+                </p>
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
+                  <p>
+                    Leverage our platform to hire on-demand developers to get the top talents
+                    from different countries to solve your tech problems
+                  </p>
+                </div>
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
+                  <p>
+                    We provide tools and frameworks for team to deliver work
+                    progressively for our clients
+                  </p>
+                </div>
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
+                  <p>
+                    Our infrastructure & AI tools enable us to train, support and grow the
+                    developers continuously
+                  </p>
+                </div>
+                <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
+                  START BUILDING
+                  <img
+                    src='/arrow.svg'
+                    alt='arrow'
+                    className={styles['arrow-icon']}
+                  />
+                </Button>
+              </Col>
+            </Row>
+            <Row>
+              <Col className={styles['col-box']} span={13}>
+                <p className={styles['title']}>
+                  DATA & MLOPS
+                </p>
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
+                  <p>
+                    Data Collection via scraping & convert unstructured data to
+                    structured data by capturing key information
+                  </p>
+                </div>
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
+                  <p>
+                    Architecture the Data Pipeline & Data Warehouse for your organization
+                    from setting up Airflow, data modeling for Data Warehouse and Data
+                    Mart according to your business requirements
+                  </p>
+                </div>
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
+                  <p>
+                    Build and maintain real-time data architecture (Feature Store, ML
+                    Model Store) to serve business critical application required to have
+                    the fresh updates of user information: recommendation system, ads
+                    bidding
+                  </p>
+                </div>
+                <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
+                  START BUILDING
+                  <img
+                    src='/arrow.svg'
+                    alt='arrow'
+                    className={styles['arrow-icon']}
+                  />
+                </Button>
+              </Col>
+              <Col span={11}>
+                <img src='/data.svg' alt='data' />
+              </Col>
+            </Row>
           </div>
         </div>
-      </div>
-      <div className={styles['box-6']}>
-        <Row className={styles['custom-row']}>
-          <Col span={12}>
-            <div className={styles['text-title']}>
-              Contact us to help
-            </div>
-            <div className={styles['text-title']}>
-              your business
-            </div>
-            <p className={styles['custom-label']}>
-              Email
-            </p>
-            <Input
-              className={styles['custom-input']}
-              placeholder="Enter your email"
-            />
-            <p className={styles['custom-label']}>
-              Message
-            </p>
-            <TextArea
-              className={styles['custom-input']}
-              placeholder="What are you say?"
-            />
-            <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
-              START BUILDING
-            </Button>
-          </Col>
-          <Col span={12}>
-            <div className={styles['col-padding']}>
-              <img
-                src={'/dashboard.png'}
-                alt='db'
+        <div className={styles['box-6']}>
+          <Row className={styles['custom-row']}>
+            <Col span={16}>
+              <p className={styles['title']}>
+                WE BUILD FASTER WITH OUR AI & AUTOMATION!
+              </p>
+            </Col>
+            <Col span={8}>
+              <p className={styles['custom-label']}>
+                Email
+              </p>
+              <Input
+                className={styles['custom-input']}
+                placeholder="Enter your email"
               />
-            </div>
-          </Col>
-        </Row>
-      </div>
-      <div className={styles['box-7']}>
-        <Row>
-          <Col
-            className={styles['text-start']}
-            span={12}>
-            <p className={styles['text-title'] + ' ' + styles['title-1']}>
-              Real Stories from
-            </p>
-            <p className={styles['text-title'] + ' ' + styles['title-2']}>
-              Real Customers
-            </p>
-            <p className={styles['content']}>
-              Get inspired by these stories.
-            </p>
-            <div className={styles['text-end']}>
-              <img
-                src={'/quote3.svg'}
-                alt='quote3'
+              <p className={styles['custom-label']}>
+                Message
+              </p>
+              <TextArea
+                className={styles['custom-input']}
+                placeholder="What are you say?"
               />
-            </div>
-          </Col>
-          <Col className={styles['text-start'] + ' ' + styles['mt-2']}
-            span={12}>
-            <img
-              src={'/quote1.svg'}
-              alt='quote1'
-            />
-            <img
-              src={'/quote2.svg'}
-              alt='quote2'
-            />
-          </Col>
-        </Row>
-      </div>
-    </div >
+              <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
+                CONTACT US
+              </Button>
+            </Col>
+          </Row>
+        </div>
+        <div className={styles['box-7']}>
+          <Row>
+            <Col
+              className={styles['text-start']}
+              span={12}>
+              <p className={styles['text-title'] + ' ' + styles['title-1']}>
+                Real Stories from
+              </p>
+              <p className={styles['text-title'] + ' ' + styles['title-2']}>
+                Real Customers
+              </p>
+              <p className={styles['content']}>
+                Get inspired by these stories.
+              </p>
+              <div className={styles['text-end']}>
+                <img
+                  src={'/quote3.svg'}
+                  alt='quote3'
+                />
+              </div>
+            </Col>
+            <Col className={styles['text-start'] + ' ' + styles['mt-2']}
+              span={12}>
+              <img
+                src={'/quote1.svg'}
+                alt='quote1'
+              />
+              <img
+                src={'/quote2.svg'}
+                alt='quote2'
+              />
+            </Col>
+          </Row>
+        </div>
+      </div >
+    </CustomLayout>
   );
 };
 

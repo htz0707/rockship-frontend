@@ -1,0 +1,102 @@
+@import './global.module.scss';
+
+.chatbot {
+  border-radius: 24px;
+  background-color: $white;
+
+  outline: rgba(255, 255, 255, 0.30) solid 16px;
+  width: fit-content;
+  height: fit-content;
+  min-width: 1022px;
+
+  .chat-header {
+    border-radius: 24px 24px 0 0;
+    text-align: start;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    background-color: $gray;
+
+    img {
+      margin: 8px 28px 8px 8px;
+    }
+
+    p {
+      color: $black;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 30px;
+      margin: 0;
+    }
+  }
+
+  .chat-window {
+    padding: 16px;
+
+    .bot-message,
+    .user-message {
+      line-height: 24px;
+      text-align: start;
+      font-size: 16px;
+      p {
+        padding: 8px 12px;
+      }
+    }
+
+    .bot-message {
+      p {
+        border-radius: 4px 16px 16px 16px;
+        background: $gray;
+        color: $black;
+        width: fit-content;
+        max-width: 318px;
+        span {
+          white-space: nowrap;
+          color: $blue;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .user-message {
+      display: flex;
+      justify-content: flex-end;
+
+      p {
+        border-radius: 16px 16px 4px 16px;
+        background: $blue;
+        width: fit-content;
+      }
+    }
+  }
+
+  .button-group {
+    width: 100%;
+    padding: 0px 16px;
+    cursor: pointer;
+    .send-button {
+      background-color: $blue;
+      color: $white;
+    }
+  }
+
+  .privacy {
+    padding: 0px 16px 16px 16px;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: start;
+    color: #6D6D6D;
+    margin: 0;
+  }
+}
+
+.confirm-box {
+  text-align: center !important;
+  font-size: 16px;
+  line-height: 24px;
+
+  .confirm-button {
+    color: $blue;
+    background-color: #D0EEFF;
+  }
+}
