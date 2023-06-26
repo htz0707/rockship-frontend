@@ -6,6 +6,7 @@ import styles from '@/styles/index.module.scss';
 const { TextArea } = Input;
 
 const HomePage = () => {
+
   return (
     <CustomLayout link={'solutions'}>
       <div className={styles['homepage']}>
