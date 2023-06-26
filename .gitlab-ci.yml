@@ -11,7 +11,7 @@ variables:
 
 before_script:
   - test -n "$SSH_PRIVATE_KEY" || ( echo "missing variable SSH_PRIVATE_KEY" && exit 1)
-  - test -n "$SSH_HOST" || ( echo "missing variable SSH_HOST_STG" && exit 1)
+  - test -n "$SSH_HOST_STG" || ( echo "missing variable SSH_HOST_STG" && exit 1)
   - test -n "$PROJECT_DIR" || ( echo "missing variable PROJECT_DIR" && exit 1)
   - test -n "$ROCKSHIP_REGISTRY_USERNAE" || ( echo "missing variable ROCKSHIP_REGISTRY_USERNAE" && exit 1)
   - test -n "$ROCKSHIP_REGISTRY_PASSWORD" || ( echo "missing variable ROCKSHIP_REGISTRY_PASSWORD" && exit 1)
@@ -31,7 +31,7 @@ build:
   tags:
     - self-host
   script:
-    - ssh $SSH_BUILD_HOST "cd src/$PROJECT_DIR && docker build --platform linux/amd64 -f builder/Dockerfile -t $TAG_COMMIT . && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker tag $TAG_COMMIT $TAG_LATEST && docker push $TAG_LATEST"
+    - ssh $SSH_BUILD_HOST "cd src/$PROJECT_DIR docker build --platform linux/amd64 -f builder/Dockerfile -t $TAG_COMMIT . && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker tag $TAG_COMMIT $TAG_LATEST && docker push $TAG_LATEST"
   only:
     - devops/test
     - master
@@ -42,7 +42,7 @@ deploy:
   tags:
     - self-host
   script:
-    - ssh $SSH_HOST "docker pull $TAG_LATEST && docker run -d -p $PORT:$INTERNAL_SERVICE_PORT $TAG_LATEST"
+    - ssh $SSH_HOST "cd monorepo/aegon && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker pull $TAG_LATEST && make blueprint-construct service=$CI_COMMIT_REF_NAME tag=$TAG"
   only:
     - devops/test
     - dev
