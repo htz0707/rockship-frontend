@@ -7,10 +7,13 @@ variables:
   TAG_LATEST: $CI_REGISTRY_IMAGE/rockship/$CI_COMMIT_REF_NAME:$DEPLOY_TAG
 
 build:
-  image: docker:20
+  image: docker
   stage: build
+  variables:  # not strictly needed, depending on runner configuration
+    DOCKER_HOST: "tcp://docker:2375"
+    DOCKER_TLS_CERTDIR: ""
   services:
-    - docker:20-dind
+    - docker:dind
   tags:
     - self-host
   script:
