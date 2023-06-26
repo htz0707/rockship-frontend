@@ -11,8 +11,6 @@ build:
   stage: build
   tags:
     - self-host
-  services:
-    - docker:dind
   script:
     - test -n "$ROCKSHIP_REGISTRY_USERNAE" || ( echo "missing variable ROCKSHIP_REGISTRY_USERNAE" && exit 1)
     - test -n "$ROCKSHIP_REGISTRY_PASSWORD" || ( echo "missing variable ROCKSHIP_REGISTRY_PASSWORD" && exit 1)
