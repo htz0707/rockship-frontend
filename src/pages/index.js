@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Button, Col, Row, Input } from 'antd';
 import CustomLayout from '@/components/layout';
+import Chatbot from '@/components/chatbot';
 import styles from '@/styles/index.module.scss';
 
 const { TextArea } = Input;
 
 const HomePage = () => {
+
   return (
     <CustomLayout link={'head'}>
       <div className={styles['homepage']}>
@@ -28,10 +30,7 @@ const HomePage = () => {
             </Button>
           </div>
           <div className={styles['box-relative']}>
-            <img
-              src={'/chat.svg'}
-              alt='chat'
-            />
+            <Chatbot />
           </div>
         </div>
         <div className={styles['text-title']}>
@@ -51,19 +50,10 @@ const HomePage = () => {
                   alt='clock'
                 />
                 <p className={styles['text-col-header']}>
-                  99.9% Up Time
+                  Development automation
                 </p>
                 <p className={styles['text-col-content']}>
-                  We Keep Your Web build Online 24x7x365.
-                </p>
-                <p className={styles['text-col-content']}>
-                  Downtime not only costs you lost visitors
-                </p>
-                <p className={styles['text-col-content']}>
-                  but also damages your reputation and
-                </p>
-                <p className={styles['text-col-content']}>
-                  search engine rankings.
+                  Our ultimate mission is to fully automate software development work, saving our clients millions of dollar in development cost.
                 </p>
               </div>
             </Col>
@@ -74,19 +64,10 @@ const HomePage = () => {
                   alt='cloud'
                 />
                 <p className={styles['text-col-header']}>
-                  Blazing Fast Web Hosting
+                  Accumulative Expertise
                 </p>
                 <p className={styles['text-col-content']}>
-                  We Keep Your Web build Online 24x7x365.
-                </p>
-                <p className={styles['text-col-content']}>
-                  Downtime not only costs you lost visitors
-                </p>
-                <p className={styles['text-col-content']}>
-                  but also damages your reputation and
-                </p>
-                <p className={styles['text-col-content']}>
-                  search engine rankings.
+                  We have accumulated six-plus years of software development experience and organized our expertise into reusable modules to save time and effort for our clients.
                 </p>
               </div>
             </Col>
@@ -97,19 +78,10 @@ const HomePage = () => {
                   alt='pin'
                 />
                 <p className={styles['text-col-header']}>
-                  Free SSL Certificates
+                  Frontier Tech & Cloud Native
                 </p>
                 <p className={styles['text-col-content']}>
-                  We Keep Your Web build Online 24x7x365.
-                </p>
-                <p className={styles['text-col-content']}>
-                  Downtime not only costs you lost visitors
-                </p>
-                <p className={styles['text-col-content']}>
-                  but also damages your reputation and
-                </p>
-                <p className={styles['text-col-content']}>
-                  search engine rankings.
+                  We leverage the latest technologies to deliver our clients the most powerful capabilities, allowing them to stay ahead of the competition. Additionally, we utilize Cloud Native solutions to ensure the systems can easily scale.
                 </p>
               </div>
             </Col>
@@ -123,155 +95,176 @@ const HomePage = () => {
                   24x7 Friendly Support
                 </p>
                 <p className={styles['text-col-content']}>
-                  We Keep Your Web build Online 24x7x365.
-                </p>
-                <p className={styles['text-col-content']}>
-                  Downtime not only costs you lost visitors
-                </p>
-                <p className={styles['text-col-content']}>
-                  but also damages your reputation and
-                </p>
-                <p className={styles['text-col-content']}>
-                  search engine rankings.
+                  Our developer community is versatile in various technology stacks, enabling us to solve diverse set o problems.
                 </p>
               </div>
             </Col>
           </Row>
           <div className={styles['box-3']}>
             <p className={styles['title']}>
-              Our product
+              Our Solutions
             </p>
-            <Button className={styles['homepage-button-1'] + ' ' + styles['arrow-button']}>
-              View all
-              <img
-                src='/arrow.svg'
-                alt='arrow'
-                className={styles['arrow-icon']}
-              />
-            </Button>
-          </div>
-          <Row>
-            <Col
-              className={styles['text-start']}
-              span={12}
-            >
-              <img
-                src='/isense.svg'
-                alt='isense'
-                className={styles['app-image']}
-              />
-              <p className={styles['text-title'] + ' ' + styles['text-title-app']}>
-                E-Pay App
-              </p>
-              <p className={styles['text-app']}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-              </p>
-              <p className={styles['text-app']}>
-                industry. Lorem Ipsum has been the industry's standard dummy
-              </p>
-              <p className={styles['text-app'] + ' ' + styles['text-app-last']}>
-                text ever
-              </p>
-              <img
-                src='/isense2.svg'
-                alt='isense2'
-                className={styles['app-image']}
-              />
-              <p className={styles['text-title'] + ' ' + styles['text-title-app']}>
-                E-Pay App
-              </p>
-              <p className={styles['text-app']}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-              </p>
-              <p className={styles['text-app']}>
-                industry. Lorem Ipsum has been the industry's standard dummy
-              </p>
-              <p className={styles['text-app'] + ' ' + styles['text-app-last']}>
-                text ever
-              </p>
-            </Col>
-            <Col
-              style={{
-                textAlign: 'start',
-              }}
-              span={12}
-            >
-              <img
-                src='/isense2.svg'
-                alt='isense2'
-                className={styles['app-image']}
-              />
-              <p className={styles['text-title'] + ' ' + styles['text-title-app']}>
-                E-Pay App
-              </p>
-              <p className={styles['text-app']}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-              </p>
-              <p className={styles['text-app']}>
-                industry. Lorem Ipsum has been the industry's standard dummy
-              </p>
-              <p className={styles['text-app'] + ' ' + styles['text-app-last']}>
-                text ever
-              </p>
-              <img
-                src='/isense.svg'
-                alt='isense'
-                className={styles['app-image']}
-              />
-              <p className={styles['text-title'] + ' ' + styles['text-title-app']}>
-                E-Pay App
-              </p>
-              <p className={styles['text-app']}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-              </p>
-              <p className={styles['text-app']}>
-                industry. Lorem Ipsum has been the industry's standard dummy
-              </p>
-              <p className={styles['text-app'] + ' ' + styles['text-app-last']}>
-                text ever
-              </p>
-            </Col>
-          </Row>
-          <div className={styles['box-4']}>
-            <p className={styles['title']}>
-              About Us
-            </p>
-            <Button className={styles['homepage-button-1'] + ' ' + styles['arrow-button']}>
-              Read more
-              <img
-                src='/arrow.svg'
-                alt='arrow'
-                className={styles['arrow-icon']}
-              />
-            </Button>
-          </div>
-          <div className={styles['box-5']}>
-            <img
-              src='/background_with_people.png'
-              alt='bg-w-people'
-            />
-            <div>
-              <p className={styles['header']}>
-                Lorem Ipsum is simply dummy
-              </p>
-              <p className={styles['content']}>
-                Lorem Ipsum is simply dummy text of
-              </p>
-              <p className={styles['content']}>
-                the printing and typesetting industry.
-              </p>
-            </div>
+            <Row className={styles['contents']}>
+              <Col
+                className={styles['text-start']}
+                span={14}
+              >
+                <p className={styles['header']}>
+                  BUILD SOFTWARES FAST WITH OUR AI
+                </p>
+                <div className={styles['line']}>
+                  <img
+                    src={'/stick.svg'}
+                    alt='stick'
+                  />
+                  <p>
+                    We have done thousands+ of software features and can quickly build new features for you with accurate estimation
+                  </p>
+                </div>
+                <div className={styles['line']}>
+                  <img
+                    src={'/stick.svg'}
+                    alt='stick'
+                  />
+                  <p>
+                    We made some important automation in our process: idea to requirements, technical design to codes, tests from specifications
+                  </p>
+                </div>
+                <Button className={styles['homepage-button-1'] + ' ' + styles['arrow-button']}>
+                  START BUILDING
+                  <img
+                    src='/arrow.svg'
+                    alt='arrow'
+                    className={styles['arrow-icon']}
+                  />
+                </Button>
+              </Col>
+              <Col
+                span={10}
+              >
+                <img
+                  src='/solution.svg'
+                  alt='solution'
+                />
+              </Col>
+            </Row>
+            <Row className={styles['contents']}>
+              <Col
+                className={styles['pr-2']}
+                span={10}
+              >
+                <img
+                  src='/service.svg'
+                  alt='service'
+                />
+              </Col>
+              <Col
+                className={styles['text-start']}
+                span={14}
+              >
+                <p className={styles['header']}>
+                  TEAM AS A SERVICE
+                </p>
+                <div className={styles['line']}>
+                  <img
+                    src={'/stick.svg'}
+                    alt='stick'
+                  />
+                  <p>
+                    Leverage our platform to hire on-demand developers to get the top talents from different countries to solve your tech problems
+                  </p>
+                </div>
+                <div className={styles['line']}>
+                  <img
+                    src={'/stick.svg'}
+                    alt='stick'
+                  />
+                  <p>
+                    We provide tools and frameworks for team to deliver work progressively for our clients
+                  </p>
+                </div>
+                <div className={styles['line']}>
+                  <img
+                    src={'/stick.svg'}
+                    alt='stick'
+                  />
+                  <p>
+                    Our infrastructure & AI tools enable us to train, support and grow the developers continuously
+                  </p>
+                </div>
+                <Button className={styles['homepage-button-1'] + ' ' + styles['arrow-button']}>
+                  START BUILDING
+                  <img
+                    src='/arrow.svg'
+                    alt='arrow'
+                    className={styles['arrow-icon']}
+                  />
+                </Button>
+              </Col>
+            </Row>
+            <Row className={styles['contents']}>
+              <Col
+                className={styles['text-start']}
+                span={14}
+              >
+                <p className={styles['header']}>
+                  DATA & MLOPS
+                </p>
+                <div className={styles['line']}>
+                  <img
+                    src={'/stick.svg'}
+                    alt='stick'
+                  />
+                  <p>
+                    Data Collection via scraping & convert unstructured data to structured data by capturing key information
+                  </p>
+                </div>
+                <div className={styles['line']}>
+                  <img
+                    src={'/stick.svg'}
+                    alt='stick'
+                  />
+                  <p>
+                    Architecture the Data Pipeline & Data Warehouse for your organization from setting up Airflow, data modeling for Data Warehouse and Data Mart according to your business requirements
+                  </p>
+                </div>
+                <div className={styles['line']}>
+                  <img
+                    src={'/stick.svg'}
+                    alt='stick'
+                  />
+                  <p>
+                    Build and maintain real-time data architecture (Feature Store, ML Model Store) to serve business critical application required to have the fresh updates of user information: recommendation system, ads bidding
+                  </p>
+                </div>
+                <Button className={styles['homepage-button-1'] + ' ' + styles['arrow-button']}>
+                  START BUILDING
+                  <img
+                    src='/arrow.svg'
+                    alt='arrow'
+                    className={styles['arrow-icon']}
+                  />
+                </Button>
+              </Col>
+              <Col
+                span={10}
+              >
+                <img
+                  src='/solution.svg'
+                  alt='solution'
+                />
+              </Col>
+            </Row>
           </div>
         </div>
         <div className={styles['box-6']}>
           <Row className={styles['custom-row']}>
-            <Col span={12}>
+            <Col span={14}>
               <div className={styles['text-title']}>
-                Contact us to help
+                WE BUILD FASTER WITH OUR AI & AUTOMATION!
               </div>
-              <div className={styles['text-title']}>
-                your business
-              </div>
+            </Col>
+            <Col span={10}>
               <p className={styles['custom-label']}>
                 Email
               </p>
@@ -289,14 +282,6 @@ const HomePage = () => {
               <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
                 START BUILDING
               </Button>
-            </Col>
-            <Col span={12}>
-              <div className={styles['col-padding']}>
-                <img
-                  src={'/dashboard.png'}
-                  alt='db'
-                />
-              </div>
             </Col>
           </Row>
         </div>
