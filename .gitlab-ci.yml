@@ -9,6 +9,8 @@ variables:
 build:
   image: docker:20
   stage: build
+  services:
+    - docker:20-dind
   tags:
     - self-host
   script:
