@@ -1,8 +1,15 @@
+import Head from 'next/head';
 import '@/styles/global.css';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
-    <Component {...pageProps} />
+    <>
+      <Head>
+        <link rel="icon" href="/rockship-symbol.svg" />
+        <title>Rockship</title>
+      </Head>
+      <Component {...pageProps} />
+    </>
   );
 };
 
