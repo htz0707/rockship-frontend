@@ -7,7 +7,7 @@ variables:
   TAG_LATEST: $CI_REGISTRY_IMAGE/rockship/$CI_COMMIT_REF_NAME:$DEPLOY_TAG
 
 build:
-  image: docker
+  image: docker:20
   stage: build
   variables:  # not strictly needed, depending on runner configuration
     DOCKER_HOST: "tcp://docker:2375"
@@ -20,8 +20,8 @@ build:
     - test -n "$ROCKSHIP_REGISTRY_USERNAE" || ( echo "missing variable ROCKSHIP_REGISTRY_USERNAE" && exit 1)
     - test -n "$ROCKSHIP_REGISTRY_PASSWORD" || ( echo "missing variable ROCKSHIP_REGISTRY_PASSWORD" && exit 1)
     - test -n "$CI_REGISTRY_IMAGE" || ( echo "missing variable CI_REGISTRY" && exit 1)
-    - docker build --platform linux/amd64 -f builder/Dockerfile -t $TAG_COMMIT .
     - docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE
+    - docker build --platform linux/amd64 -f builder/Dockerfile -t $TAG_COMMIT .
     - docker tag $TAG_COMMIT $TAG_LATEST
     - docker push $TAG_LATEST
   only:
