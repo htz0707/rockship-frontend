@@ -9,30 +9,8 @@ const { TextArea } = Input;
 const HomePage = () => {
 
   return (
-    <CustomLayout link={'head'}>
+    <CustomLayout link={'solutions'}>
       <div className={styles['homepage']}>
-        <div className={styles['box-1']}>
-          <p className={styles['homepage-big-text']}>Bring Your <span>Software Idea</span> To</p>
-          <p className={styles['homepage-big-text']}>Life In High Quality.</p>
-          <p className={styles['homepage-small-text']}>
-            We provide many features that you can use cheaply and easily.
-          </p>
-          <p>
-            Try it now and get an interesting promo
-          </p>
-          <div className={styles['button-group']}>
-            <Button className={styles['homepage-button-1']}
-            >
-              START BUILDING
-            </Button>
-            <Button className={styles['homepage-button-2']}>
-              Watch A Demo
-            </Button>
-          </div>
-          <div className={styles['box-relative']}>
-            <Chatbot />
-          </div>
-        </div>
         <div className={styles['text-title']}>
           More than 25,000 Clients Trust Us
         </div>
@@ -43,7 +21,7 @@ const HomePage = () => {
         />
         <div className={styles['box-2']}>
           <Row>
-            <Col span={6}>
+            <Col className={styles['col-style']} span={6}>
               <div className={styles['col-padding']}>
                 <img
                   src={'/clock.svg'}
@@ -53,11 +31,14 @@ const HomePage = () => {
                   Development automation
                 </p>
                 <p className={styles['text-col-content']}>
-                  Our ultimate mission is to fully automate software development work, saving our clients millions of dollar in development cost.
+                  Our ultimate mission is to fully
+                  automate software development
+                  work, saving our clients millions of
+                  dollar in development cost.
                 </p>
               </div>
             </Col>
-            <Col span={6}>
+            <Col className={styles['col-style']} span={6}>
               <div className={styles['col-padding']}>
                 <img
                   src={'/cloud.svg'}
@@ -67,11 +48,15 @@ const HomePage = () => {
                   Accumulative Expertise
                 </p>
                 <p className={styles['text-col-content']}>
-                  We have accumulated six-plus years of software development experience and organized our expertise into reusable modules to save time and effort for our clients.
+                  We have accumulated six-plus years
+                  of software development experience
+                  and organized our expertise into
+                  reusable modules to save time and
+                  effort for our clients.
                 </p>
               </div>
             </Col>
-            <Col span={6}>
+            <Col className={styles['col-style']} span={6}>
               <div className={styles['col-padding']}>
                 <img
                   src={'/pin.svg'}
@@ -81,21 +66,29 @@ const HomePage = () => {
                   Frontier Tech & Cloud Native
                 </p>
                 <p className={styles['text-col-content']}>
-                  We leverage the latest technologies to deliver our clients the most powerful capabilities, allowing them to stay ahead of the competition. Additionally, we utilize Cloud Native solutions to ensure the systems can easily scale.
+                  We leverage the latest technologies
+                  to deliver our clients the most
+                  powerful capabilities, allowing
+                  them to stay ahead of the competition.
+                  Additionally, we utilize Cloud Native
+                  solutions to ensure the systems can
+                  easily scale.
                 </p>
               </div>
             </Col>
-            <Col span={6}>
+            <Col className={styles['col-style']} span={6}>
               <div className={styles['col-padding']}>
                 <img
                   src={'/headphone.svg'}
                   alt='headphone'
                 />
                 <p className={styles['text-col-header']}>
-                  24x7 Friendly Support
+                  Diverse capabilities
                 </p>
                 <p className={styles['text-col-content']}>
-                  Our developer community is versatile in various technology stacks, enabling us to solve diverse set o problems.
+                  "Our developer community is
+                  versatile in various technology stacks,
+                  enabling us to solve diverse set o problems.
                 </p>
               </div>
             </Col>
@@ -104,33 +97,26 @@ const HomePage = () => {
             <p className={styles['title']}>
               Our Solutions
             </p>
-            <Row className={styles['contents']}>
-              <Col
-                className={styles['text-start']}
-                span={14}
-              >
-                <p className={styles['header']}>
+            <Row>
+              <Col className={styles['col-box']} span={13}>
+                <p className={styles['title']}>
                   BUILD SOFTWARES FAST WITH OUR AI
                 </p>
-                <div className={styles['line']}>
-                  <img
-                    src={'/stick.svg'}
-                    alt='stick'
-                  />
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
                   <p>
-                    We have done thousands+ of software features and can quickly build new features for you with accurate estimation
+                    We have done thousands+ of software features and can quickly build
+                    new features for you with accurate estimation
                   </p>
                 </div>
-                <div className={styles['line']}>
-                  <img
-                    src={'/stick.svg'}
-                    alt='stick'
-                  />
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
                   <p>
-                    We made some important automation in our process: idea to requirements, technical design to codes, tests from specifications
+                    We made some important automation in our process: idea to
+                    requirements, technical design to codes, tests from specifications
                   </p>
                 </div>
-                <Button className={styles['homepage-button-1'] + ' ' + styles['arrow-button']}>
+                <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
                   START BUILDING
                   <img
                     src='/arrow.svg'
@@ -139,60 +125,40 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col
-                span={10}
-              >
-                <img
-                  src='/solution.svg'
-                  alt='solution'
-                />
+              <Col span={11}>
+                <img src='/solutions.svg' alt='solutions' />
               </Col>
             </Row>
-            <Row className={styles['contents']}>
-              <Col
-                className={styles['pr-2']}
-                span={10}
-              >
-                <img
-                  src='/service.svg'
-                  alt='service'
-                />
+            <Row>
+              <Col span={11}>
+                <img src='/services.svg' alt='services' />
               </Col>
-              <Col
-                className={styles['text-start']}
-                span={14}
-              >
-                <p className={styles['header']}>
+              <Col className={styles['col-box'] + ' ' + styles['col-box-right']} span={13}>
+                <p className={styles['title']}>
                   TEAM AS A SERVICE
                 </p>
-                <div className={styles['line']}>
-                  <img
-                    src={'/stick.svg'}
-                    alt='stick'
-                  />
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
                   <p>
-                    Leverage our platform to hire on-demand developers to get the top talents from different countries to solve your tech problems
+                    Leverage our platform to hire on-demand developers to get the top talents
+                    from different countries to solve your tech problems
                   </p>
                 </div>
-                <div className={styles['line']}>
-                  <img
-                    src={'/stick.svg'}
-                    alt='stick'
-                  />
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
                   <p>
-                    We provide tools and frameworks for team to deliver work progressively for our clients
+                    We provide tools and frameworks for team to deliver work
+                    progressively for our clients
                   </p>
                 </div>
-                <div className={styles['line']}>
-                  <img
-                    src={'/stick.svg'}
-                    alt='stick'
-                  />
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
                   <p>
-                    Our infrastructure & AI tools enable us to train, support and grow the developers continuously
+                    Our infrastructure & AI tools enable us to train, support and grow the
+                    developers continuously
                   </p>
                 </div>
-                <Button className={styles['homepage-button-1'] + ' ' + styles['arrow-button']}>
+                <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
                   START BUILDING
                   <img
                     src='/arrow.svg'
@@ -202,42 +168,36 @@ const HomePage = () => {
                 </Button>
               </Col>
             </Row>
-            <Row className={styles['contents']}>
-              <Col
-                className={styles['text-start']}
-                span={14}
-              >
-                <p className={styles['header']}>
+            <Row>
+              <Col className={styles['col-box']} span={13}>
+                <p className={styles['title']}>
                   DATA & MLOPS
                 </p>
-                <div className={styles['line']}>
-                  <img
-                    src={'/stick.svg'}
-                    alt='stick'
-                  />
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
                   <p>
-                    Data Collection via scraping & convert unstructured data to structured data by capturing key information
+                    Data Collection via scraping & convert unstructured data to
+                    structured data by capturing key information
                   </p>
                 </div>
-                <div className={styles['line']}>
-                  <img
-                    src={'/stick.svg'}
-                    alt='stick'
-                  />
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
                   <p>
-                    Architecture the Data Pipeline & Data Warehouse for your organization from setting up Airflow, data modeling for Data Warehouse and Data Mart according to your business requirements
+                    Architecture the Data Pipeline & Data Warehouse for your organization
+                    from setting up Airflow, data modeling for Data Warehouse and Data
+                    Mart according to your business requirements
                   </p>
                 </div>
-                <div className={styles['line']}>
-                  <img
-                    src={'/stick.svg'}
-                    alt='stick'
-                  />
+                <div className={styles['contents']}>
+                  <img src='/tick.svg' alt='tick' />
                   <p>
-                    Build and maintain real-time data architecture (Feature Store, ML Model Store) to serve business critical application required to have the fresh updates of user information: recommendation system, ads bidding
+                    Build and maintain real-time data architecture (Feature Store, ML
+                    Model Store) to serve business critical application required to have
+                    the fresh updates of user information: recommendation system, ads
+                    bidding
                   </p>
                 </div>
-                <Button className={styles['homepage-button-1'] + ' ' + styles['arrow-button']}>
+                <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
                   START BUILDING
                   <img
                     src='/arrow.svg'
@@ -246,25 +206,20 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col
-                span={10}
-              >
-                <img
-                  src='/solution.svg'
-                  alt='solution'
-                />
+              <Col span={11}>
+                <img src='/data.svg' alt='data' />
               </Col>
             </Row>
           </div>
         </div>
         <div className={styles['box-6']}>
           <Row className={styles['custom-row']}>
-            <Col span={14}>
-              <div className={styles['text-title']}>
+            <Col span={16}>
+              <p className={styles['title']}>
                 WE BUILD FASTER WITH OUR AI & AUTOMATION!
-              </div>
+              </p>
             </Col>
-            <Col span={10}>
+            <Col span={8}>
               <p className={styles['custom-label']}>
                 Email
               </p>
@@ -280,7 +235,7 @@ const HomePage = () => {
                 placeholder="What are you say?"
               />
               <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
-                START BUILDING
+                CONTACT US
               </Button>
             </Col>
           </Row>
