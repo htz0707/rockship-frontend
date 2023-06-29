@@ -31,7 +31,7 @@ build:
   tags:
     - self-host
   script:
-    - ssh $SSH_BUILD_HOST "cd src/$PROJECT_DIR && docker build --platform linux/amd64 -f builder/Dockerfile -t $TAG_COMMIT . && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker tag $TAG_COMMIT $TAG_LATEST && docker push $TAG_LATEST"
+    - ssh $SSH_BUILD_HOST "cd src/$PROJECT_DIR && git pull && docker build --platform linux/amd64 -f builder/Dockerfile -t $TAG_COMMIT . && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker tag $TAG_COMMIT $TAG_LATEST && docker push $TAG_LATEST"
   only:
     - devops/test
     - master
