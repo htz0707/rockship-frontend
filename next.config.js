@@ -4,5 +4,6 @@ const nextConfig = {
 }
 
 module.exports = {
+    output: nextConfig.output,
     optimizeFonts: false,
 }
