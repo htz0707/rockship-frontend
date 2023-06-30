@@ -10,12 +10,13 @@ const { Header } = Layout;
 const CustomHeader = ({ link }) => {
   return (
     <Header className={styles['custom-header']}>
-      <div className={styles['custom-header-bar']}>
-        <Image src={'/rockship.svg'} alt='rockship' width={196} height={42} />
-        <div className={styles['custom-header-container']}>
+      <div  className={styles['custom-header-bar']}>
+        <Image src={'/rockship.svg'} alt='rockship' width={196} height={42}/>
+        <div  className={styles['custom-header-container' ]}>
           <Link
             className={styles['text-header'] + (link === 'solutions' ? ' ' + styles['font-700'] : '')}
-            href='/'
+            href = '#Rockship_Solutions'
+            scroll = {false}
           >
             Our Solutions
           </Link>
@@ -33,30 +34,33 @@ const CustomHeader = ({ link }) => {
           </Link>
           <Button
             className={styles['homepage-button-1']}
-          >
+            href = "#chat_bot"
+           >
             START BUILDING
           </Button>
         </div>
       </div>
       <div className={styles['custom-header-content']}>
-        <p className={styles['homepage-big-text']}>Bring Your <span>Software Idea</span> To</p>
-        <p className={styles['homepage-big-text']}>Life In High Quality.</p>
+        <p className={styles['homepage-big-text']}>We Build Your <span>Software</span></p>
+        <p className={styles['homepage-big-text']}>Using <span>AI</span></p>
         <p className={styles['homepage-small-text']}>
-          We provide many features that you can use cheaply and easily.
-        </p>
-        <p>
-          Try it now and get an interesting promo
-        </p>
+        We embed many AI solutions in our development process <br></br> 
+        to help you build software faster with higher quality
+                </p>
+        <p></p>
         <div className={styles['button-group']}>
           <Button className={styles['homepage-button-1']}
+          href = "#chat_bot"
           >
             START BUILDING
           </Button>
+          <a href = "https://calendly.com/rockship-co/30min-free-consulting">
           <Button className={styles['homepage-button-2']}>
-            Watch A Demo
-          </Button>
+            Book a call
+                      </Button>
+          </a>
         </div>
-        <div className={styles['chatbot-box']}>
+        <div id = "chat_bot" className={styles['chatbot-box']}>
           <Chatbot />
         </div>
       </div>

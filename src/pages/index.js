@@ -1,24 +1,30 @@
 import * as React from 'react';
-import { Button, Col, Row, Input } from 'antd';
+import {Button, Col, Row, Input } from 'antd';
 import CustomLayout from '@/components/layout';
 import styles from '@/styles/index.module.scss';
+
 
 const { TextArea } = Input;
 
 const HomePage = () => {
 
   return (
+    
     <CustomLayout link={'solutions'}>
-      <div className={styles['homepage']}>
+    
+      <div className={styles['homepage'] + ' ' + styles['fonts'] } >
         <div className={styles['text-title']}>
-          More than 25,000 Clients Trust Us
+          Technologies
         </div>
         <img
-          src={'/clients.svg'}
-          alt='clients'
+          src={'/technologies.svg'}
+          alt='technologies'
           className={styles['clients-image']}
         />
         <div className={styles['box-2']}>
+        <div className={styles['text-title']}>
+        Why Companies Partner With Us?
+        </div>
           <Row>
             <Col className={styles['col-style']} span={6}>
               <div className={styles['col-padding']}>
@@ -92,11 +98,11 @@ const HomePage = () => {
               </div>
             </Col>
           </Row>
-          <div className={styles['box-3']}>
+          <div id = "Rockship_Solutions" className={styles['box-3']}>
             <p className={styles['title']}>
               Our Solutions
             </p>
-            <Row>
+            <Row >
               <Col className={styles['col-box']} span={13}>
                 <p className={styles['title']}>
                   BUILD SOFTWARES FAST WITH OUR AI
@@ -104,7 +110,7 @@ const HomePage = () => {
                 <div className={styles['contents']}>
                   <img src='/tick.svg' alt='tick' />
                   <p>
-                    We have done thousands+ of software features and can quickly build
+                    We have done 1000+ of software features and can quickly build
                     new features for you with accurate estimation
                   </p>
                 </div>
@@ -115,12 +121,16 @@ const HomePage = () => {
                     requirements, technical design to codes, tests from specifications
                   </p>
                 </div>
-                <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
+                <Button 
+                className={styles['homepage-button-1'] + ' ' + styles['custom-button']}
+                href = "#chat_bot"
+                >
                   START BUILDING
                   <img
                     src='/arrow.svg'
                     alt='arrow'
                     className={styles['arrow-icon']}
+                    
                   />
                 </Button>
               </Col>
@@ -158,7 +168,7 @@ const HomePage = () => {
                   </p>
                 </div>
                 <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
-                  START BUILDING
+                  HIRE TALENTS
                   <img
                     src='/arrow.svg'
                     alt='arrow'
@@ -197,7 +207,7 @@ const HomePage = () => {
                   </p>
                 </div>
                 <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
-                  START BUILDING
+                  ARCHITECT WITH US
                   <img
                     src='/arrow.svg'
                     alt='arrow'
@@ -215,7 +225,8 @@ const HomePage = () => {
           <Row className={styles['custom-row']}>
             <Col span={16}>
               <p className={styles['title']}>
-                WE BUILD FASTER WITH OUR AI & AUTOMATION!
+                WE BUILD FASTER WITH OUR <br></br>
+              AI & AUTOMATION
               </p>
             </Col>
             <Col span={8}>
@@ -229,12 +240,11 @@ const HomePage = () => {
               <p className={styles['custom-label']}>
                 Message
               </p>
-              <TextArea
-                className={styles['custom-input']}
+              <textarea 
                 placeholder="What are you say?"
               />
-              <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button']}>
-                CONTACT US
+              <Button className={styles['homepage-button-1'] + ' ' + styles['custom-button-1']}>
+                GET IN TOUCH
               </Button>
             </Col>
           </Row>
@@ -255,7 +265,7 @@ const HomePage = () => {
               </p>
               <div className={styles['text-end']}>
                 <img
-                  src={'/quote3.svg'}
+                  src={'/meta_test.svg'}
                   alt='quote3'
                 />
               </div>
@@ -263,11 +273,11 @@ const HomePage = () => {
             <Col className={styles['text-start'] + ' ' + styles['mt-2']}
               span={12}>
               <img
-                src={'/quote1.svg'}
+                src={'/rovo_test.svg'}
                 alt='quote1'
               />
               <img
-                src={'/quote2.svg'}
+                src={'/sybit_test.svg'}
                 alt='quote2'
               />
             </Col>

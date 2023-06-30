@@ -7,6 +7,7 @@
   background-size: 100%;
   padding: 0;
   height: fit-content;
+  font-family: "Be Vietnam Pro";
 
   .custom-header-bar {
     display: flex;
@@ -27,6 +28,10 @@
         line-height: 50px;
         color: $white;
         margin: 0 20px;
+      }
+      .text-header:hover {
+        color: #5FFE9F;
+        font-size: 110%; 
       }
 
       .font-700 {
@@ -62,6 +67,7 @@
       font-size: 64px;
       line-height: 81px;
       margin: 0;
+      font-family: "Be Vietnam Pro";
 
       span {
         color: $secondary-color;
@@ -72,6 +78,8 @@
       margin-bottom: 0;
       line-height: 32px;
       font-size: 17px;
+      font-family: "Be Vietnam Pro";
+
     }
 
     .homepage-small-text+p {
@@ -85,10 +93,12 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 48px;
+      
     }
   }
 
   .chatbot-box {
+    margin-top: 100px;
     display: flex;
     justify-content: center;
   }
@@ -101,8 +111,14 @@
     border-radius: 2px;
     padding: 0 20px;
     background-color: $secondary-color;
-  }
+    border: none; 
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-family: "Be Vietnam Pro";
 
+  }
+ 
   .homepage-button-2 {
     color: $white !important;
     border-color: $white !important;
@@ -113,5 +129,13 @@
     padding: 0 20px;
     background-color: $primary-color;
     margin-left: 25px;
+    align-items: center;
+    font-family: "Be Vietnam Pro";
+
+  }
+  .homepage-button-2:hover {
+    text-decoration-color: cyan;
+    font-weight: 900;
+  
   }
 }

@@ -5,13 +5,13 @@
   background-color: $primary-color;
   font-size: 16px;
   padding: 40px 120px;
-
+  font-family: "Be Vietnam Pro";
   .group-contact {
     font-size: 16px;
     display: flex;
     align-items: center;
     padding-top: 20px;
-
+    font-family: "Be Vietnam Pro";
     img {
       margin-right: 10px;
     }
@@ -21,11 +21,21 @@
     font-weight: 700;
     font-size: 32px;
     line-height: 42px;
-    margin-top: 0
+    margin-top: 0;
+    font-family: "Be Vietnam Pro";
   }
 
   .content {
     font-size: 16px;
+    font-family: "Be Vietnam Pro";
+  }
+  a:link,a:visited  {
+    color: white;  
+}
+  .content:hover {
+    text-decoration: underline 2px;
+    text-decoration-color: #5FFE9F;
+    text-underline-offset: 3px;
   }
 
   .button-group {
@@ -35,7 +45,6 @@
     border: 2px solid $white;
     background: $primary-color;
     align-items: center;
-
     button {
       font-weight: 800;
       font-size: 16px;
@@ -45,6 +54,17 @@
       width: 100%;
       padding: 0 20px;
       background-color: $secondary-color;
+      font-family: "Be Vietnam Pro";
+    }
+    .your_email{
+      font-family: "Be Vietnam Pro";
+      border: none; 
+      background-color: $primary-color;
+      color: $white; 
+      padding: 10 10px 10px 24px;
+     }
+    .your_email::placeholder { 
+      color: $white;
     }
   }
 

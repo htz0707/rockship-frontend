@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Image from 'next/image';
-import { Layout, Divider, Row, Col, Button } from 'antd';
+import { Layout, Divider, Row, Col, Button} from 'antd';
+import {Input} from 'antd';
 import styles from '@/styles/footer.module.scss'
 
 const { Footer } = Layout;
@@ -11,12 +12,19 @@ const CustomFooter = () => {
       <Row>
         <Col span={8}>
           <Image src={'/rockship.svg'} alt='rockship' width={196} height={50} />
+          <a href = "mailto:ngoc@rockship.co">
           <div className={styles['group-contact']}>
-            <img src='/mail.svg' alt='mail' /><div>contact@rockship.co</div>
+            <img src='/mail.svg' alt='mail' /><div>ngoc@rockship.co</div>
           </div>
+          </a>
           <div className={styles['group-contact']}>
             <img src='/phone.svg' alt='phone' /><div>+1 234 456 678 89</div>
           </div>
+          <a href = "https://www.linkedin.com/company/rockship/">
+          <div className={styles['group-contact']}>
+            <img src='/linkedin-3.svg' alt='linkedin' /><div id = "contact">   Rockship</div>   
+          </div>
+          </a> 
         </Col>
         <Col span={8}>
           <Row>
@@ -59,7 +67,9 @@ const CustomFooter = () => {
           </p>
           <Row className={styles['button-group']}>
             <Col span={12}>
-              <p>Your Email</p>
+              <Input className = {styles['your_email']}
+              placeholder = "Your Email" 
+              />
             </Col>
             <Col span={12}>
               <Button>SUBSCRIBE</Button>
@@ -69,7 +79,7 @@ const CustomFooter = () => {
       </Row>
       <Divider className={styles['bg-white']} />
       <p className={styles['text-center']}>
-        Copyright 2022 Rockship.co all rights reserved
+      © Copyright 2023 Rockship.co. All rights reserved
       </p>
     </Footer>
   )
