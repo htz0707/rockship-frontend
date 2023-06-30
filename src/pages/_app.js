@@ -4,11 +4,14 @@ import '@/styles/global.css';
 const MyApp = ({ Component, pageProps }) => {
   return (
     <>
-      <Head>
-        <link rel="icon" href="/rockship-symbol.svg" />
-        <title>Rockship</title>
+      <Head> 
+        
+        <link rel="icon" href="/rockship-symbol.svg" id = "light-fav-icon"/>
+         <title>Rockship | AI-Powered Software Development</title>
+ 
       </Head>
       <Component {...pageProps} />
+
     </>
   );
 };
