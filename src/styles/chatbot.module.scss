@@ -3,7 +3,7 @@
 .chatbot {
   border-radius: 24px;
   background-color: $white;
-
+  font-family: "Be Vietnam Pro";
   outline: rgba(255, 255, 255, 0.30) solid 16px;
   width: fit-content;
   height: fit-content;
@@ -71,15 +71,50 @@
   }
 
   .button-group {
-    width: 100%;
-    padding: 0px 16px;
+    width: 95%;
+    padding: 4px 8px;
+    border-radius: 16px;
+    background-color: #EBEBEB;
     cursor: pointer;
     .send-button {
-      background-color: $blue;
+      background-color: $white;
       color: $white;
+      border-left: none; 
+      background-color: #EBEBEB;
+      border:none;
+    }
+
+    .custom-input {
+      font-family: "Be Vietnam Pro";
+      background-color: #EBEBEB;
+      border:none;
+      
+
+    }
+    .attach-btn {
+      background-image:url(/attach.svg);
+      background-repeat:no-repeat;
+      background-position:center right;
+      background-position-x: -6px;
+      border-right: none;
+      margin-right: 8px;
+
+    }
+    .attach-btn:hover {
+      background-color: #bfbfbf;
+    }
+    .send-btn { 
+      background-image:url(/send_msg.svg);
+      background-repeat: no-repeat;
+      background-position:center left 5px;
+      margin-right: 2px;
+
+    }
+    .send-btn:hover {
+      background-color: #bfbfbf;
     }
   }
-
+ 
   .privacy {
     padding: 0px 16px 16px 16px;
     font-size: 14px;
@@ -94,9 +129,10 @@
   text-align: center !important;
   font-size: 16px;
   line-height: 24px;
-
+  font-family: "Be Vietnam Pro";
   .confirm-button {
     color: $blue;
     background-color: #D0EEFF;
+    font-family: "Be Vietnam Pro";
   }
 }
