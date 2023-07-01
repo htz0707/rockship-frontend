@@ -32,14 +32,14 @@ const Chatbot = () => {
   React.useEffect(() => {
     const conversationData = [
       { sender: 'bot', content: 'Tell me what product do you want to do?' },
-      { sender: 'user', content: 'I want to create a project' },
+      { sender: 'user', content: 'I want to create restaurant reservation website!' },
       { sender: 'bot', content: 'Who are your target users?' },
-      { sender: 'user', content: 'Enterprises, company' },
+      { sender: 'user', content: 'Chinese restaurants' },
       { sender: 'bot', content: 'Will you release at?' },
-      { sender: 'user', content: 'Vietnam, ASEAN' },
+      { sender: 'user', content: 'Singapore' },
       { sender: 'bot', content: 'To continue, please enter your email.' },
-      { sender: 'user', content: 'email@gmail.com' },
-      { sender: 'bot', content: 'If your email is: email@gmail.com, Click here to build your product!' },
+      { sender: 'user', content: 'ngoc@rockship.co' },
+      { sender: 'bot', content: 'Click here to build your product!' },
     ];
     setMessages([...conversationData]);
   }, []);
@@ -48,7 +48,7 @@ const Chatbot = () => {
     <div className={styles['chatbot']}>
       <div className={styles['chat-header']}>
         <Image src={'/rockship_black.svg'} alt='rockship_black' height={24} width={24} />
-        <p>ROCKET PLAYGROUND</p>
+        <p>PLAYGROUND</p>
       </div>
       <div className={styles['chat-window']}>
         {messages.map((message, index) => (
@@ -56,10 +56,10 @@ const Chatbot = () => {
             key={index}
             className={styles[message.sender === 'bot' ? 'bot-message' : 'user-message']}
           >
-            {message.content !== 'If your email is: email@gmail.com, Click here to build your product!' ?
+            {message.content !== 'Click here to build your product!' ?
               <p>{message.content}</p> :
               <p>
-                If your email is: <b>email@gmail.com</b>,{' '}<><span onClick={showModal}>Click here</span> to build your product!</>
+                {' '}<><span onClick={showModal}>Click here</span> to see our feature suggestions!</>
               </p>
             }
           </div>

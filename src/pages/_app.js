@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Script from 'next/script'
 import '@/styles/global.css';
 
 const MyApp = ({ Component, pageProps }) => {
@@ -11,7 +12,6 @@ const MyApp = ({ Component, pageProps }) => {
  
       </Head>
       <Component {...pageProps} />
-
     </>
   );
 };
