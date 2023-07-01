@@ -26,7 +26,7 @@ const HomePage = () => {
         Why Companies Partner With Us?
         </div>
           <Row>
-            <Col className={styles['col-style']} span={6}>
+            <Col className={styles['col-style']} span={8}>
               <div className={styles['col-padding']}>
                 <img
                   src={'/clock.svg'}
@@ -43,25 +43,25 @@ const HomePage = () => {
                 </p>
               </div>
             </Col>
-            <Col className={styles['col-style']} span={6}>
+            <Col className={styles['col-style']} span={8}>
               <div className={styles['col-padding']}>
                 <img
                   src={'/cloud.svg'}
                   alt='cloud'
                 />
                 <p className={styles['text-col-header']}>
-                  Accumulative Expertise
+                  Accumulative Expertise & Diverse Capabilities
                 </p>
                 <p className={styles['text-col-content']}>
-                  We have accumulated six-plus years
-                  of software development experience
-                  and organized our expertise into
+                  We have accumulated ten-plus years
+                  of software development experience for our clients
+                  and organized our expertises into
                   reusable modules to save time and
-                  effort for our clients.
+                  effort for new developments.
                 </p>
               </div>
             </Col>
-            <Col className={styles['col-style']} span={6}>
+            <Col className={styles['col-style']} span={8}>
               <div className={styles['col-padding']}>
                 <img
                   src={'/pin.svg'}
@@ -71,29 +71,13 @@ const HomePage = () => {
                   Frontier Tech & Cloud Native
                 </p>
                 <p className={styles['text-col-content']}>
-                  We leverage the latest technologies
-                  to deliver our clients the most
+                  We are always ahead of the technologies
+                  to deliver our partners the most
                   powerful capabilities, allowing
                   them to stay ahead of the competition.
-                  Additionally, we utilize Cloud Native
+                  Additionally, we embrace Cloud Native
                   solutions to ensure the systems can
-                  easily scale.
-                </p>
-              </div>
-            </Col>
-            <Col className={styles['col-style']} span={6}>
-              <div className={styles['col-padding']}>
-                <img
-                  src={'/headphone.svg'}
-                  alt='headphone'
-                />
-                <p className={styles['text-col-header']}>
-                  Diverse capabilities
-                </p>
-                <p className={styles['text-col-content']}>
-                  "Our developer community is
-                  versatile in various technology stacks,
-                  enabling us to solve diverse set o problems.
+                  scale when our clients need.
                 </p>
               </div>
             </Col>

@@ -17,9 +17,11 @@ const CustomFooter = () => {
             <img src='/mail.svg' alt='mail' /><div>ngoc@rockship.co</div>
           </div>
           </a>
+          <a href = "https://wa.me/6584298483">
           <div className={styles['group-contact']}>
-            <img src='/phone.svg' alt='phone' /><div>+1 234 456 678 89</div>
+            <img src='/phone.svg' alt='phone' /><div >+65 8429 8483</div>
           </div>
+          </a>
           <a href = "https://www.linkedin.com/company/rockship/">
           <div className={styles['group-contact']}>
             <img src='/linkedin-3.svg' alt='linkedin' /><div id = "contact">   Rockship</div>   

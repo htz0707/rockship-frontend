@@ -48,7 +48,7 @@ const Chatbot = () => {
     <div className={styles['chatbot']}>
       <div className={styles['chat-header']}>
         <Image src={'/rockship_black.svg'} alt='rockship_black' height={24} width={24} />
-        <p>SHARE YOUR AWESOME SOFTWARE IDEA</p>
+        <p>ROCKET PLAYGROUND</p>
       </div>
       <div className={styles['chat-window']}>
         {messages.map((message, index) => (
@@ -70,10 +70,10 @@ const Chatbot = () => {
         className={styles['custom-input']}
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
-          placeholder='Send your demand, no more than 150 words...'
+          placeholder='Chat with us your tech product idea'
         />
-        <Button className={styles['send-button'] + ' ' + styles['attach-btn']} onClick={handleUserMessage}></Button>
-        <Button className={styles['send-button']+ ' ' + styles['send-btn']} onClick={handleUserMessage}></Button>
+        <Button className={styles['send-button'] + ' ' + styles['attach-btn']} ></Button>
+        <Button className={styles['send-button']+ ' ' + styles['send-btn']} ></Button>
       </Space.Compact>
       <p className={styles['privacy']}><u>Privacy Protection</u></p>
       <Modal
