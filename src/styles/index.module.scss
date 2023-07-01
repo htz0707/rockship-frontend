@@ -1,36 +1,43 @@
 @import './global.module.scss';
 
 .homepage {
-
   .text-title {
+    font-family: "Be Vietnam Pro";
     font-weight: 700;
     font-size: 48px;
-    line-height: 50px;
+    line-height: 50px;  
   }
 
   .clients-image {
     margin-top: 48px;
-    margin-bottom: 48px;
+    margin-bottom: 50px;
   }
 
   .col-style {
     padding: 0 25px;
-
+    margin-top: 50px; 
     .text-col-header {
       font-weight: 700;
       font-size: 20px;
       line-height: 30px;
-      margin-bottom: 0;
+      margin-bottom: 8px;
+      margin-top: 12px;
+      font-family: "Be Vietnam Pro";
+
     }
 
     .text-col-content {
+      margin-top: 0;
       margin-bottom: 0;
       font-size: 16px;
-    }
+      font-family: "Be Vietnam Pro";
+
+      }
 
   }
 
   .box-2 {
+    margin-top: 103px;
     margin-left: 120px;
     margin-right: 120px;
   }
@@ -44,7 +51,9 @@
       font-weight: 700;
       font-size: 48px;
       line-height: 50px;
-      margin: 0
+      margin: 0;
+      font-family: "Be Vietnam Pro";
+
     }
 
     .col-box-right {
@@ -65,7 +74,7 @@
       .contents {
         display: flex;
         margin-bottom: 20px;
-
+        font-family: "Be Vietnam Pro";
         p {
           margin: 0;
           font-size: 16px;
@@ -80,14 +89,19 @@
 
       .custom-button {
         width: fit-content;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-family: "Be Vietnam Pro";
       }
+ 
     }
   }
 
   .box-5 {
     position: relative;
     margin-bottom: 100px;
-
+    
     img {
       width: 100%;
     }
@@ -131,17 +145,45 @@
         font-size: 40px;
         line-height: 62px;
         max-width: 80%;
+        font-family: "Be Vietnam Pro";
+
       }
 
       .custom-label {
         color: $white;
         font-weight: 500;
         font-size: 18px;
+        font-family: "Be Vietnam Pro";
       }
 
       .custom-button {
         margin-top: 24px;
         width: 100%;
+      }
+      .custom-input{
+        width: 440px;
+        height: 50px;
+        border-radius: 4px;
+        font-family: "Be Vietnam Pro";
+      }
+      textarea{
+        width: 440px;
+        height: 80px;
+        border-radius: 4px;
+        resize : none;
+        font-family: "Be Vietnam Pro";
+         outline: none; 
+        padding: 8px 11px;
+      }
+      textarea::placeholder {
+        font-family: "Be Vietnam Pro";
+        font-weight: light; 
+        opacity: 0.5
+      }
+      .custom-button-1 {
+        top:24px;
+        width : 440px;
+        font-family: "Be Vietnam Pro";
       }
     }
   }
@@ -162,6 +204,8 @@
     .content {
       font-weight: 500;
       font-size: 18px;
+      font-family: "Be Vietnam Pro";
+
     }
 
     .mt-2 {
@@ -177,6 +221,7 @@
     border-radius: 2px;
     padding: 0 20px;
     background-color: $secondary-color;
+    border: none; 
   }
 
   .homepage-button-2 {
