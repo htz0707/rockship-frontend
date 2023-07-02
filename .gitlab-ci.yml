@@ -53,13 +53,10 @@ deploy-production:
   stage: deploy
   tags:
     - self-host
-  when: manual
   environment:
     name: production
     url: https://rockship.co
   script:
-    - echo $CI_COMMIT_REF_NAME
-    - echo $DEPLOY_TAG
     - ssh $SSH_HOST "cd monorepo/aegon && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker pull $TAG_LATEST && make blueprint-construct service=$CI_COMMIT_REF_NAME tag=$DEPLOY_TAG"
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
