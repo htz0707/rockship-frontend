@@ -1,0 +1,142 @@
+@import "./global.module.scss";
+
+.case-studies {
+  padding: 24px 120px;
+  height: 100%;
+  background: $white;
+
+  @include mobile {
+    padding: 16px 17px;
+    .filter {
+      display: none !important;
+    }
+    .button-filter {
+      display: inline-flex;
+      height: 32px;
+      padding: 0px 12px;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.1);
+      border: none;
+      margin-bottom: 12px;
+      p {
+        margin: 0;
+      }
+    }
+  }
+  @include tablet {
+    padding: 16px 20px;
+    .filter {
+      display: flex !important;
+    }
+    .button-filter {
+      display: none !important;
+    }
+  }
+  @include desktop {
+    padding: 24px 120px;
+  }
+
+  .title {
+    font-family: $primary-font;
+    text-transform: uppercase;
+    text-align: center;
+
+    @include mobile {
+      margin-top: 0px;
+      margin-bottom: 16px;
+      font-size: 24px;
+      line-height: 24px;
+      text-transform: uppercase;
+    }
+    @include tablet {
+      margin-top: 20px;
+      margin-bottom: 24px;
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 61px;
+      letter-spacing: 0em;
+    }
+  }
+
+  .filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 11px;
+    margin-bottom: 20px;
+  }
+  .card {
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    transition: all 0.5s;
+    border-radius: 16px;
+    &:hover {
+      cursor: pointer;
+      background: #fff;
+      box-shadow: -3px 4px 20px 0px rgba(0, 0, 0, 0.1);
+    }
+    img {
+      border-radius: 8px;
+      margin-bottom: 12px;
+      width: 100%;
+      height: 100%;
+      object-fit: fill;
+    }
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 12px;
+      h4 {
+        font-family: $primary-font;
+        font-size: 16px;
+        font-weight: 800;
+        line-height: 20px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: $black1;
+        margin-bottom: 4px;
+      }
+      p {
+        font-family: $primary-font;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: $gray2;
+        margin: 0;
+      }
+    }
+    .card-hashtag {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      .card-hashtag-item {
+        height: 29px;
+        padding: 4px 8px 0px 8px;
+        border-radius: 100px;
+        gap: 4px;
+        background: $gray3;
+        margin-right: 4px;
+        margin-bottom: 4px;
+        p {
+          font-family: Poppins;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 21px;
+          letter-spacing: 0em;
+          text-align: left;
+          color: $gray4;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
