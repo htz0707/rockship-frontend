@@ -1,0 +1,39 @@
+@import "@/styles/global.module.scss";
+
+.select {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  h5 {
+    margin-top: 0px;
+    margin-bottom: 8px;
+    font-family: $primary-font;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $gray2;
+  }
+  :global(div.ant-select) {
+    width: 180px;
+    border-radius: 18px;
+  }
+  :global(div.ant-select .ant-select-selector) {
+    background: $gray1;
+    border: none;
+  }
+  :global(div.ant-select .ant-select-selector:hover) {
+    border-color: $secondary-color !important;
+    box-shadow: none !important;
+  }
+  :global(div.ant-select-focused .ant-select-selector) {
+    border-color: $secondary-color !important;
+    box-shadow: none !important;
+  }
+  :global(span.ant-select-selection-item) {
+    text-align: left;
+  }
+}

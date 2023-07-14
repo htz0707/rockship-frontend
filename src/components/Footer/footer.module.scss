@@ -1,4 +1,4 @@
-@import './global.module.scss';
+@import "../../styles/global.module.scss";
 
 .custom-footer {
   color: $white;
@@ -6,11 +6,35 @@
   font-size: 16px;
   padding: 40px 120px;
   font-family: "Be Vietnam Pro";
+  @include mobile {
+    padding: 36px 20px !important;
+    .row {
+      :global(div.ant-col-8) {
+        margin-bottom: 12px;
+        width: 100%;
+        flex: 1;
+        max-width: 100%;
+      }
+    }
+    .copy-right {
+      text-align: center;
+      margin: 50px 0px !important;
+    }
+
+  }
+  @include tablet {
+    padding: 40px 120px !important;
+    .copy-right {
+      text-align: center;
+      margin: 0px 0px !important;
+    }
+
+  }
   .group-contact {
     font-size: 16px;
     display: flex;
     align-items: center;
-    padding-top: 20px;
+    padding-bottom: 20px;
     font-family: "Be Vietnam Pro";
     img {
       margin-right: 10px;
@@ -23,18 +47,21 @@
     line-height: 42px;
     margin-top: 0;
     font-family: "Be Vietnam Pro";
+    margin-top: 0;
   }
 
   .content {
     font-size: 16px;
     font-family: "Be Vietnam Pro";
   }
-  a:link,a:visited  {
-    color: white;  
-}
-  .content:hover {
+  a:link,
+  a:visited {
+    color: $white;
+  }
+  .content:hover,
+  .group-contact:hover {
     text-decoration: underline 2px;
-    text-decoration-color: #5FFE9F;
+    text-decoration-color: #5ffe9f;
     text-underline-offset: 3px;
   }
 
@@ -56,19 +83,30 @@
       background-color: $secondary-color;
       font-family: "Be Vietnam Pro";
     }
-    .your_email{
+    .your_email {
       font-family: "Be Vietnam Pro";
-      border: none; 
+      border: none;
       background-color: $primary-color;
-      color: $white; 
+      color: $white;
       padding: 10 10px 10px 24px;
-     }
-    .your_email::placeholder { 
+    }
+    .your_email::placeholder {
+      color: $white;
+      font-family: "Be Vietnam Pro";
+    }
+    .your_email {
+      font-family: "Be Vietnam Pro";
+      border: none;
+      background-color: $primary-color;
+      color: $white;
+      padding: 10 10px 10px 24px;
+    }
+    .your_email::placeholder {
       color: $white;
     }
   }
 
-  .text-center {
+  .copy-right {
     text-align: center;
     margin-top: 50px;
   }
@@ -76,4 +114,5 @@
   .bg-white {
     background-color: $white;
   }
+  
 }

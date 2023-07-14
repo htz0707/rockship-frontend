@@ -1,10 +1,42 @@
- 
+$primary-color: #00218f;
+$secondary-color: #5ffe9f;
+$white: #ffffff;
+$black: #1f1f1f;
+$black1: #000000;
+$gray: #ebebeb;
+$gray1: #f3f3f3;
+$gray2: #9c9c9c;
+$gray3: #efefef;
+$gray4: #6d6d6d;
 
-$primary-color: #00218F;
-$secondary-color: #5FFE9F;
-$white: #FFFFFF;
-$black: #1F1F1F;
-$gray: #EBEBEB;
-$blue: #0094FF;
+$blue: #0094ff;
 $primary-font: "Be Vietnam Pro";
-  
+
+/* Mixin */
+$XS: 480px;
+$SM: 768px;
+$MD: 1024px;
+
+@mixin Responsive($min-width) {
+  @media (min-width: $min-width) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include Responsive(0px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @include Responsive($SM) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @include Responsive($MD) {
+    @content;
+  }
+}
