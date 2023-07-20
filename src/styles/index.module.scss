@@ -73,7 +73,7 @@
   }
 
   .text-title {
-    font-family: "Be Vietnam Pro";
+    font-family: $primary-font;
     font-weight: 900;
     font-size: 48px;
     line-height: 60.72px;
@@ -111,7 +111,7 @@
       line-height: 30px;
       margin-bottom: 8px;
       margin-top: 12px;
-      font-family: "Be Vietnam Pro";
+      font-family: $primary-font;
       color: #0f0f0f;
 
       @include mobile {
@@ -129,7 +129,7 @@
       margin-top: 0;
       margin-bottom: 0;
       font-size: 16px;
-      font-family: "Be Vietnam Pro";
+      font-family: $primary-font;
 
       @include mobile {
         font-size: 14px;
@@ -201,7 +201,7 @@
       font-size: 48px;
       line-height: 50px;
       margin: 0;
-      font-family: "Be Vietnam Pro";
+      font-family: $primary-font;
       color: #0f0f0f;
 
       @include mobile {
@@ -244,7 +244,7 @@
 
       .title {
         margin-bottom: 20px;
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
         font-weight: 800;
 
         @include mobile {
@@ -264,7 +264,7 @@
 
       .contents {
         display: flex;
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
         margin-bottom: 20px;
         gap: 8px;
 
@@ -302,7 +302,7 @@
         align-items: center;
         justify-content: center;
         display: flex;
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
 
         @include mobile {
           width: 100%;
@@ -350,6 +350,7 @@
     background-color: $primary-color;
 
     @include mobile {
+
       margin-bottom: 40px;
     }
 
@@ -368,22 +369,22 @@
         margin-bottom: 100px;
         margin-left: 120px;
         margin-right: 120px;
-        padding-top: 120px;
-        padding-bottom: 120px;
+        padding: 120px 0px 120px 0px;
       }
 
       .title {
         color: $white;
         justify-content: flex-start;
         font-weight: 700;
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
 
         @include mobile {
-          font-size: 24px;
+          font-size: 23px;
           line-height: 36px;
           max-width: 100%;
           text-align: center;
           margin: 0;
+          margin-right: -12px;
         }
 
         @include tablet {
@@ -400,7 +401,7 @@
         color: $white;
         font-weight: 500;
         font-size: 18px;
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
       }
 
       .custom-button {
@@ -411,7 +412,7 @@
       .custom-input {
         height: 50px;
         border-radius: 4px;
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
 
         @include mobile {
           width: 100%;
@@ -426,7 +427,7 @@
         height: 80px;
         border-radius: 4px;
         resize: none;
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
         outline: none;
         padding: 8px 11px;
 
@@ -440,13 +441,13 @@
       }
 
       textarea::placeholder {
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
         font-weight: 400;
         opacity: 0.5;
       }
 
       .custom-button-1 {
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
 
         @include mobile {
           width: 100%;
@@ -514,7 +515,7 @@
     .content {
       font-weight: 500;
       font-size: 18px;
-      font-family: "Be Vietnam Pro";
+      font-family: $primary-font;
 
       @include mobile {
         margin: 18px 24px;
@@ -659,7 +660,7 @@
       .client_test {
         width: 349px;
         height: fit-content;
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
         font-size: 16px;
         line-height: 28px;
         margin-left: 32px;
@@ -681,7 +682,7 @@
       .client_info {
         width: fit-content;
         height: fit-content;
-        font-family: "Inter";
+        font-family: $primary-font;
         margin-top: 24px;
         bottom: 92px;
 
@@ -783,7 +784,7 @@
       .client_test {
         width: 254px;
         height: fit-content;
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
         font-size: 16px;
         line-height: 28px;
         margin-left: 32px;
@@ -805,7 +806,7 @@
       .client_info {
         width: fit-content;
         height: fit-content;
-        font-family: "Inter";
+        font-family: $primary-font;
         margin-top: 56px;
 
         .client_name {
@@ -895,7 +896,7 @@
       }
 
       .client_test {
-        font-family: "Be Vietnam Pro";
+        font-family: $primary-font;
         height: fit-content;
         font-weight: 400;
         font-size: 16px;
@@ -926,7 +927,7 @@
           margin-top: 56px;
         }
 
-        font-family: "Inter";
+        font-family: $primary-font;
 
         .client_name {
           color: #18191f;

@@ -8,15 +8,6 @@ variables:
   TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME
   TAG_LATEST: $CI_REGISTRY_IMAGE/rockship/$CI_COMMIT_REF_NAME
 
-
-before_script:
-  - >
-    if ["$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH"]; then
-      DEPLOY_TAG="prod"
-    else
-      DEPLOY_TAG="stg"
-    fi
-
 .install_ssh:
   before_script:
     - test -n "$SSH_PRIVATE_KEY" || ( echo "missing variable SSH_PRIVATE_KEY" && exit 1)
@@ -47,6 +38,12 @@ build:
     name: gcr.io/kaniko-project/executor:v1.10.0-debug
     entrypoint: [""]
   script:
+    - >
+      if ["$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH"]; then
+        DEPLOY_TAG="prod"
+      else
+        DEPLOY_TAG="stg"
+      fi
     - echo "{\"auths\":{\"${CI_REGISTRY_IMAGE}\":{\"auth\":\"$(printf "%s:%s" "${ROCKSHIP_REGISTRY_USERNAE}" "${ROCKSHIP_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
@@ -67,6 +64,12 @@ deploy:
   tags:
     - self-host
   script:
+    - >
+      if ["$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH"]; then
+        DEPLOY_TAG="prod"
+      else
+        DEPLOY_TAG="stg"
+      fi
     - ssh $SSH_HOST "cd monorepo/aegon && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker pull $TAG_LATEST:$DEPLOY_TAG && make blueprint-construct service=$CI_COMMIT_REF_NAME tag=$DEPLOY_TAG"
   only:
     - devops/test
@@ -81,8 +84,12 @@ deploy-production:
     name: production
     url: https://rockship.co
   script:
-    - echo $DEPLOY_TAG
-    - echo $TAG_LATEST:$DEPLOY_TAG
+    - >
+      if ["$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH"]; then
+        DEPLOY_TAG="prod"
+      else
+        DEPLOY_TAG="stg"
+      fi
     - ssh $SSH_HOST "cd monorepo/aegon && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker pull $TAG_LATEST:$DEPLOY_TAG && make blueprint-construct service=$CI_COMMIT_REF_NAME tag=$DEPLOY_TAG"
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH

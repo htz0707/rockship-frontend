@@ -70,19 +70,28 @@ const CustomFooter = () => {
             height={50}
             style={{ marginBottom: 20 }}
           />
-          <a href="mailto:ngoc@rockship.co">
+          <a 
+          href="mailto:ngoc@rockship.co"
+          target="_blank"
+          >
             <div className={styles["group-contact"]}>
               <img src="/mail.svg" alt="mail" />
               <div>ngoc@rockship.co</div>
             </div>
           </a>
-          <a href="https://wa.me/6584298483">
+          <a 
+          href="https://wa.me/6584298483"
+          target="_blank"
+          >
             <div className={styles["group-contact"]}>
               <img src="/phone.svg" alt="phone" />
               <div>+65 8429 8483</div>
             </div>
           </a>
-          <a href="https://www.linkedin.com/company/rockship/">
+          <a 
+          href="https://www.linkedin.com/company/rockship/"
+          target="_blank"
+          >
             <div className={styles["group-contact"]}>
               <img src="/linkedin-3.svg" alt="linkedin" />
               <div id="contact"> Rockship</div>
@@ -93,10 +102,10 @@ const CustomFooter = () => {
           <Row>
             <Col span={12}>
               <p className={styles["title"]}>Links</p>
-              <p className={styles["content"]}>Home</p>
-              <p className={styles["content"]}>About Us</p>
-              <p className={styles["content"]}>Our Solutions</p>
-              <p className={styles["content"]}>Case Studies</p>
+              <p><a className={styles["content"]} href="/">Home</a></p>
+              <p><a className={styles["content"]} href="/case-studies" >Hire Talents</a></p>
+              <p><a className={styles["content"]} href="/" >Our Solutions</a></p>
+              <p><a className={styles["content"]} href="/talents" >Case Studies</a></p>
             </Col>
             <Col span={12}>
               <p className={styles["title"]}>Legal</p>
@@ -119,7 +128,7 @@ const CustomFooter = () => {
       </Row>
       <Divider className={styles["bg-white"]} />
       <p className={styles["copy-right"]}>
-        © Copyright 2023 Rockship.co. All rights reserved
+        © Copyright 2023 Rockship.co. All Rights Reserved.
       </p>
     </Footer>
   );

@@ -50,11 +50,7 @@ const HomePage = () => {
             );
           })}
         </Row>
-        {/* <img
-          src={"/technologies.svg"}
-          alt="technologies"
-          className={styles["clients-image"]}
-        /> */}
+
         <div className={styles["box-2"]}>
           <div className={styles["text-title"]}>
             Why Companies Partner With Us?
@@ -137,7 +133,7 @@ const HomePage = () => {
                   }
                   href="#chat_bot"
                 >
-                  START BUILDING
+                  BROWSE OUR MODULES
                   <img
                     src="/arrow.svg"
                     alt="arrow"
@@ -274,7 +270,7 @@ const HomePage = () => {
                   styles["homepage-button-1"] + " " + styles["custom-button-1"]
                 }
               >
-                GET IN TOUCH
+                CONTACT US
               </Button>
             </Col>
           </Row>
