@@ -5,24 +5,28 @@
   height: fit-content;
   font-family: $primary-font;
   background-color: $white;
+
   @include mobile {
     background: url("/headerElipse.svg");
     background-position: top;
     background-repeat: no-repeat;
     background-size: 100%;
   }
+
   @include tablet {
     background: url("/headerElipse.svg");
     background-position: top;
     background-repeat: no-repeat;
     background-size: 100%;
   }
+
   @include desktop {
     background: url("/home_background.svg");
     background-position: top;
     background-repeat: no-repeat;
     background-size: 100%;
   }
+
   .custom-header-navbar {
     display: flex;
     width: 100%;
@@ -30,14 +34,17 @@
     align-items: center;
     justify-content: flex-start;
     cursor: pointer;
+
     @include mobile {
       padding: 12px 16px !important;
       height: 60px;
     }
+
     @include tablet {
       padding: 24px 120px !important;
       height: 130px;
     }
+
     p {
       margin: 0;
       margin-left: 12px;
@@ -62,13 +69,16 @@
     @include mobile {
       padding: 12px 16px !important;
       height: auto;
+
       img {
         height: 33px;
         margin-left: -15px;
       }
+
       .custom-header-container {
         display: none !important;
       }
+
       .custom-header-container-mobile {
         display: flex !important;
         :global(div.ant-drawer-header-title) {
@@ -84,11 +94,13 @@
           display: flex;
           flex-direction: column;
         }
+
         .text-header {
           color: $black;
           transition: all 0.5s;
           text-align: left;
         }
+
         .text-header:hover {
           color: #5ffe9f;
         }
@@ -103,23 +115,28 @@
     @include desktop {
       padding: 24px 120px !important;
       height: 130px;
+
       .custom-header-container {
         display: flex !important;
       }
+
       .custom-header-container-mobile {
         display: none !important;
       }
+
       img {
         height: 42px;
         margin-left: 0px;
       }
     }
+
     .custom-header-container {
       height: 5 0px;
       width: 100%;
       display: flex;
       justify-content: flex-end;
       align-items: center;
+
       .menu-navbar {
         display: flex;
         flex-direction: row;
@@ -128,6 +145,7 @@
           margin-left: 44px;
         }
       }
+
       .text-header {
         line-height: 50px;
         color: $white;
@@ -172,7 +190,7 @@
       font-size: 64px;
       line-height: 81px;
       margin: 0;
-      font-family: "Be Vietnam Pro";
+      font-family: $primary-font;
       @include mobile {
         font-size: 24px;
         line-height: 36px;
@@ -190,7 +208,7 @@
       margin-bottom: 0;
       line-height: 32px;
       font-size: 17px;
-      font-family: "Be Vietnam Pro";
+      font-family: $primary-font;
       font-weight: 500;
       letter-spacing: -0.41;
       @include mobile {
@@ -240,7 +258,7 @@
     align-items: center;
     justify-content: center;
     display: flex;
-    font-family: "Be Vietnam Pro";
+    font-family: $primary-font;
     @include mobile {
       margin-bottom: 12px;
     }
@@ -260,7 +278,7 @@
     background-color: $primary-color;
     margin-left: 25px;
     align-items: center;
-    font-family: "Be Vietnam Pro";
+    font-family: $primary-font;
     font-weight: 900;
     @include mobile {
       margin: 0;
@@ -272,6 +290,7 @@
       margin-left: 25px;
     }
   }
+
   .homepage-button-2:hover {
     background-color: #0f0f0f;
   }

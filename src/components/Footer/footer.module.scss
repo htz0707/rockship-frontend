@@ -5,7 +5,7 @@
   background-color: $primary-color;
   font-size: 16px;
   padding: 40px 120px;
-  font-family: "Be Vietnam Pro";
+  font-family: $primary-font;
   @include mobile {
     padding: 36px 20px !important;
     .row {
@@ -35,7 +35,7 @@
     display: flex;
     align-items: center;
     padding-bottom: 20px;
-    font-family: "Be Vietnam Pro";
+    font-family: $primary-font;
     img {
       margin-right: 10px;
     }
@@ -46,13 +46,13 @@
     font-size: 32px;
     line-height: 42px;
     margin-top: 0;
-    font-family: "Be Vietnam Pro";
+    font-family: $primary-font;
     margin-top: 0;
   }
 
   .content {
     font-size: 16px;
-    font-family: "Be Vietnam Pro";
+    font-family: $primary-font;
   }
   a:link,
   a:visited {
@@ -60,9 +60,8 @@
   }
   .content:hover,
   .group-contact:hover {
-    text-decoration: underline 2px;
-    text-decoration-color: #5ffe9f;
-    text-underline-offset: 3px;
+    color: #5ffe9f;
+    cursor: pointer; 
   }
 
   .button-group {
@@ -81,10 +80,10 @@
       width: 100%;
       padding: 0 20px;
       background-color: $secondary-color;
-      font-family: "Be Vietnam Pro";
+      font-family: $primary-font;
     }
     .your_email {
-      font-family: "Be Vietnam Pro";
+      font-family: $primary-font;
       border: none;
       background-color: $primary-color;
       color: $white;
@@ -92,10 +91,10 @@
     }
     .your_email::placeholder {
       color: $white;
-      font-family: "Be Vietnam Pro";
+      font-family: $primary-font;
     }
     .your_email {
-      font-family: "Be Vietnam Pro";
+      font-family: $primary-font;
       border: none;
       background-color: $primary-color;
       color: $white;
