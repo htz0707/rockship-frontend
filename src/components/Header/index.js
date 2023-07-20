@@ -36,11 +36,11 @@ const MenuNavbar = ({ link }) => {
       <Link
         className={
           styles["text-header"] +
-          (link === "about" ? " " + styles["font-700"] : "")
+          (link === "talents" ? " " + styles["font-700"] : "")
         }
-        href="/"
+        href="/talents"
       >
-        About Us
+        Hire Talents
       </Link>
       <Button className={styles["homepage-button-1"]} href="#chat_bot">
         START BUILDING
@@ -89,6 +89,7 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
               height={42}
               onClick={handleOnClickLogo}
               style={{ cursor: "pointer" }}
+              priority
             />
             <div className={styles["custom-header-container"]}>
               <MenuNavbar link={link} />
@@ -109,7 +110,7 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
                   document.getElementById("custom-header-container-mobile")
                 }
                 placement={"left"}
-                closable={false}
+                closable
                 onClose={handleOnClickMenu}
                 open={isShowMenu}
                 key={"left"}
@@ -130,7 +131,6 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
                 We embed many AI solutions in our development process <br></br>
                 to help you build software faster with higher quality
               </p>
-              <p></p>
               <div className={styles["button-group"]}>
                 <Button
                   className={styles["homepage-button-1"]}

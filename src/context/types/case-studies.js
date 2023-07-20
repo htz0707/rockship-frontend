@@ -1,4 +1,4 @@
 
 export const SET_CASE_STUDIES = "SET_CASE_STUDIES";
-
 export const SET_ITEM_CASE_STUDY = "SET_ITEM_CASE_STUDY";
+export const SET_ITEM_FILTER = "SET_ITEM_FILTER";

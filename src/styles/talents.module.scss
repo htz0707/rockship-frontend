@@ -1,0 +1,315 @@
+@import "./global.module.scss";
+
+.talents {
+  height: 100%;
+  min-height: 100vh;
+
+  :global(div.ant-select) {
+    width: 180px;
+    border-radius: 18px;
+  }
+
+  :global(div.ant-select .ant-select-selector) {
+    background: $gray1;
+    border: none;
+  }
+
+  :global(div.ant-select .ant-select-selector:hover) {
+    border-color: $secondary-color !important;
+    box-shadow: none !important;
+  }
+
+  :global(div.ant-select-focused .ant-select-selector) {
+    border-color: $secondary-color !important;
+    box-shadow: none !important;
+  }
+
+  :global(span.ant-select-selection-item) {
+    text-align: left;
+  }
+
+  :global(span.ant-input-affix-wrapper) {
+    border: none;
+    outline: none;
+    background: $gray1;
+  }
+
+  :global(span.ant-input-affix-wrapper-focused) {
+    box-shadow: none;
+  }
+
+  :global(input.ant-input) {
+    background: $gray1;
+  }
+
+
+  @include mobile {
+    padding: 16px 17px;
+  }
+
+  .member-card-container {
+    margin: 20px 0 0 0 !important;
+
+    @include mobile {
+      padding: 0;
+    }
+
+    @include desktop {
+      padding: 28px 90px;
+    }
+
+    .col-card {
+      display: flex;
+      justify-content: center;
+      padding: 0 !important;
+
+      .member-card {
+        cursor: pointer;
+        text-align: center;
+
+        @include mobile {
+          margin-right: 8px;
+          margin-left: 8px;
+          width: 100%;
+        }
+
+        @include desktop {
+          width: 300px;
+        }
+
+        margin-bottom: 32px;
+        padding: 8px;
+
+        .card-title {
+
+          @include mobile {
+            font-size: 16px;
+            font-weight: 600;
+          }
+
+          @include desktop {
+            font-size: 20px;
+            font-weight: 600;
+          }
+
+          margin-bottom: 25px;
+          font-family: $primary-font;
+        }
+
+        .col-content {
+          p {
+            @include mobile {
+              font-size: 12px;
+
+            }
+
+            color: $gray4;
+            font-weight: 400;
+            margin: 0;
+            font-family: $primary-font;
+          }
+
+          h2 {
+            font-weight: 600;
+            font-size: 20px;
+            margin: 0;
+            font-family: $primary-font;
+          }
+
+          div {
+            height: 31px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: $primary-font;
+          }
+        }
+
+        .tags {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          @include mobile {
+            flex-wrap: wrap;
+          }
+
+          @include desktop {
+            flex-wrap: unset;
+          }
+
+          p {
+            white-space: nowrap;
+            padding: 4px 6px;
+            margin: 8px;
+            border-radius: 1000px;
+            overflow: hidden;
+            background: $gray5;
+            font-weight: 400;
+            color: $gray4;
+            font-family: $primary-font;
+          }
+        }
+
+        .view-button {
+          color: var(--text, #191A15);
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          text-decoration-line: underline;
+          font-family: $primary-font;
+          z-index: 7;
+        }
+
+        border: 1px solid $white;
+      }
+
+      .member-card:hover {
+        border-radius: 12px;
+        border: 1px solid $secondary-color;
+      }
+
+      .member-card.selected {
+        background-color: #ECFFF4;
+        border-radius: 12px;
+        border: 1px solid $secondary-color;
+      }
+    }
+  }
+
+
+  @include desktop {
+    padding: 24px 120px;
+  }
+
+  .title {
+    font-family: $primary-font;
+    text-transform: uppercase;
+    text-align: center;
+
+    @include mobile {
+      margin-top: 0px;
+      margin-bottom: 16px;
+      font-size: 24px;
+      line-height: 24px;
+      text-transform: uppercase;
+    }
+
+    @include tablet {
+      margin-top: 20px;
+      margin-bottom: 24px;
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 61px;
+      letter-spacing: 0em;
+    }
+  }
+}
+
+.member-modal {
+  text-align: center;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-family: $primary-font;
+    font-weight: 600;
+  }
+
+  .col-content {
+    div.box {
+      border-radius: 12px;
+      box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.15);
+
+      p {
+        width: 100%;
+        margin: 0;
+        padding-top: 8px;
+        padding-right: 8px;
+        font-size: 16px;
+        font-weight: 500;
+        font-family: $primary-font;
+        text-transform: uppercase;
+        color: $gray2;
+      }
+    }
+  }
+
+  div.info {
+    div.info-header {
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-right: 4px
+      }
+
+      h2 {
+        margin: 0;
+        font-family: $primary-font;
+        font-weight: 600;
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+    }
+
+    div.info-content {
+      p {
+        font-family: $primary-font;
+        text-align: left;
+        font-size: 16px;
+        font-weight: 400;
+        margin-top: 10px;
+        margin-bottom: 16px;
+      }
+
+      div.skill-list {
+        margin-top: 10px;
+        margin-bottom: 16px;
+
+        .skill-item {
+          margin: 0;
+
+          span {
+            color: $gray2;
+            color: var(--mute, #9C9C9C);
+            font-family: $primary-font;
+            font-size: 16px;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .tags {
+        display: flex;
+
+        p {
+          white-space: nowrap;
+          padding: 4px 6px;
+          margin-right: 8px;
+          border-radius: 1000px;
+          overflow: hidden;
+          background: #CBE9FF;
+          font-weight: 400;
+          color: $gray4;
+          font-family: $primary-font;
+        }
+      }
+    }
+  }
+
+  .choose-btn {
+    border-radius: 8px;
+    border: 1px solid #5FFE9F;
+    background: #5FFE9F;
+    width: 129px;
+    height: 32px;
+    padding: 4px;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: $primary-font;
+    line-height: normal;
+  }
+}

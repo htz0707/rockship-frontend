@@ -1,0 +1,81 @@
+@import "@/styles/global.module.scss";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+  transition: all 0.5s;
+  border-radius: 16px;
+  height: 100%;
+  max-width: 420px;
+  margin: auto;
+  &:hover {
+    cursor: pointer;
+    background: #fff;
+    box-shadow: -3px 4px 20px 0px rgba(0, 0, 0, 0.1);
+  }
+  img {
+    border-radius: 8px;
+    margin-bottom: 12px;
+    width: 100% !important;
+    height: 226px !important;
+    object-fit: fill;
+  }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    h4 {
+      font-family: $primary-font;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: $black1;
+      margin-bottom: 4px;
+    }
+    p {
+      font-family: $primary-font;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0em;
+      text-align: left;
+      color: $gray2;
+      margin: 0;
+      min-height: 100px;
+      @include mobile {
+        font-size: 14px;
+      }
+    }
+  }
+  .card-list {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    .card-item {
+      height: 29px;
+      padding: 4px 8px 0px 8px;
+      border-radius: 100px;
+      gap: 4px;
+      background: $gray3;
+      margin-right: 4px;
+      margin-bottom: 4px;
+      p {
+        font-family: Be Vietnam Pro;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 21px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: $gray4;
+        margin: 0;
+        @include mobile {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

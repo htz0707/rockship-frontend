@@ -1,9 +1,17 @@
+import { useEffect } from "react";
 import Head from "next/head";
 import Script from "next/script";
+import * as amplitude from "@amplitude/analytics-browser";
+
 import "@/styles/global.css";
 import { StoreProvider } from "@/context/StoreContext";
 
 const MyApp = ({ Component, pageProps }) => {
+
+  useEffect(() => {
+    amplitude.init(process.env.API_AMPLITUDE_KEY);
+  }, []);
+
   return (
     <>
       <Head>

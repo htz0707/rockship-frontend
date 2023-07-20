@@ -1,24 +1,66 @@
-import * as React from "react";
+"use client";
+import React, { useEffect } from "react";
 import { Button, Col, Row, Input } from "antd";
-import CustomLayout from "@/components/Layout";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 import styles from "@/styles/index.module.scss";
+import useTrackingBrowser from "@/hooks/useTrackingBrowser";
+import { useSelector, useDispatch } from "@/context";
+import { setItemCaseStudy } from "@/context/actions/case-studies";
+
+import Card from "@/components/Card";
+import CustomLayout from "@/components/Layout";
 
 const HomePage = () => {
+  const caseStudies = useSelector((state) => state?.caseStudies?.caseStudies);
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const handleOnClickCard = (item) => {
+    router.push(`/case-studies/${item.id}`);
+    dispatch(setItemCaseStudy(item));
+    localStorage.setItem('itemDetail', JSON.stringify(item))
+  };
+
+  useEffect(() => {
+    useTrackingBrowser("HomePage");
+  }, []);
+
   return (
     <CustomLayout link={"solutions"}>
       <div className={styles["homepage"] + " " + styles["fonts"]}>
-        <div className={styles["text-title"]}>Technologies</div>
-        <img
+        <div className={styles["case-studies"]}>
+          <h3>Case studies</h3>
+          <Link href={"/case-studies"}>View all case studies</Link>
+        </div>
+
+        <Row gutter={[24, 24]} className={styles["case-studies-row"]}>
+          {caseStudies?.map((item, index) => {
+            return (
+              <Col xs={24} sm={12} md={8} key={item.id || index}>
+                <Card
+                  title={item.title}
+                  imageSrc={item.src}
+                  description={item.description}
+                  lsValue={item.hashtags}
+                  handleOnClickCard={() => handleOnClickCard(item)}
+                />
+              </Col>
+            );
+          })}
+        </Row>
+        {/* <img
           src={"/technologies.svg"}
           alt="technologies"
           className={styles["clients-image"]}
-        />
+        /> */}
         <div className={styles["box-2"]}>
           <div className={styles["text-title"]}>
             Why Companies Partner With Us?
           </div>
           <Row>
-            <Col className={styles["col-style"]} span={8}>
+            <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
               <div className={styles["col-padding"]}>
                 <img src={"/clock.svg"} alt="clock" />
                 <p className={styles["text-col-header"]}>
@@ -31,7 +73,7 @@ const HomePage = () => {
                 </p>
               </div>
             </Col>
-            <Col className={styles["col-style"]} span={8}>
+            <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
               <div className={styles["col-padding"]}>
                 <img src={"/cloud.svg"} alt="cloud" />
                 <p className={styles["text-col-header"]}>
@@ -44,7 +86,7 @@ const HomePage = () => {
                 </p>
               </div>
             </Col>
-            <Col className={styles["col-style"]} span={8}>
+            <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
               <div className={styles["col-padding"]}>
                 <img src={"/pin.svg"} alt="pin" />
                 <p className={styles["text-col-header"]}>
@@ -61,9 +103,16 @@ const HomePage = () => {
             </Col>
           </Row>
           <div id="Rockship_Solutions" className={styles["box-3"]}>
-            <p className={styles["title"]}>Our Solutions</p>
-            <Row>
-              <Col className={styles["col-box"]} span={13}>
+            <p className={styles["text-title"]}>Our Solutions</p>
+            <Row align={"center"} className={styles["row"]}>
+              <Col sm={24} md={0}>
+                <img
+                  src="/solutions.svg"
+                  alt="solutions"
+                  className={styles["col-image"]}
+                />
+              </Col>
+              <Col className={styles["col-box"]} sm={24} md={13}>
                 <p className={styles["title"]}>
                   BUILD SOFTWARES FASTER <br></br>WITH OUR AI
                 </p>
@@ -96,17 +145,22 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col span={11}>
+              <Col xs={0} md={11}>
                 <img src="/solutions.svg" alt="solutions" />
               </Col>
             </Row>
-            <Row>
-              <Col span={11}>
-                <img src="/services.svg" alt="services" />
+            <Row align={"center"} className={styles["row"]}>
+              <Col sm={24} md={11}>
+                <img
+                  src="/services.svg"
+                  alt="services"
+                  className={styles["col-image"]}
+                />
               </Col>
               <Col
                 className={styles["col-box"] + " " + styles["col-box-right"]}
-                span={13}
+                sm={24}
+                md={13}
               >
                 <p className={styles["title"]}>TEAM AS A SERVICE</p>
                 <div className={styles["contents"]}>
@@ -131,6 +185,7 @@ const HomePage = () => {
                   </p>
                 </div>
                 <Button
+                  onClick={() => router.push("/talents")}
                   className={
                     styles["homepage-button-1"] + " " + styles["custom-button"]
                   }
@@ -144,8 +199,15 @@ const HomePage = () => {
                 </Button>
               </Col>
             </Row>
-            <Row>
-              <Col className={styles["col-box"]} span={13}>
+            <Row align={"center"} className={styles["row"]} >
+              <Col sm={24} md={0}>
+                <img
+                  src="/data.svg"
+                  alt="data"
+                  className={styles["col-image"]}
+                />
+              </Col>
+              <Col className={styles["col-box"]} sm={24} md={13}>
                 <p className={styles["title"]}>DATA & MLOPS</p>
                 <div className={styles["contents"]}>
                   <img src="/tick.svg" alt="tick" />
@@ -185,7 +247,7 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col span={11}>
+              <Col xs={0} md={11}>
                 <img src="/data.svg" alt="data" />
               </Col>
             </Row>
@@ -193,13 +255,13 @@ const HomePage = () => {
         </div>
         <div className={styles["box-6"]}>
           <Row className={styles["custom-row"]}>
-            <Col span={16}>
+            <Col xs={24} md={16}>
               <p className={styles["title"]}>
                 WE BUILD FASTER WITH OUR <br></br>
                 AI & AUTOMATION
               </p>
             </Col>
-            <Col span={8}>
+            <Col xs={24} md={8}>
               <p className={styles["custom-label"]}>Email</p>
               <Input
                 className={styles["custom-input"]}
@@ -219,13 +281,16 @@ const HomePage = () => {
         </div>
         <div className={styles["box-7"]}>
           <Row>
-            <Col className={styles["text-start"]} span={12}>
-              <p className={styles["text-title"] + " " + styles["title-1"]}>
-                Real Stories from
-              </p>
-              <p className={styles["text-title"] + " " + styles["title-2"]}>
-                Real Customers
-              </p>
+            <Col className={styles["text-start"]} xs={24} md={12}>
+              <div>
+                <p className={styles["text-title"] + " " + styles["title-1"]}>
+                  Real Stories from
+                </p>
+                <p className={styles["text-title"] + " " + styles["title-2"]}>
+                  Real Customers
+                </p>
+              </div>
+
               <p className={styles["content"]}>
                 Get inspired by these stories.
               </p>
@@ -268,7 +333,8 @@ const HomePage = () => {
             </Col>
             <Col
               className={styles["text-start"] + " " + styles["mt-2"]}
-              span={12}
+              xs={24}
+              md={12}
             >
               <div className={styles["rovo-testimony"]}>
                 <img
