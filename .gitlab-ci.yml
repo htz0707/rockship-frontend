@@ -26,10 +26,10 @@ variables:
     - chmod 644 ~/.ssh/known_hosts
     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
     - >
-      if ["$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH"]; then
-        DEPLOY_TAG="prod"
+      if [ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]; then
+        export DEPLOY_TAG="prod"
       else
-        DEPLOY_TAG="stg"
+        export DEPLOY_TAG="stg"
       fi
 
 build:
@@ -39,10 +39,10 @@ build:
     entrypoint: [""]
   script:
     - >
-      if ["$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH"]; then
-        DEPLOY_TAG="prod"
+      if [ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]; then
+        export DEPLOY_TAG="prod"
       else
-        DEPLOY_TAG="stg"
+        export DEPLOY_TAG="stg"
       fi
     - echo "{\"auths\":{\"${CI_REGISTRY_IMAGE}\":{\"auth\":\"$(printf "%s:%s" "${ROCKSHIP_REGISTRY_USERNAE}" "${ROCKSHIP_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor
@@ -64,12 +64,6 @@ deploy:
   tags:
     - self-host
   script:
-    - >
-      if ["$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH"]; then
-        DEPLOY_TAG="prod"
-      else
-        DEPLOY_TAG="stg"
-      fi
     - ssh $SSH_HOST "cd monorepo/aegon && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker pull $TAG_LATEST:$DEPLOY_TAG && make blueprint-construct service=$CI_COMMIT_REF_NAME tag=$DEPLOY_TAG"
   only:
     - devops/test
@@ -84,12 +78,6 @@ deploy-production:
     name: production
     url: https://rockship.co
   script:
-    - >
-      if ["$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH"]; then
-        DEPLOY_TAG="prod"
-      else
-        DEPLOY_TAG="stg"
-      fi
     - ssh $SSH_HOST "cd monorepo/aegon && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker pull $TAG_LATEST:$DEPLOY_TAG && make blueprint-construct service=$CI_COMMIT_REF_NAME tag=$DEPLOY_TAG"
   rules:
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
