@@ -1,0 +1,88 @@
+@import "@/styles/global.module.scss";
+
+.form-modal {
+  text-align: center;
+
+  :global(.ant-input) {
+    margin-bottom: 12px;
+    height: 40px;
+    padding: 8px 10px;
+    gap: 4px;
+  }
+
+  :global(.ant-btn) {
+    width: 100%;
+    display: flex;
+    height: 40px;
+    padding: 16px 20px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 8px;
+    background: #5FFE9F;
+    text-align: center;
+    font-family: $primary-font;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+  }
+
+  h2 {
+    font-family: $primary-font;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 0;
+  }
+}
+
+.confirm-modal {
+  text-align: center;
+
+  :global(.ant-btn) {
+    border: none;
+    width: 97px;
+    height: 40px;
+    padding: 4px 8px;
+    gap: 4px;
+    border-radius: 8px;
+    background: #C8FFDE;
+    color: #00AF46;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    font-family: $primary-font;
+  }
+
+
+  h3 {
+    font-family: $primary-font;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 0;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      width: 231px;
+      color: #6D6D6D;
+      text-align: center;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+
+  }
+}
