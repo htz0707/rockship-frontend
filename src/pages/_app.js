@@ -15,6 +15,9 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
+        <meta property="og:image" content="/rs_fb_thumb.png" />
+        <meta name="description" content="Rockship embed many AI solutions in our development process
+to help you build software faster with higher quality." />
         <link rel="icon" href="/rockship-symbol.svg" id="light-fav-icon" />
         <title>Rockship | AI-Powered Software Development</title>
       </Head>

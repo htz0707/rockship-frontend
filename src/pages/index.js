@@ -98,7 +98,7 @@ const HomePage = () => {
               </div>
             </Col>
           </Row>
-          <div id="Rockship_Solutions" className={styles["box-3"]}>
+          <div id="rockship-solution" className={styles["box-3"]}>
             <p className={styles["text-title"]}>Our Solutions</p>
             <Row align={"center"} className={styles["row"]}>
               <Col sm={24} md={0}>
@@ -142,7 +142,11 @@ const HomePage = () => {
                 </Button>
               </Col>
               <Col xs={0} md={11}>
-                <img src="/solutions.svg" alt="solutions" />
+                <img 
+                src="/solutions.svg" 
+                alt="solutions"
+                className={styles["col-image"]}
+                />
               </Col>
             </Row>
             <Row align={"center"} className={styles["row"]}>
@@ -244,7 +248,11 @@ const HomePage = () => {
                 </Button>
               </Col>
               <Col xs={0} md={11}>
-                <img src="/data.svg" alt="data" />
+                <img 
+                src="/data.svg" 
+                alt="data" 
+                className={styles["col-image"]}
+                />
               </Col>
             </Row>
           </div>
@@ -257,7 +265,7 @@ const HomePage = () => {
                 AI & AUTOMATION
               </p>
             </Col>
-            <Col xs={24} md={8}>
+            <Col xs={24} md={8} className={styles["custom-col"]}>
               <p className={styles["custom-label"]}>Email</p>
               <Input
                 className={styles["custom-input"]}

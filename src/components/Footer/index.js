@@ -103,9 +103,9 @@ const CustomFooter = () => {
             <Col span={12}>
               <p className={styles["title"]}>Links</p>
               <p><a className={styles["content"]} href="/">Home</a></p>
-              <p><a className={styles["content"]} href="/case-studies" >Hire Talents</a></p>
+              <p><a className={styles["content"]} href="/talents" >Hire Talents</a></p>
               <p><a className={styles["content"]} href="/" >Our Solutions</a></p>
-              <p><a className={styles["content"]} href="/talents" >Case Studies</a></p>
+              <p><a className={styles["content"]} href="/case-studies" >Case Studies</a></p>
             </Col>
             <Col span={12}>
               <p className={styles["title"]}>Legal</p>
