@@ -3,11 +3,10 @@
 .custom-footer {
   color: $white;
   background-color: $primary-color;
-  font-size: 16px;
-  padding: 40px 120px;
   font-family: $primary-font;
   @include mobile {
-    padding: 36px 20px !important;
+      font-size: 16px;
+       padding: 36px 20px !important;
     .row {
       :global(div.ant-col-8) {
         margin-bottom: 12px;
@@ -23,6 +22,16 @@
 
   }
   @include tablet {
+    font-size: 14px;
+    padding: 12px !important;
+    .copy-right {
+      text-align: center;
+      margin: 0px 0px !important;
+    }
+
+  }
+  @include desktop {
+    font-size: 16px;
     padding: 40px 120px !important;
     .copy-right {
       text-align: center;
@@ -31,28 +40,61 @@
 
   }
   .group-contact {
-    font-size: 16px;
     display: flex;
     align-items: center;
     padding-bottom: 20px;
     font-family: $primary-font;
+    font-family: $primary-font;
     img {
       margin-right: 10px;
+    }
+    @include mobile {
+      font-size: 16px;
+    }
+    @include tablet {
+      font-size: 14px;
+    }
+    @include desktop {
+      font-size: 16px;
     }
   }
 
   .title {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 42px;
     margin-top: 0;
     font-family: $primary-font;
+    font-family: $primary-font;
     margin-top: 0;
+    @include mobile {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 42px;
+    }
+    @include tablet {
+      font-weight: 500;
+      font-size: 25px;
+      line-height: 42px;
+    }
+    @include desktop {
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 42px;
+    }
+
   }
 
   .content {
+    @include mobile {
     font-size: 16px;
     font-family: $primary-font;
+    }
+    @include tablet {
+      font-size: 14px;
+      font-family: $primary-font;
+    }
+      @include desktop {
+        font-size: 16px;
+        font-family: $primary-font;
+    }
   }
   a:link,
   a:visited {
@@ -65,22 +107,42 @@
   }
 
   .button-group {
-    font-size: 16px;
-    padding: 10px 10px 10px 24px;
-    border-radius: 8px;
-    border: 2px solid $white;
-    background: $primary-color;
-    align-items: center;
+      padding: 10px 10px 10px 24px;
+      border-radius: 8px;
+      border: 2px solid $white;
+      background: $primary-color;
+      align-items: center;
+      @include mobile {
+        padding: 10px 10px 10px 24px;
+      }
+      @include tablet {
+        padding: 10px 10px 10px 10px;
+      }
+      @include desktop {
+        padding: 10px 10px 10px 24px;
+       }
+    
     button {
-      font-weight: 800;
-      font-size: 16px;
-      line-height: 17px;
-      height: 52px;
-      border-radius: 2px;
-      width: 100%;
-      padding: 0 20px;
-      background-color: $secondary-color;
-      font-family: $primary-font;
+        font-weight: 800;
+        line-height: 17px;
+        height: 52px;
+        border-radius: 2px;
+        width: 100%;
+        background-color: $secondary-color;
+        font-family: $primary-font;
+      @include mobile {
+        font-size: 16px;
+        padding: 0 20px;
+      }
+      @include tablet {
+        font-size: 14px;
+        padding: 0 0px;
+      }
+      @include desktop {     
+        font-size: 16px;
+        padding: 0 20px;
+
+      }
     }
     .your_email {
       font-family: $primary-font;
@@ -92,6 +154,15 @@
     .your_email::placeholder {
       color: $white;
       font-family: $primary-font;
+      @include mobile { 
+        text-align: center;
+      }
+      @include tablet { 
+        text-align: start;
+      }
+      @include desktop { 
+        text-align: center;
+      }
     }
     .your_email {
       font-family: $primary-font;
