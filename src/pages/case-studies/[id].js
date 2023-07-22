@@ -265,7 +265,7 @@ const CaseStudiesDetail = () => {
                 className={styles["build"]}
                 onClick={() => setIsShowContact(true)}
               >
-                build a similar
+                build similar app
               </Button>
             </div>
           </Col>
@@ -274,7 +274,7 @@ const CaseStudiesDetail = () => {
               className={styles["button"]}
               onClick={() => setIsShowContact(true)}
             >
-              build a similar
+              build similar app
             </Button>
           </div>
         </Row>
