@@ -24,6 +24,8 @@ to help you build software faster with higher quality." />
       <StoreProvider>
         <Component {...pageProps} />
       </StoreProvider>
+
+      <Script id="hs-script-loader" src="//js.hs-scripts.com/40126632.js"></Script>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-80RZQ4Q2TE" />
       <Script id="google-analytics">
         {`

@@ -228,10 +228,10 @@ const initialState = {
         {
           id: 2,
           src: "/ceo.png",
-          title: "J S |",
-          name: "CEO JustOtter",
+          title: "Linh Hoang |",
+          name: "CEO Circo",
           data: [
-            "Worknow was a game-changer for our company. We needed a flexible workspace solution, and it delivered beyond our expectations. The platform's user-friendly interface and extensive network of providers made finding the right office space a breeze. Thank you!",
+            "Worknow integrates well with our system and drive more bookings for our services. We love their space provider dashboard which provides notifications for new bookings in real-time and their seamless guess checking process.",
           ],
         },
       ],
