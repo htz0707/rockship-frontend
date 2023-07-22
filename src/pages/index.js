@@ -404,7 +404,7 @@ const HomePage = () => {
                           <b>Theo Sanders</b>
                         </p>
                         <p className={styles["client_position"]}>
-                          CEO | Sybit Entertainment
+                          CEO | Sybil Entertainment
                         </p>
                       </a>
                       <div className={styles["client_bottom"]}>
