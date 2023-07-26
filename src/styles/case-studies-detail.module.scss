@@ -15,8 +15,8 @@
         margin: 0;
         margin-bottom: 32px;
         color: #191a15;
-        font-family: Be Vietnam Pro;
-        font-size: 24px;
+        font-family: $primary-font;
+        font-size: 2.4rem;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -43,8 +43,8 @@
         span {
           color: #1f1f1f;
           text-align: center;
-          font-family: Be Vietnam Pro;
-          font-size: 16px;
+          font-family: $primary-font;
+          font-size: 1.6rem;
           font-style: normal;
           font-weight: 800;
           line-height: normal;
@@ -61,8 +61,8 @@
         margin-top: 4px;
         margin-bottom: 16px;
         color: #191a15;
-        font-family: Be Vietnam Pro;
-        font-size: 20px;
+        font-family: $primary-font;
+        font-size: 2.0rem;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
@@ -74,8 +74,8 @@
         margin-bottom: 28px;
         text-align: center;
         color: #6d6d6d;
-        font-family: Be Vietnam Pro;
-        font-size: 16px;
+        font-family: $primary-font;
+        font-size: 1.6rem;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -93,8 +93,8 @@
         span {
           color: #00af46;
           text-align: center;
-          font-family: Be Vietnam Pro;
-          font-size: 16px;
+          font-family: $primary-font;
+          font-size: 1.6rem;
           font-style: normal;
           font-weight: 600;
           line-height: normal;
@@ -124,8 +124,8 @@
         h4 {
           margin: 0;
           color: #191a15;
-          font-family: Be Vietnam Pro;
-          font-size: 16px;
+          font-family: $primary-font;
+          font-size: 1.6rem;
           font-style: normal;
           font-weight: 600;
           line-height: normal;
@@ -133,8 +133,8 @@
         p {
           margin: 0;
           color: #191a15;
-          font-family: Be Vietnam Pro;
-          font-size: 16px;
+          font-family: $primary-font;
+          font-size: 1.6rem;
           font-style: normal;
           font-weight: 400;
           line-height: normal;
@@ -164,8 +164,8 @@
         span {
           color: #191a15;
           text-align: center;
-          font-family: Be Vietnam Pro;
-          font-size: 16px;
+          font-family: $primary-font;
+          font-size: 1.6rem;
           font-style: normal;
           font-weight: 500;
           line-height: normal;
@@ -189,7 +189,7 @@
     }
     .banner-content {
       h3 {
-        font-size: 16px !important;
+        font-size: 1.6rem !important;
       }
       .banner-content-item {
         img {
@@ -197,7 +197,7 @@
           height: 24px;
         }
         p {
-          font-size: 14px !important;
+          font-size: 1.4rem !important;
         }
       }
     }
@@ -211,7 +211,7 @@
           height: 36px !important;
         }
         p {
-          font-size: 14px !important;
+          font-size: 1.4rem !important;
         }
       }
     }
@@ -219,11 +219,11 @@
       margin-bottom: 12px !important;
       .description-item {
         h3 {
-          font-size: 16px !important;
+          font-size: 1.6rem !important;
           margin-bottom: 12px !important;
         }
         p {
-          font-size: 14px !important;
+          font-size: 1.4rem !important;
         }
       }
     }
@@ -239,8 +239,8 @@
           margin: 0;
           text-align: left;
           color: #191a15;
-          font-family: Be Vietnam Pro;
-          font-size: 16px;
+          font-family: $primary-font;
+          font-size: 1.6rem;
           font-style: normal;
           font-weight: 400;
           line-height: normal;
@@ -253,13 +253,13 @@
         .menu-item {
           width: 100% !important;
           h3 {
-            font-size: 16px !important;
+            font-size: 1.6rem !important;
             color: #00218f !important;
           }
           ul {
             list-style-type: disc;
             li {
-              font-size: 14px !important;
+              font-size: 1.4rem !important;
             }
           }
         }
@@ -310,11 +310,11 @@
     }
     .banner-content {
       h3 {
-        font-size: 24px !important;
+        font-size: 2.4rem !important;
       }
       .banner-content-item {
         p {
-          font-size: 20px !important;
+          font-size: 2.0rem !important;
         }
       }
     }
@@ -329,7 +329,7 @@
           height: 40px !important;
         }
         p {
-          font-size: 16px !important;
+          font-size: 1.6rem !important;
         }
       }
     }
@@ -337,11 +337,11 @@
       margin-bottom: 16px !important;
       .description-item {
         h3 {
-          font-size: 24px !important;
+          font-size: 2.4rem !important;
           margin-bottom: 16px !important;
         }
         p {
-          font-size: 16px !important;
+          font-size: 1.6rem !important;
         }
       }
     }
@@ -359,12 +359,12 @@
         .menu-item {
           width: 362px !important;
           h3 {
-            font-size: 24px !important;
+            font-size: 2.4rem !important;
             color: #191a15 !important;
           }
           ul {
             li {
-              font-size: 16px !important;
+              font-size: 1.6rem !important;
             }
           }
         }
@@ -406,7 +406,7 @@
     p {
       color: #6d6d6d;
       font-family: $primary-font;
-      font-size: 16px;
+      font-size: 1.6rem;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
@@ -464,7 +464,7 @@
         color: #fff;
         text-align: center;
         font-family: $primary-font;
-        font-size: 24px;
+        font-size: 2.4rem;
         font-style: normal;
         font-weight: 700;
         line-height: normal;
@@ -493,7 +493,7 @@
           color: #5ffe9f;
           text-align: center;
           font-family: $primary-font;
-          font-size: 20px;
+          font-size: 2.0rem;
           font-style: normal;
           font-weight: 500;
           line-height: normal;
@@ -524,8 +524,8 @@
         margin: 0;
         margin-top: 8px;
         color: #191a15;
-        font-family: Be Vietnam Pro;
-        font-size: 16px;
+        font-family: $primary-font;
+        font-size: 1.6rem;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -542,8 +542,8 @@
         margin: 0;
         text-align: left;
         color: #00218f;
-        font-family: Be Vietnam Pro;
-        font-size: 24px;
+        font-family: $primary-font;
+        font-size: 2.4rem;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
@@ -553,8 +553,8 @@
         margin: 0;
         text-align: left;
         color: #191a15;
-        font-family: Be Vietnam Pro;
-        font-size: 16px;
+        font-family: $primary-font;
+        font-size: 1.6rem;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -577,8 +577,8 @@
         h3 {
           margin: 0;
           color: #191a15;
-          font-family: Be Vietnam Pro;
-          font-size: 24px;
+          font-family: $primary-font;
+          font-size: 2.4rem;
           font-style: normal;
           font-weight: 600;
           line-height: normal;
@@ -596,8 +596,8 @@
           li {
             text-align: left;
             color: #6d6d6d;
-            font-family: Be Vietnam Pro;
-            font-size: 16px;
+            font-family: $primary-font;
+            font-size: 1.6rem;
             font-style: normal;
             font-weight: 500;
             line-height: normal;
@@ -630,8 +630,8 @@
       h4 {
         margin: 0;
         color: #191a15;
-        font-family: Be Vietnam Pro;
-        font-size: 16px;
+        font-family: $primary-font;
+        font-size: 1.6rem;
         font-style: normal;
         font-weight: 600;
         line-height: normal;
@@ -639,8 +639,8 @@
       p {
         margin: 0;
         color: #191a15;
-        font-family: Be Vietnam Pro;
-        font-size: 16px;
+        font-family: $primary-font;
+        font-size: 1.6rem;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -660,8 +660,8 @@
         p {
           margin: 0;
           color: #6d6d6d;
-          font-family: Be Vietnam Pro;
-          font-size: 12px;
+          font-family: $primary-font;
+          font-size: 1.2rem;
           font-style: normal;
           font-weight: 400;
           line-height: normal;
@@ -681,8 +681,8 @@
       span {
         color: #191a15;
         text-align: center;
-        font-family: Be Vietnam Pro;
-        font-size: 16px;
+        font-family: $primary-font;
+        font-size: 1.6rem;
         font-style: normal;
         font-weight: 500;
         line-height: normal;
@@ -702,8 +702,8 @@
     h3 {
       margin: 0;
       margin-bottom: 24px;
-      font-family: Be Vietnam Pro;
-      font-size: 32px;
+      font-family: $primary-font;
+      font-size: 3.2rem;
       font-weight: 500;
       line-height: 40px;
       letter-spacing: 0em;
@@ -738,16 +738,16 @@
         p {
           span {
             color: #191a15;
-            font-family: Be Vietnam Pro;
-            font-size: 16px;
+            font-family: $primary-font;
+            font-size: 1.6rem;
             font-style: normal;
             font-weight: 600;
             line-height: normal;
           }
           margin: 0;
           color: #6d6d6d;
-          font-family: Be Vietnam Pro;
-          font-size: 16px;
+          font-family: $primary-font;
+          font-size: 1.6rem;
           font-style: normal;
           font-weight: 400;
           line-height: normal;

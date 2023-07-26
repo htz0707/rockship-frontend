@@ -3,8 +3,7 @@
 .chatbot {
   border-radius: 24px;
   background-color: $white;
-  font-family: "Be Vietnam Pro";
-  font-family: "Be Vietnam Pro";
+  font-family: $primary-font;
   outline: rgba(255, 255, 255, 0.3) solid 16px;
   width: fit-content;
   height: fit-content;
@@ -31,7 +30,7 @@
 
     p {
       color: $black;
-      font-size: 20px;
+      font-size: 2.0rem;
       font-weight: 700;
       line-height: 30px;
       margin: 0;
@@ -42,7 +41,7 @@
         margin: 4px 14px 4px 4px;
       }
       p {
-        font-size: 14px;
+        font-size: 1.4rem;
         line-height: 14px;
       }
     }
@@ -51,7 +50,7 @@
         margin: 8px 28px 8px 8px;
       }
       p {
-        font-size: 20px;
+        font-size: 2.0rem;
         line-height: 30px;
       }
     }
@@ -64,20 +63,20 @@
     .user-message {
       line-height: 24px;
       text-align: start;
-      font-size: 16px;
+      font-size: 1.6rem;
       p {
         margin: 4px 0;
         padding: 8px 12px;
       }
       @include mobile {
         p {
-          font-size: 12px;
+          font-size: 1.2rem;
           line-height: normal;
         }
       }
       @include tablet {
         p {
-          font-size: 20px;
+          font-size: 2.0rem;
           line-height: 30px;
         }
       }
@@ -116,6 +115,7 @@
     height: 56px;
     border-radius: 16px;
     padding: 8px 12px;
+    margin-top: 16px; 
     cursor: pointer;
     .send-button {
       background-color: $white;
@@ -127,7 +127,7 @@
     }
 
     .custom-input {
-      font-family: "Be Vietnam Pro";
+      font-family: $primary-font;
       background-color: #ebebeb;
       border: none;
     }
@@ -157,17 +157,17 @@
 
   .privacy {
     padding: 0px 16px 16px 16px;
-    font-size: 14px;
+    font-size: 1.4rem;
     line-height: 21px;
+    margin: 4px 0px 8px 0px; 
     text-align: start;
     color: #6d6d6d;
-    margin: 0;
     @include mobile {
-      font-size: 12px;
+      font-size: 1.2rem;
       line-height: normal;
     }
     @include tablet {
-      font-size: 14px;
+      font-size: 1.4rem;
       line-height: 21px;
     }
   }
@@ -175,14 +175,12 @@
 
 .confirm-box {
   text-align: center !important;
-  font-size: 16px;
+  font-size: 1.6rem;
   line-height: 24px;
-  font-family: "Be Vietnam Pro";
-  font-family: "Be Vietnam Pro";
+  font-family: $primary-font;
   .confirm-button {
     color: $blue;
     background-color: #d0eeff;
-    font-family: "Be Vietnam Pro";
-    font-family: "Be Vietnam Pro";
+    font-family: $primary-font;
   }
 }

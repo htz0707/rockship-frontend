@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "@/context";
 import {
   setItemCaseStudy,
-  setCaseStudies,
+  // setCaseStudies,
   setItemFilter,
 } from "@/context/actions/case-studies";
 

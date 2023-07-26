@@ -4,7 +4,6 @@
   text-align: center;
 
   :global(.ant-input) {
-    margin-bottom: 12px;
     height: 40px;
     padding: 8px 10px;
     gap: 4px;
@@ -23,7 +22,7 @@
     background: #5FFE9F;
     text-align: center;
     font-family: $primary-font;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 800;
     line-height: normal;
@@ -31,12 +30,18 @@
 
   h2 {
     font-family: $primary-font;
-    font-size: 24px;
+    font-size: 2.4rem;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     margin-top: 0;
   }
+
+  :global(.ant-form-item-explain-error) {
+    text-align: left;
+    font-size: 1.4rem;
+  }
+
 }
 
 .confirm-modal {
@@ -52,7 +57,7 @@
     background: #C8FFDE;
     color: #00AF46;
     text-align: center;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -62,7 +67,7 @@
 
   h3 {
     font-family: $primary-font;
-    font-size: 20px;
+    font-size: 2.0rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -78,7 +83,7 @@
       width: 231px;
       color: #6D6D6D;
       text-align: center;
-      font-size: 16px;
+      font-size: 1.6rem;
       font-style: normal;
       font-weight: 400;
       line-height: normal;

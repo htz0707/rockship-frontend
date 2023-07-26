@@ -74,7 +74,7 @@
         }
 
         @include desktop {
-          width: 300px;
+          width: 310px;
         }
 
         margin-bottom: 32px;
@@ -83,12 +83,12 @@
         .card-title {
 
           @include mobile {
-            font-size: 16px;
+            font-size: 1.6rem;
             font-weight: 600;
           }
 
           @include desktop {
-            font-size: 20px;
+            font-size: 2.0rem;
             font-weight: 600;
           }
 
@@ -97,9 +97,10 @@
         }
 
         .col-content {
+          margin-bottom: -20px; 
           p {
             @include mobile {
-              font-size: 12px;
+              font-size: 1.2rem;
 
             }
 
@@ -111,17 +112,20 @@
 
           h2 {
             font-weight: 600;
-            font-size: 20px;
+            font-size: 2.0rem;
             margin: 0;
             font-family: $primary-font;
           }
 
           div {
-            height: 31px;
+            height: 65px;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: $primary-font;
+          }
+          img {
+            margin-top: -30px; 
           }
         }
 
@@ -153,7 +157,7 @@
 
         .view-button {
           color: var(--text, #191A15);
-          font-size: 16px;
+          font-size: 1.6rem;
           font-style: normal;
           font-weight: 400;
           line-height: normal;
@@ -191,7 +195,7 @@
     @include mobile {
       margin-top: 0px;
       margin-bottom: 16px;
-      font-size: 24px;
+      font-size: 2.4rem;
       line-height: 24px;
       text-transform: uppercase;
     }
@@ -199,7 +203,7 @@
     @include tablet {
       margin-top: 20px;
       margin-bottom: 24px;
-      font-size: 48px;
+      font-size: 4.8rem;
       font-weight: 800;
       line-height: 61px;
       letter-spacing: 0em;
@@ -227,7 +231,7 @@
         margin: 0;
         padding-top: 8px;
         padding-right: 8px;
-        font-size: 16px;
+        font-size: 1.6rem;
         font-weight: 500;
         font-family: $primary-font;
         text-transform: uppercase;
@@ -249,7 +253,7 @@
         margin: 0;
         font-family: $primary-font;
         font-weight: 600;
-        font-size: 16px;
+        font-size: 1.6rem;
         text-transform: uppercase;
       }
     }
@@ -258,7 +262,7 @@
       p {
         font-family: $primary-font;
         text-align: left;
-        font-size: 16px;
+        font-size: 1.6rem;
         font-weight: 400;
         margin-top: 10px;
         margin-bottom: 16px;
@@ -275,7 +279,7 @@
             color: $gray2;
             color: var(--mute, #9C9C9C);
             font-family: $primary-font;
-            font-size: 16px;
+            font-size: 1.6rem;
             font-weight: 600;
           }
         }
@@ -306,7 +310,7 @@
     width: 129px;
     height: 32px;
     padding: 4px;
-    font-size: 16px;
+    font-size: 1.6rem;
     text-transform: uppercase;
     font-weight: 600;
     font-family: $primary-font;
