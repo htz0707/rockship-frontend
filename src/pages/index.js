@@ -208,30 +208,19 @@ const HomePage = () => {
                 />
               </Col>
               <Col className={styles["col-box"]} sm={24} md={13}>
-                <p className={styles["title"]}>DATA & MLOPS</p>
+                <p className={styles["title"]}>AI AS A SERVICE</p>
                 <div className={styles["contents"]}>
                   <img src="/tick.svg" alt="tick" />
                   <p>
-                    Data Collection via scraping & convert unstructured data to
-                    structured data by capturing key information.
+                    Prototype AI for use cases: Key Information Extraction, Chatbot for Customer Service & AI For Educational Content Generation
                   </p>
                 </div>
                 <div className={styles["contents"]}>
                   <img src="/tick.svg" alt="tick" />
                   <p>
-                    Architecture the Data Pipeline & Data Warehouse for your
-                    organization: setting up <b>ETL process</b>, data modeling
-                    for <b>Data Warehouse</b>, <b>Data Lake </b>
-                    and <b>Data Mart</b>, build beautiful <b>visualizations</b>.
-                  </p>
-                </div>
-                <div className={styles["contents"]}>
-                  <img src="/tick.svg" alt="tick" />
-                  <p>
-                    Build and maintain real-time data architecture (Feature
-                    Store, ML Model Store) to serve business critical
-                    application required to have the fresh updates of user
-                    information: recommendation system, ads bidding.
+                    Build and maintain MLOps infrastructure (<b>Feature
+                    Store</b>, <b>ML Model Store</b>, <b>LLM Apps</b>) to serve business critical
+                    applications requiring real-time data: recommendation system, ads bidding.
                   </p>
                 </div>
                 <Button
@@ -239,7 +228,7 @@ const HomePage = () => {
                     styles["homepage-button-1"] + " " + styles["custom-button"]
                   }
                 >
-                  ARCHITECT WITH US
+                  BUILD YOUR AI
                   <img
                     src="/arrow.svg"
                     alt="arrow"

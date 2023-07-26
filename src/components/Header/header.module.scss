@@ -42,7 +42,7 @@
 
     @include tablet {
       padding: 24px 120px !important;
-      height: 130px;
+      height: 88px;
     }
 
     p {
@@ -50,7 +50,7 @@
       margin-left: 12px;
       color: #fff;
       font-family: $primary-font;
-      font-size: 16px;
+      font-size: 1.6rem;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
@@ -62,8 +62,8 @@
     align-items: center;
     padding: 40px 120px !important;
     justify-content: space-between;
-    height: 130px;
-    font-size: 16px;
+    height: 88px;
+    font-size: 1.6rem;
     width: 100%;
 
     @include mobile {
@@ -108,13 +108,13 @@
         .font-700 {
           color: #5ffe9f;
           font-weight: 700;
-          font-size: 16px;
+          font-size: 1.6rem;
         }
       }
     }
     @include desktop {
       padding: 24px 120px !important;
-      height: 130px;
+      height: 88px;
 
       .custom-header-container {
         display: flex !important;
@@ -150,8 +150,8 @@
         line-height: 50px;
         color: $white;
         margin: 0 20px;
-        font-family: Be Vietnam Pro;
-        font-size: 16px;
+        font-family: $primary-font;
+        font-size: 1.6rem;
         font-style: normal;
         font-weight: 700;
         transition: all 0.5s;
@@ -187,16 +187,16 @@
     }
     .homepage-big-text {
       font-weight: 700;
-      font-size: 64px;
+      font-size: 6.4rem;
       line-height: 81px;
       margin: 0;
       font-family: $primary-font;
       @include mobile {
-        font-size: 24px;
+        font-size: 2.4rem;
         line-height: 36px;
       }
       @include tablet {
-        font-size: 64px;
+        font-size: 6.4rem;
         line-height: 81px;
       }
       span {
@@ -207,17 +207,17 @@
     .homepage-small-text {
       margin-bottom: 0;
       line-height: 32px;
-      font-size: 17px;
+      font-size: 1.7rem;
       font-family: $primary-font;
       font-weight: 500;
       letter-spacing: -0.41;
       @include mobile {
-        font-size: 12px;
+        font-size: 1.2rem;
         line-height: normal;
         margin-bottom: 36px;
       }
       @include tablet {
-        font-size: 17px;
+        font-size: 1.7rem;
         line-height: 32px;
         margin-bottom: 48px;
       }
@@ -249,7 +249,7 @@
 
   .homepage-button-1 {
     font-weight: 800;
-    font-size: 16px;
+    font-size: 1.6rem;
     height: 52px;
     border-radius: 2px;
     padding: 0 20px;
@@ -259,6 +259,7 @@
     justify-content: center;
     display: flex;
     font-family: $primary-font;
+    border:none; 
     @include mobile {
       margin-bottom: 12px;
     }
@@ -270,7 +271,7 @@
   .homepage-button-2 {
     color: $white !important;
     border-color: $white !important;
-    font-size: 16px;
+    font-size: 1.6rem;
     line-height: 17px;
     height: 52px;
     border-radius: 2px;

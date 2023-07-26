@@ -17,7 +17,7 @@
       margin-bottom: 24px;
 
       h3 {
-        font-size: 20px;
+        font-size: 2.0rem;
         line-height: 30px;
       }
     }
@@ -30,20 +30,20 @@
       margin: 0;
       color: #191a15;
       text-align: center;
-      font-family: Be Vietnam Pro;
-      font-size: 48px;
+      font-family: $primary-font;
+      font-size: 4.8rem;
       font-style: normal;
       font-weight: 900;
       line-height: normal;
 
       @include mobile {
-        font-size: 20px;
+        font-size: 2.0rem;
         line-height: 24px;
         font-weight: 900;
       }
 
       @include tablet {
-        font-size: 48px;
+        font-size: 4.8rem;
         line-height: normal;
       }
     }
@@ -53,20 +53,20 @@
       margin: 0;
       margin-top: 4px;
       color: #888 !important;
-      font-family: Be Vietnam Pro;
-      font-size: 20px;
+      font-family: $primary-font;
+      font-size: 2.0rem;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
       text-decoration: underline !important;
 
       @include mobile {
-        font-size: 14px;
+        font-size: 1.4rem;
         line-height: 24px;
       }
 
       @include tablet {
-        font-size: 20px;
+        font-size: 2.0rem;
         line-height: normal;
       }
     }
@@ -75,7 +75,7 @@
   .text-title {
     font-family: $primary-font;
     font-weight: 900;
-    font-size: 48px;
+    font-size: 4.8rem;
     line-height: 60.72px;
     color: #0f0f0f;
     // text-shadow: 1px 0px 0px rgba(25, 26, 21, 1),1px 0px 0px rgba(25, 26, 21, 1);
@@ -84,17 +84,17 @@
     // -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black,
     // -1px -1px black, 1px 1px black, -1px 1px black, 1px -1px black;
     @include mobile {
-      font-size: 20px;
+      font-size: 2.0rem;
       line-height: 24px;
       margin-bottom: 24px;
     }
     @include tablet {
-      font-size: 36px;
+      font-size: 3.6rem;
       line-height: 30px;
       margin-bottom: 24px;
     }
     @include desktop {
-      font-size: 48px;
+      font-size: 4.8rem;
       line-height: 50px;
       margin-bottom: 48px;
     }
@@ -111,7 +111,7 @@
 
     .text-col-header {
       font-weight: 700;
-      font-size: 20px;
+      font-size: 2.0rem;
       line-height: 30px;
       margin-bottom: 8px;
       margin-top: 12px;
@@ -119,16 +119,16 @@
       color: #0f0f0f;
 
       @include mobile {
-        font-size: 20px;
+        font-size: 2.0rem;
         line-height: normal;
       }
 
       @include tablet {
-        font-size: 17px;
+        font-size: 1.7rem;
         line-height: 30px;
       }
       @include desktop {
-        font-size: 20px;
+        font-size: 2.0rem;
         line-height: 30px;
       }
     }
@@ -136,19 +136,19 @@
     .text-col-content {
       margin-top: 0;
       margin-bottom: 0;
-      font-size: 16px;
+      font-size: 1.6rem;
       font-family: $primary-font;
 
       @include mobile {
-        font-size: 14px;
+        font-size: 1.4rem;
         line-height: normal;
       }
       @include  tablet{
-        font-size: 14px;
+        font-size: 1.4rem;
         line-height: 24px;
       }
       @include desktop {
-        font-size: 16px;
+        font-size: 1.6rem;
         line-height: 24px;
       }
     }
@@ -208,22 +208,22 @@
     .text-title {
       @include mobile {
         margin-bottom: 24px;
-        font-size: 20px;
+        font-size: 2.0rem;
       }
       @include tablet {
         margin-bottom: 36px;
-        font-size: 48px; 
+        font-size: 4.8rem; 
        }
       @include desktop {
         margin-bottom: 48px;
-        font-size: 48px; 
+        font-size: 4.8rem; 
       }
     }
 
     .title {
       justify-content: flex-start;
       font-weight: 800;
-      font-size: 48px;
+      font-size: 4.8rem;
       line-height: 50px;
       margin: 0;
       font-family: $primary-font;
@@ -231,17 +231,17 @@
 
       @include mobile {
         justify-content: center;
-        font-size: 24px;
+        font-size: 2.4rem;
         line-height: 36px;
       }
       @include desktop {
         justify-content: flex-start;
-        font-size: 48px;
+        font-size: 4.8rem;
         line-height: 50px;
       }
       @include tablet {
         justify-content: flex-start;
-        font-size: 36px;
+        font-size: 3.6rem;
         line-height: 36px;
       }
     }
@@ -281,19 +281,19 @@
         font-weight: 800;
 
         @include mobile {
-          font-size: 24px;
+          font-size: 2.4rem;
           line-height: 36px;
           text-align: center;
           margin-bottom: 24px;
         }
         @include tablet {
-          font-size: 32px;
+          font-size: 3.2rem;
           line-height: 48px;
           text-align: start;
           margin-bottom: 30px;
         }
         @include desktop {
-          font-size: 48px;
+          font-size: 4.8rem;
           line-height: 64px;
           text-align: start;
           margin-bottom: 64px;
@@ -308,19 +308,19 @@
 
         p {
           margin: 0px;
-          font-size: 16px;
+          font-size: 1.6rem;
           line-height: 24px;
           width: 549px;
           height: fit-content;
 
           @include mobile {
-            font-size: 14px;
+            font-size: 1.4rem;
             line-height: normal;
             text-align: left;
           }
 
           @include tablet {
-            font-size: 16px;
+            font-size: 1.6rem;
             line-height: 24px;
           }
         }
@@ -424,7 +424,7 @@
         font-family: $primary-font;
 
         @include mobile {
-          font-size: 23px;
+          font-size: 2.3rem;
           line-height: 36px;
           max-width: 100%;
           text-align: center;
@@ -432,7 +432,7 @@
           margin-right: -12px;
         }
         @include tablet {
-          font-size: 32px;
+          font-size: 3.2rem;
           line-height: 55px;
           max-width: 80%;
           text-align: left;
@@ -440,7 +440,7 @@
           margin-left: 0px;
         }
         @include desktop {
-          font-size: 40px;
+          font-size: 4.0rem;
           line-height: 62px;
           max-width: 80%;
           text-align: left;
@@ -452,7 +452,7 @@
       .custom-label {
         color: $white;
         font-weight: 500;
-        font-size: 18px;
+        font-size: 1.8rem;
         font-family: $primary-font;
       }
 
@@ -540,20 +540,20 @@
       margin-bottom: 10px;
       font-style: normal;
       font-weight: 800;
-      font-family: Be Vietnam Pro;
+      font-family: $primary-font;
 
       @include mobile {
         margin: 0 24px;
-        font-size: 32px;
+        font-size: 3.2rem;
         line-height: 36px;
       }
       @include tablet {
-        font-size: 40px;
+        font-size: 4.0rem;
         line-height: 50px;
         margin: 0;
       }
       @include desktop {
-        font-size: 48px;
+        font-size: 4.8rem;
         line-height: 64px;
         margin: 0;
       }
@@ -563,20 +563,20 @@
       margin: 0;
       font-style: normal;
       font-weight: 800;
-      font-family: Be Vietnam Pro;
+      font-family: $primary-font;
 
       @include mobile {
         margin: 0 24px;
-        font-size: 32px;
+        font-size: 3.2rem;
         line-height: 36px;
       }
       @include tablet {
-        font-size: 40px;
+        font-size: 4.0rem;
         line-height: 50px;
         margin: 0;
       }
       @include desktop {
-        font-size: 48px;
+        font-size: 4.8rem;
         line-height: 64px;
         margin: 0;
       }
@@ -584,7 +584,7 @@
 
     .content {
       font-weight: 500;
-      font-size: 18px;
+      font-size: 1.8rem;
       font-family: $primary-font;
 
       @include mobile {
@@ -615,7 +615,7 @@
 
   .homepage-button-1 {
     font-weight: 800;
-    font-size: 16px;
+    font-size: 1.6rem;
     line-height: 17px;
     height: 52px;
     border-radius: 2px;
@@ -627,7 +627,7 @@
   .homepage-button-2 {
     color: $white !important;
     border-color: $white !important;
-    font-size: 16px;
+    font-size: 1.6rem;
     line-height: 17px;
     height: 52px;
     border-radius: 2px;
@@ -751,7 +751,7 @@
         width: 349px;
         height: fit-content;
         font-family: $primary-font;
-        font-size: 16px;
+        font-size: 1.6rem;
         line-height: 28px;
         margin-left: 32px;
         margin-top: -20px;
@@ -782,7 +782,7 @@
 
         .client_name {
           color: #18191f;
-          font-size: 18px;
+          font-size: 1.8rem;
           font-weight: 700;
           line-height: 28px;
           margin: 0;
@@ -794,7 +794,7 @@
 
         .client_position {
           color: #969bab;
-          font-size: 14px;
+          font-size: 1.4rem;
           font-weight: 500;
           line-height: 24px;
           margin: 0;
@@ -879,7 +879,7 @@
         width: 254px;
         height: fit-content;
         font-family: $primary-font;
-        font-size: 16px;
+        font-size: 1.6rem;
         line-height: 28px;
         margin-left: 32px;
         margin-top: -20px;
@@ -905,7 +905,7 @@
 
         .client_name {
           color: #18191f;
-          font-size: 18px;
+          font-size: 1.8rem;
           font-weight: 700;
           line-height: 28px;
           margin: 0;
@@ -913,7 +913,7 @@
 
         .client_position {
           color: #969bab;
-          font-size: 14px;
+          font-size: 1.4rem;
           font-weight: 500;
           line-height: 24px;
           margin: 0;
@@ -1004,7 +1004,7 @@
         font-family: $primary-font;
         height: fit-content;
         font-weight: 400;
-        font-size: 16px;
+        font-size: 1.6rem;
         line-height: 28px;
 
         @include mobile {
@@ -1040,7 +1040,7 @@
 
         .client_name {
           color: #18191f;
-          font-size: 18px;
+          font-size: 1.8rem;
           font-weight: 700;
           line-height: 28px;
           margin: 0;
@@ -1048,7 +1048,7 @@
 
         .client_position {
           color: #969bab;
-          font-size: 14px;
+          font-size: 1.4rem;
           font-weight: 500;
           line-height: 24px;
           margin: 0;
