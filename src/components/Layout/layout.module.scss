@@ -1,13 +1,13 @@
-@import "@/styles/global.module.scss";
 
 .custom-layout {
   font-size: 1.6rem;
   background-color: $white;
+  height: 100%;
 
   .custom-content {
-    height: 100%;
     text-align: center;
     font-size: 1.6rem;
+    height: 100%;
   }
 
   .sticky-bar {

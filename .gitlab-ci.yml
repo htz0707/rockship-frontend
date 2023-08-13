@@ -7,6 +7,8 @@ stages:
 variables:
   TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME
   TAG_LATEST: $CI_REGISTRY_IMAGE/rockship/$CI_COMMIT_REF_NAME
+  GMAIL_USER: "send.email.service1@gmail.com"
+  GMAIL_PASS: "jvvzkmgvtvqbfkjp"
 
 .install_ssh:
   before_script:
@@ -48,6 +50,7 @@ build:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
       --build-arg BOT_PRIVATE_TOKEN=$BOT_PRIVATE_TOKEN
+      --build-arg DEPLOY_TAG=$DEPLOY_TAG
       --image-name-tag-with-digest-file "$TAG_LATEST:$DEPLOY_TAG"
       --dockerfile "${CI_PROJECT_DIR}/builder/Dockerfile"
       --destination "$TAG_LATEST:$DEPLOY_TAG"

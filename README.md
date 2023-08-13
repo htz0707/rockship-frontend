@@ -1,7 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
-1. install node 16+ (tested 16 & 20)
+1. node and react 18
 2. cmd: npm install
 3. cmd: npm run dev
 

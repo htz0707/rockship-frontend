@@ -1,0 +1,112 @@
+@import "../../../styles/global.module.scss";
+
+@include mobile {
+  .description {
+    margin-bottom: 12px !important;
+
+    .description-item {
+      h3 {
+        font-size: 1.6rem !important;
+        margin-bottom: 12px !important;
+      }
+
+      p {
+        font-size: 1.4rem !important;
+      }
+    }
+
+    p {
+      margin: 0;
+      width: fit-content;
+      margin-bottom: 28px;
+      text-align: left;
+      color: #6d6d6d;
+      font-family: $primary-font;
+      font-size: 1.4rem !important;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      img {
+        margin-left: 20px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .description {
+    margin-bottom: 16px !important;
+
+    .description-item {
+      h3 {
+        font-size: 2.4rem !important;
+        margin-bottom: 16px !important;
+      }
+
+      p {
+        font-size: 1.6rem !important;
+      }
+    }
+
+    p {
+      margin: 0;
+      width: fit-content;
+      margin-bottom: 28px;
+      text-align: left;
+      color: #6d6d6d;
+      font-family: $primary-font;
+      font-size: 1.6rem !important;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+
+      img {
+        margin-left: 20px;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@include desktop {
+  .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 16px;
+
+    .description-item {
+      h3 {
+        margin: 0;
+        text-align: left;
+        color: #00218f;
+        font-family: $primary-font;
+        font-size: 2.4rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+        margin-bottom: 8px;
+      }
+
+      p {
+        margin: 0;
+        width: fit-content;
+        text-align: left;
+        color: #191a15;
+        font-family: $primary-font;
+        font-size: 1.6rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 16px;
+
+        img {
+          margin-left: 30px;
+          width: 100%;
+        }
+      }
+    }
+  }
+}

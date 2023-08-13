@@ -390,8 +390,20 @@ const Talents = () => {
       <div className={styles["talents"]}>
         <Row>
           <Col span={24}>
-            <h2 className={styles["title"]}>ENGINEERING PROFILES</h2>
-            <Row gutter={16}>
+            <h2
+              className={styles["title"]}
+              data-aos="fade-up"
+              data-aos-duration="500"
+              data-aos-anchor-placement="bottom-bottom"
+            >
+              ENGINEERING PROFILES</h2>
+            <Row
+              gutter={16}
+              data-aos="fade-up"
+              data-aos-duration="500"
+              data-aos-delay="200"
+              data-aos-anchor-placement="bottom-bottom"
+            >
               <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                 <Input
                   prefix={<SearchOutlined />}
@@ -403,6 +415,7 @@ const Talents = () => {
                     }
                   }}
                   onChange={handleSearch}
+
                 />
               </Col>
               {
@@ -453,7 +466,13 @@ const Talents = () => {
                 })
                 .map((item, index) => {
                   return (
-                    <Col key={index} className={styles['col-card']} xs={12} sm={12} md={12} lg={12} xl={8}>
+                    <Col
+                      key={index} className={styles['col-card']} xs={12} sm={12} md={12} lg={12} xl={8}
+                      data-aos="fade-up"
+                      data-aos-duration="500"
+                      data-aos-delay="100"
+                      data-aos-anchor-placement="bottom-bottom"
+                    >
                       <MemberCard
                         item={item}
                         index={index}
@@ -479,7 +498,7 @@ const Talents = () => {
           <div>
             <img src={data[selectedIndex]?.avatar} />
           </div>
-          <h2>Front-end Developer</h2>
+          <h2>{data[selectedIndex]?.memberType}</h2>
           <Row gutter={12}>
             <Col className={styles['col-content']} span={8}>
               <div className={styles['box']}>

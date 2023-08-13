@@ -1,3 +1,12 @@
+# Step 3: get certificates
+FROM alpine:3.18.2 as certificates
+ARG DEPLOY_TAG
+ARG BOT_PRIVATE_TOKEN
+RUN echo I received "${DEPLOY_TAG}" from kaniko!
+RUN echo I received "${BOT_PRIVATE_TOKEN}" from kaniko!
+RUN apk --no-cache add curl
+RUN curl --header "PRIVATE-TOKEN: ${BOT_PRIVATE_TOKEN}" "http://gitlab.rockship.co/api/v4/projects/16/repository/files/frontend%2Frockship-fe%2F${DEPLOY_TAG}%2F.env/raw?ref=master" > .env
+
 FROM node:18-alpine AS base
 
 # Install dependencies only when needed
@@ -28,7 +37,7 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 # RUN yarn build
-
+COPY --from=certificates ./.env .
 # If using npm comment out above and use below instead
 RUN npm run build
 
@@ -49,6 +58,7 @@ COPY --from=builder /app/public ./public
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=certificates ./.env .
 
 USER nextjs
 

@@ -1,0 +1,17 @@
+.building-features-container {
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  align-items: flex-start;
+  justify-content: space-between;
+  text-align: start;
+  height: calc(100vh - 88px);
+  .features-container {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 35px 60px;
+    @media only screen and (max-width: 576px) {
+      padding: 35px 30px;
+    }
+  }
+}
