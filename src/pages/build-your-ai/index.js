@@ -293,9 +293,9 @@ const buildYourAI = () => {
                     <p className = {styles["position"]}>Head Of Engineering</p>
                     <p className = {styles["description"]}>9 Years Of Experience</p>
                     <p className = {styles["tag-box"]}>
-                        <span className = {styles["tag"]}>Industry 1</span> 
-                        <span className = {styles["tag"]}>Industry 1</span>
-                        <span className = {styles["tag"]}>Industry 1</span>
+                        <span className = {styles["tag"]}>EdTech</span>
+                        <span className = {styles["tag"]}>eSports</span>
+                        <span className = {styles["tag"]}>Blockchain</span>
                     </p>
                     </Col>
             </Row>
