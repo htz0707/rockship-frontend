@@ -10,21 +10,24 @@ import styles from "@/styles/case-studies-detail.module.scss";
 import useWindowSize from "@/hooks/useWindowSize";
 import { useSelector } from "@/context";
 // import { setItemCaseStudy } from "@/context/actions/case-studies";
+import ContentIsense from "@/components/ContentCaseStudies/ContentIsense";
+import ContentRovo from "@/components/ContentCaseStudies/ContentRovo";
+import ContentLiveo from "@/components/ContentCaseStudies/ContentLiveo";
+import ContentTedez from "@/components/ContentCaseStudies/ContentTedez";
+import ContentWorknow from "@/components/ContentCaseStudies/ContentWorknow";
+import ContentOmnichannel from "@/components/ContentCaseStudies/ContentOmnichannel";
+import ContentMeiMei from "@/components/ContentCaseStudies/ContentMeiMei";
+import { HighLightItem } from "@/components/ContentCaseStudies/Common";
+import FormModal from "@/components/FormModal";
 
-const HighLightItem = ({ src, name, color }) => {
+const BannerItem = ({ src, name }) => {
   return (
-    <div className={styles["highlight-item"]}>
-      <div
-        className={styles["highlight-item-image"]}
-        style={{ backgroundColor: color }}
-      >
-        <img src={src} alt={name} />
-      </div>
+    <div className={styles["banner-content-item"]}>
+      <img src={src} alt={name} />
       <p>{name}</p>
     </div>
   );
 };
-
 const DescriptionItem = ({ title, data = [] }) => {
   return (
     <div className={styles["description-item"]}>
@@ -53,15 +56,6 @@ const MenuItem = ({ title, lsValue, content }) => {
   );
 };
 
-const BannerItem = ({ src, name }) => {
-  return (
-    <div className={styles["banner-content-item"]}>
-      <img src={src} alt={name} />
-      <p>{name}</p>
-    </div>
-  );
-};
-
 const CaseStudiesDetail = () => {
   const router = useRouter();
   const size = useWindowSize();
@@ -71,29 +65,10 @@ const CaseStudiesDetail = () => {
   );
   const [itemCaseStudy, setItemCaseStudy] = useState(itemCaseStudy1);
   const [isShowContact, setIsShowContact] = useState(false);
-  const [isShowSuccess, setIsShowSuccess] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-  });
-  const formRef = useRef(null);
   const [isBack, setIsBack] = useState(false);
 
   const handleOnClickBack = () => {
     router.back();
-  };
-
-  const handleOnClickSubmitContact = (values) => {
-    setIsShowContact(false);
-    setIsShowSuccess(true);
-    if (values) {
-      setFormData(values);
-      formRef.current.resetFields();
-    }
-  };
-
-  const handleOnClickOke = () => {
-    setIsShowSuccess(false);
   };
 
   useEffect(() => {
@@ -114,6 +89,97 @@ const CaseStudiesDetail = () => {
     const dataTemp = JSON.parse(localStorage.getItem("itemDetail"));
     setItemCaseStudy(dataTemp);
   }, []);
+  const renderContent = (id) => {
+    if (id === 1 || id === 5 || id === 7 || id === 8 || id === 12) {
+      return (
+        <>
+          <div className={styles["description"]}>
+            <DescriptionItem
+              title={"Challenge"}
+              data={itemCaseStudy?.challenges}
+            />
+            <DescriptionItem
+              title={"Solution"}
+              data={itemCaseStudy?.solutions}
+            />
+          </div>
+          <div className={styles["menu-list"]}>
+            {itemCaseStudy?.mains?.map((item, index) => {
+              if (item.content && !item.src) {
+                return (
+                  <div className={styles["menu"]} key={index}>
+                    <p>{item.content}</p>
+                  </div>
+                );
+              }
+              return (
+                <div className={styles["menu"]} key={index}>
+                  <MenuItem
+                    title={item?.title}
+                    lsValue={item?.data}
+                    content={item?.content}
+                  />
+                  <img src={item?.src} alt={"menu"} />
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    }
+    if (id == 2) {
+      return <ContentWorknow />;
+    }
+    if (id === 3) {
+      return <ContentRovo />;
+    }
+    if (id === 4) {
+      return <ContentIsense />;
+    }
+    if (id === 6) {
+      return <ContentLiveo />;
+    }
+    if (id === 9) {
+      return <ContentTedez />;
+    }
+    if (id === 10) {
+      return <ContentOmnichannel />;
+    }
+    if (id === 11) {
+      return <ContentMeiMei />;
+    }
+    return null;
+  };
+  const getReview = (reviewsCount) => {
+    if (reviewsCount > 0) {
+      return (
+        <>
+          <div className={styles["review"]}>
+            <h3>Reviews from our customers</h3>
+            {itemCaseStudy?.reviews?.map((item) => {
+              return (
+                <div className={styles["card-review"]} key={item.id}>
+                  <div className={styles["card-left"]}>
+                    <img src={"/ceo.png"} alt="menu" />
+                    <p>
+                      <span>{item.title}</span> {item.name}
+                    </p>
+                  </div>
+                  <div className={styles["divider"]} />
+                  <div className={styles["card-right"]}>
+                    {item?.data?.map((item1, index) => {
+                      return <p key={index}>{item1}</p>;
+                    })}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      );
+    }
+    return null;
+  };
 
   return (
     <CustomLayout link={"studies"} isBack={isBack}>
@@ -130,14 +196,19 @@ const CaseStudiesDetail = () => {
               quality={80}
               priority
               fill={true}
-              
             />
             <div className={styles["banner-content"]}>
               <h3>{itemCaseStudy?.title}</h3>
               <div className={styles["banner-content-list"]}>
                 <BannerItem src={"/work.svg"} name={itemCaseStudy?.company} />
-                <BannerItem src={"/calendar.svg"} name={itemCaseStudy?.duration} />
-                <BannerItem src={"/danger-circle.svg"} name={itemCaseStudy?.program} />
+                <BannerItem
+                  src={"/calendar.svg"}
+                  name={itemCaseStudy?.duration}
+                />
+                <BannerItem
+                  src={"/danger-circle.svg"}
+                  name={itemCaseStudy?.program}
+                />
               </div>
             </div>
           </div>
@@ -176,62 +247,8 @@ const CaseStudiesDetail = () => {
                 );
               })}
             </div>
-            <div className={styles["description"]}>
-              <DescriptionItem
-                title={"Challenge"}
-                data={itemCaseStudy?.challenges}
-              />
-              <DescriptionItem
-                title={"Solution"}
-                data={itemCaseStudy?.solutions}
-              />
-            </div>
-            <div className={styles["menu-list"]}>
-              {itemCaseStudy?.mains?.map((item, index) => {
-                if (item.content && !item.src) {
-                  return (
-                    <div className={styles["menu"]} key={index}>
-                      <p>{item.content}</p>
-                    </div>
-                  );
-                }
-                return (
-                  <div className={styles["menu"]} key={index}>
-                    <MenuItem
-                      title={item?.title}
-                      lsValue={item?.data}
-                      content={item?.content}
-                    />
-                    <img src={item?.src} alt={"menu"} />
-                  </div>
-                );
-              })}
-            </div>
-
-            <div className={styles["review"]}>
-              <h3>Reviews from our customers</h3>
-              {itemCaseStudy?.reviews?.map((item) => {
-                return (
-                  <div className={styles["card-review"]} key={item.id}>
-                    <div className={styles["card-left"]}>
-                      <img
-                        src={"/ceo.png"}
-                        alt="menu"
-                      />
-                      <p>
-                        <span>{item.title}</span> {item.name}
-                      </p>
-                    </div>
-                    <div className={styles["divider"]}/>
-                    <div className={styles["card-right"]}>
-                      {item?.data?.map((item1, index) => {
-                        return <p key={index}>{item1}</p>;
-                      })}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
+            {renderContent(itemCaseStudy?.id)}
+            {getReview(itemCaseStudy?.reviews.length)}
           </Col>
           <Col xs={0} md={6}>
             <div className={styles["card"]}>
@@ -279,52 +296,7 @@ const CaseStudiesDetail = () => {
           </div>
         </Row>
       </div>
-      <Modal
-        closable={false}
-        maskClosable
-        centered
-        open={isShowContact}
-        onCancel={() => setIsShowContact(false)}
-        getContainer={() => document.getElementById("case-studies-detail")}
-        footer={() => null}
-      >
-        <div className={styles["contact-us"]}>
-          <h3>CONTACT WITH US</h3>
-          <Form ref={formRef} onFinish={handleOnClickSubmitContact}>
-            <Form.Item name="name">
-              <Input placeholder="Your name" value={formData?.name} />
-            </Form.Item>
-            <Form.Item
-              name="email"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your work email!",
-                },
-              ]}
-            >
-              <Input placeholder="Work email" value={formData?.email} />
-            </Form.Item>
-            <Button htmlType="submit">Submit</Button>
-          </Form>
-        </div>
-      </Modal>
-      <Modal
-        closable={false}
-        centered
-        maskClosable={false}
-        open={isShowSuccess}
-        onCancel={() => setIsShowSuccess(false)}
-        getContainer={() => document.getElementById("case-studies-detail")}
-        footer={() => null}
-      >
-        <div className={styles["modal-body-success"]}>
-          <img src={"/verify.svg"} alt="verify" />
-          <h3>thank you!</h3>
-          <p>Thank you for your inquiry! We will get back to you soon</p>
-          <Button onClick={handleOnClickOke}>Done!</Button>
-        </div>
-      </Modal>
+      <FormModal open={isShowContact} setOpen={setIsShowContact} />
     </CustomLayout>
   );
 };

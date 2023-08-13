@@ -1,0 +1,85 @@
+    @include mobile {
+      .description {
+        margin-bottom: 12px !important;
+
+        .description-item {
+          h3 {
+            font-size: 1.6rem !important;
+            margin-bottom: 12px !important;
+          }
+
+          p {
+            font-size: 1.4rem !important;
+
+            img {
+              width: 100%;
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+    }
+
+    @include tablet {
+      .description {
+        margin-bottom: 16px !important;
+
+        .description-item {
+          h3 {
+            font-size: 2.4rem !important;
+            margin-bottom: 16px !important;
+          }
+
+          p {
+            font-size: 1.6rem !important;
+
+            img {
+              width: 100%;
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+    }
+
+    @include desktop {
+      .description {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        margin-bottom: 16px;
+
+        .description-item {
+          h3 {
+            margin: 0;
+            text-align: left;
+            color: #00218f;
+            font-family: "Be Vietnam Pro";
+            font-size: 2.4rem;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            margin-bottom: 8px;
+          }
+
+          p {
+            margin: 0;
+            text-align: left;
+            color: #191a15;
+            font-family: "Be Vietnam Pro";
+            font-size: 1.6rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            margin-bottom: 16px;
+
+            img {
+              width: 100px;
+              align-items: left;
+              margin-right: 8px;
+            }
+          }
+        }
+      }
+
+    }

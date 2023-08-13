@@ -1,0 +1,23 @@
+@mixin Responsive($min-width) {
+    @media (min-width: $min-width) {
+      @content;
+    }
+  }
+  
+  @mixin mobile {
+    @include Responsive(0px) {
+      @content;
+    }
+  }
+  
+  @mixin tablet {
+    @include Responsive($SM) {
+      @content;
+    }
+  }
+  
+  @mixin desktop {
+    @include Responsive($MD) {
+      @content;
+    }
+  }

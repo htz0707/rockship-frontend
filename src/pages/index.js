@@ -27,35 +27,60 @@ const HomePage = () => {
     useTrackingBrowser("HomePage");
   }, []);
 
+
   return (
     <CustomLayout link={"solutions"}>
       <div className={styles["homepage"] + " " + styles["fonts"]}>
-        <div className={styles["case-studies"]}>
+        <div
+          className={styles["case-studies"]}
+          data-aos="fade-up"
+          data-aos-duration="500"
+          data-aos-anchor-placement="top-bottom"
+        >
           <h3>Case studies</h3>
           <Link href={"/case-studies"}>View all case studies</Link>
         </div>
 
-        <Row gutter={[24, 24]} className={styles["case-studies-row"]}>
+        <Row
+          gutter={[24, 24]}
+          className={styles["case-studies-row"]}
+          data-aos="fade-up"
+          data-aos-delay="50"
+          data-aos-duration="500"
+          data-aos-anchor-placement="top-bottom"
+        >
           {caseStudies?.map((item, index) => {
-            return (
-              <Col xs={24} sm={12} md={8} key={item.id || index}>
-                <Card
-                  title={item.title}
-                  imageSrc={item.src}
-                  description={item.description}
-                  lsValue={item.hashtags}
-                  handleOnClickCard={() => handleOnClickCard(item)}
-                />
-              </Col>
-            );
+            if (item.id < 4) {
+              return (
+                <Col xs={24} sm={12} md={8} key={item.id || index}>
+                  <Card
+                    title={item.title}
+                    imageSrc={item.src}
+                    description={item.description}
+                    lsValue={item.hashtags}
+                    handleOnClickCard={() => handleOnClickCard(item)}
+                  />
+                </Col>
+              );
+            }
           })}
         </Row>
 
         <div className={styles["box-2"]}>
-          <div className={styles["text-title"]}>
+          <div
+            className={styles["text-title"]}
+            data-aos="fade-up"
+            data-aos-duration="500"
+            data-aos-anchor-placement="top-bottom"
+          >
             Why Companies Partner With Us?
           </div>
-          <Row>
+          <Row
+            data-aos="fade-up"
+            data-aos-delay="50"
+            data-aos-duration="500"
+            data-aos-anchor-placement="top-bottom"
+          >
             <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
               <div className={styles["col-padding"]}>
                 <img src={"/clock.svg"} alt="clock" />
@@ -98,17 +123,38 @@ const HomePage = () => {
               </div>
             </Col>
           </Row>
-          <div id="rockship-solution" className={styles["box-3"]}>
-            <p className={styles["text-title"]}>Our Solutions</p>
-            <Row align={"center"} className={styles["row"]}>
+          <div
+            id="rockship-solution"
+            className={styles["box-3"]}>
+            <p
+              className={styles["text-title"]}
+              data-aos="fade-up"
+              data-aos-duration="500"
+              data-aos-anchor-placement="top-bottom"
+            >Our Solutions</p>
+            <Row
+              align={"center"}
+              className={styles["row"]}
+            >
               <Col sm={24} md={0}>
                 <img
                   src="/solutions.svg"
                   alt="solutions"
                   className={styles["col-image"]}
+                  data-aos="fade-up"
+                  data-aos-duration="500"
+                  data-aos-anchor-placement="top-bottom"
                 />
               </Col>
-              <Col className={styles["col-box"]} sm={24} md={13}>
+              <Col
+                className={styles["col-box"]}
+                sm={24}
+                md={13}
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+              >
                 <p className={styles["title"]}>
                   BUILD SOFTWARES FASTER <br></br>WITH OUR AI
                 </p>
@@ -128,10 +174,14 @@ const HomePage = () => {
                   </p>
                 </div>
                 <Button
+                  onClick={() => router.push("/features")}
                   className={
                     styles["homepage-button-1"] + " " + styles["custom-button"]
                   }
-                  href="#chat_bot"
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                  data-aos-duration="500"
+                  data-aos-anchor-placement="top-bottom"
                 >
                   BROWSE OUR MODULES
                   <img
@@ -142,10 +192,14 @@ const HomePage = () => {
                 </Button>
               </Col>
               <Col xs={0} md={11}>
-                <img 
-                src="/solutions.svg" 
-                alt="solutions"
-                className={styles["col-image"]}
+                <img
+                  src="/solutions.svg"
+                  alt="solutions"
+                  className={styles["col-image"]}
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                  data-aos-duration="500"
+                  data-aos-anchor-placement="top-bottom"
                 />
               </Col>
             </Row>
@@ -155,12 +209,18 @@ const HomePage = () => {
                   src="/services.svg"
                   alt="services"
                   className={styles["col-image"]}
+                  data-aos="fade-up"
+                  data-aos-duration="500"
+                  data-aos-anchor-placement="center-bottom"
                 />
               </Col>
               <Col
                 className={styles["col-box"] + " " + styles["col-box-right"]}
                 sm={24}
                 md={13}
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
               >
                 <p className={styles["title"]}>TEAM AS A SERVICE</p>
                 <div className={styles["contents"]}>
@@ -189,6 +249,9 @@ const HomePage = () => {
                   className={
                     styles["homepage-button-1"] + " " + styles["custom-button"]
                   }
+                  data-aos="fade-up"
+                  data-aos-duration="500"
+                  data-aos-anchor-placement="bottom-bottom"
                 >
                   HIRE TALENTS
                   <img
@@ -205,9 +268,19 @@ const HomePage = () => {
                   src="/data.svg"
                   alt="data"
                   className={styles["col-image"]}
+                  data-aos="fade-up"
+                  data-aos-duration="500"
+                  data-aos-anchor-placement="top-bottom"
                 />
               </Col>
-              <Col className={styles["col-box"]} sm={24} md={13}>
+              <Col
+                className={styles["col-box"]}
+                sm={24}
+                md={13}
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+              >
                 <p className={styles["title"]}>AI AS A SERVICE</p>
                 <div className={styles["contents"]}>
                   <img src="/tick.svg" alt="tick" />
@@ -219,7 +292,7 @@ const HomePage = () => {
                   <img src="/tick.svg" alt="tick" />
                   <p>
                     Build and maintain MLOps infrastructure (<b>Feature
-                    Store</b>, <b>ML Model Store</b>, <b>LLM Apps</b>) to serve business critical
+                      Store</b>, <b>ML Model Store</b>, <b>LLM Apps</b>) to serve business critical
                     applications requiring real-time data: recommendation system, ads bidding.
                   </p>
                 </div>
@@ -227,6 +300,10 @@ const HomePage = () => {
                   className={
                     styles["homepage-button-1"] + " " + styles["custom-button"]
                   }
+                  data-aos="fade-up"
+                  data-aos-duration="500"
+                  data-aos-anchor-placement="center-bottom"
+                  onClick={() => router.push("/build-your-ai")}
                 >
                   BUILD YOUR AI
                   <img
@@ -237,10 +314,14 @@ const HomePage = () => {
                 </Button>
               </Col>
               <Col xs={0} md={11}>
-                <img 
-                src="/data.svg" 
-                alt="data" 
-                className={styles["col-image"]}
+                <img
+                  src="/data.svg"
+                  alt="data"
+                  className={styles["col-image"]}
+                  data-aos="fade-up"
+                  data-aos-delay="100"
+                  data-aos-duration="500"
+                  data-aos-anchor-placement="top-bottom"
                 />
               </Col>
             </Row>
@@ -249,23 +330,57 @@ const HomePage = () => {
         <div className={styles["box-6"]}>
           <Row className={styles["custom-row"]}>
             <Col xs={24} md={16}>
-              <p className={styles["title"]}>
+              <p
+                className={styles["title"]}
+                data-aos="fade-up"
+                data-aos-delay="50"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+              >
                 WE BUILD FASTER WITH OUR <br></br>
                 AI & AUTOMATION
               </p>
             </Col>
             <Col xs={24} md={8} className={styles["custom-col"]}>
-              <p className={styles["custom-label"]}>Email</p>
+              <p
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+                className={styles["custom-label"]}
+              >
+                Email</p>
               <Input
                 className={styles["custom-input"]}
                 placeholder="Enter your email"
+                data-aos="fade-up"
+                data-aos-delay="150"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
               />
-              <p className={styles["custom-label"]}>Message</p>
-              <textarea placeholder="What are you say?" />
+              <p
+                className={styles["custom-label"]}
+                data-aos="fade-up"
+                data-aos-delay="150"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+              >
+                Message</p>
+              <textarea
+                placeholder="What are you say?"
+                data-aos="fade-up"
+                data-aos-delay="150"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+              />
               <Button
                 className={
                   styles["homepage-button-1"] + " " + styles["custom-button-1"]
                 }
+                data-aos="fade-up"
+                data-aos-delay="200"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
               >
                 CONTACT US
               </Button>
@@ -275,19 +390,32 @@ const HomePage = () => {
         <div className={styles["box-7"]}>
           <Row>
             <Col className={styles["text-start"]} xs={24} md={12}>
-              <div>
+              <div
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+              >
                 <p className={styles["text-title"] + " " + styles["title-1"]}>
                   Real Stories from
                 </p>
+                
                 <p className={styles["text-title"] + " " + styles["title-2"]}>
                   Real Customers
                 </p>
+
+                <p className={styles["content"]}>
+                  Get inspired by these stories.
+                </p>
+
               </div>
 
-              <p className={styles["content"]}>
-                Get inspired by these stories.
-              </p>
-              <div className={styles["text-end"]}>
+              <div
+                className={styles["text-end"]}
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+              >
                 <img
                   src="/meta_dotus.svg"
                   alt="quote"
@@ -329,14 +457,21 @@ const HomePage = () => {
               xs={24}
               md={12}
             >
-              <div className={styles["rovo-testimony"]}>
+              <div
+                className={styles["rovo-testimony"]}
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-aos-anchor-placement="center-bottom"
+              >
                 <img
                   src="/rovo.svg"
                   alt="quote"
                   className={styles["client_icon"]}
                 />
                 <br></br>
-                <div className={styles["client_rovo"]}>
+                <div
+                  className={styles["client_rovo"]}
+                >
                   <img
                     src="/quote.svg"
                     alt="quote"
@@ -365,7 +500,13 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
-              <div className={styles["sybit-testimony"]}>
+              <div
+                className={styles["sybit-testimony"]}
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+              >
                 <img
                   src="/sybit.svg"
                   alt="quote"

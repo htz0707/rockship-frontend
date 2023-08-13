@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "@/context";
 import {
   setItemCaseStudy,
-  // setCaseStudies,
   setItemFilter,
 } from "@/context/actions/case-studies";
 
@@ -113,8 +112,20 @@ const CaseStudies = () => {
       <div className={styles["case-studies"]}>
         <Row>
           <Col span={24}>
-            <h2 className={styles["title"]}>case studies</h2>
-            <div className={styles["filter"]}>
+            <h2
+              className={styles["title"]}
+              data-aos="fade-up"
+              data-aos-duration="500"
+              data-aos-anchor-placement="bottom-bottom"
+            >
+              case studies</h2>
+            <div
+              className={styles["filter"]}
+              data-aos="fade-up"
+              data-aos-duration="500"
+              data-aos-delay="200"
+              data-aos-anchor-placement="bottom-bottom"
+            >
               <SelectCustom
                 title={"Industry"}
                 lsOption={lsIndustry}
@@ -154,8 +165,8 @@ const CaseStudies = () => {
               onClick={handleOnClickFilter}
               style={
                 itemFilter?.industry ||
-                itemFilter?.companySize ||
-                itemFilter?.market
+                  itemFilter?.companySize ||
+                  itemFilter?.market
                   ? { border: "1px solid #5FFE9F" }
                   : {}
               }
@@ -168,7 +179,14 @@ const CaseStudies = () => {
         <Row gutter={[24, 24]}>
           {dataFilter?.map((item, index) => {
             return (
-              <Col xs={24} sm={12} md={8} key={item.id || index}>
+              <Col
+                xs={24} sm={12} md={8} key={item.id || index}
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-aos-delay="200"
+                data-aos-anchor-placement="top-bottom"
+              >
+
                 <Card
                   title={item.title}
                   imageSrc={item.src}

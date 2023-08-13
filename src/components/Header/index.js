@@ -1,9 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Layout, Button, Drawer } from "antd";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 import Chatbot from "../ChatBot";
 import styles from "./header.module.scss";
@@ -42,6 +45,15 @@ const MenuNavbar = ({ link }) => {
       >
         Hire Talents
       </Link>
+      <Link
+        className={
+          styles["text-header"] +
+          (link === "blogs" ? " " + styles["font-700"] : "")
+        }
+        href="/blogs"
+      >
+        Blogs
+      </Link>
       <Button className={styles["homepage-button-1"]} href="#chat_bot">
         START BUILDING
       </Button>
@@ -50,6 +62,9 @@ const MenuNavbar = ({ link }) => {
 };
 
 const CustomHeader = ({ link, isBack, title, onClick }) => {
+  useEffect(() => {
+    AOS.init();
+  },);
   const router = useRouter();
   const [isShowMenu, setIsShowMenu] = useState(false);
 
@@ -67,7 +82,6 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
     }
     router.back();
   };
-
   return (
     <Header className={styles["custom-header"]}>
       {isBack && (
@@ -121,17 +135,29 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
           </div>
           {link === "solutions" && (
             <div className={styles["custom-header-content"]}>
-              <p className={styles["homepage-big-text"]}>
-                We Build Your <span>Software</span>
-              </p>
-              <p className={styles["homepage-big-text"]}>
-                Using <span>AI</span>
-              </p>
-              <p className={styles["homepage-small-text"]}>
-                We embed many AI solutions in our development process <br></br>
-                to help you build software faster with higher quality
-              </p>
-              <div className={styles["button-group"]}>
+              <div
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-aos-anchor-placement="bottom-bottom"
+              >
+                <p className={styles["homepage-big-text"]}>
+                  We Build Your <span>Software</span>
+                </p>
+                <p className={styles["homepage-big-text"]}>
+                  Using <span>AI</span>
+                </p>
+                <p className={styles["homepage-small-text"]}>
+                  We embed many AI solutions in our development process <br></br>
+                  to help you build software faster with higher quality
+                </p>
+              </div>
+              <div
+                className={styles["button-group"]}
+                data-aos="fade-up"
+                data-aos-delay="500"
+                data-aos-duration="500"
+                data-aos-anchor-placement="bottom-bottom"
+              >
                 <Button
                   className={styles["homepage-button-1"]}
                   href="#chat_bot"
@@ -144,7 +170,14 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
                   </Button>
                 </a>
               </div>
-              <div id="chat_bot" className={styles["chatbot-box"]}>
+              <div
+                className={styles["chatbot-box"]}
+                data-aos="fade-up"
+                data-aos-delay="1000"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+                id ="chat_bot"
+              >
                 <Chatbot />
               </div>
             </div>

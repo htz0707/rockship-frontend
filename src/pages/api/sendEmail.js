@@ -10,14 +10,14 @@ export default async function handler(req, res) {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASS,
+      user: process.env.NEXT_APP_GMAIL_USER,
+      pass: process.env.NEXT_APP_GMAIL_PASS,
     },
   });
 
   try {
     await transporter.sendMail({
-      from: process.env.GMAIL_USER,
+      from: process.env.NEXT_APP_GMAIL_USER,
       to: 'ngoc@rockship.co', // Replace this with the recipient's email address
       subject: 'New Contact Form Submission',
       html: `<p><b>Name:</b> ${name}</p>

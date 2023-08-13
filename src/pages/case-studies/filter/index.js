@@ -89,7 +89,7 @@ const Filter = () => {
                   lsCompanySize.find((item) => item.key === value),
                   "companySize"
                 )
-              }            />
+              } />
             <SelectCustom
               className={styles["select"]}
               value={itemFilter?.market?.value || lsMarket[0].value}

@@ -1,0 +1,295 @@
+.fourth-step-container {
+  .overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 100; /* Specify a stack order in case you're using a different order for other elements */
+  }
+
+  @keyframes donut-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .donut {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 50px;
+    color: white;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    display: inline-block;
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #448db9;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: donut-spin 1.2s linear infinite;
+  }
+
+  @keyframes fade-in {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+  }
+
+  .popup-inform {
+    opacity: 1;
+    animation: fade-in .4s;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 350px;
+    height: 280px;
+    padding: 24px;
+    text-align: center;
+    transform: translate(-50%,-50%) scale(1.2);
+    transition: scale .3s;
+    -ms-transform: translate(-50%,-50%);
+    background-color: #ffffff;
+    border-radius: 6px;
+    color: #4a4a4a;
+
+    .icon-inform {
+      img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+
+    .popup-title {
+      margin-top: 36px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .popup-text {
+      font-size: 14px;
+      margin-top: 14px;
+    }
+
+    .redirect-btn {
+      border: none;
+      margin-top: 20px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .fourth-step-wrap {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    .page-content-left {
+      @media only screen and (max-width: 576px) {
+        width: 100%;
+        height: 230px;
+      }
+      overflow-y: auto;
+      width: 582px;
+      height: 500px;
+      padding: 30px 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+
+      .list-tab {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        border-bottom: 2px solid #448db9;
+        color: #000000;
+        @media only screen and (max-width: 576px) {
+          font-size: 9.5px;
+        }
+        .tab-item {
+          width: 170px;
+          line-height: 37.7px;
+          text-align: center;
+          height: 37.7px;
+          color: #448db9;
+        }
+
+        .active {
+          border-top-left-radius: 6.5px;
+          border-top-right-radius: 6.5px; 
+          background-color: #448db9;
+          color: #ffffff;
+        }
+      }
+
+      .list-items-of-tab {
+        margin-top: 24px;
+
+        .title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          font-size: 14px;
+          font-weight: bold;
+
+          .title-left {
+            color: #4a4a4a;
+            @media only screen and (max-width: 576px) {
+              font-size: 9.5px;
+            }
+          }
+
+          .change-button {
+            @media only screen and (max-width: 576px) {
+              font-size: 9.5px;
+            }
+            color: #448db9;
+            cursor: pointer;
+          }
+        }
+
+        .list-similar-app {
+          display: flex;
+          flex-direction: column;
+          height: 350px;
+          overflow-y: auto;
+        }
+
+        .list-feature {
+          display: flex;
+          flex-direction: row;
+          margin-top: 20px;
+          flex-wrap: wrap;
+          max-height: 350px;
+          overflow-y: auto;
+
+          .feature-name {
+            flex: 0 0 50%;
+            font-size: 14px;
+            @media only screen and (max-width: 576px) {
+              font-size: 11px;
+              margin-top: 15px;
+            }
+            color: #4a4a4a;
+            margin-top: 30px;
+            &:first-child, &:nth-child(2) {
+              margin-top: 0;
+            }      
+          }
+
+        }
+      }
+    }
+
+    .page-content-right {
+      padding: 30px 20px;
+      margin-left: 42px;
+      @media only screen and (max-width: 576px) {
+        margin-left: 0;
+        width: 100%;
+      }
+      .title {
+        color: #4a4a4a;
+        font-size: 20px;
+        @media only screen and (max-width: 576px) {
+          font-size: 11px;
+        }
+      }
+
+      .client-info {
+        margin-top: 28px;
+
+        .label-title:not(:first-child) {
+          margin-top: 16px;
+        }
+
+        .label-title {
+          margin-bottom: 6px;
+          font-size: 14px;
+          @media only screen and (max-width: 576px) {
+            font-size: 9px;
+          }
+          font-weight: 600;
+          color: #4a4a4a;
+        }
+
+        .input-project {
+          input {
+            @media only screen and (max-width: 576px) {
+              width: 100%;
+            }
+            width: 579px;
+            height: 40px;
+            border-radius: 6px;
+            background-color: #eaf7ff;
+            padding: 8px;
+            border: none;
+          }
+        }
+
+        .submit-btn {
+          width: 127px;
+          height: 35px;
+          color: #ffffff;
+          padding: 0;
+          margin-top: 38px;
+          float: right;
+          line-height: 30px;
+          text-align: center;
+          border-radius: 24px;
+          box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+          background-image: linear-gradient(255deg, #79c1dd, #448db9);
+          border: none;
+          cursor: pointer;
+          @media only screen and (max-width: 576px) {
+            font-size: 11px;
+            height: 30px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// .overlay {
+//   position: fixed; /* Sit on top of the page content */
+//   display: block; /* Hidden by default */
+//   width: 100%; /* Full width (cover the whole page) */
+//   height: 100%; /* Full height (cover the whole page) */
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   bottom: 0;
+//   background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+//   z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+//   cursor: pointer;
+
+//   @keyframes donut-spin {
+//     0% {
+//       transform: rotate(0deg);
+//     }
+//     100% {
+//       transform: rotate(360deg);
+//     }
+//   }
+//   .donut {
+//     display: inline-block;
+//     border: 4px solid rgba(0, 0, 0, 0.1);
+//     border-left-color: #7983ff;
+//     border-radius: 50%;
+//     width: 30px;
+//     height: 30px;
+//     animation: donut-spin 1.2s linear infinite;
+//   }
+// }
