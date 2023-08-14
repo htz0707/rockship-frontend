@@ -108,6 +108,7 @@ const buildYourAI = () => {
         <h3> Build Your AI with Rockship</h3>
         <p className = {styles["sub-text"]}> We customize solutions from the cutting edge AI technology to solve your business requirements.</p>
         <Button 
+            onClick={() => window.location = "https://calendly.com/rockship-co/30min-free-consulting"}
             className = {styles['homepage-button-1']}>
             Talk with our experts 
             <img
