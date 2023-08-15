@@ -1,6 +1,6 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import { Button, Col, Input, Form, Row, Modal } from "antd";
+import React, { useState, useEffect } from "react";
+import { Button, Col, Row } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
