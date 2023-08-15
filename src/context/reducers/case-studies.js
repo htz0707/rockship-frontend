@@ -787,7 +787,7 @@ const initialState = {
       ],
       market: "Singapore",
       industry: "Finance",
-      features: "9",
+      features: 9,
       companySize: "1-10",
       highlights: [
         {
