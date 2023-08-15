@@ -1,24 +1,33 @@
 import * as React from "react";
-import { Modal, Button, Input, Form } from "antd";
+import { Modal, Button, Input, Form, Spin } from "antd";
 import styles from "./form.module.scss";
 
 const FormModal = ({ open, setOpen }) => {
   const [step, setStep] = React.useState(0);
+  const [loading, setLoading] = React.useState(false);
+  const [errors, setErrors] = React.useState(false);
 
   const onFinish = async (values) => {
+    setErrors(false);
+    setLoading(true);
     try {
-      const response = await fetch('/api/sendEmail', {
-        method: 'POST',
+      const response = await fetch("/api/sendEmail", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(values),
       });
       const data = await response.json();
-      if (data.message !== 'Failed to send email') setStep(1);
+      if (data.message !== "Failed to send email") {
+        setErrors(false);
+        setStep(1);
+      } else setErrors(true);
     } catch (error) {
-      console.error('Error:', error);
+      setErrors(true);
+      console.error("Error:", error);
     }
+    setLoading(false);
   };
 
   return (
@@ -32,53 +41,49 @@ const FormModal = ({ open, setOpen }) => {
       width={480}
       centered
     >
-      {step === 0 ?
-        <div className={styles['form-modal']}>
+      {step === 0 ? (
+        <div className={styles["form-modal"]}>
           <h2>CONTACT WITH US</h2>
-          <Form
-            onFinish={onFinish}
-            autoComplete="off"
-          >
+          <Form onFinish={onFinish} autoComplete="off">
             <Form.Item
               name="name"
               rules={[
                 {
                   required: true,
-                  message: 'Please input your name!',
-
+                  message: "Please input your name!",
                 },
               ]}
             >
-              <Input
-                placeholder="Your name"
-              />
+              <Input placeholder="Your name" />
             </Form.Item>
             <Form.Item
               name="email"
               rules={[
                 {
                   required: true,
-                  message: 'Please input your email!',
+                  message: "Please input your email!",
                 },
                 {
                   type: "email",
-                  message: 'Please input a valid email!'
-                }
+                  message: "Please input a valid email!",
+                },
               ]}
             >
               <Input placeholder="Work email" />
             </Form.Item>
 
-            <Button htmlType="submit">Submit</Button>
+            <Button htmlType="submit">{loading ? <Spin /> : "Submit"}</Button>
+            {errors && (
+              <p className={styles["errors-msg"]}>Something went wrong!</p>
+            )}
           </Form>
-        </div> :
+        </div>
+      ) : (
         <div className={styles["confirm-modal"]}>
           <img src="/verify-icon.svg" alt="verify" />
           <h3>THANK YOU!</h3>
           <div>
-            <p>
-              Thank you for your inquiry! We will get back to you soon
-            </p>
+            <p>Thank you for your inquiry! We will get back to you soon</p>
           </div>
           <Button
             onClick={() => {
@@ -89,9 +94,9 @@ const FormModal = ({ open, setOpen }) => {
             Done!
           </Button>
         </div>
-      }
+      )}
     </Modal>
-  )
+  );
 };
 
 export default FormModal;
