@@ -20,12 +20,12 @@ const MenuNavbar = ({ link }) => {
       <Link
         className={
           styles["text-header"] +
-          (link === "solutions" ? " " + styles["font-700"] : "")
+          (link === "build-your-ai" ? " " + styles["font-700"] : "")
         }
-        href="/"
+        href="/build-your-ai"
         scroll={false}
       >
-        Our Solutions
+        Build Your AI
       </Link>
       <Link
         className={
