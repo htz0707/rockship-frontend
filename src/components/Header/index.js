@@ -4,9 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Layout, Button, Drawer } from "antd";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 import Chatbot from "../ChatBot";
 import styles from "./header.module.scss";
@@ -24,6 +23,7 @@ const MenuNavbar = ({ link }) => {
         }
         href="/build-your-ai"
         scroll={false}
+        id="header-build-your-ai"
       >
         Build Your AI
       </Link>
@@ -33,15 +33,17 @@ const MenuNavbar = ({ link }) => {
           (link === "studies" ? " " + styles["font-700"] : "")
         }
         href="/case-studies"
+        id="header-case-studies"
       >
         Case Studies
       </Link>
       <Link
         className={
           styles["text-header"] +
-          (link === "talents" ? " " + styles["font-700"] : "")
+          (link === "talent-as-a-service" || link === "talents" ? " " + styles["font-700"] : "")
         }
-        href="/talents"
+        href="/talent-as-a-service"
+        id="header-talent-as-service"
       >
         Hire Talents
       </Link>
@@ -51,10 +53,15 @@ const MenuNavbar = ({ link }) => {
           (link === "blogs" ? " " + styles["font-700"] : "")
         }
         href="/blogs"
+        id="header-blogs"
       >
         Blogs
       </Link>
-      <Button className={styles["homepage-button-1"]} href="#chat_bot">
+      <Button
+        id="button-start-building-mobile"
+        className={styles["homepage-button-1"]}
+        href="#chat_bot"
+      >
         START BUILDING
       </Button>
     </div>
@@ -64,7 +71,7 @@ const MenuNavbar = ({ link }) => {
 const CustomHeader = ({ link, isBack, title, onClick }) => {
   useEffect(() => {
     AOS.init();
-  },);
+  });
   const router = useRouter();
   const [isShowMenu, setIsShowMenu] = useState(false);
 
@@ -147,7 +154,8 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
                   Using <span>AI</span>
                 </p>
                 <p className={styles["homepage-small-text"]}>
-                  We embed many AI solutions in our development process <br></br>
+                  We embed many AI solutions in our development process{" "}
+                  <br></br>
                   to help you build software faster with higher quality
                 </p>
               </div>
@@ -159,13 +167,17 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
                 data-aos-anchor-placement="bottom-bottom"
               >
                 <Button
+                  id="banner-start-building-web"
                   className={styles["homepage-button-1"]}
                   href="#chat_bot"
                 >
                   START BUILDING
                 </Button>
                 <a href="https://calendly.com/rockship-co/30min-free-consulting">
-                  <Button className={styles["homepage-button-2"]}>
+                  <Button
+                    className={styles["homepage-button-2"]}
+                    id="banner-book-a-call"
+                  >
                     Book a call
                   </Button>
                 </a>
@@ -176,7 +188,7 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
                 data-aos-delay="1000"
                 data-aos-duration="500"
                 data-aos-anchor-placement="top-bottom"
-                id ="chat_bot"
+                id="chat_bot"
               >
                 <Chatbot />
               </div>
