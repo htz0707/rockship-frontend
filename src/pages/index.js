@@ -182,6 +182,7 @@ const HomePage = () => {
                   data-aos-delay="100"
                   data-aos-duration="500"
                   data-aos-anchor-placement="top-bottom"
+                  id="homepage-browse-modules"
                 >
                   BROWSE OUR MODULES
                   <img
@@ -245,13 +246,14 @@ const HomePage = () => {
                   </p>
                 </div>
                 <Button
-                  onClick={() => router.push("/talents")}
+                  onClick={() => router.push("/talent-as-a-service")}
                   className={
                     styles["homepage-button-1"] + " " + styles["custom-button"]
                   }
                   data-aos="fade-up"
                   data-aos-duration="500"
                   data-aos-anchor-placement="bottom-bottom"
+                  id="homepage-talent-as-service"
                 >
                   HIRE TALENTS
                   <img
@@ -304,6 +306,7 @@ const HomePage = () => {
                   data-aos-duration="500"
                   data-aos-anchor-placement="center-bottom"
                   onClick={() => router.push("/build-your-ai")}
+                  id="homepage-build-your-ai"
                 >
                   BUILD YOUR AI
                   <img
@@ -338,7 +341,7 @@ const HomePage = () => {
                 data-aos-anchor-placement="top-bottom"
               >
                 WE BUILD FASTER WITH OUR <br></br>
-                AI & AUTOMATION
+                AI & AUTOMATION!
               </p>
             </Col>
             <Col xs={24} md={8} className={styles["custom-col"]}>
@@ -381,6 +384,7 @@ const HomePage = () => {
                 data-aos-delay="200"
                 data-aos-duration="500"
                 data-aos-anchor-placement="top-bottom"
+                id="homepage-contact-us"
               >
                 CONTACT US
               </Button>
@@ -388,27 +392,22 @@ const HomePage = () => {
           </Row>
         </div>
         <div className={styles["box-7"]}>
+          <div
+            data-aos="fade-up"
+            data-aos-duration="500"
+            data-aos-anchor-placement="top-bottom"
+            className={styles["header-testimony"]}
+          >
+            <p className={styles["text-title"] + " " + styles["title-1"]}>
+              Real Stories from
+            </p>
+
+            <p className={styles["text-title"] + " " + styles["title-2"]}>
+              Real Customers
+            </p>
+          </div>
           <Row>
             <Col className={styles["text-start"]} xs={24} md={12}>
-              <div
-                data-aos="fade-up"
-                data-aos-duration="500"
-                data-aos-anchor-placement="top-bottom"
-              >
-                <p className={styles["text-title"] + " " + styles["title-1"]}>
-                  Real Stories from
-                </p>
-                
-                <p className={styles["text-title"] + " " + styles["title-2"]}>
-                  Real Customers
-                </p>
-
-                <p className={styles["content"]}>
-                  Get inspired by these stories.
-                </p>
-
-              </div>
-
               <div
                 className={styles["text-end"]}
                 data-aos="fade-up"
@@ -452,11 +451,7 @@ const HomePage = () => {
                 </div>
               </div>
             </Col>
-            <Col
-              className={styles["text-start"] + " " + styles["mt-2"]}
-              xs={24}
-              md={12}
-            >
+            <Col className={styles["text-start"] + " " + styles["mt-2"]} xs={24} md={12}>
               <div
                 className={styles["rovo-testimony"]}
                 data-aos="fade-up"

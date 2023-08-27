@@ -15,9 +15,18 @@
       @content;
     }
   }
-  
+  @mixin big-tablet {
+    @include Responsive($LG) {
+      @content;
+    }
+  }
   @mixin desktop {
     @include Responsive($MD) {
+      @content;
+    }
+  }
+  @mixin big-desktop {
+    @include Responsive($XL) {
       @content;
     }
   }

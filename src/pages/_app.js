@@ -5,7 +5,7 @@ import * as amplitude from "@amplitude/analytics-browser";
 
 import "@/styles/common/global.scss";
 import { StoreProvider } from "@/context/StoreContext";
-
+const GTM_ID = "GTM-TLX6C646";
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     amplitude.init(process.env.NEXT_APP_API_AMPLITUDE_KEY);
@@ -23,11 +23,26 @@ to help you build software faster with higher quality."
         <link rel="icon" href="/rockship-symbol.svg" id="light-fav-icon" />
         <title>Rockship | AI-Powered Software Development</title>
       </Head>
+      <Script id="google-tag-manager" strategy="afterInteractive">
+        {`
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','${GTM_ID}');
+        `}
+      </Script>
+
       <StoreProvider>
         <Component {...pageProps} />
       </StoreProvider>
+      <noscript
+        dangerouslySetInnerHTML={{
+          __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display: none; visibility: hidden;"></iframe>`,
+        }}
+      />
 
-      <Script
+      {/* <Script
         id="hs-script-loader"
         src="//js.hs-scripts.com/40126632.js"
       ></Script>
@@ -39,7 +54,7 @@ to help you build software faster with higher quality."
 	          gtag('js', new Date());
 	          gtag('config', 'G-80RZQ4Q2TE');
 	        `}
-      </Script>
+      </Script> */}
     </>
   );
 };

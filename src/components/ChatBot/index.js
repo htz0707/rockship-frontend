@@ -3,6 +3,8 @@ import Image from "next/image";
 import { Input, Button, Space, Modal } from "antd";
 import styles from "./chatbot.module.scss";
 import TypewriterEffect from "../TypewriterEffect";
+import { newSession } from "@/pages/api/ChatbotAPI";
+import { v4 as uuidv4 } from "uuid";
 
 const FEATURES = [
   "Social Media App",
@@ -50,7 +52,29 @@ const Chatbot = () => {
     setInputValue("");
   };
 
+  const handleSetUUID = () => {
+    if (!localStorage.getItem("user_id")) {
+      localStorage.setItem("user_id", uuidv4());
+    }
+    if (!localStorage.getItem("session_id")) {
+      localStorage.setItem("session_id", uuidv4());
+    }
+  };
+
+  const handleNewSession = async () => {
+    try {
+      await newSession({
+        user_id: localStorage.getItem("user_id"),
+        session_id: localStorage.getItem("session_id"),
+        app_type: 0,
+      });
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const handleSelectFeature = (message) => {
+    handleNewSession();
     setSelectedFeature(message);
     setDisabled(false);
     handleSendMessage(ROLES[1], message);
@@ -93,6 +117,7 @@ const Chatbot = () => {
   };
 
   React.useEffect(() => {
+    handleSetUUID();
     setTimeout(() => {
       setFeatureList(FEATURES);
     }, 3200);
@@ -119,7 +144,8 @@ const Chatbot = () => {
       </div>
       <div className={styles["chat-window"]} ref={containerRef}>
         <div className={styles["description"]}>
-          Share with Rockship AI your app idea and we will propose you a solution to build your app.
+          Share with Rockship AI your app idea and we will propose you a
+          solution to build your app.
         </div>
         <div className={styles["bot-message"]}>
           <TypewriterEffect text={BOT_QUESTIONS[0]} speed={40} />

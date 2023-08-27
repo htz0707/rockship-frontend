@@ -15,8 +15,9 @@ const buildYourAI = () => {
                             <h3> Build Your AI with Rockship</h3>
                             <p className={styles["sub-text"]}> We customize solutions from the cutting edge AI technology to solve your business requirements.</p>
                             <Button
-                                onClick={() => window.open("https://calendly.com/rockship-co/30min-free-consulting","_blank")}
+                                onClick={() => window.open("https://calendly.com/rockship-co/30min-free-consulting", "_blank")}
                                 className={styles['homepage-button-1']}
+                                id="buildai-call-book-a-call"
                             >
                                 Talk with our experts
                                 <img
@@ -46,7 +47,7 @@ const buildYourAI = () => {
                         </div>
                     </div>
                     <img
-                        src="/key-info-extract.svg"
+                        src="/key-info-extract.png"
                         alt="key-info-extract"
                     />
                 </div>
@@ -57,7 +58,8 @@ const buildYourAI = () => {
                             <div className={styles["contents"]}>
                                 <img src="/tick.svg" alt="tick" />
                                 <p>
-                                    Ingest your company specific knowledge as the context to LLM to automate customer service tasks or provide consultation.                  </p>
+                                    Ingest your company specific knowledge as context to LLM to automate customer service tasks or provide consultation.
+                                </p>
                             </div>
                             <div className={styles["contents"]}>
                                 <img src="/tick.svg" alt="tick" />
@@ -74,7 +76,7 @@ const buildYourAI = () => {
                         </Col>
                         <Col xs={{ span: 24, order: 2 }} sm={{ span: 12, order: 1 }}>
                             <img
-                                src="/ai-chat-bot.svg"
+                                src="/ai-chat-visualizer.png"
                                 alt="ai-chat-bot"
                                 className={styles["col-image"]}
                             />
@@ -82,32 +84,32 @@ const buildYourAI = () => {
                     </Row>
                 </div>
                 <div className={styles["box-4"]}>
-                        <Row gutter={[24, 24]} className={styles["box-GenAI"]}>
-                            <Col xs={24} sm={24}>
-                                <h3>GenAI For Content Creation</h3>
-                                <p>Rockship helps companies build full-fledged content creation pipeline from research, ideation to publication.
-                                    Real data and insights collected from running the content campaign can improve the content research project.
-                                    Our system also support various formats of the content to be suitable to be listed on the communities
-                                    in various social media platforms.
-                                </p>
-                            </Col>
-                            <Col xs={0} sm={24}>
-                                <img
-                                    src="/genai-content-creation.svg"
-                                    alt="genai-content-creation"
-                                />
-                            </Col>
-                            <Col xs={24} sm={0}>
-                                <img
-                                    src="/genAI-mobile.png"
-                                    alt="genai-content-creation"
-                                />
-                            </Col>
-                        </Row>
+                    <Row gutter={[24, 24]} className={styles["box-GenAI"]}>
+                        <Col xs={24} sm={24}>
+                            <h3>GenAI For Content Creation</h3>
+                            <p>Rockship helps companies build full-fledged content creation pipeline from research, ideation to publication.
+                                Real data and insights collected from running the content campaign can improve the content research project.
+                                Our system also support various formats of the content to be suitable to be listed on the communities
+                                in various social media platforms.
+                            </p>
+                        </Col>
+                        <Col xs={0} sm={24}>
+                            <img
+                                src="/genai-desktop.png"
+                                alt="genai-content-creation"
+                            />
+                        </Col>
+                        <Col xs={24} sm={0}>
+                            <img
+                                src="/genAI-mobile.png"
+                                alt="genai-content-creation"
+                            />
+                        </Col>
+                    </Row>
                     <div className={styles["box-AI-Stack"]}>
                         <h3>Rockship Unified AI Stack</h3>
                         <img
-                            src="/unified-ai-stack.svg"
+                            src="/ai-stack.png"
                             alt="unified-ai-stack"
                         />
                     </div>
@@ -180,7 +182,7 @@ const buildYourAI = () => {
                                     alt='ngoc-tran'
                                 />
                             </Col>
-                            <Col xs={{ order: 3, span: 12 }} sm={{ order: 1, span: 8}} lg={{ order: 1, span: 8 }} className={styles["consultant-info"]}>
+                            <Col xs={{ order: 3, span: 12 }} sm={{ order: 1, span: 8 }} lg={{ order: 1, span: 8 }} className={styles["consultant-info"]}>
                                 <p className={styles["name"]}>Ngoc Tran</p>
                                 <p className={styles["position"]}>CEO Rockship</p>
                                 <p className={styles["description"]}>11 Years Of Experience</p>
