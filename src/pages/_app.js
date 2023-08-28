@@ -5,7 +5,7 @@ import * as amplitude from "@amplitude/analytics-browser";
 
 import "@/styles/common/global.scss";
 import { StoreProvider } from "@/context/StoreContext";
-const GTM_ID = "GTM-TLX6C646";
+const GTM_ID = "GTM-WZFWGP42";
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     amplitude.init(process.env.NEXT_APP_API_AMPLITUDE_KEY);

@@ -58,7 +58,7 @@ const MenuNavbar = ({ link }) => {
         Blogs
       </Link>
       <Button
-        id="button-start-building-mobile"
+        id="banner-start-building-mobile"
         className={styles["homepage-button-1"]}
         href="#chat_bot"
       >
