@@ -122,6 +122,7 @@ export const getStaticProps = async ({ params }) => {
     props: {
       post,
       posts: posts.length > 0 ? posts.slice(0, 3) : allPosts.slice(0, 3),
+      overwriteMetaTag: true,
     },
     revalidate: 60,
   };

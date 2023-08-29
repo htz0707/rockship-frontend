@@ -125,6 +125,15 @@
   a {
     word-wrap: break-word;
   }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    border: 1px solid #ccc;
+    padding: 5px;
+  }
   @include mobile {
     padding: 16px 17px;
   }

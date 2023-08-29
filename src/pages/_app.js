@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import Head from "next/head";
-import Script from "next/script";
-import * as amplitude from "@amplitude/analytics-browser";
+import { useEffect } from 'react';
+import Head from 'next/head';
+import Script from 'next/script';
+import * as amplitude from '@amplitude/analytics-browser';
 
-import "@/styles/common/global.scss";
-import { StoreProvider } from "@/context/StoreContext";
-const GTM_ID = "GTM-WZFWGP42";
+import '@/styles/common/global.scss';
+import { StoreProvider } from '@/context/StoreContext';
+const GTM_ID = 'GTM-WZFWGP42';
 const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     amplitude.init(process.env.NEXT_APP_API_AMPLITUDE_KEY);
@@ -14,7 +14,9 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <>
       <Head>
-        <meta property="og:image" content="/rs_fb_thumb.png" />
+        {pageProps.overwriteMetaTag !== true && (
+          <meta property="og:image" content="/rs_fb_thumb.png" />
+        )}
         <meta
           name="description"
           content="Rockship embed many AI solutions in our development process
