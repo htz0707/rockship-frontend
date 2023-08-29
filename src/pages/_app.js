@@ -41,7 +41,14 @@ to help you build software faster with higher quality."
           __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display: none; visibility: hidden;"></iframe>`,
         }}
       />
-
+<Script async src="https://www.googletagmanager.com/gtag/js?id=G-80RZQ4Q2TE"></Script>
+<Script>{`
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-80RZQ4Q2TE');
+  `}
+</Script>
       {/* <Script
         id="hs-script-loader"
         src="//js.hs-scripts.com/40126632.js"

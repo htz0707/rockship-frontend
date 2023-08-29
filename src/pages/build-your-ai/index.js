@@ -58,7 +58,7 @@ const buildYourAI = () => {
                             <div className={styles["contents"]}>
                                 <img src="/tick.svg" alt="tick" />
                                 <p>
-                                    Ingest your company specific knowledge as context to LLM to automate customer service tasks or provide consultation.
+                                    Ingest your company specific knowledge as the context to LLM to automate customer service tasks or provide consultation.
                                 </p>
                             </div>
                             <div className={styles["contents"]}>
