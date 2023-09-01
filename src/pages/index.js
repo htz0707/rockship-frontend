@@ -370,7 +370,7 @@ const HomePage = () => {
               >
                 Message</p>
               <textarea
-                placeholder="What are you say?"
+                placeholder="Share with us your awesome app concept!"
                 data-aos="fade-up"
                 data-aos-delay="150"
                 data-aos-duration="500"

@@ -13,7 +13,7 @@ const TalentAsAService = () => {
                     <Row gutter={[24, 24]}>
                         <Col xs={24} sm={12} className={styles["box-1-left"]}>
                             <p className={styles["grey-text"]}> ROCKSHIP STAFFING SERVICE PAGE </p>
-                            <h3> Search for skilled engineers globally</h3>
+                            <p className={styles["key-message"]}> Search for skilled engineers globally</p>
                             <div className={styles["contents-box"]}>
                                 <div className={styles["contents"]}>
                                     <img src="/tick.svg" alt="tick" />
@@ -22,8 +22,8 @@ const TalentAsAService = () => {
                                     </p>
                                 </div>
                                 <div className={styles["contents"]}>
-                                    <ul><li> We have screened the on-demand staffs rigorously so that
-                                        it is smooth to work directly with them.</li></ul>
+                                    <ul>We have screened the on-demand staffs rigorously so that
+                                        it is smooth to work directly with them.</ul>
                                 </div>
 
 
@@ -83,12 +83,13 @@ const TalentAsAService = () => {
                         </Col>
                         </Col>
                         
-                        <Col xs={24} sm={12}>
+                        <Col xs={24} sm={12} className={styles["col"]}>
+                            <div className={styles["robot-hands"]}>
                             <img
                                 src="/global-engineers-graph.png"
                                 alt="robot-hands"
-                                className={styles["robot-hands"]}
                             />
+                            </div>
                         </Col>
                     </Row>
                 </div>
