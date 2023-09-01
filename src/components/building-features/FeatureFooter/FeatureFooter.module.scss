@@ -96,7 +96,10 @@
   align-items: center;
   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
-
+  z-index: 1000;
+  @media only screen and (max-width: 576px) {
+    padding: 10px 20px;
+  }
   .btn-next {
     width: 127px;
     height: 35px;

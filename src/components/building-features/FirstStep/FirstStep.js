@@ -172,6 +172,7 @@ const FirstStep = ({
             slidesToShow: 2,
             slidesToScroll: 2,
             initialSlide: 2,
+            dots: true,
           },
         },
         {
@@ -179,21 +180,24 @@ const FirstStep = ({
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
+            dots: true,
           },
         },
       ],
     };
     return (
-      <Slider {...settings}>
-        {listTech?.map((item) => (
-          <TechName
-            key={item.id}
-            item={item}
-            selectTech={() => selectTech(item)}
-            selectedTech={selectedTech}
-          />
-        ))}
-      </Slider>
+      <div className={styles["list-tech-name-mobile"]}>
+        <Slider {...settings}>
+          {listTech?.map((item) => (
+            <TechName
+              key={item.id}
+              item={item}
+              selectTech={() => selectTech(item)}
+              selectedTech={selectedTech}
+            />
+          ))}
+        </Slider>
+      </div>
     );
   };
 

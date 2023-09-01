@@ -1,11 +1,10 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { Button, Col, Row, Input } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import styles from "@/styles/index.module.scss";
-import useTrackingBrowser from "@/hooks/useTrackingBrowser";
 import { useSelector, useDispatch } from "@/context";
 import { setItemCaseStudy } from "@/context/actions/case-studies";
 
@@ -22,11 +21,6 @@ const HomePage = () => {
     dispatch(setItemCaseStudy(item));
     localStorage.setItem('itemDetail', JSON.stringify(item))
   };
-
-  useEffect(() => {
-    useTrackingBrowser("HomePage");
-  }, []);
-
 
   return (
     <CustomLayout link={"solutions"}>

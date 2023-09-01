@@ -1,16 +1,11 @@
-import { useEffect } from 'react';
-import Head from 'next/head';
-import Script from 'next/script';
-import * as amplitude from '@amplitude/analytics-browser';
+import Head from "next/head";
+import Script from "next/script";
 
-import '@/styles/common/global.scss';
-import { StoreProvider } from '@/context/StoreContext';
-const GTM_ID = 'GTM-WZFWGP42';
+import { StoreProvider } from "@/context/StoreContext";
+const GTM_ID = "GTM-WZFWGP42";
+import "@/styles/common/global.scss";
+
 const MyApp = ({ Component, pageProps }) => {
-  useEffect(() => {
-    amplitude.init(process.env.NEXT_APP_API_AMPLITUDE_KEY);
-  }, []);
-
   return (
     <>
       <Head>
@@ -43,14 +38,18 @@ to help you build software faster with higher quality."
           __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=${GTM_ID}" height="0" width="0" style="display: none; visibility: hidden;"></iframe>`,
         }}
       />
-<Script async src="https://www.googletagmanager.com/gtag/js?id=G-80RZQ4Q2TE"></Script>
-<Script>{`
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-80RZQ4Q2TE"
+      ></Script>
+      <Script>
+        {`
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-80RZQ4Q2TE');
   `}
-</Script>
+      </Script>
       {/* <Script
         id="hs-script-loader"
         src="//js.hs-scripts.com/40126632.js"

@@ -1,5 +1,4 @@
 .first-step-container {
-
   .first-step-wrap {
     .select-text {
       color: #4a4a4a;
@@ -25,41 +24,38 @@
           color: #9b9b9b;
           border-radius: 10px;
           background-image: linear-gradient(241deg, #eeeeee, #d8d8d8);
-  
+
           .tech-title {
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 4px;
           }
-  
+
           .tech-description {
             font-size: 11px;
             line-height: 1.73;
           }
         }
-  
+
         .is-active {
           background-image: linear-gradient(241deg, #86bfe7, #448db9);
           color: #ffffff;
         }
       }
     }
-
-    .list-tech-name {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
+    .list-tech-name-mobile {
+      gap: 10px;
       .tech-container {
         text-transform: capitalize;
         cursor: pointer;
-        width: 197px;
+        width: auto;
         height: 107px;
         padding: 16px;
+        transition: all 0.3s linear;
         color: #9b9b9b;
         border-radius: 10px;
+        margin-right: 20px;
         background-image: linear-gradient(241deg, #eeeeee, #d8d8d8);
-
         .tech-title {
           font-size: 14px;
           font-weight: bold;
@@ -69,6 +65,49 @@
         .tech-description {
           font-size: 11px;
           line-height: 1.73;
+        }
+      }
+      .is-active {
+        background-image: linear-gradient(241deg, #86bfe7, #448db9);
+        color: #ffffff;
+      }
+      
+    }
+    .list-tech-name {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .tech-container {
+        text-transform: capitalize;
+        cursor: pointer;
+        width: 197px;
+        height: 107px;
+        padding: 16px;
+        color: #9b9b9b;
+        border-radius: 10px;
+        margin-right: 20px;
+        transition: all 0.3s linear;
+        background-image: linear-gradient(241deg, #eeeeee, #d8d8d8);
+
+        .tech-title {
+          font-size: 14px;
+          font-weight: bold;
+          margin-bottom: 4px;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .tech-description {
+          font-size: 11px;
+          line-height: 1.73;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
 
@@ -84,7 +123,7 @@
           .carousel-control-next {
             width: 8%;
             .carousel-control-next-icon {
-              background-image: url('/images/arrow-right@2x.png')
+              background-image: url("/images/arrow-right@2x.png");
             }
 
             span {
@@ -101,7 +140,7 @@
           .carousel-control-prev {
             width: 8%;
             .carousel-control-prev-icon {
-              background-image: url('/images/arrow-left@2x.png')
+              background-image: url("/images/arrow-left@2x.png");
             }
 
             span {
@@ -119,7 +158,6 @@
             margin: 0 auto;
           }
         }
-        
       }
     }
 
@@ -139,15 +177,15 @@
             display: none;
           }
           position: relative;
-          height:36px;
-          
+          height: 36px;
+
           img {
             width: 14px;
-            height: 14px;;
+            height: 14px;
             position: absolute;
-            top:50%;
+            top: 50%;
             transform: translateY(-45%);
-            left:16px;
+            left: 16px;
           }
           input {
             height: 36px;
@@ -161,25 +199,25 @@
             padding: 6px 4px 6px 42px;
             z-index: 1;
 
-            &::placeholder{
-              color:#9b9b9b;
+            &::placeholder {
+              color: #9b9b9b;
               font-weight: 300;
               font-size: 14px;
             }
           }
 
-          .auto-complete{
+          .auto-complete {
             background: #fff;
-            border:1px solid rgba(black, 0.08);
+            border: 1px solid rgba(black, 0.08);
             z-index: -1;
             max-height: 200px;
             overflow-y: auto;
-            & .list-group-item{
+            & .list-group-item {
               border: none;
               max-height: 36px;
               line-height: 36px;
               padding: 0 14px;
-              &:hover{
+              &:hover {
                 background: #eaf7ff;
                 cursor: pointer;
               }
@@ -191,6 +229,12 @@
       .list-similar-apps {
         flex-wrap: wrap;
         display: flex;
+        @media only screen and (max-width: 768px) {
+          gap: 12px;
+        }
+        @media only screen and (max-width: 576px) {
+          gap: 12px;
+        }
       }
     }
   }
