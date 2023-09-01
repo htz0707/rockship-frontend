@@ -310,7 +310,7 @@ const SecondStep = ({
                       autoComplete="off"
                     />
                     {valueSearch ? (
-                      <div className="clear" onClick={() => setValueSearch("")}>
+                      <div className={styles["clear"]} onClick={() => setValueSearch("")}>
                         <span>x</span>
                       </div>
                     ) : null}

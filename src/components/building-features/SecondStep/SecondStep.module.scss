@@ -13,6 +13,7 @@
         align-items: center;
         border-left: 1px solid #eee;
         border-right: 1px solid #eee;
+  
         .search-box {
           position: relative;
           .clear {
@@ -281,10 +282,10 @@
         padding: 24px 0;
         display: flex;
         justify-content: space-between;
-        border-left: 1px solid #eee;
-        border-right: 1px solid #eee;
         .search-box {
+          display: flex;
           position: relative;
+          align-items: center;
           .clear {
             position: absolute;
             display: block;

@@ -10,8 +10,7 @@ import FourthStep from "@/components/building-features/FourthStep/FourthStep";
 import styles from "@/styles/features.module.scss";
 import CustomLayout from "@/components/Layout";
 import FeatureFooter from "@/components/building-features/FeatureFooter/FeatureFooter";
-
-let isMobile = false;
+import useIsResponsive from "@/hooks/useIsResponsive";
 let featuresLocal = [];
 let similarAppsLocal = [];
 
@@ -236,9 +235,7 @@ const features = [
         feature: "On-demand videos",
         checked: false,
         img_mobile: "/images/featTemplates/mobile/mvpl_ondeman_video.png",
-        img_web: isMobile
-          ? "/images/webres_@1xMVPL-on_demand_video.png"
-          : "/images/featTemplates/web/mvpl_on-demand-video.png",
+        img_web: "/images/featTemplates/web/mvpl_on-demand-video.png",
       },
       {
         id: 4,
@@ -308,9 +305,7 @@ const features = [
         feature: "Crypto exchange",
         checked: false,
         img_mobile: "/images/featTemplates/mobile/finance_crypto-exchange.png",
-        img_web: isMobile
-          ? "/images/featTemplates/web/webres_Finance-Crypto-exchange@0.5x.png"
-          : "/images/featTemplates/web/finance _crypto_exchange.png",
+        img_web: "/images/featTemplates/web/finance _crypto_exchange.png",
       },
       {
         id: 2,
@@ -468,7 +463,7 @@ const Features = () => {
   const [selectedSimilarTechTitle, setSelectedSimilarTechTitle] =
     useState("fintech");
   const [isGoThroughSecondStep, setIsGoThroughSecondStep] = useState(false);
-
+  const { isMobile } = useIsResponsive();
 
   const onClickNext = () => {
     if (currentStep === 1) {
@@ -486,7 +481,13 @@ const Features = () => {
         JSON.stringify(featuresUpdateArr)
       );
       if (isMobile) {
-        setCurrentStep(2.5);
+        if (listFeaturesSelected.length === 0) {
+          alert("Please select feature(s)");
+          setCurrentStep(2.5);
+        } else {
+          setCurrentStep(currentStep + 0.5);
+          setIsGoThroughSecondStep(true);
+        }
       } else {
         if (listFeaturesSelected.length === 0) {
           alert("Please select feature(s)");
@@ -527,16 +528,6 @@ const Features = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       featuresLocal = JSON.parse(localStorage.getItem("update_list_features"));
-      // similarAppsLocal = JSON.parse(localStorage.getItem('similar_apps'))
-      if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
-        isMobile = true;
-      } else {
-        isMobile = false;
-      }
     }
   }, []);
 
@@ -547,7 +538,6 @@ const Features = () => {
       localStorage.setItem("update_list_features", "[]");
     };
   }, []);
-
 
   return (
     <CustomLayout link="features">

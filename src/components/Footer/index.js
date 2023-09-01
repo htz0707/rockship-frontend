@@ -10,7 +10,6 @@ const { Footer } = Layout;
 const CustomForm = ({ status, message, onValidated }) => {
   const emailInput = useRef(null);
   const submit = () => {
-    console.log(emailInput);
     emailInput &&
       emailInput.current.input.value.indexOf("@") > -1 &&
       onValidated({
