@@ -208,7 +208,9 @@ const FirstStep = ({
         currentStep={1}
         key={item.id}
         item={item}
-        isSelected={arrSelectedSimilarApp.includes(item)}
+        isSelected={arrSelectedSimilarApp
+          .map((item) => item.title)
+          .includes(item.title)}
         selectSimilarApps={() => selectSimilarApps(item)}
       />
     ));
