@@ -1,11 +1,17 @@
+"use client";
+import React, { useEffect } from "react";
 import Head from "next/head";
 import Script from "next/script";
-
+import AOS from "aos";
 import { StoreProvider } from "@/context/StoreContext";
-const GTM_ID = "GTM-WZFWGP42";
 import "@/styles/common/global.scss";
+import "aos/dist/aos.css";
 
+const GTM_ID = "GTM-WZFWGP42";
 const MyApp = ({ Component, pageProps }) => {
+  useEffect(() => {
+    AOS.init();
+  });
   return (
     <>
       <Head>

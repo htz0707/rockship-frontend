@@ -3,81 +3,15 @@
   font-size: 1.6rem;
   background-color: $white;
   height: 100%;
-
   .custom-content {
+    @include mobile {
+      margin-top: 50px;
+    }
+    @include desktop {
+      margin-top: 88px;
+    }
     text-align: center;
     font-size: 1.6rem;
     height: 100%;
-  }
-
-  .sticky-bar {
-    :global(.ant-btn:disabled) {
-      color: $black;
-      font-weight: 500;
-    }
-
-    position: -webkit-sticky;
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 60px;
-    background: #FFF;
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.20);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    @include mobile {
-      padding: 12px 16px;
-    }
-
-    @include desktop {
-      padding: 12px 120px;
-    }
-
-    .flex-left {
-      flex: 0 0 auto;
-      color: $gray4;
-      font-size: 1.6rem;
-      font-weight: 400;
-
-      @include mobile {
-        max-width: 70%;
-      }
-
-      @include desktop {
-        max-width: unset;
-      }
-    }
-
-    .flex-right {
-      flex: 0 0 auto;
-      border-radius: 8px;
-
-      @include mobile {
-        width: unset;
-        height: 40px;
-        padding: 9px 10px;
-      }
-
-      @include desktop {
-        width: 298px;
-      }
-
-      font-size: 1.4rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      background: #CCC;
-    }
-
-    .able {
-      background: #5FFE9F;
-    }
-  }
-
-  .sticky-bar.able {
-      background: #EAFFF2;
-      box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.20);
   }
 }

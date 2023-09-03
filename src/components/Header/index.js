@@ -1,19 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Layout, Button, Drawer } from "antd";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 import Chatbot from "../ChatBot";
 import styles from "./header.module.scss";
 import arrowLeft from "../../../public/arrow-left.svg";
-
+import useScrollToElement from "@/hooks/useScrollToElement";
 const { Header } = Layout;
 
-const MenuNavbar = ({ link }) => {
+const MenuNavbar = ({ link, onClickStartBuilding }) => {
   return (
     <div className={styles["menu-navbar"]}>
       <Link
@@ -40,7 +38,9 @@ const MenuNavbar = ({ link }) => {
       <Link
         className={
           styles["text-header"] +
-          (link === "talent-as-a-service" || link === "talents" ? " " + styles["font-700"] : "")
+          (link === "talent-as-a-service" || link === "talents"
+            ? " " + styles["font-700"]
+            : "")
         }
         href="/talent-as-a-service"
         id="header-talent-as-service"
@@ -60,7 +60,7 @@ const MenuNavbar = ({ link }) => {
       <Button
         id="banner-start-building-mobile"
         className={styles["homepage-button-1"]}
-        href="#chat_bot"
+        onClick={onClickStartBuilding}
       >
         START BUILDING
       </Button>
@@ -69,18 +69,24 @@ const MenuNavbar = ({ link }) => {
 };
 
 const CustomHeader = ({ link, isBack, title, onClick }) => {
-  useEffect(() => {
-    AOS.init();
-  });
   const router = useRouter();
   const [isShowMenu, setIsShowMenu] = useState(false);
-
+  const { isOverHeader, atPositionElement, scrollToElement } =
+    useScrollToElement("#chat_bot");
   const handleOnClickLogo = () => {
     router.push("/");
   };
-
   const handleOnClickMenu = () => {
     setIsShowMenu((prev) => !prev);
+  };
+
+  const onClickStartBuilding = () => {
+    if (link !== "solutions") {
+      router.push("/");
+      scrollToElement("#chat_bot");
+    } else {
+      scrollToElement("#chat_bot");
+    }
   };
 
   const handleOnClickTitle = () => {
@@ -90,7 +96,11 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
     router.back();
   };
   return (
-    <Header className={styles["custom-header"]}>
+    <Header
+      className={`${styles["custom-header"]} ${
+        isOverHeader ? styles["navbar-scroll"] : ""
+      } ${atPositionElement ? styles["visible"] : ""}`}
+    >
       {isBack && (
         <div
           className={styles["custom-header-navbar"]}
@@ -113,7 +123,10 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
               priority
             />
             <div className={styles["custom-header-container"]}>
-              <MenuNavbar link={link} />
+              <MenuNavbar
+                link={link}
+                onClickStartBuilding={onClickStartBuilding}
+              />
             </div>
             <div
               className={styles["custom-header-container-mobile"]}
@@ -169,7 +182,7 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
                 <Button
                   id="banner-start-building-web"
                   className={styles["homepage-button-1"]}
-                  href="#chat_bot"
+                  onClick={onClickStartBuilding}
                 >
                   START BUILDING
                 </Button>
