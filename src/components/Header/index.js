@@ -55,7 +55,7 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
         href="/blogs"
         id="header-blogs"
       >
-        Blogs
+        Knowledge Hub
       </Link>
       <Button
         id="banner-start-building-mobile"
@@ -160,16 +160,19 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
                 data-aos-duration="500"
                 data-aos-anchor-placement="bottom-bottom"
               >
+                <br/>
                 <p className={styles["homepage-big-text"]}>
-                  We Build Your <span>Software</span>
+                Build your app <span>in 3 weeks</span>
                 </p>
                 <p className={styles["homepage-big-text"]}>
-                  Using <span>AI</span>
+                  with our <span>AI-assisted</span> code generation.
                 </p>
                 <p className={styles["homepage-small-text"]}>
-                  We embed many AI solutions in our development process{" "}
-                  <br></br>
-                  to help you build software faster with higher quality
+                <span>Start faster</span> with AI-assisted code generation.
+                <br/>
+                <span>Scale effectively</span> with AI-powered hiring solution.
+                <br/>
+                <span>Stay ahead</span> in emerging tech leveraging our tech experts network.
                 </p>
               </div>
               <div
