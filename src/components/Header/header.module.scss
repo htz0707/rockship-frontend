@@ -242,6 +242,9 @@
         line-height: 32px;
         margin-bottom: 48px;
       }
+      span {
+        color: $secondary-color;
+      }
     }
     .button-group {
       display: flex;
