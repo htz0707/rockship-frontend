@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import CustomLayout from "@/components/Layout";
 import styles from "@/styles/talents.module.scss";
 import FormModal from "@/components/FormModal";
+import MetaTags from '@/components/MetaTags';
 
 const selectStyle = {
   width: "100%",
@@ -402,6 +403,12 @@ const Talents = () => {
   };
 
   return (
+    <>
+    <MetaTags 
+          title={"Rockship | Hire Talents"}
+          description = {"Hire on-demand our full-time staff for a task or project you want to complete quickly."}
+          image = {"talent-as-a-service-thumb.png"}
+    />
     <CustomLayout link={"talents"}>
       <div className={styles["talents"]}>
         <Row>
@@ -603,7 +610,16 @@ const Talents = () => {
       </Modal>
       <HireTalentBar />
     </CustomLayout>
+    </>
   );
 };
 
 export default Talents;
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      overwriteMetaTag: true,
+    },
+  };
+};

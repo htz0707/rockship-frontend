@@ -189,7 +189,10 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
                 >
                   START BUILDING
                 </Button>
-                <a href="https://calendly.com/rockship-co/30min-free-consulting">
+                <a 
+                    href="https://calendly.com/rockship-co/30min-free-consulting"
+                    target = "_blank"
+                >
                   <Button
                     className={styles["homepage-button-2"]}
                     id="banner-book-a-call"

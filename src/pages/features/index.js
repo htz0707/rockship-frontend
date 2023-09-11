@@ -11,6 +11,7 @@ import styles from "@/styles/features.module.scss";
 import CustomLayout from "@/components/Layout";
 import FeatureFooter from "@/components/building-features/FeatureFooter/FeatureFooter";
 import useIsResponsive from "@/hooks/useIsResponsive";
+import MetaTags from '@/components/MetaTags';
 let featuresLocal = [];
 let similarAppsLocal = [];
 
@@ -540,6 +541,11 @@ const Features = () => {
   }, []);
 
   return (
+    <>
+        <MetaTags 
+                  title={"Rockship | Browse Our Modules"} 
+                  description = {"We have done 1000+ of software features and can quickly build new features for you with accurate estimation."} 
+        />
     <CustomLayout link="features">
       <div className={styles["building-features-container"]}>
         <div className={styles["features-container"]}>
@@ -604,6 +610,7 @@ const Features = () => {
         />
       </div>
     </CustomLayout>
+    </>
   );
 };
 

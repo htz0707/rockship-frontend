@@ -16,6 +16,7 @@ import styles from "@/styles/case-studies.module.scss";
 import filter from "../../../public/filter.svg";
 import { UniqueArray } from "@/utils";
 import Card from "@/components/Card";
+import MetaTags from '@/components/MetaTags';
 
 const CaseStudies = () => {
   const router = useRouter();
@@ -108,6 +109,12 @@ const CaseStudies = () => {
   }, []);
 
   return (
+    <>
+    <MetaTags 
+            title={"Rockship | Case Studies"} 
+            description = {"Explore Rockship's best software development projects."}
+            image = {"/case-studies-thumb.png"} 
+    />
     <CustomLayout link={"studies"}>
       <div className={styles["case-studies"]}>
         <Row>
@@ -200,7 +207,16 @@ const CaseStudies = () => {
         </Row>
       </div>
     </CustomLayout>
+    </>
   );
 };
 
 export default CaseStudies;
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      overwriteMetaTag: true,
+    },
+  };
+};
