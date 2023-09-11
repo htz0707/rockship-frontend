@@ -5,9 +5,16 @@ import { getAllPublished } from '@/lib/notion';
 import Card from '@/components/Card';
 import { Col, Row } from 'antd';
 import Link from 'next/link';
+import MetaTags from '@/components/MetaTags';
 
 export default function Index({ blogs }) {
   return (
+    <>
+    <MetaTags 
+            title={"Rockship | Knowledge Hub"}
+            description = {"Dive into technology trends, insights and news with Rockship."}
+            image = {"/knowledge-hub-thumb.png"}        
+    />
     <CustomLayout link={'blogs'}>
       <div className={styles['blogs']}>
         <h2 className={styles['title']}>Blogs</h2>
@@ -28,6 +35,7 @@ export default function Index({ blogs }) {
         </Row>
       </div>
     </CustomLayout>
+    </>
   );
 }
 
@@ -36,6 +44,7 @@ export const getStaticProps = async () => {
   return {
     props: {
       blogs: data,
+      overwriteMetaTag: true,
     },
     revalidate: 60,
   };

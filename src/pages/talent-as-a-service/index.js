@@ -4,10 +4,17 @@ import styles from "./styles.module.scss";
 import { Row, Col, Button } from 'antd';
 import CustomLayout from "@/components/Layout";
 import { useRouter } from "next/router";
+import MetaTags from '@/components/MetaTags';
+
 const TalentAsAService = () => {
     const router = useRouter();
     return (
         <>
+        <MetaTags 
+                    title={"Rockship | Talent As A Service"}
+                    description = {"Hire on-demand our full-time staff for a task or project you want to complete quickly."}
+                    image = {"team-as-a-service=thumb.png"}
+        />
             <CustomLayout link={"talent-as-a-service"}>
                 <div className={styles["box-1"]}>
                     <Row gutter={[24, 24]}>
@@ -107,3 +114,11 @@ const TalentAsAService = () => {
     );
 }
 export default TalentAsAService;
+
+export const getStaticProps = async () => {
+  return {
+    props: {
+      overwriteMetaTag: true,
+    },
+  };
+};

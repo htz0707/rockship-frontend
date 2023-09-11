@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Col, Row } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/router";
-
+import MetaTags from '@/components/MetaTags';
 import CustomLayout from "@/components/Layout";
 import styles from "@/styles/case-studies-detail.module.scss";
 
@@ -55,7 +55,6 @@ const MenuItem = ({ title, lsValue, content }) => {
     </div>
   );
 };
-
 const CaseStudiesDetail = () => {
   const router = useRouter();
   const size = useWindowSize();
@@ -182,6 +181,8 @@ const CaseStudiesDetail = () => {
   };
 
   return (
+    <>
+    <MetaTags title={"Rockship | " + itemCaseStudy?.title} description = {itemCaseStudy?.description} image={itemCaseStudy?.src}  />
     <CustomLayout link={"studies"} isBack={isBack}>
       <div className={styles["case-studies-detail"]} id="case-studies-detail">
         <Button className={styles["button-back"]} onClick={handleOnClickBack}>
@@ -248,7 +249,7 @@ const CaseStudiesDetail = () => {
               })}
             </div>
             {renderContent(itemCaseStudy?.id)}
-            {getReview(itemCaseStudy?.reviews.length)}
+            {getReview(itemCaseStudy?.reviews?.length)}
           </Col>
           <Col xs={0} md={6}>
             <div className={styles["card"]}>
@@ -298,7 +299,22 @@ const CaseStudiesDetail = () => {
       </div>
       <FormModal open={isShowContact} setOpen={setIsShowContact} />
     </CustomLayout>
+    </>
   );
+
 };
 
 export default CaseStudiesDetail;
+export const getStaticProps = async () => {
+  return {
+    props: {
+      overwriteMetaTag: true,
+    },
+  };
+};
+export async function getStaticPaths() {
+  return {
+    paths: [],
+    fallback: 'blocking', 
+  };
+}

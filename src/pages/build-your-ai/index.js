@@ -3,10 +3,16 @@ import React, { useState, useEffect } from "react";
 import styles from "./styles.module.scss";
 import { Row, Col, Button } from 'antd';
 import CustomLayout from "@/components/Layout";
+import MetaTags from '@/components/MetaTags';
 
 const buildYourAI = () => {
     return (
         <>
+            <MetaTags 
+                title={"Rockship | Build Your AI"} 
+                description = {"Build your app in 3 weeks with our AI-assisted code generation"}
+                image = {"/build-your-ai-thumb.png"} 
+            />
             <CustomLayout link={"build-your-ai"}>
                 <div className={styles["box-1"]}>
                     <Row gutter={[24, 24]}>
@@ -216,3 +222,11 @@ const buildYourAI = () => {
     )
 }
 export default buildYourAI;
+
+export const getStaticProps = async () => {
+    return {
+      props: {
+        overwriteMetaTag: true,
+      },
+    };
+  };
