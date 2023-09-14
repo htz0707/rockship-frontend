@@ -71,8 +71,14 @@
   }
 
   .case-study-container {
-    display: flex;
-    justify-content: center;
+    @include mobile {
+      display: unset;
+    }
+
+    @include desktop {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .text-title {
