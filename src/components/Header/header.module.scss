@@ -164,13 +164,13 @@
       }
 
       .text-header {
-        line-height: 50px;
+        line-height: normal;
         color: $white;
         margin: 0 20px;
         font-family: $primary-font;
         font-size: 1.6rem;
         font-style: normal;
-        font-weight: 700;
+        font-weight: 400;
         transition: all 0.5s;
       }
       .text-header:hover {

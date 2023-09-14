@@ -19,7 +19,7 @@ const HomePage = () => {
   const handleOnClickCard = (item) => {
     router.push(`/case-studies/${item.id}`);
     dispatch(setItemCaseStudy(item));
-    localStorage.setItem('itemDetail', JSON.stringify(item))
+    localStorage.setItem("itemDetail", JSON.stringify(item));
   };
 
   return (
@@ -34,32 +34,28 @@ const HomePage = () => {
           <h3>Case studies</h3>
           <Link href={"/case-studies"}>View all case studies</Link>
         </div>
-
-        <Row
-          gutter={[24, 24]}
-          className={styles["case-studies-row"]}
+        <div
           data-aos="fade-up"
           data-aos-delay="50"
           data-aos-duration="500"
           data-aos-anchor-placement="top-bottom"
+          className={styles["case-study-container"]}
         >
           {caseStudies?.map((item, index) => {
             if (item.id < 4) {
               return (
-                <Col xs={24} sm={12} md={8} key={item.id || index}>
-                  <Card
-                    title={item.title}
-                    imageSrc={item.src}
-                    description={item.description}
-                    lsValue={item.hashtags}
-                    handleOnClickCard={() => handleOnClickCard(item)}
-                  />
-                </Col>
+                <Card
+                  key={index}
+                  title={item.title}
+                  imageSrc={item.src}
+                  description={item.description}
+                  lsValue={item.hashtags}
+                  handleOnClickCard={() => handleOnClickCard(item)}
+                />
               );
             }
           })}
-        </Row>
-
+        </div>
         <div className={styles["box-2"]}>
           <div
             className={styles["text-title"]}
@@ -117,19 +113,16 @@ const HomePage = () => {
               </div>
             </Col>
           </Row>
-          <div
-            id="rockship-solution"
-            className={styles["box-3"]}>
+          <div id="rockship-solution" className={styles["box-3"]}>
             <p
               className={styles["text-title"]}
               data-aos="fade-up"
               data-aos-duration="500"
               data-aos-anchor-placement="top-bottom"
-            >Our Solutions</p>
-            <Row
-              align={"center"}
-              className={styles["row"]}
             >
+              Our Solutions
+            </p>
+            <Row align={"center"} className={styles["row"]}>
               <Col sm={24} md={0}>
                 <img
                   src="/solutions.svg"
@@ -258,7 +251,7 @@ const HomePage = () => {
                 </Button>
               </Col>
             </Row>
-            <Row align={"center"} className={styles["row"]} >
+            <Row align={"center"} className={styles["row"]}>
               <Col sm={24} md={0}>
                 <img
                   src="/data.svg"
@@ -281,15 +274,18 @@ const HomePage = () => {
                 <div className={styles["contents"]}>
                   <img src="/tick.svg" alt="tick" />
                   <p>
-                    Prototype AI for use cases: Key Information Extraction, Chatbot for Customer Service & AI For Educational Content Generation
+                    Prototype AI for use cases: Key Information Extraction,
+                    Chatbot for Customer Service & AI For Educational Content
+                    Generation
                   </p>
                 </div>
                 <div className={styles["contents"]}>
                   <img src="/tick.svg" alt="tick" />
                   <p>
-                    Build and maintain MLOps infrastructure (<b>Feature
-                      Store</b>, <b>ML Model Store</b>, <b>LLM Apps</b>) to serve business critical
-                    applications requiring real-time data: recommendation system, ads bidding.
+                    Build and maintain MLOps infrastructure (
+                    <b>Feature Store</b>, <b>ML Model Store</b>, <b>LLM Apps</b>
+                    ) to serve business critical applications requiring
+                    real-time data: recommendation system, ads bidding.
                   </p>
                 </div>
                 <Button
@@ -346,7 +342,8 @@ const HomePage = () => {
                 data-aos-anchor-placement="top-bottom"
                 className={styles["custom-label"]}
               >
-                Email</p>
+                Email
+              </p>
               <Input
                 className={styles["custom-input"]}
                 placeholder="Enter your email"
@@ -362,7 +359,8 @@ const HomePage = () => {
                 data-aos-duration="500"
                 data-aos-anchor-placement="top-bottom"
               >
-                Message</p>
+                Message
+              </p>
               <textarea
                 placeholder="Share with us your awesome app concept!"
                 data-aos="fade-up"
@@ -445,7 +443,11 @@ const HomePage = () => {
                 </div>
               </div>
             </Col>
-            <Col className={styles["text-start"] + " " + styles["mt-2"]} xs={24} md={12}>
+            <Col
+              className={styles["text-start"] + " " + styles["mt-2"]}
+              xs={24}
+              md={12}
+            >
               <div
                 className={styles["rovo-testimony"]}
                 data-aos="fade-up"
@@ -458,9 +460,7 @@ const HomePage = () => {
                   className={styles["client_icon"]}
                 />
                 <br></br>
-                <div
-                  className={styles["client_rovo"]}
-                >
+                <div className={styles["client_rovo"]}>
                   <img
                     src="/quote.svg"
                     alt="quote"
