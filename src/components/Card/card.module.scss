@@ -10,6 +10,7 @@
     margin: auto;
   }
   @include desktop {
+    margin: unset;
     margin-left: 12px;
     margin-right: 12px;
   }
