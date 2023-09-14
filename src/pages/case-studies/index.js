@@ -16,7 +16,7 @@ import styles from "@/styles/case-studies.module.scss";
 import filter from "../../../public/filter.svg";
 import { UniqueArray } from "@/utils";
 import Card from "@/components/Card";
-import MetaTags from '@/components/MetaTags';
+import MetaTags from "@/components/MetaTags";
 
 const CaseStudies = () => {
   const router = useRouter();
@@ -95,12 +95,22 @@ const CaseStudies = () => {
   const handleOnClickCard = (item) => {
     router.push(`/case-studies/${item.id}`);
     dispatch(setItemCaseStudy(item));
-    localStorage.setItem('itemDetail', JSON.stringify(item))
+    localStorage.setItem("itemDetail", JSON.stringify(item));
   };
 
   const handleOnChangeSelectFilter = (value, type) => {
     dispatch(setItemFilter({ [type]: value }));
   };
+
+  function chunkArray(array, chunkSize) {
+    const chunks = [];
+    for (let i = 0; i < array?.length; i += chunkSize) {
+      chunks.push(array?.slice(i, i + chunkSize));
+    }
+    return chunks;
+  }
+
+  const chunkedData = chunkArray(dataFilter, 3);
 
   useEffect(() => {
     // dispatch(
@@ -110,103 +120,107 @@ const CaseStudies = () => {
 
   return (
     <>
-    <MetaTags 
-            title={"Rockship | Case Studies"} 
-            description = {"Explore Rockship's best software development projects."}
-            image = {"/case-studies-thumb.png"} 
-    />
-    <CustomLayout link={"studies"}>
-      <div className={styles["case-studies"]}>
-        <Row>
-          <Col span={24}>
-            <h2
-              className={styles["title"]}
-              data-aos="fade-up"
-              data-aos-duration="500"
-              data-aos-anchor-placement="bottom-bottom"
-            >
-              case studies</h2>
-            <div
-              className={styles["filter"]}
-              data-aos="fade-up"
-              data-aos-duration="500"
-              data-aos-delay="200"
-              data-aos-anchor-placement="bottom-bottom"
-            >
-              <SelectCustom
-                title={"Industry"}
-                lsOption={lsIndustry}
-                value={itemFilter?.industry?.value || lsIndustry[0].value}
-                onChange={(value) =>
-                  handleOnChangeSelectFilter(
-                    lsIndustry.find((item) => item.key === value),
-                    "industry"
-                  )
-                }
-              />
-              <SelectCustom
-                title={"Company Size"}
-                lsOption={lsCompanySize}
-                value={itemFilter?.companySize?.value || lsCompanySize[0].value}
-                onChange={(value) =>
-                  handleOnChangeSelectFilter(
-                    lsCompanySize.find((item) => item.key === value),
-                    "companySize"
-                  )
-                }
-              />
-              <SelectCustom
-                title={"Market"}
-                lsOption={lsMarket}
-                value={itemFilter?.market?.value || lsMarket[0].value}
-                onChange={(value) =>
-                  handleOnChangeSelectFilter(
-                    lsMarket.find((item) => item.key === value),
-                    "market"
-                  )
-                }
-              />
-            </div>
-            <Button
-              className={styles["button-filter"]}
-              onClick={handleOnClickFilter}
-              style={
-                itemFilter?.industry ||
-                  itemFilter?.companySize ||
-                  itemFilter?.market
-                  ? { border: "1px solid #5FFE9F" }
-                  : {}
-              }
-            >
-              <Image src={filter} alt="Filter" priority />
-              <p>Filter</p>
-            </Button>
-          </Col>
-        </Row>
-        <Row gutter={[24, 24]}>
-          {dataFilter?.map((item, index) => {
-            return (
-              <Col
-                xs={24} sm={12} md={8} key={item.id || index}
+      <MetaTags
+        title={"Rockship | Case Studies"}
+        description={"Explore Rockship's best software development projects."}
+        image={"/case-studies-thumb.png"}
+      />
+      <CustomLayout link={"studies"}>
+        <div className={styles["case-studies"]}>
+          <Row>
+            <Col span={24}>
+              <h2
+                className={styles["title"]}
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-aos-anchor-placement="bottom-bottom"
+              >
+                case studies
+              </h2>
+              <div
+                className={styles["filter"]}
                 data-aos="fade-up"
                 data-aos-duration="500"
                 data-aos-delay="200"
-                data-aos-anchor-placement="top-bottom"
+                data-aos-anchor-placement="bottom-bottom"
               >
-
-                <Card
-                  title={item.title}
-                  imageSrc={item.src}
-                  description={item.description}
-                  lsValue={item.hashtags}
-                  handleOnClickCard={() => handleOnClickCard(item)}
+                <SelectCustom
+                  title={"Industry"}
+                  lsOption={lsIndustry}
+                  value={itemFilter?.industry?.value || lsIndustry[0].value}
+                  onChange={(value) =>
+                    handleOnChangeSelectFilter(
+                      lsIndustry.find((item) => item.key === value),
+                      "industry"
+                    )
+                  }
                 />
-              </Col>
-            );
-          })}
-        </Row>
-      </div>
-    </CustomLayout>
+                <SelectCustom
+                  title={"Company Size"}
+                  lsOption={lsCompanySize}
+                  value={
+                    itemFilter?.companySize?.value || lsCompanySize[0].value
+                  }
+                  onChange={(value) =>
+                    handleOnChangeSelectFilter(
+                      lsCompanySize.find((item) => item.key === value),
+                      "companySize"
+                    )
+                  }
+                />
+                <SelectCustom
+                  title={"Market"}
+                  lsOption={lsMarket}
+                  value={itemFilter?.market?.value || lsMarket[0].value}
+                  onChange={(value) =>
+                    handleOnChangeSelectFilter(
+                      lsMarket.find((item) => item.key === value),
+                      "market"
+                    )
+                  }
+                />
+              </div>
+              <Button
+                className={styles["button-filter"]}
+                onClick={handleOnClickFilter}
+                style={
+                  itemFilter?.industry ||
+                  itemFilter?.companySize ||
+                  itemFilter?.market
+                    ? { border: "1px solid #5FFE9F" }
+                    : {}
+                }
+              >
+                <Image src={filter} alt="Filter" priority />
+                <p>Filter</p>
+              </Button>
+            </Col>
+          </Row>
+          <div>
+            {chunkedData?.map((group, groupIndex) => (
+              <div
+                key={groupIndex}
+                data-aos="fade-up"
+                data-aos-delay="50"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+                className={styles["case-study-container"]}
+              >
+                {group.map((item, index) => (
+                  <Card
+                    key={index}
+                    title={item.title}
+                    imageSrc={item.src}
+                    description={item.description}
+                    lsValue={item.hashtags}
+                    handleOnClickCard={() => handleOnClickCard(item)}
+                  />
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </CustomLayout>
     </>
   );
 };

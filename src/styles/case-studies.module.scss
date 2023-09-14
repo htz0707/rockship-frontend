@@ -38,6 +38,11 @@
     padding: 24px 120px;
   }
 
+  .case-study-container {
+    display: flex;
+    justify-content: center;
+  }
+
   .title {
     font-family: $primary-font;
     text-transform: uppercase;
