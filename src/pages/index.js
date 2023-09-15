@@ -73,7 +73,7 @@ const HomePage = () => {
           >
             <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
               <div className={styles["col-padding"]}>
-                <img src={"/clock.svg"} alt="clock" />
+                <img style={{ width: 80 }} src={"/clock.svg"} alt="clock" />
                 <p className={styles["text-col-header"]}>
                   Development automation
                 </p>
@@ -86,7 +86,7 @@ const HomePage = () => {
             </Col>
             <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
               <div className={styles["col-padding"]}>
-                <img src={"/cloud.svg"} alt="cloud" />
+                <img style={{ width: 80 }} src={"/cloud.svg"} alt="cloud" />
                 <p className={styles["text-col-header"]}>
                   Accumulative Expertise & Diverse Capabilities
                 </p>
@@ -99,7 +99,7 @@ const HomePage = () => {
             </Col>
             <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
               <div className={styles["col-padding"]}>
-                <img src={"/pin.svg"} alt="pin" />
+                <img style={{ width: 80 }} src={"/pin.svg"} alt="pin" />
                 <p className={styles["text-col-header"]}>
                   Frontier Tech & Cloud Native
                 </p>
@@ -122,7 +122,7 @@ const HomePage = () => {
             >
               Our Solutions
             </p>
-            <Row align={"center"} className={styles["row"]}>
+            <Row className={styles["row"]}>
               <Col sm={24} md={0}>
                 <img
                   src="/solutions.svg"
@@ -134,9 +134,9 @@ const HomePage = () => {
                 />
               </Col>
               <Col
-                className={styles["col-box"]}
+                className={styles["col-box"] + " " + styles["left-box"]}
                 sm={24}
-                md={13}
+                md={12}
                 data-aos="fade-up"
                 data-aos-delay="100"
                 data-aos-duration="500"
@@ -179,7 +179,7 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col xs={0} md={11}>
+              <Col xs={0} md={12}>
                 <img
                   src="/solutions.svg"
                   alt="solutions"
@@ -191,21 +191,23 @@ const HomePage = () => {
                 />
               </Col>
             </Row>
-            <Row align={"center"} className={styles["row"]}>
-              <Col sm={24} md={11}>
-                <img
-                  src="/services.svg"
-                  alt="services"
-                  className={styles["col-image"]}
-                  data-aos="fade-up"
-                  data-aos-duration="500"
-                  data-aos-anchor-placement="center-bottom"
-                />
+            <Row className={styles["row"]}>
+              <Col sm={24} md={12}>
+                <div className={styles["left-box"]}>
+                  <img
+                    src="/services.svg"
+                    alt="services"
+                    className={styles["col-image"]}
+                    data-aos="fade-up"
+                    data-aos-duration="500"
+                    data-aos-anchor-placement="center-bottom"
+                  />
+                </div>
               </Col>
               <Col
-                className={styles["col-box"] + " " + styles["col-box-right"]}
+                className={styles["col-box"] + " " + styles["right-box"]}
                 sm={24}
-                md={13}
+                md={12}
                 data-aos="fade-up"
                 data-aos-duration="500"
                 data-aos-anchor-placement="top-bottom"
@@ -251,7 +253,7 @@ const HomePage = () => {
                 </Button>
               </Col>
             </Row>
-            <Row align={"center"} className={styles["row"]}>
+            <Row className={styles["row"]}>
               <Col sm={24} md={0}>
                 <img
                   src="/data.svg"
@@ -263,9 +265,9 @@ const HomePage = () => {
                 />
               </Col>
               <Col
-                className={styles["col-box"]}
+                className={styles["col-box"] + " " + styles["left-box"]}
                 sm={24}
-                md={13}
+                md={12}
                 data-aos="fade-up"
                 data-aos-duration="500"
                 data-aos-anchor-placement="top-bottom"
@@ -306,7 +308,7 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col xs={0} md={11}>
+              <Col xs={0} md={12}>
                 <img
                   src="/data.svg"
                   alt="data"

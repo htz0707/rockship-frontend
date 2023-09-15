@@ -1,9 +1,9 @@
-
 .custom-layout {
   font-size: 1.6rem;
   background-color: $white;
   height: 100%;
   .custom-content {
+    // margin: auto;
     @include mobile {
       margin-top: 50px;
     }

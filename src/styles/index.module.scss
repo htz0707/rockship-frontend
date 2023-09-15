@@ -15,7 +15,7 @@
       margin-bottom: 24px;
 
       h3 {
-        font-size: 2rem;
+        font-size: 1.6rem;
         line-height: 30px;
       }
     }
@@ -29,19 +29,19 @@
       color: #191a15;
       text-align: center;
       font-family: $primary-font;
-      font-size: 4.8rem;
+      font-size: 4rem;
       font-style: normal;
       font-weight: 900;
       line-height: normal;
 
       @include mobile {
-        font-size: 2rem;
+        font-size: 1.6rem;
         line-height: 24px;
         font-weight: 900;
       }
 
       @include tablet {
-        font-size: 4.8rem;
+        font-size: 4rem;
         line-height: normal;
       }
     }
@@ -52,7 +52,7 @@
       margin-top: 4px;
       color: #888 !important;
       font-family: $primary-font;
-      font-size: 2rem;
+      font-size: 1.6rem;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
@@ -64,13 +64,15 @@
       }
 
       @include tablet {
-        font-size: 2rem;
+        font-size: 1.6rem;
         line-height: normal;
       }
     }
   }
 
   .case-study-container {
+    max-width: 1300px;
+    margin: auto;
     @include mobile {
       display: unset;
     }
@@ -84,11 +86,11 @@
   .text-title {
     font-family: $primary-font;
     font-weight: 900;
-    font-size: 4.8rem;
+    font-size: 4rem;
     line-height: 60.72px;
     color: #0f0f0f;
     @include mobile {
-      font-size: 2rem;
+      font-size: 1.6rem;
       line-height: 24px;
       margin-bottom: 24px;
     }
@@ -98,7 +100,7 @@
       margin-bottom: 24px;
     }
     @include desktop {
-      font-size: 4.8rem;
+      font-size: 4rem;
       line-height: 50px;
       margin-bottom: 48px;
     }
@@ -115,7 +117,7 @@
 
     .text-col-header {
       font-weight: 700;
-      font-size: 2rem;
+      font-size: 1.6rem;
       line-height: 30px;
       margin-bottom: 8px;
       margin-top: 12px;
@@ -123,7 +125,7 @@
       color: #0f0f0f;
 
       @include mobile {
-        font-size: 2rem;
+        font-size: 1.6rem;
         line-height: normal;
       }
 
@@ -132,7 +134,7 @@
         line-height: 30px;
       }
       @include desktop {
-        font-size: 2rem;
+        font-size: 1.6rem;
         line-height: 30px;
       }
     }
@@ -140,7 +142,7 @@
     .text-col-content {
       margin-top: 0;
       margin-bottom: 0;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-family: $primary-font;
 
       @include mobile {
@@ -152,28 +154,24 @@
         line-height: 24px;
       }
       @include desktop {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         line-height: 24px;
       }
     }
   }
 
   .box-2 {
+    max-width: 1300px;
     @include mobile {
       margin-top: 24px;
       margin-left: 24px;
       margin-right: 24px;
     }
 
-    @include tablet {
-      margin-top: 24px;
-      margin-left: 12px;
-      margin-right: 12px;
-    }
     @include desktop {
       margin-top: 103px;
-      margin-left: 120px;
-      margin-right: 120px;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 
@@ -191,6 +189,15 @@
       margin-bottom: 64px;
     }
 
+    .left-box {
+      max-width: 648px !important;
+      padding-right: 36px;
+    }
+
+    .right-box {
+      max-width: 612px !important;
+    }
+
     img.col-image {
       @include mobile {
         width: 242.065px;
@@ -203,8 +210,7 @@
         margin-bottom: 0px;
       }
       @include desktop {
-        // width: 535.99px;
-        width: 100%;
+        width: 612px;
         height: auto;
         margin-bottom: 0px;
       }
@@ -213,22 +219,22 @@
     .text-title {
       @include mobile {
         margin-bottom: 24px;
-        font-size: 2rem;
+        font-size: 1.6rem;
       }
       @include tablet {
         margin-bottom: 36px;
-        font-size: 4.8rem;
+        font-size: 4rem;
       }
       @include desktop {
         margin-bottom: 48px;
-        font-size: 4.8rem;
+        font-size: 4rem;
       }
     }
 
     .title {
       justify-content: flex-start;
       font-weight: 800;
-      font-size: 4.8rem;
+      font-size: 4rem;
       line-height: 50px;
       margin: 0;
       font-family: $primary-font;
@@ -241,7 +247,7 @@
       }
       @include desktop {
         justify-content: flex-start;
-        font-size: 4.8rem;
+        font-size: 4rem;
         line-height: 50px;
       }
       @include tablet {
@@ -279,6 +285,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      max-width: 652px;
 
       .title {
         margin-bottom: 20px;
@@ -298,7 +305,7 @@
           margin-bottom: 30px;
         }
         @include desktop {
-          font-size: 4.8rem;
+          font-size: 4rem;
           line-height: 64px;
           text-align: start;
           margin-bottom: 64px;
@@ -313,7 +320,7 @@
 
         p {
           margin: 0px;
-          font-size: 1.6rem;
+          font-size: 1.4rem;
           line-height: 24px;
           width: 549px;
           height: fit-content;
@@ -325,7 +332,7 @@
           }
 
           @include tablet {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             line-height: 24px;
           }
         }
@@ -452,12 +459,6 @@
           @include mobile {
             width: 100%;
           }
-          @include tablet {
-            width: 120%;
-          }
-          @include desktop {
-            width: 120%;
-          }
         }
 
         textarea {
@@ -470,12 +471,6 @@
 
           @include mobile {
             width: 100%;
-          }
-          @include tablet {
-            width: 120%;
-          }
-          @include desktop {
-            width: 120%;
           }
         }
 
@@ -492,13 +487,7 @@
             width: 100%;
             margin-top: 24px;
           }
-          @include tablet {
-            width: 120%;
-            margin-top: 24px;
-          }
           @include desktop {
-            width: 120%;
-            top: 24px;
             margin-top: 0px;
           }
         }
@@ -507,16 +496,13 @@
   }
 
   .box-7 {
+    max-width: 1300px;
     @include mobile {
       margin: 0 24px;
     }
-    @include tablet {
-      margin-right: 12px;
-      margin-left: 12px;
-    }
     @include desktop {
-      margin-right: 200px;
-      margin-left: 200px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .header-testimony {
@@ -539,7 +525,7 @@
           margin: 0;
         }
         @include desktop {
-          font-size: 4.8rem;
+          font-size: 4rem;
           line-height: 64px;
           margin: 0;
         }
@@ -562,7 +548,7 @@
           margin: 0;
         }
         @include desktop {
-          font-size: 4.8rem;
+          font-size: 4rem;
           line-height: 64px;
           margin: 0;
         }
@@ -602,7 +588,7 @@
 
   .homepage-button-1 {
     font-weight: 800;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     line-height: 17px;
     height: 52px;
     border-radius: 2px;
@@ -635,7 +621,7 @@
   .homepage-button-2 {
     color: $white !important;
     border-color: $white !important;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     line-height: 17px;
     height: 52px;
     border-radius: 2px;
@@ -767,7 +753,7 @@
         width: 349px;
         height: fit-content;
         font-family: $primary-font;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         line-height: 28px;
         margin-left: 32px;
         margin-top: -20px;
@@ -916,7 +902,7 @@
         width: 254px;
         height: fit-content;
         font-family: $primary-font;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         line-height: 28px;
         margin-left: 32px;
         margin-top: -20px;
@@ -1048,7 +1034,7 @@
         font-family: $primary-font;
 
         font-weight: 400;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         line-height: 28px;
 
         @include mobile {

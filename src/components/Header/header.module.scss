@@ -64,7 +64,7 @@
       margin-left: 12px;
       color: #fff;
       font-family: $primary-font;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-style: normal;
       font-weight: 500;
       line-height: normal;
@@ -76,7 +76,7 @@
     padding: 40px 120px !important;
     justify-content: space-between;
     height: 88px;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     width: 100%;
     transition: all 0.24s linear;
     position: fixed;
@@ -125,7 +125,7 @@
         .font-700 {
           color: #5ffe9f;
           font-weight: 700;
-          font-size: 1.6rem;
+          font-size: 1.4rem;
         }
       }
     }
@@ -148,7 +148,6 @@
     }
 
     .custom-header-container {
-      height: 5 0px;
       width: 100%;
       display: flex;
       justify-content: flex-end;
@@ -168,7 +167,7 @@
         color: $white;
         margin: 0 20px;
         font-family: $primary-font;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-style: normal;
         font-weight: 400;
         transition: all 0.5s;
@@ -179,12 +178,14 @@
       .font-700 {
         color: #5ffe9f;
         font-weight: 700;
-        scale: 1.2;
       }
     }
   }
 
   .custom-header-content {
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
     text-align: center;
     color: $white;
     padding-top: 40px;
@@ -208,7 +209,7 @@
     }
     .homepage-big-text {
       font-weight: 700;
-      font-size: 6.4rem;
+      font-size: 4.8rem;
       line-height: 81px;
       margin: 0;
       font-family: $primary-font;
@@ -217,7 +218,7 @@
         line-height: 36px;
       }
       @include tablet {
-        font-size: 6.4rem;
+        font-size: 4.8rem;
         line-height: 81px;
       }
       span {
@@ -273,7 +274,7 @@
 
   .homepage-button-1 {
     font-weight: 800;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     height: 52px;
     border-radius: 2px;
     padding: 0 20px;
@@ -295,7 +296,7 @@
   .homepage-button-2 {
     color: $white !important;
     border-color: $white !important;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     line-height: 17px;
     height: 52px;
     border-radius: 2px;
