@@ -73,7 +73,7 @@
         }
 
         @include desktop {
-          width: 310px;
+          width: 285px;
         }
 
         margin-bottom: 32px;
@@ -146,7 +146,6 @@
             padding: 4px 6px;
             margin: 8px;
             border-radius: 1000px;
-            overflow: hidden;
             background: $gray5;
             font-weight: 400;
             color: $gray4;
