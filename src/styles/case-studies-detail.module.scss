@@ -622,7 +622,12 @@
     display: flex;
     position: -webkit-sticky; /* Safari */
     position: sticky;
-    top: 20px;
+    @include tablet {
+      top: 70px;
+    }
+    @include desktop {
+      top: 100px;
+    }
     width: 100%;
     padding: 16px;
     min-width: auto;
