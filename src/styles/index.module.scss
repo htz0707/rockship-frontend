@@ -389,20 +389,15 @@
 
     .custom-row {
       text-align: start;
+      max-width: 1300px;
+      margin-left: auto;
+      margin-right: auto;
 
       @include mobile {
         padding: 36px 20px;
       }
-      @include tablet {
-        margin-bottom: 50px;
-        margin-left: -12px;
-        margin-right: 12px;
-        padding: 60px 0px 60px 0px;
-      }
       @include desktop {
         margin-bottom: 100px;
-        margin-left: 96px;
-        margin-right: 120px;
         padding: 120px 0px 120px 0px;
       }
 
