@@ -8,12 +8,6 @@
   @include mobile {
     padding: 16px 17px;
   }
-  @include tablet {
-    padding: 16px 20px;
-  }
-  @include desktop {
-    padding: 24px 120px;
-  }
 
   .title {
     font-family: $primary-font;
