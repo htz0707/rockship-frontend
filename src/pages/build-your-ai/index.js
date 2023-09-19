@@ -68,8 +68,8 @@ const buildYourAI = () => {
                   pipeline and do further analysis.
                 </p>
               </div>
+              <img className={styles["box-2-image"]} src="/key-info-extract.png" alt="key-info-extract" />
             </div>
-            <img src="/key-info-extract.png" alt="key-info-extract" />
           </div>
           <div className={styles["box-3"]}>
             <h3>AI Chatbots</h3>
@@ -111,7 +111,7 @@ const buildYourAI = () => {
             </Row>
           </div>
           <div className={styles["box-4"]}>
-            <Row gutter={[24, 24]} className={styles["box-GenAI"]}>
+            <Row className={styles["box-GenAI"]}>
               <Col xs={24} sm={24}>
                 <h3>GenAI For Content Creation</h3>
                 <p>
@@ -130,13 +130,13 @@ const buildYourAI = () => {
                 <img src="/genAI-mobile.png" alt="genai-content-creation" />
               </Col>
             </Row>
-            <div className={styles["box-AI-Stack"]}>
+          </div>
+          <div className={styles["box-AI-Stack"]}>
               <h3>Rockship Unified AI Stack</h3>
               <img src="/ai-stack.png" alt="unified-ai-stack" />
             </div>
-          </div>
           <div className={styles["box-5"]}>
-            <Row gutter={[24, 24]}>
+            <Row className={styles["box-5-row"]}>
               <Col xs={3} sm={3}>
                 <img src="/twitter-original.svg" />
               </Col>

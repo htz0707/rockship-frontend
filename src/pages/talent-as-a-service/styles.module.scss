@@ -1,3 +1,8 @@
+.button-group {
+  display: flex;
+  justify-content: center;
+}
+
 .homepage-button-1 {
   font-weight: 800;
   font-size: 1.6rem;
@@ -8,10 +13,12 @@
   background-color: $secondary-color;
   border: none;
   font-family: Be Vietnam Pro;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   .arrow-icon {
     width: 24px;
-    margin-left: 22px;
   }
 }
 
@@ -26,11 +33,26 @@
   padding: 0 20px;
   background-color: white;
   margin-left: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.homepage-button-1:hover {
+  img {
+    filter: invert(65%) sepia(42%) saturate(7324%) hue-rotate(196deg)
+      brightness(104%) contrast(101%);
+  }
 }
 
 .homepage-button-2:hover {
   background-color: black;
   color: white !important;
+
+  img {
+    filter: invert(99%) sepia(1%) saturate(230%) hue-rotate(315deg)
+      brightness(114%) contrast(87%);
+  }
 }
 
 .box-1 {
@@ -125,11 +147,6 @@
         margin-left: 0px;
         margin-bottom: 12px;
         width: 200px;
-        .arrow-icon {
-          margin-bottom: -15px;
-          padding-bottom: 10px;
-          margin-left: 12px;
-        }
       }
 
       @include tablet {
@@ -137,23 +154,12 @@
         margin-bottom: 0px;
         width: fit-content;
         padding: 0 10px;
-
-        .arrow-icon {
-          margin-bottom: -15px;
-          padding-bottom: 10px;
-          margin-left: 12px;
-        }
       }
 
       @include desktop {
         margin-left: 112px;
         margin-bottom: 0px;
         width: 163px;
-        .arrow-icon {
-          margin-bottom: -15px;
-          padding-bottom: 10px;
-          margin-left: 12px;
-        }
       }
     }
 
@@ -287,17 +293,10 @@
       margin-left: 0px;
       margin-top: 0px;
     }
-    @include tablet {
-      width: 100%;
-      border-radius: 16px;
-      margin-left: -6px;
-      margin-top: 30px;
-    }
     @include desktop {
       width: 100%;
+      max-width: 612px;
       border-radius: 16px;
-      margin-left: -120px;
-      margin-top: 30px;
     }
     .robot-hands {
       img {
@@ -310,17 +309,13 @@
         }
       }
 
-      @include tablet {
-        width: 100%;
-        img {
-          width: 97%;
-        }
-      }
-
       @include desktop {
-        width: 97%;
+        width: 100%;
+        max-width: 612px;
         img {
-          width: 95%;
+          width: 100%;
+
+          max-width: 612px;
         }
       }
     }
