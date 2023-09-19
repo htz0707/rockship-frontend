@@ -19,7 +19,7 @@ const TalentAsAService = () => {
       />
       <CustomLayout link={"talent-as-a-service"}>
         <div className={styles["box-1"]}>
-          <Row gutter={[24, 24]}>
+          <Row>
             <Col xs={24} sm={12} className={styles["box-1-left"]}>
               <p className={styles["grey-text"]}>
                 {" "}
@@ -54,7 +54,7 @@ const TalentAsAService = () => {
                   </p>
                 </div>
               </div>
-              <Col xs={0} sm={24}>
+              <div className={styles["button-group"]}>
                 <Button
                   className={styles["homepage-button-1"]}
                   onClick={() => router.push("/talents")}
@@ -82,36 +82,7 @@ const TalentAsAService = () => {
                     className={styles["call-icon"]}
                   />
                 </Button>
-              </Col>
-              <Col xs={24} sm={0}>
-                <Button
-                  className={styles["homepage-button-1"]}
-                  onClick={() => router.push("/talents")}
-                >
-                  Hire Talents
-                  <img
-                    src="/Arrow - Right.svg"
-                    alt="arrow"
-                    className={styles["arrow-icon"]}
-                  />
-                </Button>
-                <Button
-                  className={styles["homepage-button-2"]}
-                  onClick={() =>
-                    window.open(
-                      "https://calendly.com/rockship-co/30min-free-consulting",
-                      "_blank"
-                    )
-                  }
-                >
-                  Share hiring plan
-                  <img
-                    src="/Call.svg"
-                    alt="arrow"
-                    className={styles["call-icon"]}
-                  />
-                </Button>
-              </Col>
+              </div>
             </Col>
 
             <Col xs={24} sm={12} className={styles["col"]}>
