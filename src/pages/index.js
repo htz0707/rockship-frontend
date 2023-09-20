@@ -192,7 +192,7 @@ const HomePage = () => {
               </Col>
             </Row>
             <Row className={styles["row"]}>
-              <Col sm={24} md={12}>
+              <Col sm={0} md={12}>
                 <div className={styles["left-box"]}>
                   <img
                     src="/services.svg"
