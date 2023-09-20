@@ -54,6 +54,11 @@
   .box-2 {
     background-color: #deefff;
 
+    .box-2-image {
+      width: 100%;
+      max-width: 1300px;
+    }
+
     .box-2-color {
       width: 100%;
 
@@ -73,7 +78,6 @@
 
       .col-style {
         .sub-text {
-          width: 83.3%;
           height: fit-content;
           font-family: Be Vietnam Pro;
           font-size: 16px;
@@ -163,8 +167,19 @@
   .box-AI-Stack {
     margin: 40px auto;
     max-width: 1300px;
-  }
+    text-align: left;
+    h3 {
+      font-size: 40px;
+      font-family: Be Vietnam Pro;
+      font-weight: 800;
+      line-height: 51px;
+    }
 
+    img {
+      max-width: 1300px;
+      width: 100%;
+    }
+  }
 
   .box-5 {
     background-color: #00218f;
@@ -303,7 +318,6 @@
 
         h3 {
           margin-bottom: 8px;
-          margin-left: 60px;
           width: 250px;
           font-size: 24px;
           line-height: 31px;
@@ -312,7 +326,6 @@
         .sub-text {
           margin-top: 0px;
           margin-bottom: 12px;
-          margin-left: 40px;
           width: 280px;
           font-size: 16px;
           line-height: 20px;
@@ -323,7 +336,7 @@
           width: fit-content;
 
           img {
-            margin-left: 12px;
+            
           }
         }
       }
@@ -342,10 +355,9 @@
         }
 
         .col-style {
-          margin-left: 12px;
+          
 
           .sub-text {
-            margin-top: -12px;
             width: 343px;
             text-align: center;
           }
@@ -362,7 +374,7 @@
     .box-3 {
       h3 {
         font-size: 24px;
-        margin-left: 12px;
+        
         line-height: 30px;
         text-align: center;
       }
@@ -371,7 +383,7 @@
         text-align: left;
 
         .contents {
-          margin-left: 12px;
+          
           width: Fixed (315px);
           margin-bottom: 12px;
 
@@ -384,8 +396,8 @@
       }
 
       .col-image {
-        margin-top: -20px;
-        width: 90%;
+        width: 100%;
+        max-width: 1300px;
       }
     }
 
@@ -400,7 +412,7 @@
       }
 
       p {
-        margin-left: 12px;
+        
         font-size: 14px;
         line-height: 18px;
         width: 350px;
@@ -476,7 +488,7 @@
       }
 
       .row-consultant {
-        margin-left: 12px;
+        
 
         .consultant-info {
           .name {
@@ -562,34 +574,33 @@
         margin-top: 20px;
 
         .grey-text {
-          margin-left: 12px;
+          
           line-height: 20px;
         }
 
         h3 {
           margin-bottom: 40px;
-          margin-left: 12px;
+          
           width: 360px;
           font-size: 40px;
           line-height: 51px;
         }
 
         .sub-text {
-          margin-top: -20px;
           margin-bottom: 60px;
-          margin-left: 12px;
+          
           width: 360px;
           font-size: 20px;
           line-height: 25px;
         }
 
         .homepage-button-1 {
-          margin-left: 12px;
+          
           width: 247px;
           padding: 0 10px;
 
           img {
-            margin-left: 12px;
+            
           }
         }
       }
@@ -604,7 +615,7 @@
 
         h3 {
           margin-top: 20px;
-          margin-left: 12px;
+          
           width: fit-content;
           height: fit-content;
           font-size: 40px;
@@ -613,7 +624,7 @@
         }
 
         .col-style {
-          margin-left: 12px;
+          
 
           .sub-text {
             font-weight: 400;
@@ -635,7 +646,7 @@
       h3 {
         margin-bottom: 32px;
         font-size: 40px;
-        margin-left: 12px;
+        
         text-align: left;
         line-height: 51px;
       }
@@ -644,7 +655,7 @@
         text-align: left;
 
         .contents {
-          margin-left: 12px;
+          
 
           p {
             font-size: 1.6 rem;
@@ -664,25 +675,21 @@
 
       h3 {
         margin-bottom: 12px;
-        margin-left: 12px;
+        
         text-align: left;
         font-size: 40px;
       }
 
       p {
         text-align: left;
-        margin-left: 12px;
+        
         font-size: 16px;
         line-height: 21px;
         width: fit-content;
       }
 
       .box-GenAI {
-        // text-align: left;
-      }
-
-      img {
-        margin-left: 12px;
+        text-align: left;
       }
     }
 
@@ -740,13 +747,13 @@
 
     .consultant {
       h3 {
-        margin-left: 12px;
+        
         font-size: 40px;
         text-align: left;
       }
 
       .row-consultant {
-        margin-left: 12px;
+        
 
         .consultant-info {
           .name {
@@ -781,7 +788,7 @@
 
         h3 {
           padding-top: 24px;
-          margin-left: 12px;
+          
           font-size: 40px;
           font-weight: 900;
           line-height: 51px;
@@ -791,7 +798,7 @@
 
       .cert {
         margin-top: 12px;
-        margin-left: 12px;
+        
 
         .org-image {
           img {
@@ -831,33 +838,30 @@
         margin-top: 30px;
 
         .grey-text {
-          margin-left: 120px;
           line-height: 20px;
         }
 
         h3 {
           margin-bottom: 40px;
-          margin-left: 120px;
+
           width: 350px;
           font-size: 40px;
           line-height: 51px;
         }
 
         .sub-text {
-          margin-top: -20px;
           margin-bottom: 60px;
-          margin-left: 120px;
+
           width: 351px;
           font-size: 20px;
           line-height: 25px;
         }
 
         .homepage-button-1 {
-          margin-left: 120px;
           width: 247px;
 
           img {
-            margin-left: 12px;
+            
           }
         }
       }
@@ -873,7 +877,7 @@
 
         h3 {
           margin-top: 40px;
-          margin-left: 120px;
+
           width: 551px;
           font-size: 40px;
           line-height: 51px;
@@ -881,10 +885,8 @@
         }
 
         .col-style {
-          margin-left: 120px;
-
           .sub-text {
-            width: 91.67%;
+            width: 100%;
             text-align: left;
           }
         }
@@ -901,7 +903,7 @@
       h3 {
         margin-bottom: 32px;
         font-size: 40px;
-        margin-left: 120px;
+
         text-align: left;
         line-height: 51px;
       }
@@ -922,7 +924,6 @@
 
       .col-image {
         width: 90%;
-        margin-left: 120px;
       }
     }
 
@@ -930,23 +931,17 @@
       margin-bottom: 80px;
 
       h3 {
-        margin-left: 120px;
         font-size: 40px;
       }
 
       p {
-        margin-left: 120px;
-        width: 83.3%;
         font-size: 16px;
         line-height: 21px;
       }
 
-      .box-GenAI {
-        text-align: center;
-      }
-
       img {
-        width: 83.3%;
+        width: 100%;
+        max-width: 1300px;
       }
     }
 
@@ -1011,14 +1006,11 @@
 
     .consultant {
       h3 {
-        margin-left: 120px;
         font-size: 40px;
         text-align: left;
       }
 
       .row-consultant {
-        margin-left: 120px;
-
         .consultant-info {
           .name {
             font-size: 20px;
@@ -1052,7 +1044,7 @@
 
         h3 {
           padding-top: 24px;
-          margin-left: 120px;
+
           font-size: 40px;
           font-weight: 900;
           line-height: 51px;
@@ -1062,7 +1054,6 @@
 
       .cert {
         margin-top: 24px;
-        margin-left: 120px;
 
         .org-image {
           img {
@@ -1073,7 +1064,7 @@
         }
 
         .cert-inf {
-          margin-left: 12px;
+          
           margin-top: -10px;
 
           .cert-name {
