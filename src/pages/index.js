@@ -179,7 +179,7 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col xs={0} md={12}>
+              <Col sm={0} md={12}>
                 <img
                   src="/solutions.svg"
                   alt="solutions"

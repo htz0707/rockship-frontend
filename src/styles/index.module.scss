@@ -190,30 +190,32 @@
     }
 
     .left-box {
-      max-width: 648px !important;
-      padding-right: 36px;
+      width: 100%;
+      max-width: 648px;
     }
 
     .right-box {
-      max-width: 612px !important;
+      width: 100%;
+      max-width: 612px;
     }
 
     img.col-image {
-      @include mobile {
-        width: 242.065px;
-        height: 224px;
-        margin-bottom: 48px;
-      }
-      @include tablet {
-        width: 335.99px;
-        height: auto;
-        margin-bottom: 0px;
-      }
-      @include desktop {
-        width: 612px;
-        height: auto;
-        margin-bottom: 0px;
-      }
+      width: 100%;
+      // @include mobile {
+      //   width: 242.065px;
+      //   height: 224px;
+      //   margin-bottom: 48px;
+      // }
+      // @include tablet {
+      //   width: 335.99px;
+      //   height: auto;
+      //   margin-bottom: 0px;
+      // }
+      // @include desktop {
+      //   width: 612px;
+      //   height: auto;
+      //   margin-bottom: 0px;
+      // }
     }
 
     .text-title {
@@ -285,7 +287,6 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      max-width: 652px;
 
       .title {
         margin-bottom: 20px;

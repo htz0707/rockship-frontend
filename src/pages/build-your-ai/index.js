@@ -140,53 +140,28 @@ const buildYourAI = () => {
             <img src="/ai-stack.png" alt="unified-ai-stack" />
           </div>
           <div className={styles["box-5"]}>
-            <Row className={styles["box-5-row"]}>
-              <Col xs={3} sm={3}>
-                <img src="/twitter-original.svg" />
-              </Col>
-              <Col xs={3} sm={3}>
-                <img
-                  src="/github-original.svg"
-                  className={styles["github-logo"]}
-                />
-              </Col>
-              <Col xs={3} sm={3}>
-                <img
-                  src="/isense-original.svg"
-                  className={styles["isense-logo"]}
-                />
-              </Col>
-              <Col xs={3} sm={3}>
-                <img
-                  src="/linkedin-original.svg"
-                  className={styles["linkedin-logo"]}
-                />
-              </Col>
-              <Col xs={3} sm={3}>
-                <img
-                  src="/facebook-original.svg"
-                  className={styles["fb-logo"]}
-                />
-              </Col>
-              <Col xs={3} sm={3}>
-                <img
-                  src="/tedez-original.svg"
-                  className={styles["tedez-logo"]}
-                />
-              </Col>
-              <Col xs={3} sm={3}>
-                <img
-                  src="/figma-original.svg"
-                  className={styles["figma-logo"]}
-                />
-              </Col>
-              <Col xs={3} sm={3}>
-                <img
-                  src="/worknow-original.svg"
-                  className={styles["worknow-logo"]}
-                />
-              </Col>
-            </Row>
+            <div className={styles["box-5-row"]}>
+              <img src="/twitter-original.svg" />
+              <img
+                src="/github-original.svg"
+                className={styles["github-logo"]}
+              />
+              <img
+                src="/isense-original.svg"
+                className={styles["isense-logo"]}
+              />
+              <img
+                src="/linkedin-original.svg"
+                className={styles["linkedin-logo"]}
+              />
+              <img src="/facebook-original.svg" className={styles["fb-logo"]} />
+              <img src="/tedez-original.svg" className={styles["tedez-logo"]} />
+              <img src="/figma-original.svg" className={styles["figma-logo"]} />
+              <img
+                src="/worknow-original.svg"
+                className={styles["worknow-logo"]}
+              />
+            </div>
           </div>
           <div className={styles["box-6"]}>
             <Row>
@@ -207,17 +182,15 @@ const buildYourAI = () => {
           <div className={styles["consultant"]}>
             <h3>Solution Architect Consultants</h3>
             <div className={styles["row-consultant"]}>
-              <Row >
+              <Row>
                 <Col
                   xs={{ order: 1, span: 12 }}
-                  sm={{ order: 1, span: 4 }}
                   lg={{ order: 1, span: 4 }}
                 >
                   <img src="/ngoc-tran.png" alt="ngoc-tran" />
                 </Col>
                 <Col
                   xs={{ order: 3, span: 12 }}
-                  sm={{ order: 1, span: 8 }}
                   lg={{ order: 1, span: 8 }}
                   className={styles["consultant-info"]}
                 >
@@ -234,14 +207,12 @@ const buildYourAI = () => {
                 </Col>
                 <Col
                   xs={{ order: 2, span: 12 }}
-                  sm={{ order: 1, span: 4 }}
                   lg={{ order: 1, span: 4 }}
                 >
                   <img src="/quan-do.png" alt="quan-do" />
                 </Col>
                 <Col
                   xs={{ order: 4, span: 12 }}
-                  sm={{ order: 1, span: 8 }}
                   lg={{ order: 1, span: 8 }}
                   className={styles["consultant-info"]}
                 >
