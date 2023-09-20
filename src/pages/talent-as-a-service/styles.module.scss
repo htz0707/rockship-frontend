@@ -1,6 +1,6 @@
 .button-group {
   display: flex;
-  justify-content: center;
+  justify-content: left;
 }
 
 .homepage-button-1 {
@@ -102,7 +102,7 @@
       }
 
       @include desktop {
-        margin-left: 120px;
+        
         line-height: 20px;
       }
     }
@@ -134,7 +134,7 @@
       @include desktop {
         margin-top: 40px;
         margin-bottom: 40px;
-        margin-left: 120px;
+        
         margin-right: 0px;
         width: 390px;
         font-size: 40px;
@@ -157,7 +157,6 @@
       }
 
       @include desktop {
-        margin-left: 112px;
         margin-bottom: 0px;
         width: 163px;
       }
@@ -173,31 +172,15 @@
         img {
           margin-left: 12px;
         }
-        .call-icon {
-          margin-top: -3px;
-        }
       }
 
       @include tablet {
         width: 200px;
         margin-left: 12px;
-
-        img {
-          margin-left: 12px;
-        }
-        .call-icon {
-          margin-top: -3px;
-        }
       }
 
       @include desktop {
         width: 213px;
-        img {
-          margin-left: 12px;
-        }
-        .call-icon {
-          margin-top: 0px;
-        }
       }
     }
 
@@ -234,7 +217,7 @@
         }
 
         @include desktop {
-          margin-left: 120px;
+          
         }
 
         img {
@@ -361,7 +344,7 @@
     }
 
     @include desktop {
-      margin-left: 120px;
+      
       font-size: 40px;
     }
   }
@@ -390,7 +373,7 @@
     }
 
     @include desktop {
-      margin-left: 120px;
+      
       width: 83.3%;
       font-size: 16px;
       line-height: 21px;

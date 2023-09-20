@@ -18,7 +18,7 @@ const buildYourAI = () => {
       <CustomLayout link={"build-your-ai"}>
         <div className={styles["build-your-ai"]}>
           <div className={styles["box-1"]}>
-            <Row gutter={[24, 24]}>
+            <Row>
               <Col xs={24} sm={12} className={styles["box-1-left"]}>
                 <p className={styles["grey-text"]}>
                   {" "}
@@ -68,7 +68,11 @@ const buildYourAI = () => {
                   pipeline and do further analysis.
                 </p>
               </div>
-              <img className={styles["box-2-image"]} src="/key-info-extract.png" alt="key-info-extract" />
+              <img
+                className={styles["box-2-image"]}
+                src="/key-info-extract.png"
+                alt="key-info-extract"
+              />
             </div>
           </div>
           <div className={styles["box-3"]}>
@@ -132,9 +136,9 @@ const buildYourAI = () => {
             </Row>
           </div>
           <div className={styles["box-AI-Stack"]}>
-              <h3>Rockship Unified AI Stack</h3>
-              <img src="/ai-stack.png" alt="unified-ai-stack" />
-            </div>
+            <h3>Rockship Unified AI Stack</h3>
+            <img src="/ai-stack.png" alt="unified-ai-stack" />
+          </div>
           <div className={styles["box-5"]}>
             <Row className={styles["box-5-row"]}>
               <Col xs={3} sm={3}>
@@ -185,7 +189,7 @@ const buildYourAI = () => {
             </Row>
           </div>
           <div className={styles["box-6"]}>
-            <Row gutter={[24, 24]}>
+            <Row>
               <Col xs={8} sm={8}>
                 <h1>5+</h1>
                 <p>Industries</p>
@@ -203,7 +207,7 @@ const buildYourAI = () => {
           <div className={styles["consultant"]}>
             <h3>Solution Architect Consultants</h3>
             <div className={styles["row-consultant"]}>
-              <Row gutter={{ xs: 24, sm: 24, md: 24, lg: 24 }}>
+              <Row >
                 <Col
                   xs={{ order: 1, span: 12 }}
                   sm={{ order: 1, span: 4 }}
