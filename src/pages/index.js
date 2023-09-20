@@ -123,7 +123,7 @@ const HomePage = () => {
               Our Solutions
             </p>
             <Row className={styles["row"]}>
-              <Col sm={24} md={0}>
+              <Col xs={24} sm={24} md={0}>
                 <img
                   src="/solutions.svg"
                   alt="solutions"
@@ -135,6 +135,7 @@ const HomePage = () => {
               </Col>
               <Col
                 className={styles["col-box"] + " " + styles["left-box"]}
+                xs={24}
                 sm={24}
                 md={12}
                 data-aos="fade-up"
@@ -179,7 +180,7 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col sm={0} md={12}>
+              <Col xs={0} sm={0} md={12}>
                 <img
                   src="/solutions.svg"
                   alt="solutions"
@@ -192,7 +193,7 @@ const HomePage = () => {
               </Col>
             </Row>
             <Row className={styles["row"]}>
-              <Col sm={0} md={12}>
+              <Col xs={24} sm={24} md={12}>
                 <div className={styles["left-box"]}>
                   <img
                     src="/services.svg"
@@ -206,6 +207,7 @@ const HomePage = () => {
               </Col>
               <Col
                 className={styles["col-box"] + " " + styles["right-box"]}
+                xs={24}
                 sm={24}
                 md={12}
                 data-aos="fade-up"
@@ -254,7 +256,7 @@ const HomePage = () => {
               </Col>
             </Row>
             <Row className={styles["row"]}>
-              <Col sm={24} md={0}>
+              <Col xs={24} sm={24} md={0}>
                 <img
                   src="/data.svg"
                   alt="data"
@@ -266,6 +268,7 @@ const HomePage = () => {
               </Col>
               <Col
                 className={styles["col-box"] + " " + styles["left-box"]}
+                xs={24}
                 sm={24}
                 md={12}
                 data-aos="fade-up"
