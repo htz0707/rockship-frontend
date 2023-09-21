@@ -167,12 +167,7 @@
   .box-AI-Stack {
     margin: 40px auto;
     max-width: 1300px;
-    text-align: left;
     h3 {
-      font-size: 40px;
-      font-family: Be Vietnam Pro;
-      font-weight: 800;
-      line-height: 51px;
       @include mobile {
         margin-bottom: 8px;
         margin-left: auto;
@@ -180,6 +175,14 @@
         width: fit-content;
         font-size: 24px;
         line-height: 31px;
+      }
+
+      @include desktop {
+        font-size: 40px;
+        margin: unset;
+        font-family: Be Vietnam Pro;
+        font-weight: 800;
+        line-height: 51px;
       }
     }
 
@@ -189,6 +192,11 @@
       @include mobile {
         width: 80%;
         margin: 0 5%;
+      }
+
+      @include desktop {
+        width: 100%;
+        margin: 0 !important;
       }
     }
   }
@@ -846,14 +854,15 @@
         }
 
         h3 {
+          margin: unset;
           margin-bottom: 40px;
-
           width: 350px;
           font-size: 40px;
           line-height: 51px;
         }
 
         .sub-text {
+          margin: unset;
           margin-bottom: 60px;
 
           width: 351px;
