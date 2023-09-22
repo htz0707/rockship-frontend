@@ -14,11 +14,22 @@ import CustomLayout from "@/components/Layout";
 const CilentCard = ({
   imageSrc,
   text,
-  caseStudyUrl = "#",
+  id,
   clientName,
   clientImageSrc,
   clientCompany,
 }) => {
+  const caseStudies = useSelector((state) => state?.caseStudies?.caseStudies);
+  const router = useRouter();
+  const dispatch = useDispatch();
+
+  const item = caseStudies.find((item) => item.id !== 0 && item.id === id);
+  const handleOnClick = (item) => {
+    router.push(`/case-studies/${item.id}`);
+    dispatch(setItemCaseStudy(item));
+    localStorage.setItem("itemDetail", JSON.stringify(item));
+  };
+
   return (
     <div
       className={styles["box-7-content"]}
@@ -34,19 +45,25 @@ const CilentCard = ({
         </div>
         <div className={styles["client-test"]}>
           <div className={styles["text"]}>{text}</div>
-          <div>
-            <a className={styles["text-link"]} href={caseStudyUrl}>
-              <u>Read case study</u>
-            </a>
+          <div className={styles["text-link"]}>
+            <u
+              onClick={() => {
+                if (id !== 0) {
+                  handleOnClick(item);
+                }
+              }}
+            >
+              Read case study
+            </u>
           </div>
           <div className={styles["client"]}>
             <img src={clientImageSrc} alt="avt" />
-            <a href="https://www.linkedin.com/in/alantchou/" target="_blank">
+            <div>
               <p className={styles["client-name"]}>
                 <b>{clientName}</b>
               </p>
               <p className={styles["client-position"]}>CEO | {clientCompany}</p>
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -64,29 +81,49 @@ const HomePage = () => {
       imageSrc: "/meta_dotus.svg",
       text: "Rockship helped us with the development of our frontend for meta.us. I have found them to be flexible and willing to go the extra mile in meeting client needs.",
       clientName: "Alan Chou",
+      id: 12,
       clientImageSrc: "/meta-avt.svg",
       clientCompany: "Meta.us",
     },
     {
       imageSrc: "/revo.svg",
       text: "Rockship is a great choice for extending your development team. With their talented developer pool, they helped us release key features fast by supplementing our team. Their work was top-notch.",
+      id: 3,
       clientName: "Ritesh",
       clientImageSrc: "/rovo-avt.svg",
       clientCompany: "Rovo",
     },
     {
+      imageSrc: "/iura-2.svg",
+      text: "The development of IURA was completed within just a 6-month timeframe, delivering a comprehensive solution for legal consulting. The enhanced client experience and efficient service delivery have led to our notable growth in business and client satisfaction.",
+      id: 7,
+      clientName: "Tuan Ha",
+      clientImageSrc: "/iura-avt.svg",
+      clientCompany: "IURA",
+    },
+    {
+      imageSrc: "/circo.svg",
+      text: "Worknow integrates well with our system and drive more bookings for our services. We love their space provider dashboard which provides notifications for new bookings in real-time and their seamless guess checking process.",
+      id: 2,
+      clientName: "Linh Hoang",
+      clientImageSrc: "/circo-avt.svg",
+      clientCompany: "cirCO",
+    },
+    {
+      imageSrc: "/tz.svg",
+      text: "Do feel that I found the right partner in you, Rockship!",
+      id: 9,
+      clientName: "Tram Le",
+      clientImageSrc: "/tz-avt.svg",
+      clientCompany: "TedEz",
+    },
+    {
       imageSrc: "/sybit.svg",
       text: "The team at Rockship has played a key role in bringing You Predict to market. Technically strong & driven, they’ve been responsive to the shifting priorities that are innate to the startup process.",
+      id: 0,
       clientName: "Theo Sanders",
       clientImageSrc: "/sybil-avt.svg",
       clientCompany: "Sybil Entertainment",
-    },
-    {
-      imageSrc: "/meta_dotus.svg",
-      text: "Rockship helped us with the development of our frontend for meta.us. I have found them to be flexible and willing to go the extra mile in meeting client needs.",
-      clientName: "Alan Chou",
-      clientImageSrc: "/meta-avt.svg",
-      clientCompany: "Meta.us",
     },
   ];
 
@@ -278,7 +315,7 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col xs={0} lg={12}>
+              <Col className={styles["col-image-container"]} xs={0} lg={12}>
                 <img
                   src="/solutions.svg"
                   alt="solutions"
@@ -308,7 +345,9 @@ const HomePage = () => {
                 />
               </Col>
               <Col
-                className={styles["col-box"] + " " + styles["right-box"]}
+                className={
+                  styles["col-box"] + " " + styles["col-image-container"]
+                }
                 xs={24}
                 md={12}
                 data-aos="fade-up"
@@ -411,10 +450,10 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col xs={0} lg={12}>
+              <Col className={styles["col-image-container"]} xs={0} md={12}>
                 <img
-                  src="/data.svg"
-                  alt="data"
+                  src="/team.svg"
+                  alt="team"
                   className={styles["col-image"]}
                   data-aos="fade-up"
                   data-aos-delay="100"
@@ -528,54 +567,6 @@ const HomePage = () => {
               <img src="/next-arrow.svg" alt="next" />
             </Button>
           </div>
-
-          {/* 
-            <Col className={styles["text-start"]} xs={24} md={8}>
-              <div
-                className={styles["text-end"]}
-                data-aos="fade-up"
-                data-aos-delay="100"
-                data-aos-duration="500"
-                data-aos-anchor-placement="top-bottom"
-              >
-                <img
-                  src="/sybit.svg"
-                  alt="quote"
-                  className={styles["client-icon"]}
-                />
-                <div className={styles["meta-testimony"]}>
-                  <img
-                    src="/quote.svg"
-                    alt="quote"
-                    className={styles["quote_icon"]}
-                  />
-                  <div className={styles["client_test"]}>
-                    The team at Rockship has played a key role in bringing You
-                    Predict to market. Technically strong & driven, they've been
-                    responsive to the shifting priorities that are innate to the
-                    startup process.
-                    <div className={styles["client"]}>
-                      <a
-                        href="https://www.linkedin.com/in/theo-sanders/"
-                        target="_blank"
-                      >
-                        <p className={styles["client_name"]}>
-                          {" "}
-                          <b>Theo Sanders</b>
-                        </p>
-                        <p className={styles["client_position"]}>
-                          CEO | Sybil Entertainment
-                        </p>
-                      </a>
-                      <div className={styles["client_bottom"]}>
-                        {" "}
-                        <br></br>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col> */}
         </div>
       </div>
     </CustomLayout>
