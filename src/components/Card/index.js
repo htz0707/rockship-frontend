@@ -1,25 +1,29 @@
-'use client';
-import React from 'react';
-import styles from './card.module.scss';
+"use client";
+import React from "react";
+import styles from "./card.module.scss";
 
 const Card = ({
-  imageSrc = '',
+  imageSrc = "",
   handleOnClickCard = () => null,
-  title = '',
-  description = '',
+  title = "",
+  description = "",
   lsValue = [],
 }) => {
   return (
-    <div className={styles['card']} onClick={handleOnClickCard}>
+    <div className={styles["card"]} onClick={handleOnClickCard}>
       <img src={imageSrc} alt="card-image" />
-      <div className={styles['card-content']}>
+      <div className={styles["card-content"]}>
         <h4>{title}</h4>
-        {description && <p>{description}</p>}
+        {description && (
+          <div>
+            <p>{description}</p>
+          </div>
+        )}
       </div>
-      <div className={styles['card-list']}>
-        {lsValue.map(item => {
+      <div className={styles["card-list"]}>
+        {lsValue.map((item) => {
           return (
-            <div key={item.id} className={styles['card-item']}>
+            <div key={item.id} className={styles["card-item"]}>
               <p>{`#${item.name}`}</p>
             </div>
           );

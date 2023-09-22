@@ -209,7 +209,7 @@
         padding-right: unset;
       }
       @include desktop {
-        max-width: 47%;
+        max-width: 50%;
         padding-left: 1%;
         padding-right: 5%;
       }
@@ -224,7 +224,15 @@
         max-width: 100%;
       }
       @include desktop {
-        max-width: 47%;
+        max-width: 50%;
+      }
+    }
+
+    .col-image-container {
+      @include desktop {
+        max-width: 50%;
+        padding-right: 1%;
+        padding-left: 5%;
       }
     }
 
@@ -521,7 +529,7 @@
       text-align: left;
       .title-1 {
         margin-top: 0;
-        margin-bottom: 10px;
+        margin-bottom: 24px;
         color: var(--text-gray-900, #18191f);
         font-feature-settings: "salt" on, "liga" off;
         font-family: Be Vietnam Pro;
@@ -531,19 +539,17 @@
         text-align: center;
 
         @include mobile {
-          margin: 0 24px;
+          margin: 24px 0;
           font-size: 3.2rem;
           line-height: 36px;
         }
         @include tablet {
           font-size: 4rem;
           line-height: 50px;
-          margin: 0;
         }
         @include desktop {
           font-size: 4rem;
           line-height: 64px;
-          margin: 0;
         }
       }
 
@@ -737,7 +743,7 @@
       margin-right: 16px;
 
       width: 355px;
-      height: 428px;
+      height: 452px;
     }
     .client-icon {
       height: 100px;
@@ -778,11 +784,15 @@
         font-size: 1.4rem;
         line-height: 28px;
         .text {
-          height: 154px;
+          height: 168px;
+          margin-bottom: 16px;
         }
 
         .text-link {
-          color: #4281ee;
+          u {
+            color: #4281ee;
+          cursor: pointer;
+          }
         }
       }
 
