@@ -23,11 +23,13 @@ const CilentCard = ({
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const item = caseStudies.find((item) => item.id !== 0 && item.id === id);
+  const item = caseStudies.find((item) => item.id === id);
   const handleOnClick = (item) => {
-    router.push(`/case-studies/${item.id}`);
-    dispatch(setItemCaseStudy(item));
-    localStorage.setItem("itemDetail", JSON.stringify(item));
+    if (item) {
+      router.push(`/case-studies/${item.id}`);
+      dispatch(setItemCaseStudy(item));
+      localStorage.setItem("itemDetail", JSON.stringify(item));
+    }
   };
 
   return (
@@ -48,9 +50,7 @@ const CilentCard = ({
           <div className={styles["text-link"]}>
             <u
               onClick={() => {
-                if (id !== 0) {
-                  handleOnClick(item);
-                }
+                handleOnClick(item);
               }}
             >
               Read case study
