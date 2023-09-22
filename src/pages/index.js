@@ -23,8 +23,8 @@ const CilentCard = ({
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const item = caseStudies.find((item) => item.id === id);
-  const handleOnClick = (item) => {
+  const handleOnClick = () => {
+    const item = caseStudies.find((item) => item.id === id);
     if (item) {
       router.push(`/case-studies/${item.id}`);
       dispatch(setItemCaseStudy(item));
@@ -50,7 +50,7 @@ const CilentCard = ({
           <div className={styles["text-link"]}>
             <u
               onClick={() => {
-                handleOnClick(item);
+                handleOnClick();
               }}
             >
               Read case study
