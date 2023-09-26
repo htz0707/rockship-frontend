@@ -131,18 +131,19 @@ const HomePage = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
-    const newIndex = currentIndex + 1;
-    if (newIndex + itemsPerPage <= clientDataList.length) {
+    const newIndex = currentIndex + itemsPerPage;
+    if (newIndex < clientDataList.length) {
       setCurrentIndex(newIndex);
     }
   };
-
+  
   const handleBack = () => {
-    const newIndex = currentIndex - 1;
+    const newIndex = currentIndex - itemsPerPage;
     if (newIndex >= 0) {
       setCurrentIndex(newIndex);
     }
   };
+  
 
   const isBackDisabled = currentIndex === 0;
   const isNextDisabled = currentIndex + itemsPerPage >= clientDataList.length;
