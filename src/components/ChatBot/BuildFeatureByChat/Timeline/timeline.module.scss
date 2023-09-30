@@ -1,0 +1,95 @@
+.chart {
+  .chart-box {
+    overflow: auto;
+    min-height: 458px;
+  }
+  color: $black;
+  padding: 16px;
+  text-align: left;
+  .header {
+    margin-bottom: 12px;
+    display: flex;
+    cursor: pointer;
+
+    p {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      text-transform: uppercase;
+      margin: 0 0 0 8px;
+    }
+  }
+  .bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 16px;
+    background: #ebebeb;
+    padding: 4px 12px;
+    margin-top: 10px;
+
+    .left {
+      p {
+        margin: 0;
+      }
+      .features-days {
+        color: var(--caption, #6d6d6d);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      .cost {
+        color: #191a15;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+    }
+
+    .right {
+      display: flex;
+      .timeline {
+        cursor: pointer;
+        display: flex;
+        height: 40px;
+        padding: 4px 12px;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        border-radius: 12px;
+        border: 1px solid #0085ff;
+        background: #fff;
+        margin-right: 5px;
+        span {
+          color: #0085ff;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+      }
+      .go-with-us {
+        cursor: pointer;
+        display: flex;
+        height: 40px;
+        padding: 4px 12px;
+        justify-content: center;
+        align-items: center;
+        gap: 4px;
+        border-radius: 12px;
+        background: #0094ff;
+
+        span {
+          color: #fff;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+      }
+    }
+  }
+}

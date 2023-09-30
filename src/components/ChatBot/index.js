@@ -1,54 +1,64 @@
-import * as React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Input, Button, Space, Modal } from "antd";
+import { Input, Button, Space, Modal, Select } from "antd";
 import styles from "./chatbot.module.scss";
-import TypewriterEffect from "../TypewriterEffect";
-import { newSession } from "@/pages/api/ChatbotAPI";
+
+import {
+  newSession,
+  chatHistory,
+  responseChat,
+  endSession,
+  sendError,
+} from "@/pages/api/ChatbotAPI";
 import { v4 as uuidv4 } from "uuid";
-
-const FEATURES = [
-  "Social Media App",
-  "Ecommerce App",
-  "EdTech Platform",
-  "Crypto Currency Exchange",
-];
-
-const ROLES = ["bot", "user"];
-
-const BOT_QUESTIONS = [
-  "Hi! I'm a chatbot from Rockship. What type of app do you want to make?",
-  "Who are your target users?",
-  "What is your unique selling points?",
-  "To continue, please enter your email.",
-];
-
-const VALIDATE_MESSAGES = ["Please enter a valid email."];
+import { useRouter } from "next/router";
+import Conversation from "./BuildFeatureByChat/Conversation";
+import ListFeature from "./BuildFeatureByChat/ListFeature";
+import Timeline from "./BuildFeatureByChat/Timeline";
+import { analytics } from "@/segment/segment";
 
 const Chatbot = () => {
-  const containerRef = React.useRef();
+  const inputTagRef = useRef(null);
+  const [inputValue, setInputValue] = useState("");
+  // const [open, setOpen] = useState(false);
+  const [appTypeList, setAppTypeList] = useState([]);
+  const [disabled, setDisabled] = useState(true);
+  const [loadHistory, setLoadHistory] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [endMessage, setEndMessage] = useState(false);
+  const [step, setStep] = useState(0);
+  const [projectId, setProjectId] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [restarted, setRestarted] = useState(false);
 
-  const [messages, setMessages] = React.useState([]);
-  const [inputValue, setInputValue] = React.useState("");
-  const [open, setOpen] = React.useState(false);
-  const [featureList, setFeatureList] = React.useState([]);
-  const [selectedFeature, setSelectedFeature] = React.useState(null);
-  const [disabled, setDisabled] = React.useState(true);
+  // const showModal = () => {
+  //   setOpen(true);
+  // };
+  // const handleCancel = () => {
+  //   setOpen(false);
+  // };
 
-  const showModal = () => {
-    setOpen(true);
-  };
-  const handleCancel = () => {
-    setOpen(false);
-  };
+  const router = useRouter();
+  const { user_id, session_id } = router.query;
 
-  const handleSendMessage = (role, value) => {
-    setMessages((prevState) => [
-      ...prevState,
-      {
-        sender: role,
-        content: value,
-      },
-    ]);
+  useEffect(() => {
+    if (!user_id || !session_id) handleSetUUID();
+    else {
+      localStorage.setItem("user_id", user_id);
+      localStorage.setItem("session_id", session_id);
+    }
+    handleLoadHistory();
+  }, [user_id, session_id]);
+
+  useEffect(() => {
+    if (inputTagRef.current) {
+      inputTagRef.current.focus();
+    }
+  }, [inputTagRef.current]);
+
+  const handleSendMessage = () => {
+    handleResponseChat();
     setInputValue("");
   };
 
@@ -61,75 +71,151 @@ const Chatbot = () => {
     }
   };
 
-  const handleNewSession = async () => {
+  const handleNewSession = async (app_type_id) => {
+    setLoading(true);
+    setDisabled(false);
     try {
       await newSession({
         user_id: localStorage.getItem("user_id"),
         session_id: localStorage.getItem("session_id"),
-        app_type: 0,
+        app_type_id: app_type_id,
       });
+      await handleLoadHistory();
     } catch (error) {
+      sendError({
+        user_id: localStorage.getItem("user_id"),
+        session_id: localStorage.getItem("session_id"),
+      });
+      setLoading(false);
       console.error("Error:", error);
     }
   };
 
-  const handleSelectFeature = (message) => {
-    handleNewSession();
-    setSelectedFeature(message);
-    setDisabled(false);
-    handleSendMessage(ROLES[1], message);
-    handleSendMessage(ROLES[0], BOT_QUESTIONS[1]);
+  const handleLoadHistory = async () => {
+    setLoading(true);
+    try {
+      const res = await chatHistory({
+        user_id: localStorage.getItem("user_id"),
+        session_id: localStorage.getItem("session_id"),
+      });
+
+      if (Object.keys(res.chat_history.response).length > 1) {
+        setDisabled(false);
+      }
+      setAppTypeList(res.app_types);
+      setLoadHistory(res.chat_history);
+      for (const key in res.chat_history.response) {
+        if (
+          res.chat_history.response[key].message.includes(
+            "all the necessary information"
+          ) ||
+          res.chat_history.response[key].message.includes(
+            "Thank you for providing your email"
+          )
+        ) {
+          setRestarted(false);
+          await handleEndSession();
+          localStorage.removeItem("canRefresh");
+          setDisabled(true);
+          setEndMessage(true);
+        } else {
+          localStorage.setItem("canRefresh", true);
+        }
+      }
+      setLoading(false);
+    } catch (error) {
+      sendError({
+        user_id: localStorage.getItem("user_id"),
+        session_id: localStorage.getItem("session_id"),
+      });
+      setLoading(false);
+      console.error("Error:", error);
+    }
   };
 
-  const handleSendBothMessage = (message) => {
-    const lastBotMessage = messages.reduce((acc, message) => {
-      if (message.sender === "bot") {
-        return message;
+  const handleResponseChat = async () => {
+    const startTime = new Date();
+    setLoading(true);
+    const timeOut = setTimeout(() => {
+      setLoading(false);
+      setIsError(true);
+      setRestarted(true);
+    }, 45000);
+    try {
+      await responseChat({
+        user_id: localStorage.getItem("user_id"),
+        session_id: localStorage.getItem("session_id"),
+        request: inputValue,
+      });
+      clearTimeout(timeOut)
+      await handleLoadHistory();
+      setLoading(false);
+      const endTime = new Date();
+      if (endTime - startTime > 10000) {
+        analytics.track("response-time-chatbot", {
+          duration: endTime - startTime,
+        });
       }
-      return acc;
-    }, null);
+    } catch (error) {
+      sendError({
+        user_id: localStorage.getItem("user_id"),
+        session_id: localStorage.getItem("session_id"),
+      });
+      setLoading(false);
+      console.error("Error:", error);
+    }
+  };
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    const isValidEmail = emailRegex.test(message);
-
-    handleSendMessage(ROLES[1], message);
-
-    switch (lastBotMessage.content) {
-      case BOT_QUESTIONS[1]:
-        handleSendMessage(ROLES[0], BOT_QUESTIONS[2]);
-        break;
-      case BOT_QUESTIONS[2]:
-        handleSendMessage(ROLES[0], BOT_QUESTIONS[3]);
-        break;
-      case BOT_QUESTIONS[3]:
-      case VALIDATE_MESSAGES[0]:
-        isValidEmail
-          ? handleSendMessage(ROLES[0], "Valid email")
-          : handleSendMessage(ROLES[0], VALIDATE_MESSAGES[0]);
-        break;
+  const handleEndSession = async () => {
+    const startTime = new Date();
+    setLoading(true);
+    try {
+      const res = await endSession({
+        user_id: localStorage.getItem("user_id"),
+        session_id: localStorage.getItem("session_id"),
+      });
+      setProjectId(res.project_estimation_id);
+      setErrorMessage(false);
+      setLoading(false);
+      const endTime = new Date();
+      if (endTime - startTime > 10000) {
+        analytics.track("end-session-chatbot", {
+          duration: endTime - startTime,
+        });
+      }
+    } catch (error) {
+      sendError({
+        user_id: localStorage.getItem("user_id"),
+        session_id: localStorage.getItem("session_id"),
+      });
+      setErrorMessage(true);
+      setLoading(false);
+      console.error("Error:", error);
     }
   };
 
   const handleReset = () => {
-    setSelectedFeature(null);
-    setMessages([]);
+    localStorage.removeItem("session_id");
+    localStorage.removeItem("canReset");
+    localStorage.removeItem("canRefresh");
+    localStorage.removeItem("mobile");
+    localStorage.removeItem("webapp");
+    localStorage.removeItem("totalCost");
+    localStorage.removeItem("totalDay");
+    localStorage.removeItem("numberOfFeatures");
+    localStorage.removeItem("projectEstimation");
+    setErrorMessage(false);
+    setEndMessage(false);
+    router.push("/");
+    handleSetUUID();
+    handleLoadHistory();
   };
 
-  React.useEffect(() => {
-    handleSetUUID();
-    setTimeout(() => {
-      setFeatureList(FEATURES);
-    }, 3200);
+  useEffect(() => {
+    if (localStorage.getItem("canRefresh")) {
+      handleReset();
+    }
   }, []);
-
-  React.useEffect(() => {
-    const scrollToBottom = () => {
-      const container = containerRef.current;
-      container.scrollTop = container.scrollHeight;
-    };
-    scrollToBottom();
-  }, [messages]);
 
   return (
     <div className={styles["chatbot"]}>
@@ -142,91 +228,63 @@ const Chatbot = () => {
         />
         <p>SHARE YOUR AWESOME IDEA</p>
       </div>
-      <div className={styles["chat-window"]} ref={containerRef}>
-        <div className={styles["description"]}>
-          Share with Rockship AI your app idea and we will propose you a
-          solution to build your app.
-        </div>
-        <div className={styles["bot-message"]}>
-          <TypewriterEffect text={BOT_QUESTIONS[0]} speed={40} />
-        </div>
-        {!selectedFeature &&
-          featureList.map((message, index) => (
-            <div key={index} className={styles["bubble-message"]}>
-              <TypewriterEffect
-                handleSelect={() => handleSelectFeature(message)}
-                text={message}
-                speed={40}
-              />
-            </div>
-          ))}
-        {selectedFeature &&
-          messages.map((message, index) => (
-            <div
-              key={index}
-              className={
-                styles[
-                  message.sender === "bot" ? "bot-message" : "user-message"
-                ]
-              }
-            >
-              {message.sender === "bot" ? (
-                message.content !== "Valid email" ? (
-                  <TypewriterEffect text={message.content} speed={40} />
-                ) : (
-                  <>
-                    <p>
-                      If your email is:{" "}
-                      <b>
-                        {messages.reduce((acc, message) => {
-                          if (message.sender === "user") {
-                            return message.content;
-                          }
-                          return acc;
-                        }, null)}
-                      </b>
-                      <br />
-                      <>
-                        <span onClick={showModal}>Click here</span> to build
-                        your product
-                      </>
-                    </p>
-                  </>
-                )
-              ) : (
-                <p>{message.content}</p>
-              )}
-            </div>
-          ))}
-      </div>
-      <Space.Compact className={styles["button-group"]}>
-        <Input
-          className={styles["custom-input"]}
-          disabled={disabled}
-          value={inputValue}
-          maxLength={150}
-          onPressEnter={(event) => {
-            if (event.key === "Enter" && inputValue) {
-              handleSendBothMessage(inputValue);
-            }
-          }}
-          onChange={(event) => setInputValue(event.target.value)}
-          placeholder="Send your demand, no more than 150 words..."
+      {step === 0 && (
+        <>
+          <Conversation
+            loadHistory={loadHistory}
+            appTypeList={appTypeList}
+            handleNewSession={handleNewSession}
+            loading={loading}
+            endMessage={endMessage}
+            setStep={setStep}
+            handleReset={handleReset}
+            projectId={projectId}
+            errorMessage={errorMessage}
+            isError={isError}
+            setIsError={setIsError}
+            restarted={restarted}
+          />
+          <Space.Compact className={styles["button-group"]}>
+            <Input
+              className={styles["custom-input"]}
+              disabled={disabled || loading}
+              value={inputValue}
+              maxLength={150}
+              onPressEnter={(event) => {
+                if (event.key === "Enter" && inputValue) {
+                  handleSendMessage();
+                }
+              }}
+              onChange={(event) => setInputValue(event.target.value)}
+              placeholder="Send your demand, no more than 150 words..."
+              ref={inputTagRef}
+            />
+            <Button
+              disabled={!inputValue || loading}
+              onClick={() => handleSendMessage()}
+              className={styles["send-button"] + " " + styles["send-btn"]}
+            ></Button>
+          </Space.Compact>
+          <p className={styles["privacy"]}>
+            <u>Privacy Protection</u>
+          </p>
+        </>
+      )}
+      {step === 1 && (
+        <ListFeature
+          handleReset={handleReset}
+          projectId={projectId}
+          setStep={setStep}
         />
-        {/* <Button
-          onClick={() => handleReset()}
-          className={styles["send-button"] + " " + styles["attach-btn"]}
-        ></Button> */}
-        <Button
-          disabled={!inputValue}
-          onClick={() => handleSendBothMessage(inputValue)}
-          className={styles["send-button"] + " " + styles["send-btn"]}
-        ></Button>
-      </Space.Compact>
-      <p className={styles["privacy"]}>
-        <u>Privacy Protection</u>
-      </p>
-      <Modal
+      )}
+      {step === 2 && (
+        <Timeline
+          allData={JSON.parse(localStorage.getItem("projectEstimation"))}
+          setStep={setStep}
+        />
+      )}
+
+      {/* <Modal
         open={open}
         onOk={handleCancel}
         onCancel={handleCancel}
@@ -243,7 +301,7 @@ const Chatbot = () => {
             Done!
           </Button>
         </div>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };

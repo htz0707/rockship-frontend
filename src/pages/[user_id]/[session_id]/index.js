@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Button, Col, Row, Input } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -10,149 +10,11 @@ import { setItemCaseStudy } from "@/context/actions/case-studies";
 
 import Card from "@/components/Card";
 import CustomLayout from "@/components/Layout";
-import { analytics } from "@/segment/segment";
-
-const CilentCard = ({
-  imageSrc,
-  text,
-  id,
-  clientName,
-  clientImageSrc,
-  clientCompany,
-}) => {
-  const caseStudies = useSelector((state) => state?.caseStudies?.caseStudies);
-  const router = useRouter();
-  const dispatch = useDispatch();
-
-  const handleOnClick = () => {
-    const item = caseStudies.find((item) => item.id === id);
-    if (item) {
-      router.push(`/case-studies/${item.id}`);
-      dispatch(setItemCaseStudy(item));
-      localStorage.setItem("itemDetail", JSON.stringify(item));
-    }
-  };
-
-  return (
-    <div
-      className={styles["box-7-content"]}
-      data-aos="fade-up"
-      data-aos-delay="100"
-      data-aos-duration="500"
-      data-aos-anchor-placement="top-bottom"
-    >
-      <img src={imageSrc} alt="quote" className={styles["client-icon"]} />
-      <div className={styles["meta-testimony"]}>
-        <div>
-          <img src="/quote.svg" alt="quote" className={styles["quote-icon"]} />
-        </div>
-        <div className={styles["client-test"]}>
-          <div className={styles["text"]}>{text}</div>
-          <div className={styles["text-link"]}>
-            <u
-              onClick={() => {
-                handleOnClick();
-              }}
-            >
-              Read case study
-            </u>
-          </div>
-          <div className={styles["client"]}>
-            <img src={clientImageSrc} alt="avt" />
-            <div>
-              <p className={styles["client-name"]}>
-                <b>{clientName}</b>
-              </p>
-              <p className={styles["client-position"]}>CEO | {clientCompany}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const HomePage = () => {
   const caseStudies = useSelector((state) => state?.caseStudies?.caseStudies);
   const router = useRouter();
   const dispatch = useDispatch();
-
-  const clientDataList = [
-    {
-      imageSrc: "/meta_dotus.svg",
-      text: "Rockship helped us with the development of our frontend for meta.us. I have found them to be flexible and willing to go the extra mile in meeting client needs.",
-      clientName: "Alan Chou",
-      id: 12,
-      clientImageSrc: "/meta-avt.svg",
-      clientCompany: "Meta.us",
-    },
-    {
-      imageSrc: "/revo.svg",
-      text: "Rockship is a great choice for extending your development team. With their talented developer pool, they helped us release key features fast by supplementing our team. Their work was top-notch.",
-      id: 3,
-      clientName: "Ritesh",
-      clientImageSrc: "/rovo-avt.svg",
-      clientCompany: "Rovo",
-    },
-    {
-      imageSrc: "/iura-2.svg",
-      text: "The development of IURA was completed within just a 6-month timeframe, delivering a comprehensive solution for legal consulting. The enhanced client experience and efficient service delivery have led to our notable growth in business and client satisfaction.",
-      id: 7,
-      clientName: "Tuan Ha",
-      clientImageSrc: "/iura-avt.svg",
-      clientCompany: "IURA",
-    },
-    {
-      imageSrc: "/circo.svg",
-      text: "Worknow integrates well with our system and drive more bookings for our services. We love their space provider dashboard which provides notifications for new bookings in real-time and their seamless guess checking process.",
-      id: 2,
-      clientName: "Linh Hoang",
-      clientImageSrc: "/circo-avt.svg",
-      clientCompany: "cirCO",
-    },
-    {
-      imageSrc: "/tz.svg",
-      text: "Do feel that I found the right partner in you, Rockship!",
-      id: 9,
-      clientName: "Tram Le",
-      clientImageSrc: "/tz-avt.svg",
-      clientCompany: "TedEz",
-    },
-    {
-      imageSrc: "/sybit.svg",
-      text: "The team at Rockship has played a key role in bringing You Predict to market. Technically strong & driven, they’ve been responsive to the shifting priorities that are innate to the startup process.",
-      id: 0,
-      clientName: "Theo Sanders",
-      clientImageSrc: "/sybil-avt.svg",
-      clientCompany: "Sybil Entertainment",
-    },
-  ];
-
-  const itemsPerPage = 3;
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const handleNext = () => {
-    const newIndex = currentIndex + itemsPerPage;
-    if (newIndex < clientDataList.length) {
-      setCurrentIndex(newIndex);
-    }
-  };
-  
-  const handleBack = () => {
-    const newIndex = currentIndex - itemsPerPage;
-    if (newIndex >= 0) {
-      setCurrentIndex(newIndex);
-    }
-  };
-  
-
-  const isBackDisabled = currentIndex === 0;
-  const isNextDisabled = currentIndex + itemsPerPage >= clientDataList.length;
-
-  const visibleClientData = clientDataList.slice(
-    currentIndex,
-    currentIndex + itemsPerPage
-  );
 
   const handleOnClickCard = (item) => {
     router.push(`/case-studies/${item.id}`);
@@ -161,7 +23,6 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    analytics.track("visit-homepage");
   }, []);
 
   return (
@@ -176,28 +37,32 @@ const HomePage = () => {
           <h3>Case studies</h3>
           <Link href={"/case-studies"}>View all case studies</Link>
         </div>
-        <div
+
+        <Row
+          gutter={[24, 24]}
+          className={styles["case-studies-row"]}
           data-aos="fade-up"
           data-aos-delay="50"
           data-aos-duration="500"
           data-aos-anchor-placement="top-bottom"
-          className={styles["case-study-container"]}
         >
           {caseStudies?.map((item, index) => {
             if (item.id < 4) {
               return (
-                <Card
-                  key={index}
-                  title={item.title}
-                  imageSrc={item.src}
-                  description={item.description}
-                  lsValue={item.hashtags}
-                  handleOnClickCard={() => handleOnClickCard(item)}
-                />
+                <Col xs={24} sm={12} md={8} key={item.id || index}>
+                  <Card
+                    title={item.title}
+                    imageSrc={item.src}
+                    description={item.description}
+                    lsValue={item.hashtags}
+                    handleOnClickCard={() => handleOnClickCard(item)}
+                  />
+                </Col>
               );
             }
           })}
-        </div>
+        </Row>
+
         <div className={styles["box-2"]}>
           <div
             className={styles["text-title"]}
@@ -215,7 +80,7 @@ const HomePage = () => {
           >
             <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
               <div className={styles["col-padding"]}>
-                <img style={{ width: 80 }} src={"/clock.svg"} alt="clock" />
+                <img src={"/clock.svg"} alt="clock" />
                 <p className={styles["text-col-header"]}>
                   Development automation
                 </p>
@@ -228,7 +93,7 @@ const HomePage = () => {
             </Col>
             <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
               <div className={styles["col-padding"]}>
-                <img style={{ width: 80 }} src={"/cloud.svg"} alt="cloud" />
+                <img src={"/cloud.svg"} alt="cloud" />
                 <p className={styles["text-col-header"]}>
                   Accumulative Expertise & Diverse Capabilities
                 </p>
@@ -241,7 +106,7 @@ const HomePage = () => {
             </Col>
             <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
               <div className={styles["col-padding"]}>
-                <img style={{ width: 80 }} src={"/pin.svg"} alt="pin" />
+                <img src={"/pin.svg"} alt="pin" />
                 <p className={styles["text-col-header"]}>
                   Frontier Tech & Cloud Native
                 </p>
@@ -264,8 +129,8 @@ const HomePage = () => {
             >
               Our Solutions
             </p>
-            <Row className={styles["row"]}>
-              <Col className={styles["col-image-mobile"]} xs={24} lg={0}>
+            <Row align={"center"} className={styles["row"]}>
+              <Col sm={24} md={0}>
                 <img
                   src="/solutions.svg"
                   alt="solutions"
@@ -276,9 +141,9 @@ const HomePage = () => {
                 />
               </Col>
               <Col
-                className={styles["col-box"] + " " + styles["left-box"]}
-                xs={24}
-                md={12}
+                className={styles["col-box"]}
+                sm={24}
+                md={13}
                 data-aos="fade-up"
                 data-aos-delay="100"
                 data-aos-duration="500"
@@ -321,7 +186,7 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col className={styles["col-image-container"]} xs={0} lg={12}>
+              <Col xs={0} md={11}>
                 <img
                   src="/solutions.svg"
                   alt="solutions"
@@ -333,14 +198,8 @@ const HomePage = () => {
                 />
               </Col>
             </Row>
-            <Row className={styles["row"]}>
-              <Col
-                xs={24}
-                lg={12}
-                className={
-                  styles["left-box"] + " " + styles["col-image-mobile"]
-                }
-              >
+            <Row align={"center"} className={styles["row"]}>
+              <Col sm={24} md={11}>
                 <img
                   src="/services.svg"
                   alt="services"
@@ -351,11 +210,9 @@ const HomePage = () => {
                 />
               </Col>
               <Col
-                className={
-                  styles["col-box"] + " " + styles["col-image-container"]
-                }
-                xs={24}
-                md={12}
+                className={styles["col-box"] + " " + styles["col-box-right"]}
+                sm={24}
+                md={13}
                 data-aos="fade-up"
                 data-aos-duration="500"
                 data-aos-anchor-placement="top-bottom"
@@ -401,8 +258,8 @@ const HomePage = () => {
                 </Button>
               </Col>
             </Row>
-            <Row className={styles["row"]}>
-              <Col className={styles["col-image-mobile"]} xs={24} lg={0}>
+            <Row align={"center"} className={styles["row"]}>
+              <Col sm={24} md={0}>
                 <img
                   src="/data.svg"
                   alt="data"
@@ -413,9 +270,9 @@ const HomePage = () => {
                 />
               </Col>
               <Col
-                className={styles["col-box"] + " " + styles["left-box"]}
-                xs={24}
-                md={12}
+                className={styles["col-box"]}
+                sm={24}
+                md={13}
                 data-aos="fade-up"
                 data-aos-duration="500"
                 data-aos-anchor-placement="top-bottom"
@@ -456,10 +313,10 @@ const HomePage = () => {
                   />
                 </Button>
               </Col>
-              <Col className={styles["col-image-container"]} xs={0} md={12}>
+              <Col xs={0} md={11}>
                 <img
-                  src="/team.svg"
-                  alt="team"
+                  src="/data.svg"
+                  alt="data"
                   className={styles["col-image"]}
                   data-aos="fade-up"
                   data-aos-delay="100"
@@ -512,7 +369,7 @@ const HomePage = () => {
                 Message
               </p>
               <textarea
-                placeholder="Share with us your awesome app concept!"
+                placeholder="What are you say?"
                 data-aos="fade-up"
                 data-aos-delay="150"
                 data-aos-duration="500"
@@ -541,38 +398,151 @@ const HomePage = () => {
             className={styles["header-testimony"]}
           >
             <p className={styles["text-title"] + " " + styles["title-1"]}>
-              Client Testimonials
+              Real Stories from
+            </p>
+
+            <p className={styles["text-title"] + " " + styles["title-2"]}>
+              Real Customers
             </p>
           </div>
-          <div className={styles["box-7-col"]}>
-            {visibleClientData.map((clientData, index) => (
-              <CilentCard key={index} {...clientData} />
-            ))}
-          </div>
-          <div className={styles["client-button-group"]}>
-            <Button
-              className={
-                styles["button-client"] +
-                " " +
-                (isBackDisabled ? styles["disabled"] : "")
-              }
-              onClick={handleBack}
-              disabled={isBackDisabled}
+          <Row>
+            <Col className={styles["text-start"]} xs={24} md={12}>
+              <div
+                className={styles["text-end"]}
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+              >
+                <img
+                  src="/meta_dotus.svg"
+                  alt="quote"
+                  className={styles["client_icon"]}
+                />
+                <div className={styles["meta-testimony"]}>
+                  <img
+                    src="/quote.svg"
+                    alt="quote"
+                    className={styles["quote_icon"]}
+                  />
+                  <div className={styles["client_test"]}>
+                    Rockship helped us with the development of our frontend for
+                    meta.us. I have found them to be flexible and willing to go
+                    the extra mile in meeting client needs.
+                    <div className={styles["client"]}>
+                      <a
+                        href="https://www.linkedin.com/in/alantchou/"
+                        target="_blank"
+                      >
+                        <p className={styles["client_name"]}>
+                          <b>Alan Chou</b>
+                        </p>
+                        <p className={styles["client_position"]}>
+                          CEO | Meta.us
+                        </p>
+                      </a>
+                      <div className={styles["client_bottom"]}>
+                        {" "}
+                        <br></br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col
+              className={styles["text-start"] + " " + styles["mt-2"]}
+              xs={24}
+              md={12}
             >
-              <img src="/back-arrow.svg" alt="back" />
-            </Button>
-            <Button
-              className={
-                styles["button-client"] +
-                " " +
-                (isNextDisabled ? styles["disabled"] : "")
-              }
-              onClick={handleNext}
-              disabled={isNextDisabled}
-            >
-              <img src="/next-arrow.svg" alt="next" />
-            </Button>
-          </div>
+              <div
+                className={styles["rovo-testimony"]}
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-aos-anchor-placement="center-bottom"
+              >
+                <img
+                  src="/rovo.svg"
+                  alt="quote"
+                  className={styles["client_icon"]}
+                />
+                <br></br>
+                <div className={styles["client_rovo"]}>
+                  <img
+                    src="/quote.svg"
+                    alt="quote"
+                    className={styles["quote_icon"]}
+                  />
+                  <div className={styles["client_test"]}>
+                    Rockship is a great choice for extended your development
+                    team. With their talented developer pool, they helped us
+                    release key features fast by supplementing our team. Their
+                    work was top notch.
+                    <div className={styles["client_info"]}>
+                      <a
+                        href="https://www.linkedin.com/in/ringular/"
+                        target="_blank"
+                      >
+                        <p className={styles["client_name"]}>
+                          <b>Ritesh</b>
+                        </p>
+                        <p className={styles["client_position"]}> CEO | Rovo</p>
+                      </a>
+                      <div className={styles["client_bottom"]}>
+                        {" "}
+                        <br></br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                className={styles["sybit-testimony"]}
+                data-aos="fade-up"
+                data-aos-delay="100"
+                data-aos-duration="500"
+                data-aos-anchor-placement="top-bottom"
+              >
+                <img
+                  src="/sybit.svg"
+                  alt="quote"
+                  className={styles["client_icon"]}
+                />
+                <br></br>
+                <div className={styles["client_sybit"]}>
+                  <img
+                    src="/quote.svg"
+                    alt="quote"
+                    className={styles["quote_icon"]}
+                  />
+                  <div className={styles["client_test"]}>
+                    The team at Rockship has played a key role in bringing You
+                    Predict to market. Technically strong & driven, they've been
+                    responsive to the shifting priorities that are innate to the
+                    startup process.
+                    <div className={styles["client_info"]}>
+                      <a
+                        href="https://www.linkedin.com/in/theo-sanders/"
+                        target="_blank"
+                      >
+                        <p className={styles["client_name"]}>
+                          {" "}
+                          <b>Theo Sanders</b>
+                        </p>
+                        <p className={styles["client_position"]}>
+                          CEO | Sybil Entertainment
+                        </p>
+                      </a>
+                      <div className={styles["client_bottom"]}>
+                        {" "}
+                        <br></br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
         </div>
       </div>
     </CustomLayout>
