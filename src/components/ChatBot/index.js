@@ -189,6 +189,7 @@ const Chatbot = () => {
         session_id: localStorage.getItem("session_id"),
       });
       setErrorMessage(true);
+      localStorage.setItem("canRefresh", true);
       setLoading(false);
       console.error("Error:", error);
     }
