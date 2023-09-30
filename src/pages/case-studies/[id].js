@@ -65,6 +65,7 @@ const CaseStudiesDetail = () => {
   const [itemCaseStudy, setItemCaseStudy] = useState(itemCaseStudy1);
   const [isShowContact, setIsShowContact] = useState(false);
   const [isBack, setIsBack] = useState(false);
+  const [errors, setErrors] = React.useState(false);
 
   const handleOnClickBack = () => {
     router.back();
@@ -281,23 +282,42 @@ const CaseStudiesDetail = () => {
               </div>
               <Button
                 className={styles["build"]}
-                onClick={() => setIsShowContact(true)}
+                onClick={() => {
+                  setIsShowContact(true);
+                  setErrors(false);
+                  window.open(
+                    "https://calendly.com/binhngoc17/rockship-app-builder",
+                    "_blank"
+                  );
+                }}
               >
-                build similar app
+                Schedule a demo
               </Button>
             </div>
           </Col>
           <div className={styles["build-mobile"]}>
             <Button
               className={styles["button"]}
-              onClick={() => setIsShowContact(true)}
+              onClick={() => {
+                setIsShowContact(true);
+                setErrors(false);
+                window.open(
+                  "https://calendly.com/binhngoc17/rockship-app-builder",
+                  "_blank"
+                );
+              }}
             >
-              build similar app
+              Schedule a demo
             </Button>
           </div>
         </Row>
       </div>
-      <FormModal open={isShowContact} setOpen={setIsShowContact} />
+      <FormModal
+        errors={errors}
+        setErrors={setErrors}
+        open={isShowContact}
+        setOpen={setIsShowContact}
+      />
     </CustomLayout>
     </>
   );

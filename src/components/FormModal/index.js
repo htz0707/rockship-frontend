@@ -2,10 +2,9 @@ import * as React from "react";
 import { Modal, Button, Input, Form, Spin } from "antd";
 import styles from "./form.module.scss";
 
-const FormModal = ({ open, setOpen }) => {
+const FormModal = ({ errors, setErrors, open, setOpen }) => {
   const [step, setStep] = React.useState(0);
   const [loading, setLoading] = React.useState(false);
-  const [errors, setErrors] = React.useState(false);
 
   const onFinish = async (values) => {
     setErrors(false);

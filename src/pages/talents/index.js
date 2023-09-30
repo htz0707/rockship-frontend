@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import CustomLayout from "@/components/Layout";
 import styles from "@/styles/talents.module.scss";
 import FormModal from "@/components/FormModal";
-import MetaTags from '@/components/MetaTags';
+import MetaTags from "@/components/MetaTags";
 
 const selectStyle = {
   width: "100%",
@@ -277,6 +277,7 @@ const Talents = () => {
   );
   const [selectedMember, setSelectedMember] = useState(membersOptions[0].value);
   const [open, setOpen] = useState(false);
+  const [errors, setErrors] = React.useState(false);
 
   const size = useWindowSize();
 
@@ -370,7 +371,7 @@ const Talents = () => {
 
   const HireTalentBar = () => {
     const displayMemberNumber = (number) =>
-    `${selectedNumber} selected member${number > 1 ? "s" : ""}`;
+      `${selectedNumber} selected member${number > 1 ? "s" : ""}`;
     return (
       <>
         <div
@@ -397,219 +398,228 @@ const Talents = () => {
             HIRE A TEAM
           </Button>
         </div>
-        <FormModal open={open} setOpen={setOpen} />
+        <FormModal
+          errors={errors}
+          setErrors={setErrors}
+          open={open}
+          setOpen={setOpen}
+        />
       </>
     );
   };
 
   return (
     <>
-    <MetaTags 
-          title={"Rockship | Hire Talents"}
-          description = {"Hire on-demand our full-time staff for a task or project you want to complete quickly."}
-          image = {"talent-as-a-service-thumb.png"}
-    />
-    <CustomLayout link={"talents"}>
-      <div className={styles["talents"]}>
-        <Row>
-          <Col span={24}>
-            <h2
-              className={styles["title"]}
-              data-aos="fade-up"
-              data-aos-duration="500"
-              data-aos-anchor-placement="bottom-bottom"
-            >
-              ENGINEERING PROFILES
-            </h2>
-            <Row
-              gutter={16}
-              data-aos="fade-up"
-              data-aos-duration="500"
-              data-aos-delay="200"
-              data-aos-anchor-placement="bottom-bottom"
-            >
-              <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                <Input
-                  prefix={<SearchOutlined />}
-                  value={searchQuery}
-                  placeholder="Search by name, level, industry,.."
-                  onClick={() => {
-                    if (size.width <= 768) {
-                      router.push("/talents/search");
-                    }
-                  }}
-                  onChange={handleSearch}
-                />
-              </Col>
-              {hidden && (
-                <Col span={4}>
-                  <Select
-                    value={selectedLevel}
-                    options={levelOptions}
-                    style={selectStyle}
-                    onChange={(value) => {
-                      handleFilterChange("level", value);
+      <MetaTags
+        title={"Rockship | Hire Talents"}
+        description={
+          "Hire on-demand our full-time staff for a task or project you want to complete quickly."
+        }
+        image={"talent-as-a-service-thumb.png"}
+      />
+      <CustomLayout link={"talents"}>
+        <div className={styles["talents"]}>
+          <Row>
+            <Col span={24}>
+              <h2
+                className={styles["title"]}
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-aos-anchor-placement="bottom-bottom"
+              >
+                ENGINEERING PROFILES
+              </h2>
+              <Row
+                gutter={16}
+                data-aos="fade-up"
+                data-aos-duration="500"
+                data-aos-delay="200"
+                data-aos-anchor-placement="bottom-bottom"
+              >
+                <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                  <Input
+                    prefix={<SearchOutlined />}
+                    value={searchQuery}
+                    placeholder="Search by name, level, industry,.."
+                    onClick={() => {
+                      if (size.width <= 768) {
+                        router.push("/talents/search");
+                      }
                     }}
+                    onChange={handleSearch}
                   />
                 </Col>
-              )}
-              {hidden && (
-                <Col span={4}>
-                  <Select
-                    value={selectedIndustry}
-                    options={industryOptions}
-                    style={selectStyle}
-                    onChange={(value) => handleFilterChange("industry", value)}
-                  />
-                </Col>
-              )}
-              {hidden && (
-                <Col span={4}>
-                  <Select
-                    value={selectedMember}
-                    options={membersOptions}
-                    style={selectStyle}
-                    onChange={(value) => handleFilterChange("member", value)}
-                  />
-                </Col>
-              )}
-            </Row>
-            <Row gutter={60} className={styles["member-card-container"]}>
-              {data
-                .filter((member) => {
-                  return (
-                    isMatched(member) &&
-                    (selectedLevel === "All" ||
-                      member.level === selectedLevel) &&
-                    (selectedIndustry === "All" ||
-                      member.industry === selectedIndustry) &&
-                    (selectedMember === "All" ||
-                      member.memberType === selectedMember)
-                  );
-                })
-                .map((item, index) => {
-                  return (
-                    <Col
-                      key={index}
-                      className={styles["col-card"]}
-                      xs={12}
-                      sm={12}
-                      md={12}
-                      lg={12}
-                      xl={8}
-                      data-aos="fade-up"
-                      data-aos-duration="500"
-                      data-aos-delay="100"
-                      data-aos-anchor-placement="bottom-bottom"
-                    >
-                      <MemberCard
-                        item={item}
-                        index={index}
-                        handleSelect={handleSelect}
-                        setOpenMemberDetails={setOpenMemberDetails}
-                        setSelectedIndex={setSelectedIndex}
-                      />
-                    </Col>
-                  );
-                })}
-            </Row>
-          </Col>
-        </Row>
-      </div>
-      <Modal
-        centered
-        open={openMemberDetails}
-        onCancel={() => setOpenMemberDetails(false)}
-        footer={null}
-        width={375}
-      >
-        <div className={styles["member-modal"]}>
-          <div>
-            <img src={data[selectedIndex]?.avatar} />
-          </div>
-          <h2>{data[selectedIndex]?.memberType}</h2>
-          <Row gutter={12}>
-            <Col className={styles["col-content"]} span={8}>
-              <div className={styles["box"]}>
-                <p>YoE</p>
-                <h2>{data[selectedIndex]?.yoe}+</h2>
-              </div>
-            </Col>
-            <Col className={styles["col-content"]} span={8}>
-              <div className={styles["box"]}>
-                <p>Projects</p>
-                <h2>{data[selectedIndex]?.projects}+</h2>
-              </div>
-            </Col>
-            <Col className={styles["col-content"]} span={8}>
-              <div className={styles["box"]}>
-                <p>Based</p>
-                <div>
-                  <img src={data[selectedIndex]?.base}></img>
-                </div>
-              </div>
+                {hidden && (
+                  <Col span={4}>
+                    <Select
+                      value={selectedLevel}
+                      options={levelOptions}
+                      style={selectStyle}
+                      onChange={(value) => {
+                        handleFilterChange("level", value);
+                      }}
+                    />
+                  </Col>
+                )}
+                {hidden && (
+                  <Col span={4}>
+                    <Select
+                      value={selectedIndustry}
+                      options={industryOptions}
+                      style={selectStyle}
+                      onChange={(value) =>
+                        handleFilterChange("industry", value)
+                      }
+                    />
+                  </Col>
+                )}
+                {hidden && (
+                  <Col span={4}>
+                    <Select
+                      value={selectedMember}
+                      options={membersOptions}
+                      style={selectStyle}
+                      onChange={(value) => handleFilterChange("member", value)}
+                    />
+                  </Col>
+                )}
+              </Row>
+              <Row gutter={60} className={styles["member-card-container"]}>
+                {data
+                  .filter((member) => {
+                    return (
+                      isMatched(member) &&
+                      (selectedLevel === "All" ||
+                        member.level === selectedLevel) &&
+                      (selectedIndustry === "All" ||
+                        member.industry === selectedIndustry) &&
+                      (selectedMember === "All" ||
+                        member.memberType === selectedMember)
+                    );
+                  })
+                  .map((item, index) => {
+                    return (
+                      <Col
+                        key={index}
+                        className={styles["col-card"]}
+                        xs={12}
+                        sm={12}
+                        md={12}
+                        lg={12}
+                        xl={8}
+                        data-aos="fade-up"
+                        data-aos-duration="500"
+                        data-aos-delay="100"
+                        data-aos-anchor-placement="bottom-bottom"
+                      >
+                        <MemberCard
+                          item={item}
+                          index={index}
+                          handleSelect={handleSelect}
+                          setOpenMemberDetails={setOpenMemberDetails}
+                          setSelectedIndex={setSelectedIndex}
+                        />
+                      </Col>
+                    );
+                  })}
+              </Row>
             </Col>
           </Row>
-          <div className={styles["info"]}>
-            <div className={styles["info-header"]}>
-              <img src="medal.svg" />
-              <h2>Achievement</h2>
-            </div>
-            <div className={styles["info-content"]}>
-              <p>
-                Dedicate to launching a huge project with over 1000+ users after
-                a year
-              </p>
-            </div>
-          </div>
-          <div className={styles["info"]}>
-            <div className={styles["info-header"]}>
-              <img src="code.svg" />
-              <h2>Skills</h2>
-            </div>
-            <div className={styles["info-content"]}>
-              <div className={styles["skill-list"]}>
-                <p className={styles["skill-item"]}>
-                  <span>1 year</span> - Work with React
-                </p>
-                <p className={styles["skill-item"]}>
-                  <span>2 years</span> - Work with Next JS
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className={styles["info"]}>
-            <div className={styles["info-header"]}>
-              <img src="target-2.svg" />
-              <h2>Industry</h2>
-            </div>
-            <div className={styles["info-content"]}>
-              <div className={styles["tags"]}>
-                <p>Loyalty</p>
-                <p>Finance</p>
-                <p>Real Estate</p>
-              </div>
-            </div>
-          </div>
-          <div className={styles["info"]}>
-            <div className={styles["info-header"]}>
-              <img src="certificate.svg" />
-              <h2>Certificate</h2>
-            </div>
-            <div className={styles["info-content"]}>
-              <div className={styles["skill-list"]}>
-                <p className={styles["skill-item"]}>Bachelor’s Degree</p>
-                <p className={styles["skill-item"]}>UDemy - FE certificate</p>
-              </div>
-            </div>
-          </div>
-          <div>
-            <Button className={styles["choose-btn"]}>Choose</Button>
-          </div>
         </div>
-      </Modal>
-      <HireTalentBar />
-    </CustomLayout>
+        <Modal
+          centered
+          open={openMemberDetails}
+          onCancel={() => setOpenMemberDetails(false)}
+          footer={null}
+          width={375}
+        >
+          <div className={styles["member-modal"]}>
+            <div>
+              <img src={data[selectedIndex]?.avatar} />
+            </div>
+            <h2>{data[selectedIndex]?.memberType}</h2>
+            <Row gutter={12}>
+              <Col className={styles["col-content"]} span={8}>
+                <div className={styles["box"]}>
+                  <p>YoE</p>
+                  <h2>{data[selectedIndex]?.yoe}+</h2>
+                </div>
+              </Col>
+              <Col className={styles["col-content"]} span={8}>
+                <div className={styles["box"]}>
+                  <p>Projects</p>
+                  <h2>{data[selectedIndex]?.projects}+</h2>
+                </div>
+              </Col>
+              <Col className={styles["col-content"]} span={8}>
+                <div className={styles["box"]}>
+                  <p>Based</p>
+                  <div>
+                    <img src={data[selectedIndex]?.base}></img>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+            <div className={styles["info"]}>
+              <div className={styles["info-header"]}>
+                <img src="medal.svg" />
+                <h2>Achievement</h2>
+              </div>
+              <div className={styles["info-content"]}>
+                <p>
+                  Dedicate to launching a huge project with over 1000+ users
+                  after a year
+                </p>
+              </div>
+            </div>
+            <div className={styles["info"]}>
+              <div className={styles["info-header"]}>
+                <img src="code.svg" />
+                <h2>Skills</h2>
+              </div>
+              <div className={styles["info-content"]}>
+                <div className={styles["skill-list"]}>
+                  <p className={styles["skill-item"]}>
+                    <span>1 year</span> - Work with React
+                  </p>
+                  <p className={styles["skill-item"]}>
+                    <span>2 years</span> - Work with Next JS
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className={styles["info"]}>
+              <div className={styles["info-header"]}>
+                <img src="target-2.svg" />
+                <h2>Industry</h2>
+              </div>
+              <div className={styles["info-content"]}>
+                <div className={styles["tags"]}>
+                  <p>Loyalty</p>
+                  <p>Finance</p>
+                  <p>Real Estate</p>
+                </div>
+              </div>
+            </div>
+            <div className={styles["info"]}>
+              <div className={styles["info-header"]}>
+                <img src="certificate.svg" />
+                <h2>Certificate</h2>
+              </div>
+              <div className={styles["info-content"]}>
+                <div className={styles["skill-list"]}>
+                  <p className={styles["skill-item"]}>Bachelor’s Degree</p>
+                  <p className={styles["skill-item"]}>UDemy - FE certificate</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <Button className={styles["choose-btn"]}>Choose</Button>
+            </div>
+          </div>
+        </Modal>
+        <HireTalentBar />
+      </CustomLayout>
     </>
   );
 };

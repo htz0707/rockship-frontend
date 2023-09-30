@@ -1,0 +1,108 @@
+.add-feature {
+  color: $black;
+  height: 646px;
+  padding: 16px;
+  text-align: left;
+  height: fit-content;
+  .header {
+    margin-bottom: 12px;
+    display: flex;
+    cursor: pointer;
+
+    p {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+      text-transform: uppercase;
+      margin: 0 0 0 8px;
+    }
+  }
+
+  .container {
+    height: 545px;
+    overflow-y: auto;
+    // overflow-x: hidden;
+    .group-input {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      div {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        img {
+          height: 20px;
+          margin-left: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+
+    p.feature-type {
+      margin: 0;
+      color: var(--text, #191a15);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      font-family: $primary-font;
+    }
+
+    div.empty-div {
+      height: 18px;
+    }
+
+    div.add-btn {
+      cursor: pointer;
+      margin-top: 8px;
+      display: flex;
+      width: 71px;
+      height: 30px;
+      padding: 8px;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      border-radius: 12px;
+      border: 1px solid #0094ff;
+      background: #fff;
+      color: #0094ff;
+      text-align: center;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+
+  .bottom-bar {
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 16px;
+    background: #ebebeb;
+    padding: 4px 12px;
+
+    .right {
+      cursor: pointer;
+      display: flex;
+      height: 40px;
+      padding: 4px 12px;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      border-radius: 12px;
+      background: #0094ff;
+
+      span {
+        color: #fff;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+      }
+    }
+  }
+}
