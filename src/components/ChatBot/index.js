@@ -115,7 +115,6 @@ const Chatbot = () => {
         ) {
           setRestarted(false);
           await handleEndSession();
-          localStorage.removeItem("canRefresh");
           setDisabled(true);
           setEndMessage(true);
         } else {
@@ -177,6 +176,7 @@ const Chatbot = () => {
       setProjectId(res.project_estimation_id);
       setErrorMessage(false);
       setLoading(false);
+      localStorage.removeItem("canRefresh");
       const endTime = new Date();
       if (endTime - startTime > 10000) {
         analytics.track("end-session-chatbot", {
