@@ -19,9 +19,10 @@ export default async function handler(req, res) {
     await transporter.sendMail({
       from: process.env.NEXT_APP_GMAIL_USER,
       to: 'ngoc@rockship.co',
-      subject: 'New Error detected',
+      subject: 'New Error detected on October 2023',
       html: `<p><b>user_id:</b> ${user_id}</p>
-             <p><b>session_id:</b> ${session_id}</p>`,
+             <p><b>session_id:</b> ${session_id}</p>
+             <a href="https://dev.rockship.co/?user_id=${user_id}&session_id=${session_id}">Link Conversation Error</a>`,
     });
 
     return res.status(200).json({ message: 'Email sent successfully' });
