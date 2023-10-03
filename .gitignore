@@ -42,3 +42,5 @@ next-env.d.ts
 
 # yarn
 yarn.lock
+# # Sentry Auth Token
+# .sentryclirc
