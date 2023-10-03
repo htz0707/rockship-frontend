@@ -52,10 +52,10 @@ const Chatbot = () => {
   }, [user_id, session_id]);
 
   useEffect(() => {
-    if (inputTagRef.current) {
+    if (!loading && inputTagRef.current) {
       inputTagRef.current.focus();
     }
-  }, [inputTagRef.current]);
+  }, [loading]);
 
   const handleSendMessage = () => {
     handleResponseChat();
