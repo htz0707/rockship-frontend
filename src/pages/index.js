@@ -137,14 +137,13 @@ const HomePage = () => {
       setCurrentIndex(newIndex);
     }
   };
-  
+
   const handleBack = () => {
     const newIndex = currentIndex - itemsPerPage;
     if (newIndex >= 0) {
       setCurrentIndex(newIndex);
     }
   };
-  
 
   const isBackDisabled = currentIndex === 0;
   const isNextDisabled = currentIndex + itemsPerPage >= clientDataList.length;
@@ -167,6 +166,45 @@ const HomePage = () => {
   return (
     <CustomLayout link={"solutions"}>
       <div className={styles["homepage"] + " " + styles["fonts"]}>
+        <Row className={styles["rockship-company"]}>
+          <Col className={styles["mobile-img"]} xs={24} md={0}>
+            <img src="/rockship-company.svg" alt="" />
+          </Col>
+          <Col className={styles["col-left"]} xs={24} md={12}>
+            <p className={styles["rockship-company-title"]}>ROCKSHIP COMPANY</p>
+            <p className={styles["rockship-company-content"]}>
+              With over 10+ of expertise, Rockship has consistently offered
+              cutting-edge solutions and fosters innovation for a myriad of
+              business domains. Our unwavering commitment ensures bespoke,
+              top-notch results for our clients
+            </p>
+            <Row className={styles["row-small"]}>
+              <Col className={styles["col-small"]} span={12}>
+                <img src="/industries.svg" alt="" />
+                <p className={styles["amount"]}>10+</p>
+                <p className={styles["name"]}>Industries</p>
+              </Col>
+              <Col className={styles["col-small"]} span={12}>
+                <img src="/projects.svg" alt="" />
+                <p className={styles["amount"]}>50+</p>
+                <p className={styles["name"]}>Projects</p>
+              </Col>
+              <Col className={styles["col-small"]} span={12}>
+                <img src="/components.svg" alt="" />
+                <p className={styles["amount"]}>1000+</p>
+                <p className={styles["name"]}>Delivered components</p>
+              </Col>
+              <Col className={styles["col-small"]} span={12}>
+                <img src="/clients-2.svg" alt="" />
+                <p className={styles["amount"]}>100%</p>
+                <p className={styles["name"]}>Satisfied Clients</p>
+              </Col>
+            </Row>
+          </Col>
+          <Col className={styles["col-right"]} xs={24} md={12}>
+            <img src="/rockship-company.svg" alt="" />
+          </Col>
+        </Row>
         <div
           className={styles["case-studies"]}
           data-aos="fade-up"
@@ -174,7 +212,6 @@ const HomePage = () => {
           data-aos-anchor-placement="top-bottom"
         >
           <h3>Case studies</h3>
-          <Link href={"/case-studies"}>View all case studies</Link>
         </div>
         <div
           data-aos="fade-up"
@@ -198,276 +235,353 @@ const HomePage = () => {
             }
           })}
         </div>
-        <div className={styles["box-2"]}>
-          <div
-            className={styles["text-title"]}
-            data-aos="fade-up"
-            data-aos-duration="500"
-            data-aos-anchor-placement="top-bottom"
-          >
-            Why Companies Partner With Us?
+        <Button
+          className={styles["view-all-case-studies"]}
+          onClick={() => router.push("/case-studies")}
+        >
+          View all case studies
+        </Button>
+        <div className={styles["our-services-background"]}>
+          <div className={styles["our-services"]}>
+            <p className={styles["title"]}>Our Services</p>
+            <Row>
+              <Col className={styles["col-our-services-left"]} xs={24} md={12}>
+                <div className={styles["background"]}>
+                  <img src="/staff.svg" alt="" />
+                  <p className={styles["col-title"]}>IT Staff Augmentation</p>
+                  <p className={styles["content"]}>
+                    We assist your business in accessing top global tech talents
+                    irrespective of your location. Find the expertise you need,
+                    save time, and reduce costs by hiring on-demand.
+                  </p>
+                  <Button className={styles["explore-btn"]}>
+                    Explore <img src="/our-services-arrow.svg" />
+                  </Button>
+                </div>
+              </Col>
+              <Col className={styles["col-our-services-right"]} xs={24} md={12}>
+                <div className={styles["background"]}>
+                  <img src="/production.svg" alt="" />
+                  <p className={styles["col-title"]}>Production Engineering</p>
+                  <p className={styles["content"]}>
+                    We assist businesses in designing and launching innovative
+                    products by understanding their needs and offering tailored
+                    solutions
+                  </p>
+                  <Button className={styles["explore-btn"]}>
+                    Explore <img src="/our-services-arrow.svg" />
+                  </Button>
+                </div>
+              </Col>
+            </Row>
           </div>
-          <Row
-            data-aos="fade-up"
-            data-aos-delay="50"
-            data-aos-duration="500"
-            data-aos-anchor-placement="top-bottom"
-          >
-            <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
-              <div className={styles["col-padding"]}>
-                <img style={{ width: 80 }} src={"/clock.svg"} alt="clock" />
-                <p className={styles["text-col-header"]}>
-                  Development automation
-                </p>
-                <p className={styles["text-col-content"]}>
-                  Our ultimate mission is to fully automate software development
-                  work, saving our clients millions of dollar in development
-                  cost.
+        </div>
+        <div className={styles["our-tech"]}>
+          <p className={styles["tech-title"]}>Our Tech Stack</p>
+          <div className={styles["tech-row"]}>
+            <div className={styles["tech-col-be"]}>
+              <p>BACKEND</p>
+              <div className={styles["logo-group"]}>
+                <div>
+                  <img src="/be-1.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/be-2.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/be-3.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/be-4.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/be-5.svg" alt="" />
+                </div>
+              </div>
+            </div>
+            <hr className={styles["mobile-hr"]} />
+            <div className={styles["tech-col-fe"]}>
+              <p>FRONTEND</p>
+              <div className={styles["logo-group"]}>
+                <div>
+                  <img src="/fe-1.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/fe-2.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/fe-3.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/fe-4.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/fe-5.svg" alt="" />
+                </div>
+              </div>
+            </div>
+            <hr className={styles["mobile-hr"]} />
+            <div className={styles["tech-col-mobile"]}>
+              <div className={styles["logo-group"]}>
+                <p>MOBILE</p>
+                <div className={styles["logo-group"]}>
+                  <div>
+                    <img src="/mobile-1.svg" alt="" />
+                  </div>
+                  <div>
+                    <img src="/mobile-2.svg" alt="" />
+                  </div>
+                  <div>
+                    <img src="/mobile-3.svg" alt="" />
+                  </div>
+                  <div>
+                    <img src="/mobile-4.svg" alt="" />
+                  </div>
+                  <div>
+                    <img src="/mobile-5.svg" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr className={styles["mobile-hr"]} />
+            <div className={styles["tech-col-db"]}>
+              <p>DATABASE</p>
+              <div className={styles["logo-group"]}>
+                <div>
+                  <img src="/db-1.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/db-2.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/db-3.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/db-4.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/db-5.svg" alt="" />
+                </div>
+              </div>
+            </div>
+            <hr className={styles["mobile-hr"]} />
+            <div className={styles["tech-col-devops"]}>
+              <p>DEVOPS</p>
+              <div className={styles["logo-group"]}>
+                <div>
+                  <img src="/devops-1.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/devops-2.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/devops-3.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/devops-4.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/devops-5.svg" alt="" />
+                </div>
+              </div>
+            </div>
+            <hr className={styles["mobile-hr"]} />
+            <div className={styles["tech-col-ux"]}>
+              <p>UI/UX DESIGN</p>
+              <div className={styles["logo-group"]}>
+                <div>
+                  <img src="/ux-1.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/ux-2.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/ux-3.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/ux-4.svg" alt="" />
+                </div>
+                <div>
+                  <img src="/ux-5.svg" alt="" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className={styles["trust-us"]}>
+          <p className={styles["trust-us-title"]}>Why Our Clients trust us?</p>
+          <Row>
+            <Col className={styles["col-trust-us"]} xs={24} md={6}>
+              <div className={styles["col-trust-us-bg"]}>
+                <img src="/trust-1.svg" alt="" />
+                <p className={styles["col-trust-us-title"]}>Fast Delivery</p>
+                <p className={styles["col-trust-us-content"]}>
+                  We've successfully executed 1000+ software features. Our
+                  streamlined processes mean you get results quickly
                 </p>
               </div>
             </Col>
-            <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
-              <div className={styles["col-padding"]}>
-                <img style={{ width: 80 }} src={"/cloud.svg"} alt="cloud" />
-                <p className={styles["text-col-header"]}>
-                  Accumulative Expertise & Diverse Capabilities
+            <Col className={styles["col-trust-us"]} xs={24} md={6}>
+              <div className={styles["col-trust-us-bg"]}>
+                <img src="/trust-2.svg" alt="" />
+                <p className={styles["col-trust-us-title"]}>
+                  Fast Top Work Quality
                 </p>
-                <p className={styles["text-col-content"]}>
-                  We have accumulated ten-plus years of software development
-                  experience for our clients and organized our expertises into
-                  reusable modules to save time and effort for new developments.
+                <p className={styles["col-trust-us-content"]}>
+                  Our experts, with 10+ years of experience, guarantee top-tier
+                  work. We don't just meet standards; we set them
                 </p>
               </div>
             </Col>
-            <Col className={styles["col-style"]} xs={24} sm={24} md={8}>
-              <div className={styles["col-padding"]}>
-                <img style={{ width: 80 }} src={"/pin.svg"} alt="pin" />
-                <p className={styles["text-col-header"]}>
-                  Frontier Tech & Cloud Native
+            <Col className={styles["col-trust-us"]} xs={24} md={6}>
+              <div className={styles["col-trust-us-bg"]}>
+                <img src="/trust-3.svg" alt="" />
+                <p className={styles["col-trust-us-title"]}>
+                  Economical Solution
                 </p>
-                <p className={styles["text-col-content"]}>
-                  We are always ahead of the technologies to deliver our
-                  partners the most powerful capabilities, allowing them to stay
-                  ahead of the competition. Additionally, we embrace Cloud
-                  Native solutions to ensure the systems can scale when our
-                  clients need.
+                <p className={styles["col-trust-us-content"]}>
+                  By pushing for software development automation, we save our
+                  clients significant money
+                </p>
+              </div>
+            </Col>
+            <Col className={styles["col-trust-us"]} xs={24} md={6}>
+              <div className={styles["col-trust-us-bg"]}>
+                <img src="/trust-4.svg" alt="" />
+                <p className={styles["col-trust-us-title"]}>Effective Scale</p>
+                <p className={styles["col-trust-us-content"]}>
+                  By pushing for software development automation, we save our
+                  clients significant money
                 </p>
               </div>
             </Col>
           </Row>
-          <div id="rockship-solution" className={styles["box-3"]}>
-            <p
-              className={styles["text-title"]}
-              data-aos="fade-up"
-              data-aos-duration="500"
-              data-aos-anchor-placement="top-bottom"
-            >
-              Our Solutions
-            </p>
-            <Row className={styles["row"]}>
-              <Col className={styles["col-image-mobile"]} xs={24} lg={0}>
-                <img
-                  src="/solutions.svg"
-                  alt="solutions"
-                  className={styles["col-image"]}
-                  data-aos="fade-up"
-                  data-aos-duration="500"
-                  data-aos-anchor-placement="top-bottom"
-                />
-              </Col>
-              <Col
-                className={styles["col-box"] + " " + styles["left-box"]}
-                xs={24}
-                md={12}
-                data-aos="fade-up"
-                data-aos-delay="100"
-                data-aos-duration="500"
-                data-aos-anchor-placement="top-bottom"
-              >
-                <p className={styles["title"]}>
-                  BUILD SOFTWARES FASTER <br></br>WITH OUR AI
-                </p>
-                <div className={styles["contents"]}>
-                  <img src="/tick.svg" alt="tick" />
-                  <p>
-                    We have done <b>1000+ of software features</b> and can
-                    quickly build new features for you with accurate estimation.
-                  </p>
-                </div>
-                <div className={styles["contents"]}>
-                  <img src="/tick.svg" alt="tick" />
-                  <p>
-                    AI & Automation powers our workflow: technical design to
-                    codes, tests from specifications enabling us to build
-                    software faster with high quality.
-                  </p>
-                </div>
-                <Button
-                  onClick={() => router.push("/features")}
-                  className={
-                    styles["homepage-button-1"] + " " + styles["custom-button"]
-                  }
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                  data-aos-duration="500"
-                  data-aos-anchor-placement="top-bottom"
-                  id="homepage-browse-modules"
-                >
-                  BROWSE OUR MODULES
-                  <img
-                    src="/arrow.svg"
-                    alt="arrow"
-                    className={styles["arrow-icon"]}
-                  />
-                </Button>
-              </Col>
-              <Col className={styles["col-image-container"]} xs={0} lg={12}>
-                <img
-                  src="/solutions.svg"
-                  alt="solutions"
-                  className={styles["col-image"]}
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                  data-aos-duration="500"
-                  data-aos-anchor-placement="top-bottom"
-                />
-              </Col>
-            </Row>
-            <Row className={styles["row"]}>
-              <Col
-                xs={24}
-                lg={12}
-                className={
-                  styles["left-box"] + " " + styles["col-image-mobile"]
-                }
-              >
-                <img
-                  src="/services.svg"
-                  alt="services"
-                  className={styles["col-image"]}
-                  data-aos="fade-up"
-                  data-aos-duration="500"
-                  data-aos-anchor-placement="center-bottom"
-                />
-              </Col>
-              <Col
-                className={
-                  styles["col-box"] + " " + styles["col-image-container"]
-                }
-                xs={24}
-                md={12}
-                data-aos="fade-up"
-                data-aos-duration="500"
-                data-aos-anchor-placement="top-bottom"
-              >
-                <p className={styles["title"]}>TEAM AS A SERVICE</p>
-                <div className={styles["contents"]}>
-                  <img src="/tick.svg" alt="tick" />
-                  <p>
-                    Our AI-powered hiring pipeline enables you hire top
-                    Vietnamese developers on-demand to solve your tech problems.
-                  </p>
-                </div>
-                <div className={styles["contents"]}>
-                  <img src="/tick.svg" alt="tick" />
-                  <p>
-                    We adopt management tools and frameworks for team to deliver
-                    work progressively.
-                  </p>
-                </div>
-                <div className={styles["contents"]}>
-                  <img src="/tick.svg" alt="tick" />
-                  <p>
-                    Our developer training tools enable us to train, support and
-                    grow the developers continuously.
-                  </p>
-                </div>
-                <Button
-                  onClick={() => router.push("/talent-as-a-service")}
-                  className={
-                    styles["homepage-button-1"] + " " + styles["custom-button"]
-                  }
-                  data-aos="fade-up"
-                  data-aos-duration="500"
-                  data-aos-anchor-placement="bottom-bottom"
-                  id="homepage-talent-as-service"
-                >
-                  HIRE TALENTS
-                  <img
-                    src="/arrow.svg"
-                    alt="arrow"
-                    className={styles["arrow-icon"]}
-                  />
-                </Button>
-              </Col>
-            </Row>
-            <Row className={styles["row"]}>
-              <Col className={styles["col-image-mobile"]} xs={24} lg={0}>
-                <img
-                  src="/data.svg"
-                  alt="data"
-                  className={styles["col-image"]}
-                  data-aos="fade-up"
-                  data-aos-duration="500"
-                  data-aos-anchor-placement="top-bottom"
-                />
-              </Col>
-              <Col
-                className={styles["col-box"] + " " + styles["left-box"]}
-                xs={24}
-                md={12}
-                data-aos="fade-up"
-                data-aos-duration="500"
-                data-aos-anchor-placement="top-bottom"
-              >
-                <p className={styles["title"]}>AI AS A SERVICE</p>
-                <div className={styles["contents"]}>
-                  <img src="/tick.svg" alt="tick" />
-                  <p>
-                    Prototype AI for use cases: Key Information Extraction,
-                    Chatbot for Customer Service & AI For Educational Content
-                    Generation
-                  </p>
-                </div>
-                <div className={styles["contents"]}>
-                  <img src="/tick.svg" alt="tick" />
-                  <p>
-                    Build and maintain MLOps infrastructure (
-                    <b>Feature Store</b>, <b>ML Model Store</b>, <b>LLM Apps</b>
-                    ) to serve business critical applications requiring
-                    real-time data: recommendation system, ads bidding.
-                  </p>
-                </div>
-                <Button
-                  className={
-                    styles["homepage-button-1"] + " " + styles["custom-button"]
-                  }
-                  data-aos="fade-up"
-                  data-aos-duration="500"
-                  data-aos-anchor-placement="center-bottom"
-                  onClick={() => router.push("/build-your-ai")}
-                  id="homepage-build-your-ai"
-                >
-                  BUILD YOUR AI
-                  <img
-                    src="/arrow.svg"
-                    alt="arrow"
-                    className={styles["arrow-icon"]}
-                  />
-                </Button>
-              </Col>
-              <Col className={styles["col-image-container"]} xs={0} md={12}>
-                <img
-                  src="/team.svg"
-                  alt="team"
-                  className={styles["col-image"]}
-                  data-aos="fade-up"
-                  data-aos-delay="100"
-                  data-aos-duration="500"
-                  data-aos-anchor-placement="top-bottom"
-                />
-              </Col>
-            </Row>
+        </div>
+        <div className={styles["serve"]}>
+          <p className={styles["serve-title"]}>
+            Some of the Industries We Currently Serve
+          </p>
+          <div className={styles["desktop-serve"]}>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-1.svg" alt="" />
+              <p>Social Media</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-2.svg" alt="" />
+              <p>FnB</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-3.svg" alt="" />
+              <p>Logistic</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-4.svg" alt="" />
+              <p>Video Streaming</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-5.svg" alt="" />
+              <p>Fintech</p>
+            </div>
+          </div>
+          <div className={styles["desktop-serve"]}>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-6.svg" alt="" />
+              <p>Healthcare</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-7.svg" alt="" />
+              <p>e-Commerce</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-8.svg" alt="" />
+              <p>Logistic</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-9.svg" alt="" />
+              <p>Education</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-10.svg" alt="" />
+              <p>Travel</p>
+            </div>
+          </div>
+          <div className={styles["mobile-serve"]}>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-6.svg" alt="" />
+              <p>Healthcare</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-1.svg" alt="" />
+              <p>Social Media</p>
+            </div>
+          </div>
+          <div className={styles["mobile-serve"]}>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-7.svg" alt="" />
+              <p>Real Estate</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-2.svg" alt="" />
+              <p>FnB</p>
+            </div>
+          </div>
+          <div className={styles["mobile-serve"]}>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-8.svg" alt="" />
+              <p>e-Commerce</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-3.svg" alt="" />
+              <p>Logistic</p>
+            </div>
+          </div>
+          <div className={styles["mobile-serve"]}>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-9.svg" alt="" />
+              <p>Education</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-4.svg" alt="" />
+              <p>Video Streaming</p>
+            </div>
+          </div>
+          <div className={styles["mobile-serve"]}>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-10.svg" alt="" />
+              <p>Travel</p>
+            </div>
+            <div className={styles["serve-box"]}>
+              <img src="/serve-5.svg" alt="" />
+              <p>Fintech</p>
+            </div>
+          </div>
+        </div>
+        <div className={styles["clients-2"]}>
+          <p className={styles["clients-2-title"]}>Our clients</p>
+          <div className={styles["bar-container"]}>
+            <div className={styles["animation-bar"]}>
+              <div>
+                <img className={styles["image-1"]} src="/client-1.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-2.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-3.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-4.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-5.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-6.png" alt="" />
+              </div>
+              <div>
+                <img className={styles["image-7"]} src="/client-7.png" alt="" />
+              </div>
+            </div>
           </div>
         </div>
         <div className={styles["box-6"]}>
