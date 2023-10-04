@@ -43,8 +43,15 @@ const Chatbot = () => {
   const { user_id, session_id } = router.query;
 
   useEffect(() => {
-    if (!user_id || !session_id) handleSetUUID();
-    else {
+    if (localStorage.getItem("canRefresh")) {
+      handleReset();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!user_id || !session_id) {
+      handleSetUUID();
+    } else {
       localStorage.setItem("user_id", user_id);
       localStorage.setItem("session_id", session_id);
     }
@@ -146,7 +153,7 @@ const Chatbot = () => {
         session_id: localStorage.getItem("session_id"),
         request: inputValue,
       });
-      clearTimeout(timeOut)
+      clearTimeout(timeOut);
       await handleLoadHistory();
       setLoading(false);
       const endTime = new Date();
@@ -208,15 +215,7 @@ const Chatbot = () => {
     setErrorMessage(false);
     setEndMessage(false);
     router.push("/");
-    handleSetUUID();
-    handleLoadHistory();
   };
-
-  useEffect(() => {
-    if (localStorage.getItem("canRefresh")) {
-      handleReset();
-    }
-  }, []);
 
   return (
     <div className={styles["chatbot"]}>
