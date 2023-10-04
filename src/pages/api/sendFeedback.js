@@ -10,14 +10,17 @@ export default async function handler(req, res) {
   const filteredFeedback = feedback.filter((item) => item !== "Others");
 
   const feedbackText = filteredFeedback
-    .map((item, index) => `<li key=${index}>${item}</li>`).join("");
-  
+    .map((item, index) => `<li key=${index}>${item}</li>`)
+    .join("");
+
   const othersItem = feedback.find((item) => item === "Others");
-  const othersIndex = feedback.findIndex((item) => item === "Others")
-  const othersText = othersItem ? `<li key=${othersIndex}>Others: ${others}</li>` : "";
+  const othersIndex = feedback.findIndex((item) => item === "Others");
+  const othersText = othersItem
+    ? `<li key=${othersIndex}>Others: ${others}</li>`
+    : "";
   const pElementsHTML = `
     Dear Team,<br><br>
-    We've received feedback from user about his/her experience with Rockship Chatbot (You can view detailed conversation <a href="${window.location.host}?user_id=${user_id}&session_id=${session_id}">here</a>). User has identified some challenges with:
+    We've received feedback from user about his/her experience with Rockship Chatbot (You can view detailed conversation <a href="https://rockship.co/?user_id=${user_id}&session_id=${session_id}">here</a>). User has identified some challenges with:
     <ul>
       ${feedbackText}
       ${othersText}
