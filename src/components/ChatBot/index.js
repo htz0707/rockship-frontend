@@ -214,7 +214,8 @@ const Chatbot = () => {
     localStorage.removeItem("projectEstimation");
     setErrorMessage(false);
     setEndMessage(false);
-    router.push("/");
+    handleSetUUID();
+    handleLoadHistory();
   };
 
   return (
