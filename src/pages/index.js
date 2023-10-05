@@ -490,11 +490,11 @@ const HomePage = () => {
             </div>
             <div className={styles["serve-box"]}>
               <img src="/serve-7.svg" alt="" />
-              <p>e-Commerce</p>
+              <p>Real Estate</p>
             </div>
             <div className={styles["serve-box"]}>
               <img src="/serve-8.svg" alt="" />
-              <p>Logistic</p>
+              <p>e-Commerce</p>
             </div>
             <div className={styles["serve-box"]}>
               <img src="/serve-9.svg" alt="" />
