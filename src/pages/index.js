@@ -342,9 +342,6 @@ const HomePage = () => {
                   <div>
                     <img src="/mobile-4.svg" alt="" />
                   </div>
-                  <div>
-                    <img src="/mobile-5.svg" alt="" />
-                  </div>
                 </div>
               </div>
             </div>

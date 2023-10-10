@@ -54,8 +54,6 @@ build:
       --image-name-tag-with-digest-file "$TAG_LATEST:$DEPLOY_TAG"
       --dockerfile "${CI_PROJECT_DIR}/builder/Dockerfile"
       --destination "$TAG_LATEST:$DEPLOY_TAG"
-  tags:
-    - self-host
   only:
     - devops/test
     - master
@@ -64,8 +62,6 @@ build:
 deploy:
   extends: .install_ssh
   stage: deploy
-  tags:
-    - self-host
   script:
     - ssh $SSH_HOST "cd monorepo/aegon && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker pull $TAG_LATEST:$DEPLOY_TAG && make blueprint-construct service=$CI_COMMIT_REF_NAME tag=$DEPLOY_TAG"
   only:
@@ -75,8 +71,6 @@ deploy:
 deploy-production:
   extends: .install_ssh
   stage: deploy
-  tags:
-    - self-host
   environment:
     name: production
     url: https://rockship.co
