@@ -166,7 +166,12 @@ const HomePage = () => {
   return (
     <CustomLayout link={"solutions"}>
       <div className={styles["homepage"] + " " + styles["fonts"]}>
-        <Row className={styles["rockship-company"]}>
+        <Row
+          data-aos="fade-up"
+          data-aos-duration="500"
+          data-aos-anchor-placement="top-bottom"
+          className={styles["rockship-company"]}
+        >
           <Col className={styles["mobile-img"]} xs={24} md={0}>
             <img src="/rockship-company.svg" alt="" />
           </Col>
@@ -408,6 +413,12 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+        <Button
+          className={styles["talk-with-expert"]}
+          // onClick={() => router.push("/case-studies")}
+        >
+          Talk with our expert
+        </Button>
         <div className={styles["trust-us"]}>
           <p className={styles["trust-us-title"]}>Why Our Clients trust us?</p>
           <Row>
@@ -580,6 +591,75 @@ const HomePage = () => {
               </div>
               <div>
                 <img className={styles["image-7"]} src="/client-7.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-8.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-9.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-10.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-11.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-12.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-13.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-14.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-15.png" alt="" />
+              </div>
+              <div>
+                <img className={styles["image-1"]} src="/client-1.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-2.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-3.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-4.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-5.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-6.png" alt="" />
+              </div>
+              <div>
+                <img className={styles["image-7"]} src="/client-7.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-8.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-9.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-10.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-11.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-12.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-13.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-14.png" alt="" />
+              </div>
+              <div>
+                <img src="/client-15.png" alt="" />
               </div>
             </div>
           </div>
