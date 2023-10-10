@@ -290,23 +290,22 @@
       border-radius: 16px;
     }
     .robot-hands {
+      background: url('/bg-build.png');
+      background-size: cover;
       img {
-        margin-top: 40px;
+        margin: 40px;
       }
       @include mobile {
-        width: 100%;
+        width: calc(100% - 80px);
         img {
-          width: 90%;
+          width: calc(90% - 80px);
         }
       }
 
-      @include desktop {
-        width: 100%;
-        max-width: 612px;
+      @include tablet {
+        width: calc(100% - 80px);
         img {
-          width: 100%;
-
-          max-width: 612px;
+          width: calc(100% - 80px);
         }
       }
     }
