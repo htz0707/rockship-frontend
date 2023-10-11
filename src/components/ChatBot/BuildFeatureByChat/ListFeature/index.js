@@ -279,14 +279,14 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
       width: 581,
       render: (text) => <b>{text}</b>,
     },
-    {
-      title: "Man days",
-      dataIndex: "days",
-      key: "days",
-      width: 120,
-      align: "center",
-      render: (text) => <b>{text}</b>,
-    },
+    // {
+    //   title: "Man days",
+    //   dataIndex: "days",
+    //   key: "days",
+    //   width: 120,
+    //   align: "center",
+    //   render: (text) => <b>{text}</b>,
+    // },
     {
       title: "Cost",
       dataIndex: "cost",
@@ -345,13 +345,13 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
           </div>
         ),
       },
-      {
-        title: "Man days",
-        dataIndex: "days",
-        key: "days",
-        width: 120,
-        align: "center",
-      },
+      // {
+      //   title: "Man days",
+      //   dataIndex: "days",
+      //   key: "days",
+      //   width: 120,
+      //   align: "center",
+      // },
       {
         title: "Cost",
         dataIndex: "cost",
@@ -463,7 +463,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
           </p>
         </div>
         <div className={styles["right"]}>
-          {data.length > 0 && (
+          {/* {data.length > 0 && (
             <div
               className={styles["timeline"]}
               onClick={() => {
@@ -473,7 +473,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
             >
               <span>Timeline</span>
             </div>
-          )}
+          )} */}
           <div
             className={styles["go-with-us"]}
             onClick={() => {
