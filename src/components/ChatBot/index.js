@@ -43,10 +43,10 @@ const Chatbot = () => {
   const { user_id, session_id } = router.query;
 
   useEffect(() => {
-    if (localStorage.getItem("canRefresh")) {
+    if (!user_id && !session_id && localStorage.getItem("canRefresh")) {
       handleReset();
     }
-  }, []);
+  }, [user_id, session_id]);
 
   useEffect(() => {
     if (!user_id || !session_id) {

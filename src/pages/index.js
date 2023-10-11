@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Button, Col, Row, Input } from "antd";
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 import styles from "@/styles/index.module.scss";
