@@ -463,7 +463,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
               (fullPayment ? ` ${styles["selected-payment"]}` : "")
             }
             onClick={() => {
-              setFullPayment(!fullPayment);
+              if (!fullPayment) setFullPayment(!fullPayment);
             }}
           >
             <p className={styles["features-days"]}>
@@ -482,7 +482,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
                 (!fullPayment ? ` ${styles["selected-payment"]}` : "")
               }
               onClick={() => {
-                setFullPayment(!fullPayment);
+                if (fullPayment) setFullPayment(!fullPayment);
               }}
             >
               <p className={styles["features-days"]}>
