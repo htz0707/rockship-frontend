@@ -20,7 +20,7 @@ export default async function handler(req, res) {
     : "";
   const pElementsHTML = `
     Dear Team,<br><br>
-    We've received feedback from user about his/her experience with Rockship Chatbot (You can view detailed conversation <a href="https://rockship.co/?user_id=${user_id}&session_id=${session_id}">here</a>). User has identified some challenges with:
+    We've received feedback from user about his/her experience with Rockship Chatbot (You can view detailed conversation <a href="https://dev.rockship.co/?user_id=${user_id}&session_id=${session_id}">here</a>). User has identified some challenges with:
     <ul>
       ${feedbackText}
       ${othersText}

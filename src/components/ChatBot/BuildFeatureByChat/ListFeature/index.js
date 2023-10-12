@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Checkbox, Modal } from "antd";
+import { Button, Checkbox, Modal, Tooltip } from "antd";
 import { MobileOutlined } from "@ant-design/icons";
 import styles from "./list-feature.module.scss";
 import { Table } from "antd";
@@ -12,6 +12,7 @@ import {
 import Features from "./features";
 import Feedback from "../Feedback";
 import { analytics } from "@/segment/segment";
+import CalendlyLinkWidget from "@/components/CalendlyLinkWidget";
 
 const ListFeature = ({ handleReset, projectId, setStep }) => {
   const [mobile, setMobile] = useState(
@@ -35,6 +36,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
   const [showFeedback, setShowFeedback] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(false);
+  const [fullPayment, setFullPayment] = useState(true);
 
   const handleSelectMobile = () => {
     setType("mobile");
@@ -389,6 +391,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
 
     return (
       <Table
+        className={styles["small-table"]}
         style={{ width: 957 }}
         key={"record"}
         dataSource={copyData}
@@ -438,7 +441,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
           Report a feedback
         </p>
       </div>
-      <div style={{ height: 490 }}>
+      <div className={styles["cusmtom-table"]} style={{ height: 490 }}>
         <Table
           style={{ height: 490 }}
           dataSource={data}
@@ -454,13 +457,59 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
       </div>
       <div className={styles["bottom-bar"]}>
         <div className={styles["left"]}>
-          <p className={styles["features-days"]}>
-            {numberOfFeatures} features
-            {/* - {Math.round(totalDay / 7)} weeks */}
-          </p>
-          <p className={styles["cost"]}>
-            $ {Math.round(totalCost).toLocaleString("en-US")}
-          </p>
+          <div
+            className={
+              styles["full-payment"] +
+              (fullPayment ? ` ${styles["selected-payment"]}` : "")
+            }
+            onClick={() => {
+              setFullPayment(!fullPayment);
+            }}
+          >
+            <p className={styles["features-days"]}>
+              {numberOfFeatures} features
+              {/* - {Math.round(totalDay / 7)} weeks */}
+            </p>
+            <p className={styles["cost"]}>
+              Full payment <img src="/circle.svg" /> ${" "}
+              {Math.round(totalCost).toLocaleString("en-US")}/package
+            </p>
+          </div>
+          <div className={styles["flex"]}>
+            <div
+              className={
+                styles["monthly-payment"] +
+                (!fullPayment ? ` ${styles["selected-payment"]}` : "")
+              }
+              onClick={() => {
+                setFullPayment(!fullPayment);
+              }}
+            >
+              <p className={styles["features-days"]}>
+                {numberOfFeatures} features
+                {/* - {Math.round(totalDay / 7)} weeks */}
+              </p>
+              <p className={styles["cost"]}>
+                Full payment <img src="/circle.svg" /> ${" "}
+                {Math.round((totalCost * 1.05) / 12).toLocaleString("en-US")}
+                /month
+              </p>
+            </div>
+            <Tooltip
+              overlayInnerStyle={{ width: "400px" }}
+              color={"white"}
+              title={
+                <div className={styles["tooltips"]}>
+                  We offer you the installment option so that you can pay this
+                  amount over a period of 12 months.{" "}
+                  <span>The number of installment months</span> can be{" "}
+                  <span>flexible to change</span> after discussion.
+                </div>
+              }
+            >
+              <img src="/tooltips.svg" alt="" />
+            </Tooltip>
+          </div>
         </div>
         <div className={styles["right"]}>
           {/* {data.length > 0 && (
@@ -474,18 +523,14 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
               <span>Timeline</span>
             </div>
           )} */}
-          <div
-            className={styles["go-with-us"]}
-            onClick={() => {
-              analytics.track("cta-chatbot");
-              window.open(
-                "https://calendly.com/binhngoc17/rockship-app-builder",
-                "_blank"
-              );
-            }}
-          >
-            <span>Schedule a demo</span>
-          </div>
+          {data.length > 0 && (
+            <CalendlyLinkWidget
+              analytics={analytics}
+              eventName="call-chatbot"
+              buttonName="Schedule a call"
+              buttonStyle="go-with-us"
+            />
+          )}
         </div>
       </div>
       <Modal

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -9,7 +9,48 @@ import Chatbot from "../ChatBot";
 import styles from "./header.module.scss";
 import arrowLeft from "../../../public/arrow-left.svg";
 import useScrollToElement from "@/hooks/useScrollToElement";
+import { analytics } from "@/segment/segment";
+
 const { Header } = Layout;
+
+const CalendlyLinkWidget = ({
+  analytics,
+  eventName,
+  buttonName,
+  buttonStyle,
+}) => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  return (
+    <div>
+      <link
+        href="https://assets.calendly.com/assets/external/widget.css"
+        rel="stylesheet"
+      />
+      <Button
+        className={styles[buttonStyle]}
+        onClick={() => {
+          analytics.track(eventName);
+          Calendly.initPopupWidget({
+            url: "https://calendly.com/binhngoc17/rockship-app-builder",
+          });
+          return false;
+        }}
+      >
+        <span>{buttonName}</span>
+      </Button>
+    </div>
+  );
+};
 
 const MenuNavbar = ({ link, onClickStartBuilding }) => {
   return (
@@ -156,23 +197,25 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
           {link === "solutions" && (
             <div className={styles["custom-header-content"]}>
               <div
-                data-aos="fade-up"
-                data-aos-duration="500"
-                data-aos-anchor-placement="bottom-bottom"
+                // data-aos="fade-up"
+                // data-aos-duration="500"
+                // data-aos-anchor-placement="bottom-bottom"
               >
-                <br/>
+                <br />
                 <p className={styles["homepage-big-text"]}>
-                Build your app <span>in 3 weeks</span>
+                  Build your app <span>in 3 weeks</span>
                 </p>
                 <p className={styles["homepage-big-text"]}>
                   with our <span>AI-assisted</span> code generation.
                 </p>
                 <p className={styles["homepage-small-text"]}>
-                <span>Start faster</span> with AI-assisted code generation.
-                <br/>
-                <span>Scale effectively</span> with AI-powered hiring solution.
-                <br/>
-                <span>Stay ahead</span> in emerging tech leveraging our tech experts network.
+                  <span>Start faster</span> with AI-assisted code generation.
+                  <br />
+                  <span>Scale effectively</span> with AI-powered hiring
+                  solution.
+                  <br />
+                  <span>Stay ahead</span> in emerging tech leveraging our tech
+                  experts network.
                 </p>
               </div>
               <div
@@ -189,7 +232,7 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
                 >
                   START BUILDING
                 </Button>
-                <a 
+                {/* <a 
                     href="https://calendly.com/rockship-co/30min-free-consulting"
                     target = "_blank"
                 >
@@ -199,7 +242,13 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
                   >
                     Book a call
                   </Button>
-                </a>
+                </a> */}
+                <CalendlyLinkWidget
+                  analytics={analytics}
+                  eventName="call-homepage"
+                  buttonName="Book a call"
+                  buttonStyle="homepage-button-2"
+                />
               </div>
               <div
                 className={styles["chatbot-box"]}

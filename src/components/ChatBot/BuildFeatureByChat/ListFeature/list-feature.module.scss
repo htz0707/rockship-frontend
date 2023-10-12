@@ -49,6 +49,7 @@
       gap: 4px;
       border-radius: 8px;
       border: 1px solid #ebebeb;
+      font-family: $primary-font;
       background: #fff;
       margin: 5px 8px 5px 0;
 
@@ -100,7 +101,7 @@
     .small-features {
       width: 85%;
       p.name {
-        margin: 0;
+        // margin: 0;
         color: #0094ff;
         font-size: 14px;
         font-style: normal;
@@ -149,13 +150,29 @@
   }
 
   .bottom-bar {
-    display: flex;
-    justify-content: space-between;
+    @include mobile {
+      display: unset;
+      background: unset;
+    }
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      background: #ebebeb;
+    }
     border-radius: 16px;
-    background: #ebebeb;
-    padding: 4px 12px;
+    padding: 8px;
 
     .left {
+      @include mobile {
+        display: unset;
+      }
+      @include tablet {
+        display: flex;
+        align-items: center;
+      }
+      img {
+        margin: 0 4px;
+      }
       p {
         margin: 0;
       }
@@ -174,6 +191,38 @@
         font-weight: 700;
         line-height: normal;
       }
+      .full-payment {
+        cursor: pointer;
+        margin-right: 16px;
+        border-radius: 12px;
+        background: #fff;
+        padding: 6px 8px;
+      }
+      .monthly-payment {
+        cursor: pointer;
+        border-radius: 12px;
+        background: #fff;
+        padding: 6px 8px;
+      }
+      .selected-payment {
+        background: #f9c561;
+      }
+
+      .flex {
+        display: flex;
+      }
+
+      .flex,
+      .monthly-payment {
+        @include mobile {
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+        @include tablet {
+          margin-top: unset;
+          margin-bottom: unset;
+        }
+      }
     }
 
     .right {
@@ -181,7 +230,7 @@
       .timeline {
         cursor: pointer;
         display: flex;
-        height: 40px;
+        height: 54px;
         padding: 4px 12px;
         justify-content: center;
         align-items: center;
@@ -329,5 +378,27 @@
     .web {
       margin-right: 10px;
     }
+  }
+}
+
+.tooltips {
+  background-color: #fff;
+  color: var(--caption, #6d6d6d);
+  font-family: $primary-font;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  span {
+    color: #0085ff;
+  }
+}
+
+.cusmtom-table {
+  :global(th.ant-table-cell) {
+    font-family: $primary-font;
+  }
+  :global(td.ant-table-cell) {
+    font-family: $primary-font;
   }
 }
