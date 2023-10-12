@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Button, Col, Row } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import MetaTags from '@/components/MetaTags';
+import MetaTags from "@/components/MetaTags";
 import CustomLayout from "@/components/Layout";
 import styles from "@/styles/case-studies-detail.module.scss";
 
@@ -19,6 +19,47 @@ import ContentOmnichannel from "@/components/ContentCaseStudies/ContentOmnichann
 import ContentMeiMei from "@/components/ContentCaseStudies/ContentMeiMei";
 import { HighLightItem } from "@/components/ContentCaseStudies/Common";
 import FormModal from "@/components/FormModal";
+
+import { analytics } from "@/segment/segment";
+
+const CalendlyLinkWidget = ({
+  analytics,
+  eventName,
+  buttonName,
+  buttonStyle,
+}) => {
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://assets.calendly.com/assets/external/widget.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  return (
+    <>
+      <link
+        href="https://assets.calendly.com/assets/external/widget.css"
+        rel="stylesheet"
+      />
+      <Button
+        className={styles[buttonStyle]}
+        onClick={() => {
+          analytics.track(eventName);
+          Calendly.initPopupWidget({
+            url: "https://calendly.com/binhngoc17/rockship-app-builder",
+          });
+          return false;
+        }}
+      >
+        <span>{buttonName}</span>
+      </Button>
+    </>
+  );
+};
 
 const BannerItem = ({ src, name }) => {
   return (
@@ -183,145 +224,134 @@ const CaseStudiesDetail = () => {
 
   return (
     <>
-    <MetaTags title={"Rockship | " + itemCaseStudy?.title} description = {itemCaseStudy?.description} image={itemCaseStudy?.src}  />
-    <CustomLayout link={"studies"} isBack={isBack}>
-      <div className={styles["case-studies-detail"]} id="case-studies-detail">
-        <Button className={styles["button-back"]} onClick={handleOnClickBack}>
-          <img src={"/arrow-left-gray.svg"} alt="back" />
-          <p>Back to list</p>
-        </Button>
-        <Row>
-          <div className={styles["banner"]}>
-            <Image
-              src={itemCaseStudy?.src || "/banner-case-studies.png"}
-              alt="banner"
-              quality={80}
-              priority
-              fill={true}
-            />
-            <div className={styles["banner-content"]}>
-              <h3>{itemCaseStudy?.title}</h3>
-              <div className={styles["banner-content-list"]}>
-                <BannerItem src={"/work.svg"} name={itemCaseStudy?.company} />
-                <BannerItem
-                  src={"/calendar.svg"}
-                  name={itemCaseStudy?.duration}
-                />
-                <BannerItem
-                  src={"/danger-circle.svg"}
-                  name={itemCaseStudy?.program}
-                />
-              </div>
-            </div>
-          </div>
-        </Row>
-        <Row gutter={16} className={styles["row-mobile"]}>
-          <Col xs={24} md={0}>
-            <div className={styles["information"]}>
-              <div className={styles["row"]}>
-                <h4>Market: </h4>
-                <p>{itemCaseStudy?.market}</p>
-              </div>
-              <div className={styles["row"]}>
-                <h4>Industry: </h4>
-                <p>{itemCaseStudy?.industry}</p>
-              </div>
-              <div className={styles["row"]}>
-                <h4>Features: </h4>
-                <p>{itemCaseStudy?.features}</p>
-              </div>
-              <div className={styles["row"]}>
-                <h4>Company size: </h4>
-                <p>{itemCaseStudy?.companySize}</p>
-              </div>
-            </div>
-          </Col>
-          <Col xs={24} md={18}>
-            <div className={styles["highlight"]}>
-              {itemCaseStudy?.highlights?.map((item) => {
-                return (
-                  <HighLightItem
-                    key={item.id}
-                    src={item.src}
-                    name={item.name}
-                    color={item.color}
+      <MetaTags
+        title={"Rockship | " + itemCaseStudy?.title}
+        description={itemCaseStudy?.description}
+        image={itemCaseStudy?.src}
+      />
+      <CustomLayout link={"studies"} isBack={isBack}>
+        <div className={styles["case-studies-detail"]} id="case-studies-detail">
+          <Button className={styles["button-back"]} onClick={handleOnClickBack}>
+            <img src={"/arrow-left-gray.svg"} alt="back" />
+            <p>Back to list</p>
+          </Button>
+          <Row>
+            <div className={styles["banner"]}>
+              <Image
+                src={itemCaseStudy?.src || "/banner-case-studies.png"}
+                alt="banner"
+                quality={80}
+                priority
+                fill={true}
+              />
+              <div className={styles["banner-content"]}>
+                <h3>{itemCaseStudy?.title}</h3>
+                <div className={styles["banner-content-list"]}>
+                  <BannerItem src={"/work.svg"} name={itemCaseStudy?.company} />
+                  <BannerItem
+                    src={"/calendar.svg"}
+                    name={itemCaseStudy?.duration}
                   />
-                );
-              })}
+                  <BannerItem
+                    src={"/danger-circle.svg"}
+                    name={itemCaseStudy?.program}
+                  />
+                </div>
+              </div>
             </div>
-            {renderContent(itemCaseStudy?.id)}
-            {getReview(itemCaseStudy?.reviews?.length)}
-          </Col>
-          <Col xs={0} md={6}>
-            <div className={styles["card"]}>
-              <div className={styles["row"]}>
-                <h4>Market: </h4>
-                <p>{itemCaseStudy?.market}</p>
+          </Row>
+          <Row gutter={16} className={styles["row-mobile"]}>
+            <Col xs={24} md={0}>
+              <div className={styles["information"]}>
+                <div className={styles["row"]}>
+                  <h4>Market: </h4>
+                  <p>{itemCaseStudy?.market}</p>
+                </div>
+                <div className={styles["row"]}>
+                  <h4>Industry: </h4>
+                  <p>{itemCaseStudy?.industry}</p>
+                </div>
+                <div className={styles["row"]}>
+                  <h4>Features: </h4>
+                  <p>{itemCaseStudy?.features}</p>
+                </div>
+                <div className={styles["row"]}>
+                  <h4>Company size: </h4>
+                  <p>{itemCaseStudy?.companySize}</p>
+                </div>
               </div>
-              <div className={styles["row"]}>
-                <h4>Industry: </h4>
-                <p>{itemCaseStudy?.industry}</p>
-              </div>
-              <div className={styles["row"]}>
-                <h4>Features: </h4>
-                <p>{itemCaseStudy?.features}</p>
-              </div>
-              <div className={styles["row"]}>
-                <h4>Company size: </h4>
-                <p>{itemCaseStudy?.companySize}</p>
-              </div>
-
-              <div className={styles["hashtag"]}>
-                {itemCaseStudy?.hashtags?.map((item) => {
+            </Col>
+            <Col xs={24} md={18}>
+              <div className={styles["highlight"]}>
+                {itemCaseStudy?.highlights?.map((item) => {
                   return (
-                    <div key={item.id} className={styles["hashtag-item"]}>
-                      <p>{`#${item.name}`}</p>
-                    </div>
+                    <HighLightItem
+                      key={item.id}
+                      src={item.src}
+                      name={item.name}
+                      color={item.color}
+                    />
                   );
                 })}
               </div>
-              <Button
-                className={styles["build"]}
-                onClick={() => {
-                  setIsShowContact(true);
-                  setErrors(false);
-                  window.open(
-                    "https://calendly.com/binhngoc17/rockship-app-builder",
-                    "_blank"
-                  );
-                }}
-              >
-                Schedule a demo
-              </Button>
+              {renderContent(itemCaseStudy?.id)}
+              {getReview(itemCaseStudy?.reviews?.length)}
+            </Col>
+            <Col xs={0} md={6}>
+              <div className={styles["card"]}>
+                <div className={styles["row"]}>
+                  <h4>Market: </h4>
+                  <p>{itemCaseStudy?.market}</p>
+                </div>
+                <div className={styles["row"]}>
+                  <h4>Industry: </h4>
+                  <p>{itemCaseStudy?.industry}</p>
+                </div>
+                <div className={styles["row"]}>
+                  <h4>Features: </h4>
+                  <p>{itemCaseStudy?.features}</p>
+                </div>
+                <div className={styles["row"]}>
+                  <h4>Company size: </h4>
+                  <p>{itemCaseStudy?.companySize}</p>
+                </div>
+
+                <div className={styles["hashtag"]}>
+                  {itemCaseStudy?.hashtags?.map((item) => {
+                    return (
+                      <div key={item.id} className={styles["hashtag-item"]}>
+                        <p>{`#${item.name}`}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+                <CalendlyLinkWidget
+                  analytics={analytics}
+                  eventName="call-case-study"
+                  buttonName="Schedule a demo"
+                  buttonStyle="build"
+                />
+              </div>
+            </Col>
+            <div className={styles["build-mobile"]}>
+              <CalendlyLinkWidget
+                analytics={analytics}
+                eventName="call-case-study"
+                buttonName="Schedule a demo"
+                buttonStyle="button"
+              />
             </div>
-          </Col>
-          <div className={styles["build-mobile"]}>
-            <Button
-              className={styles["button"]}
-              onClick={() => {
-                setIsShowContact(true);
-                setErrors(false);
-                window.open(
-                  "https://calendly.com/binhngoc17/rockship-app-builder",
-                  "_blank"
-                );
-              }}
-            >
-              Schedule a demo
-            </Button>
-          </div>
-        </Row>
-      </div>
-      <FormModal
-        errors={errors}
-        setErrors={setErrors}
-        open={isShowContact}
-        setOpen={setIsShowContact}
-      />
-    </CustomLayout>
+          </Row>
+        </div>
+        <FormModal
+          errors={errors}
+          setErrors={setErrors}
+          open={isShowContact}
+          setOpen={setIsShowContact}
+        />
+      </CustomLayout>
     </>
   );
-
 };
 
 export default CaseStudiesDetail;
@@ -335,6 +365,6 @@ export const getStaticProps = async () => {
 export async function getStaticPaths() {
   return {
     paths: [],
-    fallback: 'blocking', 
+    fallback: "blocking",
   };
 }

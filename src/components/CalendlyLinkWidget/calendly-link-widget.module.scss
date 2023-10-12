@@ -1,0 +1,26 @@
+.go-with-us {
+  cursor: pointer;
+  display: flex;
+  @include mobile {
+    height: 54px;
+    margin: 4px 0;
+  }
+  @include tablet {
+    height: 100%;
+    margin: unset;
+  }
+  padding: 4px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border-radius: 12px;
+  background: #0094ff;
+
+  span {
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
