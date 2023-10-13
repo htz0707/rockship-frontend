@@ -660,7 +660,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className={styles["box-6"]}>
+        {/* <div className={styles["box-6"]}>
           <Row className={styles["custom-row"]}>
             <Col xs={24} md={16}>
               <p
@@ -722,7 +722,7 @@ const HomePage = () => {
               </Button>
             </Col>
           </Row>
-        </div>
+        </div> */}
         <div className={styles["box-7"]}>
           <div
             data-aos="fade-up"

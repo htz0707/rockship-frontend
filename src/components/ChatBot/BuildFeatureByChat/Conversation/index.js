@@ -17,7 +17,7 @@ export default function Conversation({
   errorMessage,
   isError,
   setIsError,
-  restarted
+  restarted,
 }) {
   const conversationElements = [];
   const containerRef = useRef();
@@ -36,19 +36,24 @@ export default function Conversation({
   ) {
     conversationElements.push(
       appTypeList.length > 0 &&
-        appTypeList.map((item, index) => (
-          <div key={index} className={styles["bubble-message"]}>
-            <p
-              onClick={() => {
-                handleNewSession(item.id);
-                analytics.track("industry-chatbot");
-                analytics.track(item.name);
-              }}
-            >
-              {item.name}
-            </p>
-          </div>
-        ))
+        appTypeList.map(
+          (item, index) =>
+            item.name !== "EdTech Platform" &&
+            item.name !== "Others" &&
+            item.name !== "Fintech solution" && (
+              <div key={index} className={styles["bubble-message"]}>
+                <p
+                  onClick={() => {
+                    handleNewSession(item.id);
+                    analytics.track("industry-chatbot");
+                    analytics.track(item.name);
+                  }}
+                >
+                  {item.name}
+                </p>
+              </div>
+            )
+        )
     );
   }
 
@@ -74,17 +79,27 @@ export default function Conversation({
   const renderError = () => {
     return (
       <div className={styles["error-wrap"]}>
-        <img src='/404_error.png' alt=""/>
-        <div className={styles["error-note"]}>Something went wrong. Please try again</div>
-        <div className={styles["retry-btn-wrap"]} onClick={() => setIsError(false)}>
-          <img src='/blackReload.png' alt=""/>
-          <div className={styles["tap-to-retry"]} onClick={() => {
-            handleReset();
-          }}>Tap to retry</div>
+        <img src="/404_error.png" alt="" />
+        <div className={styles["error-note"]}>
+          Something went wrong. Please try again
+        </div>
+        <div
+          className={styles["retry-btn-wrap"]}
+          onClick={() => setIsError(false)}
+        >
+          <img src="/blackReload.png" alt="" />
+          <div
+            className={styles["tap-to-retry"]}
+            onClick={() => {
+              handleReset();
+            }}
+          >
+            Tap to retry
+          </div>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   useEffect(() => {
     const scrollToBottom = () => {
@@ -101,7 +116,7 @@ export default function Conversation({
           Share with Rockship AI your app idea and we will propose you a
           solution to build your app.
         </div>
-        {isError? renderError() : conversationElements}
+        {isError ? renderError() : conversationElements}
         {loading && (
           <div
             style={{
