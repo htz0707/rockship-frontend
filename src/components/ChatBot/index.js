@@ -46,16 +46,15 @@ const Chatbot = () => {
     if (!user_id && !session_id && localStorage.getItem("canRefresh")) {
       handleReset();
     }
-  }, [user_id, session_id]);
-
-  useEffect(() => {
     if (!user_id || !session_id) {
       handleSetUUID();
     } else {
       localStorage.setItem("user_id", user_id);
       localStorage.setItem("session_id", session_id);
     }
-    handleLoadHistory();
+    setTimeout(() => {
+      handleLoadHistory();
+    }, 500);
   }, [user_id, session_id]);
 
   useEffect(() => {
@@ -69,11 +68,23 @@ const Chatbot = () => {
     setInputValue("");
   };
 
+  const isValidUUID = (value) => {
+    const uuidPattern =
+      /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+    return uuidPattern.test(value);
+  };
+
   const handleSetUUID = () => {
-    if (!localStorage.getItem("user_id")) {
+    if (
+      !localStorage.getItem("user_id") ||
+      !isValidUUID(localStorage.getItem("user_id"))
+    ) {
       localStorage.setItem("user_id", uuidv4());
     }
-    if (!localStorage.getItem("session_id")) {
+    if (
+      !localStorage.getItem("session_id") ||
+      !isValidUUID(localStorage.getItem("session_id"))
+    ) {
       localStorage.setItem("session_id", uuidv4());
     }
   };
@@ -94,6 +105,8 @@ const Chatbot = () => {
         session_id: localStorage.getItem("session_id"),
       });
       setLoading(false);
+      setIsError(true);
+      setRestarted(true);
       console.error("Error:", error);
     }
   };
@@ -111,21 +124,28 @@ const Chatbot = () => {
       }
       setAppTypeList(res.app_types);
       setLoadHistory(res.chat_history);
-      for (const key in res.chat_history.response) {
-        if (
-          res.chat_history.response[key].message.includes(
-            "all the necessary information"
-          ) ||
-          res.chat_history.response[key].message.includes(
-            "Thank you for providing your email"
-          )
-        ) {
-          setRestarted(false);
-          await handleEndSession();
-          setDisabled(true);
-          setEndMessage(true);
-        } else {
-          localStorage.setItem("canRefresh", true);
+      if (res.end_session_flag) {
+        setRestarted(false);
+        await handleEndSession();
+        setDisabled(true);
+        setEndMessage(true);
+      } else {
+        for (const key in res.chat_history.response) {
+          if (
+            res.chat_history.response[key].message.includes(
+              "all the necessary information"
+            ) ||
+            res.chat_history.response[key].message.includes(
+              "Thank you for providing your email"
+            )
+          ) {
+            setRestarted(false);
+            await handleEndSession();
+            setDisabled(true);
+            setEndMessage(true);
+          } else {
+            localStorage.setItem("canRefresh", true);
+          }
         }
       }
       setLoading(false);
@@ -135,6 +155,8 @@ const Chatbot = () => {
         session_id: localStorage.getItem("session_id"),
       });
       setLoading(false);
+      setIsError(true);
+      setRestarted(true);
       console.error("Error:", error);
     }
   };
@@ -168,6 +190,8 @@ const Chatbot = () => {
         session_id: localStorage.getItem("session_id"),
       });
       setLoading(false);
+      setIsError(true);
+      setRestarted(true);
       console.error("Error:", error);
     }
   };

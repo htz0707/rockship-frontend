@@ -37,7 +37,7 @@ export const Features = [
   {
     id: 72,
     list_image: {
-      desktop: ["/404_error.png"],
+      desktop: ["/404desktop.png"],
       mobile: [
         "https://s3.ap-southeast-1.amazonaws.com/chat.rockship.co/3LkgJfBK5LZZWMDEo/features/Essential/Sorting/Mobile/Sorting.svg",
       ],
@@ -49,7 +49,7 @@ export const Features = [
       desktop: [
         "https://s3.ap-southeast-1.amazonaws.com/chat.rockship.co/3LkgJfBK5LZZWMDEo/features/Admin+Console/Admin+Console.svg",
       ],
-      mobile: ["/404_error.png"],
+      mobile: ["/404mobile.png"],
     },
   },
 ];
