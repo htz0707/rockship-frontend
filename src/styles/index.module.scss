@@ -1047,7 +1047,7 @@
         font-feature-settings: "salt" on, "liga" off;
         font-family: Be Vietnam Pro;
         font-style: normal;
-        font-weight: 800;
+        font-weight: 900;
         line-height: 64px; /* 133.333% */
         text-align: center;
 
@@ -1057,11 +1057,11 @@
           line-height: 36px;
         }
         @include tablet {
-          font-size: 4rem;
+          font-size: 4.8rem;
           line-height: 50px;
         }
         @include desktop {
-          font-size: 4rem;
+          font-size: 4.8rem;
           line-height: 64px;
         }
       }
