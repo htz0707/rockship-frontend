@@ -36,24 +36,19 @@ export default function Conversation({
   ) {
     conversationElements.push(
       appTypeList.length > 0 &&
-        appTypeList.map(
-          (item, index) =>
-            item.name !== "EdTech Platform" &&
-            item.name !== "Others" &&
-            item.name !== "Fintech solution" && (
-              <div key={index} className={styles["bubble-message"]}>
-                <p
-                  onClick={() => {
-                    handleNewSession(item.id);
-                    analytics.track("industry-chatbot");
-                    analytics.track(item.name);
-                  }}
-                >
-                  {item.name}
-                </p>
-              </div>
-            )
-        )
+        appTypeList.map((item, index) => (
+          <div key={index} className={styles["bubble-message"]}>
+            <p
+              onClick={() => {
+                handleNewSession(item.id);
+                analytics.track("industry-chatbot");
+                analytics.track(item.name);
+              }}
+            >
+              {item.name}
+            </p>
+          </div>
+        ))
     );
   }
 
