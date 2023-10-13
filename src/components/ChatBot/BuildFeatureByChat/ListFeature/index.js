@@ -490,7 +490,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
                 {/* - {Math.round(totalDay / 7)} weeks */}
               </p>
               <p className={styles["cost"]}>
-                Full payment <img src="/circle.svg" /> ${" "}
+                Monthly payment <img src="/circle.svg" /> ${" "}
                 {Math.round((totalCost * 1.05) / 12).toLocaleString("en-US")}
                 /month
               </p>
