@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useEffect } from "react";
+import React, { useMemo, useEffect, useState } from "react";
 import { Button, Col, Row } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -20,6 +20,7 @@ import MetaTags from "@/components/MetaTags";
 
 const CaseStudies = () => {
   const router = useRouter();
+  const { industry } = router.query;
   const dispatch = useDispatch();
   const caseStudies = useSelector((state) => state?.caseStudies?.caseStudies);
   const itemFilter = useSelector((state) => state?.caseStudies?.itemFilter);
@@ -112,11 +113,22 @@ const CaseStudies = () => {
 
   const chunkedData = chunkArray(dataFilter, 3);
 
+  const [selectedIndustry, setSelectedIndustry] = useState(lsIndustry[0].value);
   useEffect(() => {
-    // dispatch(
-    //   setCaseStudies()
-    // );
-  }, []);
+    if (industry) {
+      setSelectedIndustry(industry);
+      handleOnChangeSelectFilter(
+        lsIndustry.find((item) => item.key === industry),
+        "industry"
+      );
+    } else {
+      setSelectedIndustry(lsIndustry[0].value);
+      handleOnChangeSelectFilter(
+        lsIndustry.find((item) => item.key === lsIndustry[0].value),
+        "industry"
+      );
+    }
+  }, [industry]);
 
   return (
     <>
@@ -147,7 +159,10 @@ const CaseStudies = () => {
                 <SelectCustom
                   title={"Industry"}
                   lsOption={lsIndustry}
-                  value={itemFilter?.industry?.value || lsIndustry[0].value}
+                  value={
+                    itemFilter?.industry?.value ||
+                    selectedIndustry
+                  }
                   onChange={(value) =>
                     handleOnChangeSelectFilter(
                       lsIndustry.find((item) => item.key === value),

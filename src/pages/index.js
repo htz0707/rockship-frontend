@@ -258,7 +258,10 @@ const HomePage = () => {
                     irrespective of your location. Find the expertise you need,
                     save time, and reduce costs by hiring on-demand.
                   </p>
-                  <Button className={styles["explore-btn"]}>
+                  <Button
+                    onClick={() => router.push("/it-staff-augmentation")}
+                    className={styles["explore-btn"]}
+                  >
                     Explore <img src="/our-services-arrow.svg" />
                   </Button>
                 </div>
@@ -266,7 +269,7 @@ const HomePage = () => {
               <Col className={styles["col-our-services-right"]} xs={24} md={12}>
                 <div className={styles["background"]}>
                   <img src="/production.svg" alt="" />
-                  <p className={styles["col-title"]}>Production Engineering</p>
+                  <p className={styles["col-title"]}>Product Engineering</p>
                   <p className={styles["content"]}>
                     We assist businesses in designing and launching innovative
                     products by understanding their needs and offering tailored
@@ -469,95 +472,160 @@ const HomePage = () => {
             Some of the Industries We Currently Serve
           </p>
           <div className={styles["desktop-serve"]}>
-            <div className={styles["serve-box"]}>
+            <div
+              // onClick={() => router.push("/case-studies")}
+              className={`${styles["serve-box"]} ${styles["disabled-box"]}`}
+            >
               <img src="/serve-1.svg" alt="" />
               <p>Social Media</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() => router.push(`/case-studies/?industry=Hospitality`)}
+              className={styles["serve-box"]}
+            >
               <img src="/serve-2.svg" alt="" />
               <p>FnB</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() => router.push(`/case-studies/?industry=Logistic`)}
+              className={styles["serve-box"]}
+            >
               <img src="/serve-3.svg" alt="" />
               <p>Logistic</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() =>
+                router.push(`/case-studies/?industry=Video%20Streaming`)
+              }
+              className={styles["serve-box"]}
+            >
               <img src="/serve-4.svg" alt="" />
               <p>Video Streaming</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() => router.push("/case-studies/?industry=Fintech")}
+              className={styles["serve-box"]}
+            >
               <img src="/serve-5.svg" alt="" />
               <p>Fintech</p>
             </div>
           </div>
           <div className={styles["desktop-serve"]}>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() => router.push("/case-studies/?industry=Healthcare")}
+              className={styles["serve-box"]}
+            >
               <img src="/serve-6.svg" alt="" />
               <p>Healthcare</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              // onClick={() => router.push("/case-studies")}
+              className={`${styles["serve-box"]} ${styles["disabled-box"]}`}
+            >
               <img src="/serve-7.svg" alt="" />
               <p>Real Estate</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() =>
+                router.push("/case-studies/?industry=Food%20Technology")
+              }
+              className={styles["serve-box"]}
+            >
               <img src="/serve-8.svg" alt="" />
               <p>e-Commerce</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() => router.push("/case-studies/?industry=Education")}
+              className={styles["serve-box"]}
+            >
               <img src="/serve-9.svg" alt="" />
               <p>Education</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              // onClick={() => router.push("/case-studies")}
+              className={`${styles["serve-box"]} ${styles["disabled-box"]}`}
+            >
               <img src="/serve-10.svg" alt="" />
               <p>Travel</p>
             </div>
           </div>
           <div className={styles["mobile-serve"]}>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() => router.push("/case-studies/?industry=Healthcare")}
+              className={styles["serve-box"]}
+            >
               <img src="/serve-6.svg" alt="" />
               <p>Healthcare</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              // onClick={() => router.push("/case-studies")}
+              className={`${styles["serve-box"]} ${styles["disabled-box"]}`}
+            >
               <img src="/serve-1.svg" alt="" />
               <p>Social Media</p>
             </div>
           </div>
           <div className={styles["mobile-serve"]}>
-            <div className={styles["serve-box"]}>
+            <div className={`${styles["serve-box"]} ${styles["disabled-box"]}`}>
               <img src="/serve-7.svg" alt="" />
               <p>Real Estate</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() => router.push("/case-studies/?industry=Hospitality")}
+              className={styles["serve-box"]}
+            >
               <img src="/serve-2.svg" alt="" />
               <p>FnB</p>
             </div>
           </div>
           <div className={styles["mobile-serve"]}>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() =>
+                router.push("/case-studies/?industry=Food%20Technology")
+              }
+              className={styles["serve-box"]}
+            >
               <img src="/serve-8.svg" alt="" />
               <p>e-Commerce</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() => router.push(`/case-studies/?industry=Logistic`)}
+              className={styles["serve-box"]}
+            >
               <img src="/serve-3.svg" alt="" />
               <p>Logistic</p>
             </div>
           </div>
           <div className={styles["mobile-serve"]}>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() => router.push(`/case-studies/?industry=Education`)}
+              className={styles["serve-box"]}
+            >
               <img src="/serve-9.svg" alt="" />
               <p>Education</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() =>
+                router.push(`/case-studies/?industry=Video%20Streaming`)
+              }
+              className={styles["serve-box"]}
+            >
               <img src="/serve-4.svg" alt="" />
-              <p>Video Streaming</p>
+              <p>Video Streaming</p>
             </div>
           </div>
           <div className={styles["mobile-serve"]}>
-            <div className={styles["serve-box"]}>
+            <div
+              // onClick={() => router.push("/case-studies")}
+              className={`${styles["serve-box"]} ${styles["disabled-box"]}`}
+            >
               <img src="/serve-10.svg" alt="" />
               <p>Travel</p>
             </div>
-            <div className={styles["serve-box"]}>
+            <div
+              onClick={() => router.push("/case-studies/?industry=Fintech")}
+              className={styles["serve-box"]}
+            >
               <img src="/serve-5.svg" alt="" />
               <p>Fintech</p>
             </div>

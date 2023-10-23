@@ -18,6 +18,7 @@ export default function Conversation({
   isError,
   setIsError,
   restarted,
+  limit,
 }) {
   const conversationElements = [];
   const containerRef = useRef();
@@ -108,8 +109,17 @@ export default function Conversation({
     <>
       <div className={styles["chat-window"]} ref={containerRef}>
         <div className={styles["description"]}>
-          Share with Rockship AI your app idea and we will propose you a
-          solution to build your app.
+          {!limit ? (
+            <>
+              We will propose you a solution to build your app. You only have
+              <span> 3 times </span>to test per day.
+            </>
+          ) : (
+            <>
+              You have<span> 0 times left </span> to day. Please comeback next
+              time.
+            </>
+          )}
         </div>
         {isError ? renderError() : conversationElements}
         {loading && (

@@ -42,7 +42,6 @@
         font-size: 1.4rem;
         line-height: 14px;
       }
-
     }
     @include tablet {
       img {
@@ -68,6 +67,9 @@
       font-weight: 400;
       line-height: normal;
       margin-bottom: 16px;
+      span {
+        color: red;
+      }
     }
     .error-wrap {
       display: flex;
@@ -80,7 +82,7 @@
         font-weight: 600;
         line-height: 25px;
         letter-spacing: 0em;
-        color: #9C9C9C;
+        color: #9c9c9c;
         margin: 12px 0;
       }
       .retry-btn-wrap {
@@ -94,7 +96,7 @@
           line-height: 25px;
           letter-spacing: 0em;
           text-align: left;
-          color: #1B1C17;
+          color: #1b1c17;
           margin-left: 8px;
         }
       }
