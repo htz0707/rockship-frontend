@@ -3,13 +3,17 @@ import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { Layout, Button, Drawer } from "antd";
+import { Layout, Button, Drawer, Dropdown, Space } from "antd";
 
 import Chatbot from "../ChatBot";
 import styles from "./header.module.scss";
 import arrowLeft from "../../../public/arrow-left.svg";
 import useScrollToElement from "@/hooks/useScrollToElement";
 import { analytics } from "@/segment/segment";
+
+import { DownOutlined } from "@ant-design/icons";
+import ItStaff from "../../../public/it-staff.svg";
+import Engineer from "../../../public/product-engineer.svg";
 
 const { Header } = Layout;
 
@@ -53,8 +57,73 @@ const CalendlyLinkWidget = ({
 };
 
 const MenuNavbar = ({ link, onClickStartBuilding }) => {
+  const items = [
+    {
+      label: (
+        <Link
+          href="it-staff-augmentation"
+          className={
+            styles["our-solution-custom-label"] +
+            (link === "it-staff-augmentation" ? " " + styles["font-600"] : "")
+          }
+        >
+          IT Staff Augmentation
+        </Link>
+      ),
+      icon: (
+        <Image
+          className={
+            styles["our-solution-custom-icon"] +
+            (link === "it-staff-augmentation" ? " " + styles["font-600"] : "")
+          }
+          src={ItStaff}
+          alt=""
+          priority
+        />
+      ),
+      key: "0",
+    },
+    {
+      label: (
+        <Link
+          href="/product-engineer"
+          className={styles["our-solution-custom-label"]}
+        >
+          Product Engineering
+        </Link>
+      ),
+      icon: (
+        <Image
+          className={styles["our-solution-custom-icon"]}
+          src={Engineer}
+          alt=""
+          priority
+        />
+      ),
+      key: "1",
+      disabled: true,
+    },
+  ];
   return (
     <div className={styles["menu-navbar"]}>
+      <Link
+        className={
+          styles["text-header"] +
+          (link === "it-staff-augmentation" ? " " + styles["font-700"] : "")
+        }
+        href="#"
+        scroll={false}
+      >
+        <Dropdown
+          overlayClassName={styles["our-solution-dropdown"]}
+          menu={{ items }}
+        >
+          <Space>
+            Our Solution
+            <DownOutlined />
+          </Space>
+        </Dropdown>
+      </Link>
       <Link
         className={
           styles["text-header"] +
@@ -197,9 +266,9 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
           {link === "solutions" && (
             <div className={styles["custom-header-content"]}>
               <div
-                // data-aos="fade-up"
-                // data-aos-duration="500"
-                // data-aos-anchor-placement="bottom-bottom"
+              // data-aos="fade-up"
+              // data-aos-duration="500"
+              // data-aos-anchor-placement="bottom-bottom"
               >
                 <br />
                 <p className={styles["homepage-big-text"]}>

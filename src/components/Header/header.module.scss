@@ -172,12 +172,33 @@
         font-weight: 400;
         transition: all 0.5s;
       }
+
+      :global(.ant-space-item) {
+        line-height: normal;
+        color: $white;
+        // margin: 0 20px;
+        font-family: $primary-font !important;
+        font-size: 1.4rem;
+        font-style: normal;
+        font-weight: 400;
+        transition: all 0.5s;
+      }
+
       .text-header:hover {
         color: #5ffe9f;
+      }
+      :global(.ant-space:hover) {
+        div {
+          color: #5ffe9f;
+        }
       }
       .font-700 {
         color: #5ffe9f;
         font-weight: 700;
+        :global(.ant-space-item) {
+          color: #5ffe9f;
+          font-weight: 700;
+        }
       }
     }
   }
@@ -319,5 +340,44 @@
 
   .homepage-button-2:hover {
     background-color: #0f0f0f;
+  }
+}
+
+.our-solution-custom-label {
+  color: var(--caption, #6d6d6d);
+  font-family: Be Vietnam Pro;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.our-solution-custom-icon {
+  filter: invert(43%) sepia(0%) saturate(12%) hue-rotate(138deg) brightness(94%)
+    contrast(78%);
+}
+
+.our-solution-dropdown {
+  :global(.ant-dropdown-menu-item:hover) {
+    background: #5ffe9f !important;
+    .our-solution-custom-icon {
+      filter: invert(8%) sepia(4%) saturate(2336%) hue-rotate(32deg)
+        brightness(97%) contrast(92%);
+    }
+    .our-solution-custom-label {
+      color: var(--Text, #1b1c17);
+    }
+  }
+  :global(.ant-dropdown-menu-item) {
+    .our-solution-custom-icon.font-600 {
+      filter: invert(8%) sepia(4%) saturate(2336%) hue-rotate(32deg)
+        brightness(97%) contrast(92%);
+    }
+    .our-solution-custom-label.font-600 {
+      color: var(--Text, #1b1c17);
+      font-weight: 600;
+    }
   }
 }

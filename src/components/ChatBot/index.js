@@ -31,6 +31,7 @@ const Chatbot = () => {
   const [errorMessage, setErrorMessage] = useState(false);
   const [isError, setIsError] = useState(false);
   const [restarted, setRestarted] = useState(false);
+  const [limit, setLimit] = useState(false);
 
   // const showModal = () => {
   //   setOpen(true);
@@ -150,10 +151,19 @@ const Chatbot = () => {
       }
       setLoading(false);
     } catch (error) {
-      sendError({
-        user_id: localStorage.getItem("user_id"),
-        session_id: localStorage.getItem("session_id"),
-      });
+      if (
+        error.response.data.message ===
+        "You have used up all your chat sessions today"
+      ) {
+        setLimit(true);
+      } else {
+        sendError({
+          user_id: localStorage.getItem("user_id"),
+          session_id: localStorage.getItem("session_id"),
+        });
+        setIsError(true);
+        setRestarted(true);
+      }
       setLoading(false);
       setIsError(true);
       setRestarted(true);
@@ -268,6 +278,7 @@ const Chatbot = () => {
             isError={isError}
             setIsError={setIsError}
             restarted={restarted}
+            limit={limit}
           />
           <Space.Compact className={styles["button-group"]}>
             <Input

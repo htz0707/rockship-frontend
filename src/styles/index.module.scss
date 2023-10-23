@@ -535,6 +535,7 @@
       justify-content: space-between;
       margin-bottom: 32px;
       .serve-box {
+        cursor: pointer;
         width: 180px;
         p {
           color: #000;
@@ -545,6 +546,10 @@
           line-height: normal;
           margin: 0;
         }
+      }
+
+      .disabled-box {
+        pointer-events: none;
       }
     }
   }
@@ -568,20 +573,16 @@
         overflow: hidden;
         animation: moveRightToLeft 100s linear infinite;
         @include mobile {
-          width: 300%;
+          width: fit-content;
         }
         @include desktop {
           width: fit-content;
         }
         align-items: center;
-        .image-1 {
-          height: 88px;
-        }
-        .image-7 {
-          height: 55px;
-        }
         img {
           // position: absolute;
+          max-height: 70px;
+          width: auto;
           margin: 40px;
         }
       }

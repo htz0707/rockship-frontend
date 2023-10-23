@@ -357,7 +357,7 @@ const initialState = {
         { id: 6, name: "delivery" }
       ],
       market: "Singapore",
-      industry: "Robotics",
+      industry: "Logistics",
       features: 28,
       companySize: "11-50",
       highlights: [
@@ -463,7 +463,7 @@ const initialState = {
         { id: 6, name: "real-time" }
       ],
       market: "Vietnam",
-      industry: "Entertainment",
+      industry: "Video Streaming",
       features: 12,
       companySize: "1-10",
       highlights: [
@@ -786,7 +786,7 @@ const initialState = {
         { id: 4, name: "credit-card" }
       ],
       market: "Singapore",
-      industry: "Finance",
+      industry: "Fintech",
       features: 9,
       companySize: "1-10",
       highlights: [
@@ -841,7 +841,7 @@ const initialState = {
         { id: 6, name: "cosmetic-surgery" },
       ],
       market: "Vietnam",
-      industry: "Beauty",
+      industry: "Healthcare",
       features: "10+",
       companySize: "51-100",
       highlights: [
