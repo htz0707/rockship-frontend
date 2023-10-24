@@ -165,8 +165,6 @@ const Chatbot = () => {
         setRestarted(true);
       }
       setLoading(false);
-      setIsError(true);
-      setRestarted(true);
       console.error("Error:", error);
     }
   };
