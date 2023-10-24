@@ -148,18 +148,6 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
       <Link
         className={
           styles["text-header"] +
-          (link === "talent-as-a-service" || link === "talents"
-            ? " " + styles["font-700"]
-            : "")
-        }
-        href="/talent-as-a-service"
-        id="header-talent-as-service"
-      >
-        Hire Talents
-      </Link>
-      <Link
-        className={
-          styles["text-header"] +
           (link === "blogs" ? " " + styles["font-700"] : "")
         }
         href="/blogs"
