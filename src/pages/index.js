@@ -657,12 +657,6 @@ const HomePage = () => {
                 <img className={styles["image-7"]} src="/client-7.png" alt="" />
               </div>
               <div>
-                <img src="/client-8.png" alt="" />
-              </div>
-              <div>
-                <img src="/client-9.png" alt="" />
-              </div>
-              <div>
                 <img src="/client-10.png" alt="" />
               </div>
               <div>
@@ -700,12 +694,6 @@ const HomePage = () => {
               </div>
               <div>
                 <img className={styles["image-7"]} src="/client-7.png" alt="" />
-              </div>
-              <div>
-                <img src="/client-8.png" alt="" />
-              </div>
-              <div>
-                <img src="/client-9.png" alt="" />
               </div>
               <div>
                 <img src="/client-10.png" alt="" />
