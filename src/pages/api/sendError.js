@@ -18,7 +18,7 @@ export default async function handler(req, res) {
   try {
     await transporter.sendMail({
       from: process.env.NEXT_APP_GMAIL_USER,
-      to: 'ngoc@rockship.co',
+      to: "ngoc@rockship.co, trang@rockship.co, nhu@rockship.co",
       subject: 'New Error detected on Production',
       html: `<p><b>user_id:</b> ${user_id}</p>
              <p><b>session_id:</b> ${session_id}</p>
