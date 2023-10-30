@@ -19,7 +19,7 @@
   padding: 0;
   height: fit-content;
   font-family: $primary-font;
-  background-color: $white;
+  background-color: $primary-color;
   @include mobile {
     background: url("/headerElipse.svg");
     background-position: top;
