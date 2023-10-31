@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./../../chatbot.module.scss";
 import { ThreeDots } from "react-loader-spinner";
 import { analytics } from "@/segment/segment";
@@ -15,10 +15,10 @@ export default function Conversation({
   handleReset,
   projectId,
   errorMessage,
-  isError,
-  setIsError,
-  restarted,
+  isTimeoutOrError,
+  setIsTimeoutOrError,
   limit,
+  countLimit,
 }) {
   const conversationElements = [];
   const containerRef = useRef();
@@ -81,13 +81,13 @@ export default function Conversation({
         </div>
         <div
           className={styles["retry-btn-wrap"]}
-          onClick={() => setIsError(false)}
+          onClick={() => setIsTimeoutOrError(false)}
         >
           <img src="/blackReload.png" alt="" />
           <div
             className={styles["tap-to-retry"]}
             onClick={() => {
-              handleReset();
+              window.location.reload();
             }}
           >
             Tap to retry
@@ -110,18 +110,42 @@ export default function Conversation({
       <div className={styles["chat-window"]} ref={containerRef}>
         <div className={styles["description"]}>
           {!limit ? (
+            countLimit === 1 ? (
+              <>
+                We will propose you a solution to build your app. You only have
+                <span> 3 times </span>to test per day.
+              </>
+            ) : countLimit === 2 ? (
+              <>
+                You have<span> 2 times </span>left today.
+              </>
+            ) : countLimit === 3 ? (
+              <>
+                You have<span> 1 time </span>left today.
+              </>
+            ) : (
+              <></>
+            )
+          ) : !isTimeoutOrError ? (
             <>
-              We will propose you a solution to build your app. You only have
-              <span> 3 times </span>to test per day.
-            </>
-          ) : (
-            <>
-              You have<span> 0 times left </span> to day. Please comeback next
+              You have<span> 0 time left </span> today. Please comeback next
               time.
             </>
+          ) : (
+            <></>
           )}
         </div>
-        {isError ? renderError() : conversationElements}
+        {isTimeoutOrError ? (
+          !limit ? (
+            renderError()
+          ) : (
+            <></>
+          )
+        ) : !limit ? (
+          conversationElements
+        ) : (
+          <></>
+        )}
         {loading && (
           <div
             style={{
@@ -132,7 +156,7 @@ export default function Conversation({
             <ThreeDots color={"#0094ff"} />
           </div>
         )}
-        {!restarted && errorMessage && !projectId && (
+        {!limit && !isTimeoutOrError && errorMessage && !projectId && (
           <div className={styles["bot-message"]}>
             <p>
               I apologize, but it appears there is an issue with processing your
@@ -141,30 +165,29 @@ export default function Conversation({
             </p>
           </div>
         )}
-        {!restarted && endMessage && projectId && (
-          <div className={styles["bot-message"]}>
-            <p>
-              Your quotation is ready, please{" "}
-              <span
-                style={{ color: "#0094ff", cursor: "pointer" }}
-                onClick={() => {
-                  localStorage.setItem("canReset", true);
-                  localStorage.removeItem("canRefresh");
-                  setStep(1);
-                  analytics.track("quotation-chatbot");
-                }}
-              >
-                Click Here
-              </span>
-            </p>
-          </div>
-        )}
-        {!restarted && endMessage && localStorage.getItem("canReset") && (
-          <div className={styles["refresh-box"]} onClick={handleReset}>
-            <div className={styles["refresh-button"]}>
-              <img src="/reload.svg" alt="reload" height={24} /> Restart
+        {!limit && !isTimeoutOrError && endMessage && projectId && (
+          <>
+            <div className={styles["bot-message"]}>
+              <p>
+                Your quotation is ready, please{" "}
+                <span
+                  style={{ color: "#0094ff", cursor: "pointer" }}
+                  onClick={() => {
+                    setStep(1);
+                    analytics.track("quotation-chatbot");
+                  }}
+                >
+                  Click Here
+                </span>
+              </p>
             </div>
-          </div>
+            <div className={styles["refresh-box"]} onClick={handleReset}>
+              <div className={styles["refresh-button"]}>
+                This is the end of this conversation. Please click button on the
+                top-right of chatbot to restart.
+              </div>
+            </div>
+          </>
         )}
       </div>
     </>

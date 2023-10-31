@@ -509,18 +509,18 @@ const ITStaff = () => {
   return (
     <CustomLayout link={"it-staff-augmentation"}>
       <div className={styles["it-staff-container"]}>
-        <div className={styles["menu-bar"]}>
-          <p
-            onClick={() => router.push("/")}
-            className={styles["homepage-title"]}
-          >
-            Homepage
-          </p>
-          <p className={styles["line"]}>/</p>
-          <p className={styles["page-title"]}>IT staff augmentation</p>
-        </div>
         <Row className={styles["it-staff-1"]}>
           <Col className={styles["left-col"]} lg={12} xs={24}>
+            <div className={styles["menu-bar"]}>
+              <p
+                onClick={() => router.push("/")}
+                className={styles["homepage-title"]}
+              >
+                Homepage
+              </p>
+              <p className={styles["line"]}>/</p>
+              <p className={styles["page-title"]}>IT staff augmentation</p>
+            </div>
             <p className={styles["title"]}>
               Effortlessly Expand Your Team with Global Tech Expertise
             </p>
