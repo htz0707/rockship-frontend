@@ -134,6 +134,7 @@ const Chatbot = () => {
           }
         }
       }
+      analytics.track("last-conversation");
       setLimit(false);
       setCountLimit(res.count_session_daily);
       setLoading(false);
