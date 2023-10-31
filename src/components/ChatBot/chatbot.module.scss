@@ -15,42 +15,59 @@
     width: 1022px;
   }
   .chat-header {
-    border-radius: 24px 24px 0 0;
     text-align: start;
-    padding: 4px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    border-radius: 24px 24px 0 0;
+    min-height: 56px;
     background-color: $gray;
+    div.left-content {
+      border-radius: 24px 24px 0 0;
+      padding: 4px;
+      display: flex;
+      align-items: center;
 
-    img {
-      margin: 8px 28px 8px 8px;
-    }
-
-    p {
-      color: $black;
-      font-size: 2rem;
-      font-weight: 700;
-      line-height: 30px;
-      margin: 0;
-    }
-
-    @include mobile {
-      img {
-        margin: 4px 14px 4px 4px;
-      }
-      p {
-        font-size: 1.4rem;
-        line-height: 14px;
-      }
-    }
-    @include tablet {
       img {
         margin: 8px 28px 8px 8px;
       }
+
       p {
+        color: $black;
         font-size: 2rem;
+        font-weight: 700;
         line-height: 30px;
+        margin: 0;
       }
+
+      @include mobile {
+        img {
+          margin: 4px 14px 4px 4px;
+        }
+        p {
+          font-size: 1.4rem;
+          line-height: 14px;
+        }
+      }
+      @include tablet {
+        img {
+          margin: 8px 28px 8px 8px;
+        }
+        p {
+          font-size: 2rem;
+          line-height: 30px;
+        }
+      }
+    }
+
+    .custom-tip {
+      @include mobile {
+        margin: 4px;
+      }
+      @include tablet {
+        margin: 8px;
+      }
+      cursor: pointer;
     }
   }
 
@@ -62,7 +79,12 @@
     .description {
       color: var(--caption, #6d6d6d);
       text-align: center;
-      font-size: 1.6rem;
+      @include mobile {
+        font-size: 1.2rem;
+      }
+      @include tablet {
+        font-size: 2rem;
+      }
       font-style: normal;
       font-weight: 400;
       line-height: normal;
@@ -120,31 +142,30 @@
       @include tablet {
         p {
           font-size: 2rem;
-          line-height: 30px;
+          line-height: normal;
         }
       }
     }
 
     .refresh-box {
-      margin-top: 10px;
-      position: -webkit-sticky;
-      position: sticky;
-      bottom: 0;
+      margin-top: 35px;
       display: flex;
       align-items: center;
       justify-content: center;
-
       .refresh-button {
-        cursor: pointer;
+        max-width: 500px;
         padding: 4px 12px;
         gap: 12px;
         border-radius: 8px;
-        background: #e9f6ff;
-        color: #0094ff;
+        color: #c5c5c5;
         display: flex;
         align-items: center;
-        font-size: 2rem;
-        font-style: normal;
+        @include mobile {
+          font-size: 1.2rem;
+        }
+        @include tablet {
+          font-size: 2rem;
+        }
         font-weight: 400;
         line-height: normal;
       }
@@ -248,6 +269,11 @@
       height: 100%;
       padding-right: 25px;
     }
+
+    .send-btn:disabled {
+      background-image: url(/new-disabled.svg);
+    }
+
     .send-btn:hover {
       background-color: #bfbfbf;
     }
@@ -281,4 +307,14 @@
     background-color: #d0eeff;
     font-family: $primary-font;
   }
+}
+
+.custom-tip-text {
+  text-align: center;
+  color: var(--caption, #6d6d6d);
+  font-family: Be Vietnam Pro;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

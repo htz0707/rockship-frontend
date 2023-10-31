@@ -496,7 +496,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
               </p>
             </div>
             <Tooltip
-              overlayInnerStyle={{ width: "400px" }}
+              // overlayInnerStyle={{ width: "400px" }}
               color={"white"}
               title={
                 <div className={styles["tooltips"]}>

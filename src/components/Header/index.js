@@ -86,22 +86,28 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
     {
       label: (
         <Link
-          href="/product-engineer"
-          className={styles["our-solution-custom-label"]}
+          // href="/product-engineer"
+          href='#'
+          className={
+            styles["our-solution-custom-label"] +
+            (link === "product-engineer" ? " " + styles["font-600"] : "")
+          }
         >
           Product Engineering
         </Link>
       ),
       icon: (
         <Image
-          className={styles["our-solution-custom-icon"]}
+          className={
+            styles["our-solution-custom-icon"] +
+            (link === "product-engineer" ? " " + styles["font-600"] : "")
+          }
           src={Engineer}
           alt=""
           priority
         />
       ),
       key: "1",
-      disabled: true,
     },
   ];
   return (
@@ -109,7 +115,9 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
       <Link
         className={
           styles["text-header"] +
-          (link === "it-staff-augmentation" ? " " + styles["font-700"] : "")
+          (link === "it-staff-augmentation" || link === "product-engineer"
+            ? " " + styles["font-700"]
+            : "")
         }
         href="#"
         scroll={false}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { Input, Button, Space, Modal, Select } from "antd";
+import { Input, Button, Space, Tooltip } from "antd";
 import styles from "./chatbot.module.scss";
 
 import {
@@ -16,11 +16,11 @@ import Conversation from "./BuildFeatureByChat/Conversation";
 import ListFeature from "./BuildFeatureByChat/ListFeature";
 import Timeline from "./BuildFeatureByChat/Timeline";
 import { analytics } from "@/segment/segment";
+import ResetBtn from "../../../public/new-reset.svg";
 
 const Chatbot = () => {
   const inputTagRef = useRef(null);
   const [inputValue, setInputValue] = useState("");
-  // const [open, setOpen] = useState(false);
   const [appTypeList, setAppTypeList] = useState([]);
   const [disabled, setDisabled] = useState(true);
   const [loadHistory, setLoadHistory] = useState({});
@@ -29,24 +29,14 @@ const Chatbot = () => {
   const [step, setStep] = useState(0);
   const [projectId, setProjectId] = useState(null);
   const [errorMessage, setErrorMessage] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [restarted, setRestarted] = useState(false);
+  const [isTimeoutOrError, setIsTimeoutOrError] = useState(false);
   const [limit, setLimit] = useState(false);
-
-  // const showModal = () => {
-  //   setOpen(true);
-  // };
-  // const handleCancel = () => {
-  //   setOpen(false);
-  // };
+  const [countLimit, setCountLimit] = useState(0);
 
   const router = useRouter();
   const { user_id, session_id } = router.query;
 
   useEffect(() => {
-    if (!user_id && !session_id && localStorage.getItem("canRefresh")) {
-      handleReset();
-    }
     if (!user_id || !session_id) {
       handleSetUUID();
     } else {
@@ -106,8 +96,7 @@ const Chatbot = () => {
         session_id: localStorage.getItem("session_id"),
       });
       setLoading(false);
-      setIsError(true);
-      setRestarted(true);
+      setIsTimeoutOrError(true);
       console.error("Error:", error);
     }
   };
@@ -126,7 +115,6 @@ const Chatbot = () => {
       setAppTypeList(res.app_types);
       setLoadHistory(res.chat_history);
       if (res.end_session_flag) {
-        setRestarted(false);
         await handleEndSession();
         setDisabled(true);
         setEndMessage(true);
@@ -140,19 +128,18 @@ const Chatbot = () => {
               "Thank you for providing your email"
             )
           ) {
-            setRestarted(false);
             await handleEndSession();
             setDisabled(true);
             setEndMessage(true);
-          } else {
-            localStorage.setItem("canRefresh", true);
           }
         }
       }
+      setLimit(false);
+      setCountLimit(res.count_session_daily);
       setLoading(false);
     } catch (error) {
       if (
-        error.response.data.message ===
+        error?.response?.data?.message ===
         "You have used up all your chat sessions today"
       ) {
         setLimit(true);
@@ -161,8 +148,7 @@ const Chatbot = () => {
           user_id: localStorage.getItem("user_id"),
           session_id: localStorage.getItem("session_id"),
         });
-        setIsError(true);
-        setRestarted(true);
+        setIsTimeoutOrError(true);
       }
       setLoading(false);
       console.error("Error:", error);
@@ -174,8 +160,7 @@ const Chatbot = () => {
     setLoading(true);
     const timeOut = setTimeout(() => {
       setLoading(false);
-      setIsError(true);
-      setRestarted(true);
+      setIsTimeoutOrError(true);
     }, 45000);
     try {
       await responseChat({
@@ -198,8 +183,7 @@ const Chatbot = () => {
         session_id: localStorage.getItem("session_id"),
       });
       setLoading(false);
-      setIsError(true);
-      setRestarted(true);
+      setIsTimeoutOrError(true);
       console.error("Error:", error);
     }
   };
@@ -228,7 +212,6 @@ const Chatbot = () => {
         session_id: localStorage.getItem("session_id"),
       });
       setErrorMessage(true);
-      localStorage.setItem("canRefresh", true);
       setLoading(false);
       console.error("Error:", error);
     }
@@ -236,8 +219,6 @@ const Chatbot = () => {
 
   const handleReset = () => {
     localStorage.removeItem("session_id");
-    localStorage.removeItem("canReset");
-    localStorage.removeItem("canRefresh");
     localStorage.removeItem("mobile");
     localStorage.removeItem("webapp");
     localStorage.removeItem("totalCost");
@@ -253,13 +234,35 @@ const Chatbot = () => {
   return (
     <div className={styles["chatbot"]}>
       <div className={styles["chat-header"]}>
-        <Image
-          src={"/rockship_black.svg"}
-          alt="rockship_black"
-          height={24}
-          width={24}
-        />
-        <p>SHARE YOUR AWESOME IDEA</p>
+        <div className={styles["left-content"]}>
+          <Image
+            src={"/rockship_black.svg"}
+            alt="rockship_black"
+            height={24}
+            width={24}
+          />
+          <p>SHARE YOUR AWESOME IDEA</p>
+        </div>
+        {step === 0 && (
+          <Tooltip
+            // overlayInnerStyle={{ width: "350px"}}
+            color={"white"}
+            title={
+              <div className={styles["custom-tip-text"]}>
+                Click this button to restart a conversation
+              </div>
+            }
+          >
+            <Image
+              onClick={() => handleReset()}
+              className={styles["custom-tip"]}
+              height={40}
+              width={40}
+              src={ResetBtn}
+              alt=""
+            />
+          </Tooltip>
+        )}
       </div>
       {step === 0 && (
         <>
@@ -273,10 +276,10 @@ const Chatbot = () => {
             handleReset={handleReset}
             projectId={projectId}
             errorMessage={errorMessage}
-            isError={isError}
-            setIsError={setIsError}
-            restarted={restarted}
+            isTimeoutOrError={isTimeoutOrError}
+            setIsTimeoutOrError={setIsTimeoutOrError}
             limit={limit}
+            countLimit={countLimit}
           />
           <Space.Compact className={styles["button-group"]}>
             <Input

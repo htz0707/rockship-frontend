@@ -1,11 +1,11 @@
-.it-staff-container {
+.product-engineer-container {
   @include mobile {
     padding: 23px;
   }
   @include desktop {
     padding: unset;
   }
-  .it-staff-1 {
+  .product-engineer-1 {
     max-width: 1300px;
     @include mobile {
       margin: 0 auto;
@@ -80,14 +80,16 @@
 
       @include mobile {
         text-align: center;
-        .contact-us {
-          margin: 0 auto;
+        .contact-us,
+        .content {
+          margin: 15px auto;
         }
       }
 
       @include desktop {
         text-align: start;
-        .contact-us {
+        .contact-us,
+        .content {
           margin: unset;
           margin-bottom: 28px;
         }
@@ -147,6 +149,50 @@
     }
   }
 
+  .assist {
+    max-width: 1300px;
+    margin: 0 auto;
+    .title {
+      color: var(--Text, #1b1c17);
+      font-family: Be Vietnam Pro;
+      @include mobile {
+        font-size: 32px;
+      }
+      @include desktop {
+        font-size: 48px;
+      }
+      font-style: normal;
+      font-weight: 900;
+      line-height: normal;
+      text-transform: capitalize;
+      margin-bottom: 16px;
+    }
+    .content {
+      margin: 0 auto 36px auto;
+      @include mobile {
+        font-size: 14px;
+        width: unset;
+      }
+      @include desktop {
+        font-size: 16px;
+        width: 538px;
+      }
+      color: var(--caption, #6d6d6d);
+      text-align: center;
+      font-family: Be Vietnam Pro;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
+    div {
+      overflow: auto;
+      img {
+        width: 1300px;
+        height: auto;
+      }
+    }
+  }
+
   .services {
     max-width: 1300px;
     margin: 0 auto;
@@ -183,15 +229,13 @@
       line-height: normal;
     }
 
-    .it-staff-2 {
-      padding: 16px;
-      background: #fff;
-      box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15);
+    .product-engineer-2 {
+      // padding: 16px;
       .col-box,
       .col-box-center {
         margin-bottom: 28px;
         .col-title {
-          color: #00218f;
+          color: #1b1c17;
           font-family: Be Vietnam Pro;
           font-size: 20px;
           font-style: normal;
@@ -201,11 +245,8 @@
           margin-top: 28px;
         }
         .col-content {
-          u {
-            font-weight: 700;
-          }
-          width: 271px;
-          min-height: 60px;
+          width: 306px;
+          min-height: 40px;
           margin: 8px auto 20px auto;
           color: var(--caption, #6d6d6d);
           text-align: center;
@@ -215,17 +256,21 @@
           font-weight: 400;
           line-height: normal;
         }
-      }
-      .col-box-center {
-        @include mobile {
-          border-top: 1px solid #d2d2d2;
-          border-bottom: 1px solid #d2d2d2;
+        .col-image {
+          width: 330px;
+          height: 230px;
+          border-radius: 20px;
         }
-        @include desktop {
-          border-top: unset;
-          border-bottom: unset;
-          border-left: 1px solid #d2d2d2;
-          border-right: 1px solid #d2d2d2;
+        .learn-more {
+          margin-top: 26px;
+          cursor: pointer;
+          color: #00218f;
+          text-align: center;
+          font-family: Be Vietnam Pro;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
         }
       }
     }
@@ -332,7 +377,6 @@
           font-style: normal;
           font-weight: 700;
           line-height: normal;
-          text-transform: uppercase;
         }
 
         :global(.ant-table-cell) {
@@ -405,7 +449,6 @@
           align-items: center;
 
           p {
-            width: 250px;
             margin: 12px 0 0 0;
             color: var(--caption, #6d6d6d);
             text-align: center;
@@ -450,7 +493,6 @@
           p {
             margin-top: 16px;
             text-align: start;
-            width: 250px;
             color: var(--caption, #6d6d6d);
             font-family: Be Vietnam Pro;
             font-size: 16px;
@@ -1242,6 +1284,7 @@
     line-height: normal;
     text-transform: capitalize;
     cursor: pointer;
+    margin: 0;
   }
 
   .line {
