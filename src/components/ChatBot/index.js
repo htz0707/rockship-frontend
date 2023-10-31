@@ -118,6 +118,7 @@ const Chatbot = () => {
         await handleEndSession();
         setDisabled(true);
         setEndMessage(true);
+        analytics.track("last-conversation");
       } else {
         for (const key in res.chat_history.response) {
           if (
@@ -131,10 +132,10 @@ const Chatbot = () => {
             await handleEndSession();
             setDisabled(true);
             setEndMessage(true);
+            analytics.track("last-conversation");
           }
         }
       }
-      analytics.track("last-conversation");
       setLimit(false);
       setCountLimit(res.count_session_daily);
       setLoading(false);
