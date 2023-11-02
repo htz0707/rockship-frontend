@@ -14,6 +14,7 @@ import { analytics } from "@/segment/segment";
 import { DownOutlined } from "@ant-design/icons";
 import ItStaff from "../../../public/it-staff.svg";
 import Engineer from "../../../public/product-engineer.svg";
+import AISol from "../../../public/ai-sol.svg";
 
 const { Header } = Layout;
 
@@ -87,7 +88,7 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
       label: (
         <Link
           // href="/product-engineer"
-          href='#'
+          href="#"
           className={
             styles["our-solution-custom-label"] +
             (link === "product-engineer" ? " " + styles["font-600"] : "")
@@ -108,6 +109,32 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
         />
       ),
       key: "1",
+      disabled: true,
+    },
+    {
+      label: (
+        <Link
+          href="/build-your-ai"
+          className={
+            styles["our-solution-custom-label"] +
+            (link === "build-your-ai" ? " " + styles["font-600"] : "")
+          }
+        >
+          AI Solution
+        </Link>
+      ),
+      icon: (
+        <Image
+          className={
+            styles["our-solution-custom-icon"] +
+            (link === "build-your-ai" ? " " + styles["font-600"] : "")
+          }
+          src={AISol}
+          alt=""
+          priority
+        />
+      ),
+      key: "2",
     },
   ];
   return (
@@ -115,7 +142,9 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
       <Link
         className={
           styles["text-header"] +
-          (link === "it-staff-augmentation" || link === "product-engineer"
+          (link === "it-staff-augmentation" ||
+          link === "product-engineer" ||
+          link === "build-your-ai"
             ? " " + styles["font-700"]
             : "")
         }
@@ -131,17 +160,6 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
             <DownOutlined />
           </Space>
         </Dropdown>
-      </Link>
-      <Link
-        className={
-          styles["text-header"] +
-          (link === "build-your-ai" ? " " + styles["font-700"] : "")
-        }
-        href="/build-your-ai"
-        scroll={false}
-        id="header-build-your-ai"
-      >
-        Build Your AI
       </Link>
       <Link
         className={
