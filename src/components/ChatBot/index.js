@@ -91,10 +91,15 @@ const Chatbot = () => {
       });
       await handleLoadHistory();
     } catch (error) {
-      sendError({
-        user_id: localStorage.getItem("user_id"),
-        session_id: localStorage.getItem("session_id"),
-      });
+      if (
+        isValidUUID(localStorage.getItem("user_id")) &&
+        isValidUUID(localStorage.getItem("session_id"))
+      ) {
+        sendError({
+          user_id: localStorage.getItem("user_id"),
+          session_id: localStorage.getItem("session_id"),
+        });
+      }
       setLoading(false);
       setIsTimeoutOrError(true);
       console.error("Error:", error);
@@ -146,10 +151,15 @@ const Chatbot = () => {
       ) {
         setLimit(true);
       } else {
-        sendError({
-          user_id: localStorage.getItem("user_id"),
-          session_id: localStorage.getItem("session_id"),
-        });
+        if (
+          isValidUUID(localStorage.getItem("user_id")) &&
+          isValidUUID(localStorage.getItem("session_id"))
+        ) {
+          sendError({
+            user_id: localStorage.getItem("user_id"),
+            session_id: localStorage.getItem("session_id"),
+          });
+        }
         setIsTimeoutOrError(true);
       }
       setLoading(false);
@@ -180,10 +190,15 @@ const Chatbot = () => {
         });
       }
     } catch (error) {
-      sendError({
-        user_id: localStorage.getItem("user_id"),
-        session_id: localStorage.getItem("session_id"),
-      });
+      if (
+        isValidUUID(localStorage.getItem("user_id")) &&
+        isValidUUID(localStorage.getItem("session_id"))
+      ) {
+        sendError({
+          user_id: localStorage.getItem("user_id"),
+          session_id: localStorage.getItem("session_id"),
+        });
+      }
       setLoading(false);
       setIsTimeoutOrError(true);
       console.error("Error:", error);
@@ -209,10 +224,15 @@ const Chatbot = () => {
         });
       }
     } catch (error) {
-      sendError({
-        user_id: localStorage.getItem("user_id"),
-        session_id: localStorage.getItem("session_id"),
-      });
+      if (
+        isValidUUID(localStorage.getItem("user_id")) &&
+        isValidUUID(localStorage.getItem("session_id"))
+      ) {
+        sendError({
+          user_id: localStorage.getItem("user_id"),
+          session_id: localStorage.getItem("session_id"),
+        });
+      }
       setErrorMessage(true);
       setLoading(false);
       console.error("Error:", error);
