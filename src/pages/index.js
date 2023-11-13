@@ -275,7 +275,10 @@ const HomePage = () => {
                     products by understanding their needs and offering tailored
                     solutions
                   </p>
-                  <Button className={styles["explore-btn"]}>
+                  <Button
+                    onClick={() => router.push("/product-engineer")}
+                    className={styles["explore-btn"]}
+                  >
                     Explore <img src="/our-services-arrow.svg" />
                   </Button>
                 </div>

@@ -87,8 +87,7 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
     {
       label: (
         <Link
-          // href="/product-engineer"
-          href="#"
+          href="/product-engineer"
           className={
             styles["our-solution-custom-label"] +
             (link === "product-engineer" ? " " + styles["font-600"] : "")
@@ -109,7 +108,6 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
         />
       ),
       key: "1",
-      disabled: true,
     },
     {
       label: (

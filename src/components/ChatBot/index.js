@@ -32,6 +32,7 @@ const Chatbot = () => {
   const [isTimeoutOrError, setIsTimeoutOrError] = useState(false);
   const [limit, setLimit] = useState(false);
   const [countLimit, setCountLimit] = useState(0);
+  const [newMessage, setNewMessage] = useState("");
 
   const router = useRouter();
   const { user_id, session_id } = router.query;
@@ -55,6 +56,7 @@ const Chatbot = () => {
   }, [loading]);
 
   const handleSendMessage = () => {
+    setNewMessage(inputValue);
     handleResponseChat();
     setInputValue("");
   };
@@ -206,6 +208,7 @@ const Chatbot = () => {
   };
 
   const handleEndSession = async () => {
+    setNewMessage("");
     const startTime = new Date();
     setLoading(true);
     try {
@@ -302,6 +305,8 @@ const Chatbot = () => {
             setIsTimeoutOrError={setIsTimeoutOrError}
             limit={limit}
             countLimit={countLimit}
+            newMessage={newMessage}
+            setNewMessage={setNewMessage}
           />
           <Space.Compact className={styles["button-group"]}>
             <Input

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { Row, Col, Button, Table, Tag, Space } from "antd";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import CustomLayout from "@/components/Layout";
 import styles from "./styles.module.scss";
@@ -12,7 +13,6 @@ import Card from "@/components/Card";
 import ProductEngineer1 from "../../../public/pe-1.png";
 import ProductEngineer2 from "../../../public/pe-2.png";
 import ProductEngineer3 from "../../../public/pe-3.png";
-import ProductEngineer4 from "../../../public/pe-4.png";
 import Mark from "../../../public/mark.svg";
 import Benefit1 from "../../../public/benefit-1.svg";
 import Benefit2 from "../../../public/benefit-2.svg";
@@ -21,7 +21,14 @@ import Process1 from "../../../public/process-1.png";
 import Process2 from "../../../public/process-2.svg";
 import Process3 from "../../../public/process-3.svg";
 import Process4 from "../../../public/process-4.svg";
-import Assist from "../../../public/assist.png";
+import SlideNext from "../../../public/slide-next.svg";
+import SlidePrev from "../../../public/slide-prev.svg";
+import Slide1 from "../../../public/slide-1.gif";
+import Slide2 from "../../../public/slide-2.gif";
+import Slide3 from "../../../public/slide-3.png";
+import Slide4 from "../../../public/slide-4.png";
+import Slide5 from "../../../public/slide-5.png";
+import Slide6 from "../../../public/slide-6.png";
 
 const CalendlyLinkWidget = ({ buttonName, buttonStyle }) => {
   useEffect(() => {
@@ -263,20 +270,6 @@ const ProductEngineer = () => {
           <span>{record.textTech}</span>
         ),
     },
-    {
-      title: "AI POC",
-      align: "center",
-      key: "dedicated",
-      width: "26%",
-      render: (_, record) =>
-        record.dedicated ? (
-          <span>
-            <Image src={Mark} alt="" />
-          </span>
-        ) : (
-          <span>{record.textDedicated}</span>
-        ),
-    },
   ];
   const data = [
     {
@@ -286,7 +279,7 @@ const ProductEngineer = () => {
       tech: false,
       dedicated: false,
       textIT: "Pre-built components",
-      textTech: "From zero",
+      textTech: "From scratch",
       textDedicated: "AI solution",
     },
     {
@@ -295,7 +288,6 @@ const ProductEngineer = () => {
       it: true,
       tech: false,
       dedicated: false,
-      textDedicated: "Varies",
     },
     {
       key: "3",
@@ -310,7 +302,6 @@ const ProductEngineer = () => {
       it: true,
       tech: false,
       dedicated: false,
-      textDedicated: "Varies",
     },
     {
       key: "5",
@@ -318,7 +309,6 @@ const ProductEngineer = () => {
       it: false,
       tech: true,
       dedicated: false,
-      textDedicated: "Varies",
     },
     {
       key: "6",
@@ -328,6 +318,43 @@ const ProductEngineer = () => {
       dedicated: false,
     },
   ];
+
+  const [currentSlide, setCurrentSlide] = useState(1);
+  const [clicked, setClicked] = useState(false);
+
+  const handleNextSlide = () => {
+    setClicked(true);
+    if (currentSlide < 6) {
+      setCurrentSlide(currentSlide + 1);
+    } else {
+      setCurrentSlide(1);
+    }
+  };
+
+  const handleBackSlide = () => {
+    setClicked(true);
+    if (currentSlide > 1) {
+      setCurrentSlide(currentSlide - 1);
+    } else {
+      setCurrentSlide(6);
+    }
+  };
+
+  useEffect(() => {
+    if (!clicked) {
+      const interval = setInterval(() => {
+        if (currentSlide < 6) {
+          setCurrentSlide(currentSlide + 1);
+        } else {
+          setCurrentSlide(1);
+        }
+      }, 5000);
+
+      return () => {
+        clearInterval(interval);
+      };
+    }
+  }, [currentSlide, clicked]);
 
   return (
     <CustomLayout link={"product-engineer"}>
@@ -463,8 +490,8 @@ const ProductEngineer = () => {
             IT Staff Augmentation is a strategic approach that elevates your
             tech team with specialized talent on-demand
           </p>
-          <Row className={styles["product-engineer-2"]}>
-            <Col className={styles["col-box"]} lg={8} xs={24}>
+          <div className={styles["product-engineer-2"]}>
+            <div className={styles["col-box-left"]} lg={8} xs={24}>
               <Image
                 className={styles["col-image"]}
                 src={ProductEngineer2}
@@ -475,30 +502,21 @@ const ProductEngineer = () => {
                 We build your app by code generation from pre-built components
               </p>
               <p className={styles["learn-more"]}>Learn More</p>
-            </Col>
-            <Col className={styles["col-box-center"]} lg={8} xs={24}>
+            </div>
+            <div className={styles["col-box-right"]} lg={8} xs={24}>
               <Image
                 className={styles["col-image"]}
                 src={ProductEngineer3}
                 alt=""
               />
-              <p className={styles["col-title"]}>Fractional CTO</p>
+              <p className={styles["col-title"]}>Custom App Development</p>
               <p className={styles["col-content"]}>
-                Our tech leads can be CTO for your startups
+                Build custom made application ranging from Low Latency Data
+                Pipeline, AI and Blockchain with leading tech experts
               </p>
               <p className={styles["learn-more"]}>Learn More</p>
-            </Col>
-            <Col className={styles["col-box"]} lg={8} xs={24}>
-              <Image
-                className={styles["col-image"]}
-                src={ProductEngineer4}
-                alt=""
-              />
-              <p className={styles["col-title"]}>Managed IT services</p>
-              <p className={styles["col-content"]}>We build AI Solution</p>
-              <p className={styles["learn-more"]}>Learn More</p>
-            </Col>
-          </Row>
+            </div>
+          </div>
         </div>
         <div className={styles["models"]}>
           <p className={styles["title"]}>
@@ -517,8 +535,166 @@ const ProductEngineer = () => {
         <div className={styles["book-container"]}>
           <CalendlyLinkWidget buttonStyle="book" buttonName="Schedule a call" />
         </div>
+        <div className={styles["assist"]}>
+          <p className={styles["title"]}>
+            We use AI-powered system for all steps of product development
+          </p>
+          <div className={styles["slide-container"]}>
+            <div className={styles["slide-element"]}>
+              <Image
+                className={styles["slide-btn"]}
+                src={SlidePrev}
+                height={80}
+                width={80}
+                priority
+                alt=""
+                onClick={handleBackSlide}
+              />
+              {currentSlide === 1 && (
+                <motion.div
+                  initial={{ x: "100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "-100%" }}
+                  transition={{ duration: 0.5 }}
+                  className={styles["center-element"]}
+                >
+                  <p className={styles["slide-title"]}>Define requirement</p>
+                  <Image
+                    className={styles["slide-image"]}
+                    src={Slide1}
+                    priority
+                    alt=""
+                  />
+                  <p className={styles["slide-content"]}>
+                    We utilize an AI assistant to gather requirements and
+                    automatically generate the necessary features for their
+                    project in <span>2 minutes</span>, accelerating the process
+                  </p>
+                </motion.div>
+              )}
+              {currentSlide === 2 && (
+                <motion.div
+                  initial={{ x: "100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "-100%" }}
+                  transition={{ duration: 0.5 }}
+                  className={styles["center-element"]}
+                >
+                  <p className={styles["slide-title"]}>Documents</p>
+                  <Image
+                    className={styles["slide-image"]}
+                    src={Slide2}
+                    priority
+                    alt=""
+                  />
+                  <p className={styles["slide-content"]}>
+                    Our AI tool support us in analyzing textual data from
+                    various sources, such as emails, user interview, and social
+                    media, to extract and categorize user requirements
+                  </p>
+                </motion.div>
+              )}
+              {currentSlide === 3 && (
+                <motion.div
+                  initial={{ x: "100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "-100%" }}
+                  transition={{ duration: 0.5 }}
+                  className={styles["center-element"]}
+                >
+                  <p className={styles["slide-title"]}>
+                    Prototyping & Validation
+                  </p>
+                  <Image
+                    className={styles["slide-image"]}
+                    src={Slide3}
+                    priority
+                    alt=""
+                  />
+                  <p className={styles["slide-content"]}>
+                    We use useful tool to quick build prototype
+                  </p>
+                </motion.div>
+              )}
+              {currentSlide === 4 && (
+                <motion.div
+                  initial={{ x: "100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "-100%" }}
+                  transition={{ duration: 0.5 }}
+                  className={styles["center-element"]}
+                >
+                  <p className={styles["slide-title"]}>Front end development</p>
+                  <Image
+                    className={styles["slide-image"]}
+                    src={Slide4}
+                    priority
+                    alt=""
+                  />
+                  <p className={styles["slide-content"]}>
+                    We build the library of reusable component and code
+                    generation tool, that speed up our coding process{" "}
+                    <span>5x faster</span>
+                  </p>
+                </motion.div>
+              )}
+              {currentSlide === 5 && (
+                <motion.div
+                  initial={{ x: "100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "-100%" }}
+                  transition={{ duration: 0.5 }}
+                  className={styles["center-element"]}
+                >
+                  <p className={styles["slide-title"]}>Backend development</p>
+                  <Image
+                    className={styles["slide-image"]}
+                    src={Slide5}
+                    priority
+                    alt=""
+                  />
+                  <p className={styles["slide-content"]}>
+                    We build an internal low-code tool to eliminate redundant
+                    work when building Schema and API specs
+                  </p>
+                </motion.div>
+              )}
+              {currentSlide === 6 && (
+                <motion.div
+                  initial={{ x: "100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "-100%" }}
+                  transition={{ duration: 0.5 }}
+                  className={styles["center-element"]}
+                >
+                  <p className={styles["slide-title"]}>Testing</p>
+                  <Image
+                    className={styles["slide-image"]}
+                    src={Slide6}
+                    priority
+                    alt=""
+                  />
+                  <p className={styles["slide-content"]}>
+                    We use automated test to detect anomalies, potential
+                    vulnerabilities, and performance issues, providing a more
+                    robust and secure system
+                  </p>
+                </motion.div>
+              )}
+              <Image
+                className={styles["slide-btn"]}
+                src={SlideNext}
+                height={80}
+                width={80}
+                priority
+                alt=""
+                onClick={handleNextSlide}
+              />
+            </div>
+          </div>
+        </div>
         <div className={styles["benefit"]}>
-          <p className={styles["title"]}>Benefits of IT Staff Augmentation</p>
+          <p className={styles["title"]}>Benefits of Product Engineering</p>
           <Row className={styles["benefit-row"]}>
             <Col xs={24} lg={8} className={styles["benefit-col"]}>
               <div
@@ -624,17 +800,6 @@ const ProductEngineer = () => {
               </div>
             </Col>
           </Row>
-        </div>
-        <div className={styles["assist"]}>
-          <p className={styles["title"]}>
-            We assist you through every phase of product development
-          </p>
-          <p className={styles["content"]}>
-            We use Agile and Scrum for efficient, tailored software development
-          </p>
-          <div>
-            <Image priority src={Assist} alt="" />
-          </div>
         </div>
         <div className={styles["process"]}>
           <p className={styles["title"]}>

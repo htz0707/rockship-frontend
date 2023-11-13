@@ -19,6 +19,8 @@ export default function Conversation({
   setIsTimeoutOrError,
   limit,
   countLimit,
+  newMessage,
+  setNewMessage,
 }) {
   const conversationElements = [];
   const containerRef = useRef();
@@ -36,7 +38,8 @@ export default function Conversation({
     Object.keys(loadHistory?.response).length === 1
   ) {
     conversationElements.push(
-      appTypeList.length > 0 &&
+      !loading &&
+        appTypeList.length > 0 &&
         appTypeList.map((item, index) => (
           <div key={index} className={styles["bubble-message"]}>
             <p
@@ -44,6 +47,7 @@ export default function Conversation({
                 handleNewSession(item.id);
                 analytics.track("industry-chatbot");
                 analytics.track(item.name);
+                setNewMessage(item.name);
               }}
             >
               {item.name}
@@ -145,6 +149,11 @@ export default function Conversation({
           conversationElements
         ) : (
           <></>
+        )}
+        {loading && !!newMessage.length && (
+          <div className={styles["user-message"]}>
+            <p>{newMessage}</p>
+          </div>
         )}
         {loading && (
           <div
