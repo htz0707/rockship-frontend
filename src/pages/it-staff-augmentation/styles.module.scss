@@ -629,12 +629,7 @@
     .tech-title {
       color: var(--Text, #1b1c17);
       font-family: Be Vietnam Pro;
-      @include mobile {
-        font-size: 32px;
-      }
-      @include desktop {
-        font-size: 48px;
-      }
+      font-size: 48px;
       font-style: normal;
       font-weight: 900;
       line-height: normal;
@@ -775,6 +770,119 @@
             margin-right: unset;
             margin-bottom: 16px;
           }
+        }
+      }
+    }
+
+    .front-end,
+    .back-end,
+    .data-pipeline,
+    .server {
+      .box,
+      .box-down {
+        @include mobile {
+          margin: 10px;
+        }
+        @include desktop {
+          margin: unset;
+        }
+        background: #f9f7fc;
+        border-radius: 20px;
+        @include desktop {
+          padding: 0 40px;
+        }
+        p {
+          margin: 0;
+          color: #00218f;
+          font-family: $primary-font;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: 180%; /* 28.8px */
+        }
+        .logo,
+        .logo-down {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          min-height: 105px;
+          img {
+            @include mobile {
+              max-width: 80px;
+            }
+
+            @include desktop {
+              max-width: unset;
+              min-width: 65px;
+              max-height: 65px;
+            }
+          }
+        }
+
+        .logo-down {
+          justify-content: center;
+          @include mobile {
+            margin-top: 38.8px;
+          }
+          @include desktop {
+            margin-top: 48.8px;
+          }
+          img {
+            @include mobile {
+              margin: 0 20px;
+            }
+            @include desktop {
+              margin: 0 40px;
+            }
+          }
+        }
+      }
+    }
+
+    .front-end > .box {
+      @include desktop {
+        margin: 10px 10px 10px 0;
+      }
+    }
+
+    .back-end > .box,
+    .back-end .box-down {
+      @include desktop {
+        margin: 10px 0px 10px 10px;
+      }
+    }
+
+    .back-end .box-down {
+      @include desktop {
+        margin-top: 20px;
+      }
+    }
+
+    .data-pipeline > .box {
+      @include desktop {
+        margin: 10px 10px 10px 0;
+      }
+    }
+
+    .server {
+      margin-top: 10px;
+      .box > .logo {
+        @include mobile {
+          display: none;
+        }
+
+        @include tablet {
+          display: flex;
+        }
+      }
+
+      .box .mobile {
+        @include mobile {
+          display: unset;
+        }
+
+        @include tablet {
+          display: none;
         }
       }
     }

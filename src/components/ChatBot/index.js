@@ -18,6 +18,8 @@ import Timeline from "./BuildFeatureByChat/Timeline";
 import { analytics } from "@/segment/segment";
 import ResetBtn from "../../../public/new-reset.svg";
 
+const { TextArea } = Input;
+
 const Chatbot = () => {
   const inputTagRef = useRef(null);
   const [inputValue, setInputValue] = useState("");
@@ -126,22 +128,6 @@ const Chatbot = () => {
         setDisabled(true);
         setEndMessage(true);
         analytics.track("last-conversation");
-      } else {
-        for (const key in res.chat_history.response) {
-          if (
-            res.chat_history.response[key].message.includes(
-              "all the necessary information"
-            ) ||
-            res.chat_history.response[key].message.includes(
-              "Thank you for providing your email"
-            )
-          ) {
-            await handleEndSession();
-            setDisabled(true);
-            setEndMessage(true);
-            analytics.track("last-conversation");
-          }
-        }
       }
       setLimit(false);
       setCountLimit(res.count_session_daily);
@@ -250,6 +236,7 @@ const Chatbot = () => {
     localStorage.removeItem("totalDay");
     localStorage.removeItem("numberOfFeatures");
     localStorage.removeItem("projectEstimation");
+    localStorage.removeItem("showPrice");
     setErrorMessage(false);
     setEndMessage(false);
     handleSetUUID();
@@ -309,7 +296,8 @@ const Chatbot = () => {
             setNewMessage={setNewMessage}
           />
           <Space.Compact className={styles["button-group"]}>
-            <Input
+            <TextArea
+              autoSize
               className={styles["custom-input"]}
               disabled={disabled || loading}
               value={inputValue}
@@ -320,7 +308,7 @@ const Chatbot = () => {
                 }
               }}
               onChange={(event) => setInputValue(event.target.value)}
-              placeholder="Send your demand, no more than 150 words..."
+              placeholder="Send your demand, no more than 150 charactors..."
               ref={inputTagRef}
             />
             <Button

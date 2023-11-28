@@ -129,3 +129,14 @@ export const sendError = async ({ user_id, session_id }) => {
     console.error("Error:", error);
   }
 };
+
+export const updateEmail = async (user_id, email) => {
+  try {
+    const response = await axios.put(`${BASE_URL}/chatbot/users/${user_id}`, {
+      email: email,
+    });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

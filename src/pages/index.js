@@ -153,7 +153,7 @@ const HomePage = () => {
   );
 
   const handleOnClickCard = (item) => {
-    router.push(`/case-studies/${item.id}`);
+    router.push(`/case-studies/${item.name}`);
     dispatch(setItemCaseStudy(item));
     localStorage.setItem("itemDetail", JSON.stringify(item));
   };
@@ -177,9 +177,9 @@ const HomePage = () => {
           <Col className={styles["col-left"]} xs={24} md={12}>
             <p className={styles["rockship-company-title"]}>ROCKSHIP COMPANY</p>
             <p className={styles["rockship-company-content"]}>
-              With over 10+ of expertise, Rockship has consistently offered
-              cutting-edge solutions and fosters innovation for a myriad of
-              business domains. Our unwavering commitment ensures bespoke,
+              With over 10+ years of expertise, Rockship has consistently
+              offered cutting-edge solutions and fosters innovation for a myriad
+              of business domains. Our unwavering commitment ensures bespoke,
               top-notch results for our clients
             </p>
             <Row className={styles["row-small"]}>
@@ -249,7 +249,7 @@ const HomePage = () => {
           <div className={styles["our-services"]}>
             <p className={styles["title"]}>Our Services</p>
             <Row>
-              <Col className={styles["col-our-services-left"]} xs={24} md={12}>
+              <Col className={styles["col-our-services-left"]} xs={24} md={8}>
                 <div className={styles["background"]}>
                   <img src="/staff.svg" alt="" />
                   <p className={styles["col-title"]}>IT Staff Augmentation</p>
@@ -266,7 +266,7 @@ const HomePage = () => {
                   </Button>
                 </div>
               </Col>
-              <Col className={styles["col-our-services-right"]} xs={24} md={12}>
+              <Col className={styles["col-our-services-middle"]} xs={24} md={8}>
                 <div className={styles["background"]}>
                   <img src="/production.svg" alt="" />
                   <p className={styles["col-title"]}>Product Engineering</p>
@@ -283,137 +283,112 @@ const HomePage = () => {
                   </Button>
                 </div>
               </Col>
+              <Col className={styles["col-our-services-right"]} xs={24} md={8}>
+                <div className={styles["background"]}>
+                  <img src="/build-ai.svg" alt="" />
+                  <p className={styles["col-title"]}>AI solution</p>
+                  <p className={styles["content"]}>
+                    We customize solutions from the cutting edge AI technology
+                    to solve your business requirements
+                  </p>
+                  <Button
+                    onClick={() => router.push("/build-your-ai")}
+                    className={styles["explore-btn"]}
+                  >
+                    Explore <img src="/our-services-arrow.svg" />
+                  </Button>
+                </div>
+              </Col>
             </Row>
           </div>
         </div>
         <div className={styles["our-tech"]}>
           <p className={styles["tech-title"]}>Our Tech Stack</p>
-          <div className={styles["tech-row"]}>
-            <div className={styles["tech-col-be"]}>
-              <p>BACKEND</p>
-              <div className={styles["logo-group"]}>
-                <div>
-                  <img src="/be-1.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/be-2.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/be-3.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/be-4.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/be-5.svg" alt="" />
-                </div>
-              </div>
-            </div>
-            <hr className={styles["mobile-hr"]} />
-            <div className={styles["tech-col-fe"]}>
-              <p>FRONTEND</p>
-              <div className={styles["logo-group"]}>
-                <div>
+          <Row>
+            <Col className={styles["front-end"]} xs={24} md={12}>
+              <div className={styles["box"]}>
+                <p>Frontend</p>
+                <div className={styles["logo"]}>
                   <img src="/fe-1.svg" alt="" />
-                </div>
-                <div>
                   <img src="/fe-2.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/fe-3.svg" alt="" />
-                </div>
-                <div>
+                  <img src="/fe-3.png" alt="" />
                   <img src="/fe-4.svg" alt="" />
                 </div>
-                <div>
-                  <img src="/fe-5.svg" alt="" />
+              </div>
+            </Col>
+            <Col className={styles["back-end"]} xs={24} md={12}>
+              <div className={styles["box"]}>
+                <p>Backend</p>
+                <div className={styles["logo"]}>
+                  <img src="/be-1.svg" alt="" />
+                  <img src="/be-2.png" alt="" />
+                  <img src="/be-3.svg" alt="" />
+                  <img src="/be-4.svg" alt="" />
                 </div>
               </div>
-            </div>
-            <hr className={styles["mobile-hr"]} />
-            <div className={styles["tech-col-mobile"]}>
-              <div className={styles["logo-group"]}>
-                <p>MOBILE</p>
-                <div className={styles["logo-group"]}>
-                  <div>
-                    <img src="/mobile-1.svg" alt="" />
-                  </div>
-                  <div>
-                    <img src="/mobile-2.svg" alt="" />
-                  </div>
-                  <div>
-                    <img src="/mobile-3.svg" alt="" />
-                  </div>
-                  <div>
-                    <img src="/mobile-4.svg" alt="" />
-                  </div>
+            </Col>
+            <Col className={styles["data-pipeline"]} xs={24} md={12}>
+              <div className={styles["box"]}>
+                <p>Data Pipeline</p>
+                <div className={styles["logo"]}>
+                  <img src="/dp-1.svg" alt="" />
+                  <img src="/dp-2.svg" alt="" />
+                  <img src="/dp-3.svg" alt="" />
+                  <img src="/dp-4.svg" alt="" />
+                </div>
+                <div className={styles["logo-down"]}>
+                  <img src="/dp-5.svg" alt="" />
+                  <img src="/dp-6.svg" alt="" />
+                  <img src="/dp-8.svg" alt="" />
                 </div>
               </div>
-            </div>
-            <hr className={styles["mobile-hr"]} />
-            <div className={styles["tech-col-db"]}>
-              <p>DATABASE</p>
-              <div className={styles["logo-group"]}>
-                <div>
-                  <img src="/db-1.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/db-2.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/db-3.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/db-4.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/db-5.svg" alt="" />
+            </Col>
+            <Col className={styles["back-end"]} xs={24} md={12}>
+              <div className={styles["box"]}>
+                <p>Mobile</p>
+                <div className={styles["logo"]}>
+                  <img src="/mobile-app-1.svg" alt="" />
+                  <img src="/mobile-app-2.svg" alt="" />
+                  <img src="/mobile-app-3.svg" alt="" />
+                  <img src="/mobile-app-4.svg" alt="" />
                 </div>
               </div>
-            </div>
-            <hr className={styles["mobile-hr"]} />
-            <div className={styles["tech-col-devops"]}>
-              <p>DEVOPS</p>
-              <div className={styles["logo-group"]}>
-                <div>
+              <div className={styles["box-down"]}>
+                <p>Devops</p>
+                <div className={styles["logo"]}>
                   <img src="/devops-1.svg" alt="" />
-                </div>
-                <div>
                   <img src="/devops-2.svg" alt="" />
-                </div>
-                <div>
                   <img src="/devops-3.svg" alt="" />
-                </div>
-                <div>
                   <img src="/devops-4.svg" alt="" />
                 </div>
-                <div>
-                  <img src="/devops-5.svg" alt="" />
+              </div>
+            </Col>
+            <Col className={styles["server"]} xs={24}>
+              <div className={styles["box"]}>
+                <p>Server</p>
+                <div className={styles["logo"]}>
+                  <img src="/server-1.png" alt="" />
+                  <img src="/server-2.png" alt="" />
+                  <img src="/server-3.png" alt="" />
+                  <img src="/server-4.png" alt="" />
+                  <img src="/server-5.png" alt="" />
+                  <img src="/server-6.png" alt="" />
+                </div>
+                <div className={styles["mobile"]}>
+                  <div className={styles["logo"]}>
+                    <img src="/server-1.png" alt="" />
+                    <img src="/server-2.png" alt="" />
+                    <img src="/server-3.png" alt="" />
+                  </div>
+                  <div className={styles["logo"]}>
+                    <img src="/server-4.png" alt="" />
+                    <img src="/server-5.png" alt="" />
+                    <img src="/server-6.png" alt="" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <hr className={styles["mobile-hr"]} />
-            <div className={styles["tech-col-ux"]}>
-              <p>UI/UX DESIGN</p>
-              <div className={styles["logo-group"]}>
-                <div>
-                  <img src="/ux-1.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/ux-2.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/ux-3.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/ux-4.svg" alt="" />
-                </div>
-                <div>
-                  <img src="/ux-5.svg" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </div>
         <Button
           className={styles["talk-with-expert"]}

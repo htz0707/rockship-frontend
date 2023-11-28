@@ -210,7 +210,7 @@ const ProductEngineer = () => {
   );
 
   const handleOnClickCard = (item) => {
-    router.push(`/case-studies/${item.id}`);
+    router.push(`/case-studies/${item.name}`);
     dispatch(setItemCaseStudy(item));
     localStorage.setItem("itemDetail", JSON.stringify(item));
   };
@@ -487,8 +487,7 @@ const ProductEngineer = () => {
         <div className={styles["services"]}>
           <p className={styles["title"]}>Our Services</p>
           <p className={styles["content"]}>
-            IT Staff Augmentation is a strategic approach that elevates your
-            tech team with specialized talent on-demand
+            We offer you wide range of Product Engineering services
           </p>
           <div className={styles["product-engineer-2"]}>
             <div className={styles["col-box-left"]} lg={8} xs={24}>

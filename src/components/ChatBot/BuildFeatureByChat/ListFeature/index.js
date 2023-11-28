@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Checkbox, Modal, Tooltip } from "antd";
+import { Button, Checkbox, Modal, Tooltip, Form, Spin, Input } from "antd";
 import { MobileOutlined } from "@ant-design/icons";
 import styles from "./list-feature.module.scss";
 import { Table } from "antd";
@@ -8,6 +8,7 @@ import {
   getFeatures,
   updateEstimation,
   updateEstimationGroup,
+  updateEmail,
 } from "@/pages/api/ChatbotAPI";
 import Features from "./features";
 import Feedback from "../Feedback";
@@ -37,6 +38,33 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState(false);
   const [fullPayment, setFullPayment] = useState(true);
+  const [showPrice, setShowPrice] = useState(
+    !!(localStorage.getItem("showPrice") === "true")
+  );
+  const [showEmail, setShowEmail] = useState(false);
+  const [loadingEmail, setLoadingEmail] = useState(false);
+  const [errorsEmail, setErrorsEmail] = useState(false);
+
+  const onFinish = async (values) => {
+    setErrorsEmail(false);
+    setLoadingEmail(true);
+    try {
+      const res = await updateEmail(
+        localStorage.getItem("user_id"),
+        values.email
+      );
+      if (res.data.success) {
+        analytics.track("success-unlock");
+        localStorage.setItem("showPrice", true);
+        setShowEmail(false);
+        setShowPrice(true);
+      }
+    } catch (error) {
+      setErrorsEmail(true);
+      console.error("Error:", error);
+    }
+    setLoadingEmail(false);
+  };
 
   const handleSelectMobile = () => {
     setType("mobile");
@@ -290,12 +318,42 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
     //   render: (text) => <b>{text}</b>,
     // },
     {
-      title: "Cost",
+      title: (
+        <div className={styles["cost-title"]}>
+          <p>Cost</p>{" "}
+          {!showPrice ? (
+            <Tooltip
+              color={"white"}
+              title={
+                <span className={styles["click-to-unlock"]}>
+                  Click to unlock price
+                </span>
+              }
+            >
+              <img
+                onClick={() => {
+                  analytics.track("show-unlock");
+                  setShowEmail(true);
+                }}
+                className={styles["lock"]}
+                src="/lock.png"
+                alt=""
+              />
+            </Tooltip>
+          ) : (
+            <img src="/unlock.png" alt="" />
+          )}
+        </div>
+      ),
       dataIndex: "cost",
       key: "cost",
       width: 120,
       align: "center",
-      render: (text) => <b>$ {Math.round(text).toLocaleString("en-US")}</b>,
+      render: (text) => (
+        <b className={`${!showPrice ? styles["hide-cost"] : ""}`}>
+          $ {Math.round(text).toLocaleString("en-US")}
+        </b>
+      ),
     },
     {
       title: "Select",
@@ -304,6 +362,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
       align: "center",
       render: (text, record) => (
         <Checkbox
+          disabled={!showPrice}
           onClick={() => {
             let updates = [];
             for (let task of record.tasks) {
@@ -316,7 +375,6 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
             handleUpdateEstimationGroup(projectId, { updates });
           }}
           checked={text}
-          className={styles["custom-checkbox"]}
         />
       ),
     },
@@ -361,7 +419,9 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
         width: 120,
         align: "center",
         render: (text) => (
-          <div>$ {Math.round(text).toLocaleString("en-US")}</div>
+          <div className={`${!showPrice ? styles["hide-cost"] : ""}`}>
+            $ {Math.round(text).toLocaleString("en-US")}
+          </div>
         ),
       },
       {
@@ -371,6 +431,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
         align: "center",
         render: (text, record) => (
           <Checkbox
+            disabled={!showPrice}
             onClick={() => {
               handleUpdateEstimation(projectId, {
                 selected: !record.selected,
@@ -418,7 +479,7 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
           onClick={() => setMobile(mobile === "true" ? "false" : "true")}
         >
           {/* <img className={styles["custom-svg"]} src="/web.svg" alt="" /> */}
-          <MobileOutlined style={{ height: 20 }} />
+          <MobileOutlined style={{ marginTop: 4 }} />
           Mobile
         </Button>
         <Button
@@ -471,8 +532,11 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
               {/* - {Math.round(totalDay / 7)} weeks */}
             </p>
             <p className={styles["cost"]}>
-              Full payment <img src="/circle.svg" /> ${" "}
-              {Math.round(totalCost).toLocaleString("en-US")}/package
+              Full payment <img src="/circle.svg" />
+              <span className={`${!showPrice ? styles["hide-cost"] : ""}`}>
+                $ {Math.round(totalCost).toLocaleString("en-US")}
+              </span>
+              /package
             </p>
           </div>
           <div className={styles["flex"]}>
@@ -490,8 +554,11 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
                 {/* - {Math.round(totalDay / 7)} weeks */}
               </p>
               <p className={styles["cost"]}>
-                Monthly payment <img src="/circle.svg" /> ${" "}
-                {Math.round((totalCost * 1.05) / 12).toLocaleString("en-US")}
+                Monthly payment <img src="/circle.svg" />
+                <span className={`${!showPrice ? styles["hide-cost"] : ""}`}>
+                  ${" "}
+                  {Math.round((totalCost * 1.05) / 12).toLocaleString("en-US")}
+                </span>
                 /month
               </p>
             </div>
@@ -642,6 +709,40 @@ const ListFeature = ({ handleReset, projectId, setStep }) => {
         open={showFeedback}
         setOpen={setShowFeedback}
       />
+      <Modal
+        open={showEmail}
+        onCancel={() => setShowEmail(false)}
+        footer={null}
+        closable={false}
+        centered
+      >
+        <Form layout={"vertical"} onFinish={onFinish} autoComplete="off">
+          <Form.Item
+            label={
+              <p className={styles["label-email"]}>
+                Please fill in your email to see our price
+              </p>
+            }
+            name="email"
+            rules={[
+              {
+                required: true,
+                message: "Please input your name!",
+              },
+            ]}
+          >
+            <Input placeholder="email@gmail.com" />
+          </Form.Item>
+          <div className={styles["btn-div"]}>
+            <Button className={styles["email-button"]} htmlType="submit">
+              {loadingEmail ? <Spin /> : "Done"}
+            </Button>
+          </div>
+          {errorsEmail && (
+            <p className={styles["errors-msg"]}>Something went wrong!</p>
+          )}
+        </Form>
+      </Modal>
     </div>
   );
 };
