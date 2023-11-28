@@ -94,7 +94,7 @@ const CaseStudies = () => {
   };
 
   const handleOnClickCard = (item) => {
-    router.push(`/case-studies/${item.id}`);
+    router.push(`/case-studies/${item.name}`);
     dispatch(setItemCaseStudy(item));
     localStorage.setItem("itemDetail", JSON.stringify(item));
   };
