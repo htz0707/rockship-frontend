@@ -33,33 +33,33 @@ export default function Conversation({
     );
   }
 
-  if (
-    loadHistory?.response &&
-    Object.keys(loadHistory?.response).length === 1
-  ) {
-    conversationElements.push(
-      !loading &&
-        appTypeList.length > 0 &&
-        appTypeList.map((item, index) => (
-          <div key={index} className={styles["bubble-message"]}>
-            <p
-              onClick={() => {
-                handleNewSession(item.id);
-                analytics.track("industry-chatbot");
-                analytics.track(item.name);
-                setNewMessage(item.name);
-              }}
-            >
-              {item.name}
-            </p>
-          </div>
-        ))
-    );
-  }
+  // if (
+  //   loadHistory?.response &&
+  //   Object.keys(loadHistory?.response).length === 1
+  // ) {
+  //   conversationElements.push(
+  //     !loading &&
+  //       appTypeList.length > 0 &&
+  //       appTypeList.map((item, index) => (
+  //         <div key={index} className={styles["bubble-message"]}>
+  //           <p
+  //             onClick={() => {
+  //               handleNewSession(item.id);
+  //               analytics.track("industry-chatbot");
+  //               analytics.track(item.name);
+  //               setNewMessage(item.name);
+  //             }}
+  //           >
+  //             {item.name}
+  //           </p>
+  //         </div>
+  //       ))
+  //   );
+  // }
 
   for (const key in loadHistory.response) {
-    const request = loadHistory.request[key];
-    const response = loadHistory.response[key];
+    const request = loadHistory.request?.[key];
+    const response = loadHistory.response?.[key];
 
     const responseElement = key > 0 && (
       <div className={styles["bot-message"]} key={`response-${key}`}>

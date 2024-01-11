@@ -2,12 +2,12 @@ import axios from "axios";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-export const newSession = async ({ user_id, session_id, app_type_id }) => {
+export const newSession = async ({ user_id, session_id, request }) => {
   try {
     const response = await axios.post(`${BASE_URL}/chatbot/get_started`, {
       user_id: user_id,
       session_id: session_id,
-      app_type_id: app_type_id,
+      request: request,
     });
     return response.data;
   } catch (error) {

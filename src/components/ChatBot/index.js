@@ -59,7 +59,9 @@ const Chatbot = () => {
 
   const handleSendMessage = () => {
     setNewMessage(inputValue);
-    handleResponseChat();
+    if (!appTypeList || appTypeList?.length > 1) {
+      handleNewSession();
+    } else handleResponseChat();
     setInputValue("");
   };
 
@@ -84,14 +86,13 @@ const Chatbot = () => {
     }
   };
 
-  const handleNewSession = async (app_type_id) => {
+  const handleNewSession = async () => {
     setLoading(true);
-    setDisabled(false);
     try {
       await newSession({
         user_id: localStorage.getItem("user_id"),
         session_id: localStorage.getItem("session_id"),
-        app_type_id: app_type_id,
+        request: inputValue,
       });
       await handleLoadHistory();
     } catch (error) {
@@ -111,16 +112,13 @@ const Chatbot = () => {
   };
 
   const handleLoadHistory = async () => {
+    setDisabled(false);
     setLoading(true);
     try {
       const res = await chatHistory({
         user_id: localStorage.getItem("user_id"),
         session_id: localStorage.getItem("session_id"),
       });
-
-      if (Object.keys(res.chat_history.response).length > 1) {
-        setDisabled(false);
-      }
       setAppTypeList(res.app_types);
       setLoadHistory(res.chat_history);
       if (res.end_session_flag) {
