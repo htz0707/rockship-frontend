@@ -190,7 +190,7 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
   );
 };
 
-const CustomHeader = ({ link, isBack, title, onClick }) => {
+const CustomHeader = ({ link, isBack, title, onClickTitle }) => {
   const router = useRouter();
   const [isShowMenu, setIsShowMenu] = useState(false);
   const { isOverHeader, atPositionElement, scrollToElement } =
@@ -212,8 +212,8 @@ const CustomHeader = ({ link, isBack, title, onClick }) => {
   };
 
   const handleOnClickTitle = () => {
-    if (onClick) {
-      return onClick();
+    if (onClickTitle) {
+      return onClickTitle();
     }
     router.back();
   };

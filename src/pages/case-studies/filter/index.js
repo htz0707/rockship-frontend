@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Row } from "antd";
 import { useRouter } from "next/router";
 
@@ -8,54 +8,66 @@ import CustomLayout from "@/components/Layout";
 import styles from "@/styles/filter.module.scss";
 import SelectCustom from "@/components/SelectCustom";
 import useWindowSize from "@/hooks/useWindowSize";
-import { useSelector, useDispatch } from "@/context";
-import { setItemFilter } from "@/context/actions/case-studies";
-import { UniqueArray } from "@/utils";
+import { getLsCompanySize, getLsIndustry, getLsMarket } from "@/pages/api/case-studies";
 
 const Filter = () => {
   const size = useWindowSize();
   const router = useRouter();
-  const dispatch = useDispatch();
-  const caseStudies = useSelector((state) => state?.caseStudies?.caseStudies);
-  const itemFilter = useSelector((state) => state?.caseStudies?.itemFilter);
+  const { industry, companySize, market } = router.query;
+  const [lsMarket, setLsMarket] = useState([]);
+  const [lsCompanySize, setLsCompanySize] = useState([]);
+  const [lsIndustry, setLsIndustry] = useState([]);
 
-  const lsIndustry = useMemo(() => {
-    const arrayTemp = [{ id: 0, key: "all_industry", value: "All Industry" }];
-    const industries = caseStudies?.map((item) => {
-      return { id: item.id, key: item.industry, value: item.industry };
+  const handleOnClickBack = () => {
+    const currentQuery = { ...router.query };
+    router.push({
+      pathname: "/case-studies",
+      query: currentQuery,
     });
-    const uniqueArray = UniqueArray(industries);
-    return [...arrayTemp, ...uniqueArray];
-  }, [caseStudies]);
+  };
 
-  const lsCompanySize = useMemo(() => {
-    const arrayTemp = [
-      { id: 0, key: "all_company_size", value: "All Company Size" },
-    ];
-    const companySizes = caseStudies?.map((item) => {
-      return { id: item.id, key: item.companySize, value: item.companySize };
-    });
-    const uniqueArray = UniqueArray(companySizes);
-    return [...arrayTemp, ...uniqueArray];
-  }, [caseStudies]);
+  const handleGetMarket = async () => {
+    const {success, data} =  await getLsMarket();
+    if (success) {
+      setLsMarket(data);
+    }
+  }
 
-  const lsMarket = useMemo(() => {
-    const arrayTemp = [{ id: 0, key: "all_market", value: "All Market" }];
-    const markets = caseStudies?.map((item) => {
-      return { id: item.id, key: item.market, value: item.market };
-    });
-    const uniqueArray = UniqueArray(markets);
-    return [...arrayTemp, ...uniqueArray];
-  }, [caseStudies]);
+  const handleGetIndustry = async () => {
+    const {success, data} =  await getLsIndustry();
+    if (success) {
+      setLsIndustry(data);
+    }
+  }
+
+  const handleGetCompanySize = async () => {
+    const {success, data} =  await getLsCompanySize();
+    if (success) {
+      setLsCompanySize(data);
+    }
+  }
 
   const handleOnChangeSelectFilter = (value, type) => {
-    dispatch(setItemFilter({ [type]: value }));
+    const currentQuery = { ...router.query };
+    currentQuery[type] = value?.value || '';
+    router.push(
+      {
+        pathname: router.pathname,
+        query:currentQuery,
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   useEffect(() => {
     const handleResize = () => {
       if (size.width > 768) {
-        router.push("/case-studies");
+        const currentQuery = { ...router.query };
+        router.push({
+          pathname: "/case-studies",
+          query: currentQuery,
+        });
       }
     };
 
@@ -64,14 +76,21 @@ const Filter = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [size.width]);
 
+  useEffect(() => {
+    handleGetMarket();
+    handleGetIndustry();
+    handleGetCompanySize();
+  }, []);
+
+
   return (
-    <CustomLayout link={"filter"} isBack>
+    <CustomLayout link={"filter"} isBack onClickTitle={handleOnClickBack}>
       <Row>
         <Col span={24}>
           <div className={styles["filter"]}>
             <SelectCustom
               className={styles["select"]}
-              value={itemFilter?.industry?.value || lsIndustry[0].value}
+              value={industry === 'All' ? 'All Industry' : industry}
               lsOption={lsIndustry}
               onChange={(value) =>
                 handleOnChangeSelectFilter(
@@ -82,7 +101,7 @@ const Filter = () => {
             />
             <SelectCustom
               className={styles["select"]}
-              value={itemFilter?.companySize?.value || lsCompanySize[0].value}
+              value={companySize === 'All' ? 'All Company Size' : companySize }
               lsOption={lsCompanySize}
               onChange={(value) =>
                 handleOnChangeSelectFilter(
@@ -92,7 +111,7 @@ const Filter = () => {
               } />
             <SelectCustom
               className={styles["select"]}
-              value={itemFilter?.market?.value || lsMarket[0].value}
+              value={market === 'All' ? 'All Market' : market }
               lsOption={lsMarket}
               onChange={(value) =>
                 handleOnChangeSelectFilter(
@@ -109,3 +128,11 @@ const Filter = () => {
 };
 
 export default Filter;
+
+export const getStaticProps = async ({ params }) => {
+  return {
+    props: {
+      overwriteMetaTag: true,
+    },
+  };
+};
