@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, useEffect } from "react";
 import { Button, Col, Row } from "antd";
 import Image from "next/image";
@@ -8,8 +7,6 @@ import CustomLayout from "@/components/Layout";
 import styles from "@/styles/case-studies-detail.module.scss";
 
 import useWindowSize from "@/hooks/useWindowSize";
-import { useSelector } from "@/context";
-// import { setItemCaseStudy } from "@/context/actions/case-studies";
 import ContentIsense from "@/components/ContentCaseStudies/ContentIsense";
 import ContentRovo from "@/components/ContentCaseStudies/ContentRovo";
 import ContentLiveo from "@/components/ContentCaseStudies/ContentLiveo";
@@ -21,6 +18,7 @@ import { HighLightItem } from "@/components/ContentCaseStudies/Common";
 import FormModal from "@/components/FormModal";
 
 import { analytics } from "@/segment/segment";
+import { getCaseStudiesDetail } from "../api/case-studies/[name]";
 
 const CalendlyLinkWidget = ({
   analytics,
@@ -96,14 +94,9 @@ const MenuItem = ({ title, lsValue, content }) => {
     </div>
   );
 };
-const CaseStudiesDetail = () => {
+const CaseStudiesDetail = ({itemCaseStudy}) => {
   const router = useRouter();
   const size = useWindowSize();
-
-  const itemCaseStudy1 = useSelector(
-    (state) => state?.caseStudies?.itemCaseStudy
-  );
-  const [itemCaseStudy, setItemCaseStudy] = useState(itemCaseStudy1);
   const [isShowContact, setIsShowContact] = useState(false);
   const [isBack, setIsBack] = useState(false);
   const [errors, setErrors] = React.useState(false);
@@ -126,10 +119,6 @@ const CaseStudiesDetail = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [size.width]);
 
-  useEffect(() => {
-    const dataTemp = JSON.parse(localStorage.getItem("itemDetail"));
-    setItemCaseStudy(dataTemp);
-  }, []);
   const renderContent = (id) => {
     if (id === 1 || id === 5 || id === 7 || id === 8 || id === 12) {
       return (
@@ -355,13 +344,18 @@ const CaseStudiesDetail = () => {
 };
 
 export default CaseStudiesDetail;
-export const getStaticProps = async () => {
+
+export const getStaticProps = async ({ params }) => {
+  const {data} =  await getCaseStudiesDetail(params.name);
+
   return {
     props: {
+      itemCaseStudy: data,
       overwriteMetaTag: true,
     },
   };
 };
+
 export async function getStaticPaths() {
   return {
     paths: [],

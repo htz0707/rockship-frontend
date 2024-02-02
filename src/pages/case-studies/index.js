@@ -1,106 +1,81 @@
 "use client";
 
-import React, { useMemo, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Row } from "antd";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "@/context";
-import {
-  setItemCaseStudy,
-  setItemFilter,
-} from "@/context/actions/case-studies";
 
 import CustomLayout from "@/components/Layout";
 import SelectCustom from "@/components/SelectCustom";
 import styles from "@/styles/case-studies.module.scss";
 import filter from "../../../public/filter.svg";
-import { UniqueArray } from "@/utils";
 import Card from "@/components/Card";
 import MetaTags from "@/components/MetaTags";
+import { getCaseStudies, getLsCompanySize, getLsIndustry, getLsMarket } from "../api/case-studies";
 
 const CaseStudies = () => {
   const router = useRouter();
-  const { industry } = router.query;
-  const dispatch = useDispatch();
-  const caseStudies = useSelector((state) => state?.caseStudies?.caseStudies);
-  const itemFilter = useSelector((state) => state?.caseStudies?.itemFilter);
+  const { industry, companySize, market } = router.query;
+  const [caseStudies, setCaseStudies] = useState([]);
+  const [lsMarket, setLsMarket] = useState([]);
+  const [lsCompanySize, setLsCompanySize] = useState([]);
+  const [lsIndustry, setLsIndustry] = useState([]);
 
-  const lsIndustry = useMemo(() => {
-    const arrayTemp = [{ id: 0, key: "all_industry", value: "All" }];
-    const industries = caseStudies?.map((item) => {
-      return { id: item.id, key: item.industry, value: item.industry };
-    });
-    const uniqueArray = UniqueArray(industries);
-    return [...arrayTemp, ...uniqueArray];
-  }, [caseStudies]);
 
-  const lsCompanySize = useMemo(() => {
-    const arrayTemp = [{ id: 0, key: "all_company_size", value: "All" }];
-    const companySizes = caseStudies?.map((item) => {
-      return { id: item.id, key: item.companySize, value: item.companySize };
-    });
-    const uniqueArray = UniqueArray(companySizes);
-    return [...arrayTemp, ...uniqueArray];
-  }, [caseStudies]);
+  const handleGetCaseStudies = async () => {
+    const {success, data} =  await getCaseStudies(router.query);
+    if (success) {
+      setCaseStudies(data);
+    }
+  }
 
-  const lsMarket = useMemo(() => {
-    const arrayTemp = [{ id: 0, key: "all_market", value: "All" }];
-    const markets = caseStudies?.map((item) => {
-      return { id: item.id, key: item.market, value: item.market };
-    });
-    const uniqueArray = UniqueArray(markets);
-    return [...arrayTemp, ...uniqueArray];
-  }, [caseStudies]);
+  const handleGetMarket = async () => {
+    const {success, data} =  await getLsMarket();
+    if (success) {
+      setLsMarket(data);
+    }
+  }
 
-  const dataFilter = useMemo(() => {
-    const all_industry = caseStudies?.filter((item) => item.industry);
-    const all_company_size = caseStudies?.filter((item) => item.companySize);
-    const all_market = caseStudies?.filter((item) => item.market);
-    const all_industry_value = all_industry?.map((item) => item.industry);
-    const all_company_size_value = all_industry?.map(
-      (item) => item.companySize
-    );
-    const all_market_value = all_industry?.map((item) => item.market);
+  const handleGetIndustry = async () => {
+    const {success, data} =  await getLsIndustry();
+    if (success) {
+      setLsIndustry(data);
+    }
+  }
 
-    if (itemFilter?.industry?.key === "all_industry") {
-      return all_industry;
+  const handleGetCompanySize = async () => {
+    const {success, data} =  await getLsCompanySize();
+    if (success) {
+      setLsCompanySize(data);
     }
-    if (itemFilter?.companySize?.key === "all_company_size") {
-      return all_company_size;
-    }
-    if (itemFilter?.market?.key === "all_market") {
-      return all_market;
-    }
-    if (all_industry_value?.includes(itemFilter?.industry?.key)) {
-      return all_industry?.filter((item) =>
-        item.industry?.includes(itemFilter?.industry?.key)
-      );
-    }
-    if (all_company_size_value?.includes(itemFilter?.companySize?.key)) {
-      return all_company_size?.filter((item) =>
-        item.companySize?.includes(itemFilter?.companySize?.key)
-      );
-    }
-    if (all_market_value?.includes(itemFilter?.market?.key)) {
-      return all_market.filter((item) =>
-        item.market?.includes(itemFilter?.market?.key)
-      );
-    }
-    return caseStudies;
-  }, [caseStudies, itemFilter]);
+  }
 
   const handleOnClickFilter = () => {
-    router.push("/case-studies/filter");
+    const currentQuery = { ...router.query };
+    router.push(
+      {
+        pathname: "/case-studies/filter",
+        query:currentQuery,
+      },
+    );
   };
 
   const handleOnClickCard = (item) => {
     router.push(`/case-studies/${item.name}`);
-    dispatch(setItemCaseStudy(item));
     localStorage.setItem("itemDetail", JSON.stringify(item));
   };
 
   const handleOnChangeSelectFilter = (value, type) => {
-    dispatch(setItemFilter({ [type]: value }));
+  const currentQuery = { ...router.query };
+  currentQuery[type] = value?.value || '';
+  router.push(
+    {
+      pathname: router.pathname,
+      query:currentQuery,
+    },
+    undefined,
+    { shallow: true }
+  );
   };
 
   function chunkArray(array, chunkSize) {
@@ -110,25 +85,17 @@ const CaseStudies = () => {
     }
     return chunks;
   }
+  const chunkedData = chunkArray(caseStudies, 3);
 
-  const chunkedData = chunkArray(dataFilter, 3);
-
-  const [selectedIndustry, setSelectedIndustry] = useState(lsIndustry[0].value);
   useEffect(() => {
-    if (industry) {
-      setSelectedIndustry(industry);
-      handleOnChangeSelectFilter(
-        lsIndustry.find((item) => item.key === industry),
-        "industry"
-      );
-    } else {
-      setSelectedIndustry(lsIndustry[0].value);
-      handleOnChangeSelectFilter(
-        lsIndustry.find((item) => item.key === lsIndustry[0].value),
-        "industry"
-      );
-    }
-  }, [industry]);
+    handleGetMarket();
+    handleGetIndustry();
+    handleGetCompanySize();
+  }, []);
+
+  useEffect(() => {
+    handleGetCaseStudies();
+  }, [router.query]);
 
   return (
     <>
@@ -160,8 +127,7 @@ const CaseStudies = () => {
                   title={"Industry"}
                   lsOption={lsIndustry}
                   value={
-                    itemFilter?.industry?.value ||
-                    selectedIndustry
+                    industry
                   }
                   onChange={(value) =>
                     handleOnChangeSelectFilter(
@@ -174,7 +140,7 @@ const CaseStudies = () => {
                   title={"Company Size"}
                   lsOption={lsCompanySize}
                   value={
-                    itemFilter?.companySize?.value || lsCompanySize[0].value
+                   companySize 
                   }
                   onChange={(value) =>
                     handleOnChangeSelectFilter(
@@ -186,7 +152,7 @@ const CaseStudies = () => {
                 <SelectCustom
                   title={"Market"}
                   lsOption={lsMarket}
-                  value={itemFilter?.market?.value || lsMarket[0].value}
+                  value={market}
                   onChange={(value) =>
                     handleOnChangeSelectFilter(
                       lsMarket.find((item) => item.key === value),
@@ -199,9 +165,9 @@ const CaseStudies = () => {
                 className={styles["button-filter"]}
                 onClick={handleOnClickFilter}
                 style={
-                  itemFilter?.industry ||
-                  itemFilter?.companySize ||
-                  itemFilter?.market
+                  industry !== 'All' ||
+                  companySize  !== 'All' ||
+                  market !== 'All'
                     ? { border: "1px solid #5FFE9F" }
                     : {}
                 }
@@ -241,11 +207,11 @@ const CaseStudies = () => {
 };
 
 export default CaseStudies;
-
-export const getStaticProps = async () => {
+export const getStaticProps = async ({ params }) => {
   return {
     props: {
       overwriteMetaTag: true,
     },
   };
 };
+

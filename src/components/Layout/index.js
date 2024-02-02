@@ -6,7 +6,7 @@ import styles from "./layout.module.scss";
 
 const { Content } = Layout;
 
-const CustomLayout = ({ link, children, isBack }) => {
+const CustomLayout = ({ link, children, isBack, onClickTitle }) => {
   let layout = null;
 
   switch (link) {
@@ -37,7 +37,7 @@ const CustomLayout = ({ link, children, isBack }) => {
     case "filter":
       layout = (
         <React.Fragment>
-          <CustomHeader link={link} title="Filter" isBack={isBack} />
+          <CustomHeader link={link} title="Filter" isBack={isBack} onClickTitle={onClickTitle} />
           <Content className={styles["custom-content"]}>{children}</Content>
         </React.Fragment>
       );
