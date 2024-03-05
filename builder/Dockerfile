@@ -5,6 +5,8 @@ ARG BOT_PRIVATE_TOKEN
 RUN echo I received "${DEPLOY_TAG}" from kaniko!
 RUN echo I received "${BOT_PRIVATE_TOKEN}" from kaniko!
 RUN apk --no-cache add curl
+ARG CACHEBUST
+RUN echo CACHEBUST "$CACHEBUST"
 RUN curl --header "PRIVATE-TOKEN: ${BOT_PRIVATE_TOKEN}" "http://gitlab.rockship.co/api/v4/projects/16/repository/files/frontend%2Frockship-fe%2F${DEPLOY_TAG}%2F.env/raw?ref=master" > .env
 
 FROM node:18-alpine AS base

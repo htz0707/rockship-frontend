@@ -53,6 +53,7 @@ build:
       --cache-ttl=6h
       --build-arg BOT_PRIVATE_TOKEN=$BOT_PRIVATE_TOKEN
       --build-arg DEPLOY_TAG=$DEPLOY_TAG
+      --build-arg CACHEBUST=$CI_COMMIT_SHORT_SHA
       --image-name-tag-with-digest-file "$TAG_LATEST:$DEPLOY_TAG"
       --dockerfile "${CI_PROJECT_DIR}/builder/Dockerfile"
       --destination "$TAG_LATEST:$DEPLOY_TAG"
