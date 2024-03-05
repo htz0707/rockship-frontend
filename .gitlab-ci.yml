@@ -13,7 +13,6 @@ variables:
 .install_ssh:
   before_script:
     - test -n "$SSH_PRIVATE_KEY" || ( echo "missing variable SSH_PRIVATE_KEY" && exit 1)
-    - test -n "$SSH_HOST" || ( echo "missing variable SSH_HOST" && exit 1)
     - test -n "$PROJECT_DIR" || ( echo "missing variable PROJECT_DIR" && exit 1)
     - test -n "$ROCKSHIP_REGISTRY_USERNAE" || ( echo "missing variable ROCKSHIP_REGISTRY_USERNAE" && exit 1)
     - test -n "$ROCKSHIP_REGISTRY_PASSWORD" || ( echo "missing variable ROCKSHIP_REGISTRY_PASSWORD" && exit 1)
