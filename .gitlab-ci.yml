@@ -1,4 +1,4 @@
-image: ubuntu:18.04
+image: ubuntu:22.04
 
 stages:
   - build
@@ -49,23 +49,26 @@ build:
     - echo "{\"auths\":{\"${CI_REGISTRY_IMAGE}\":{\"auth\":\"$(printf "%s:%s" "${ROCKSHIP_REGISTRY_USERNAE}" "${ROCKSHIP_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
+      --cache=true
+      --cache-ttl=6h
       --build-arg BOT_PRIVATE_TOKEN=$BOT_PRIVATE_TOKEN
       --build-arg DEPLOY_TAG=$DEPLOY_TAG
       --image-name-tag-with-digest-file "$TAG_LATEST:$DEPLOY_TAG"
       --dockerfile "${CI_PROJECT_DIR}/builder/Dockerfile"
       --destination "$TAG_LATEST:$DEPLOY_TAG"
   only:
-    - devops/test
     - master
     - dev
 
-deploy:
+deploy-stg:
   extends: .install_ssh
   stage: deploy
   script:
-    - ssh $SSH_HOST "cd monorepo/aegon && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker pull $TAG_LATEST:$DEPLOY_TAG && make blueprint-construct service=$CI_COMMIT_REF_NAME tag=$DEPLOY_TAG"
+    - ssh $ROCKITFLOW_SERVER_DEV "docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE;
+      docker pull $TAG_LATEST:$DEPLOY_TAG"
+    - ssh $ROCKITFLOW_SERVER_DEV "cd monorepo/aegon;
+      make blueprint-construct service=$CI_COMMIT_REF_NAME tag=$DEPLOY_TAG"
   only:
-    - devops/test
     - dev
 
 deploy-production:
@@ -75,7 +78,9 @@ deploy-production:
     name: production
     url: https://rockship.co
   script:
-    - ssh $SSH_HOST "cd monorepo/aegon && docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE && docker pull $TAG_LATEST:$DEPLOY_TAG && make blueprint-construct service=$CI_COMMIT_REF_NAME tag=$DEPLOY_TAG"
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-      when: manual
+    - ssh $ROCKITFLOW_SERVER_PROD "docker login -u $ROCKSHIP_REGISTRY_USERNAE -p $ROCKSHIP_REGISTRY_PASSWORD $CI_REGISTRY_IMAGE;
+      docker pull $TAG_LATEST:$DEPLOY_TAG"
+    - ssh $ROCKITFLOW_SERVER_PROD "cd monorepo/aegon;
+      make blueprint-construct service=$CI_COMMIT_REF_NAME tag=$DEPLOY_TAG"
+  only:
+    - master
