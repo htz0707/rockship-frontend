@@ -62,20 +62,20 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
     {
       label: (
         <Link
-          href="it-staff-augmentation"
+          href="tech-team-augmentation"
           className={
             styles["our-solution-custom-label"] +
-            (link === "it-staff-augmentation" ? " " + styles["font-600"] : "")
+            (link === "tech-team-augmentation" ? " " + styles["font-600"] : "")
           }
         >
-          IT Staff Augmentation
+          Tech Team Augmentation
         </Link>
       ),
       icon: (
         <Image
           className={
             styles["our-solution-custom-icon"] +
-            (link === "it-staff-augmentation" ? " " + styles["font-600"] : "")
+            (link === "tech-team-augmentation" ? " " + styles["font-600"] : "")
           }
           src={ItStaff}
           alt=""
@@ -140,7 +140,7 @@ const MenuNavbar = ({ link, onClickStartBuilding }) => {
       <Link
         className={
           styles["text-header"] +
-          (link === "it-staff-augmentation" ||
+          (link === "tech-team-augmentation" ||
           link === "product-engineer" ||
           link === "build-your-ai"
             ? " " + styles["font-700"]
