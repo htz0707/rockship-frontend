@@ -252,7 +252,7 @@ const HomePage = () => {
               <Col className={styles["col-our-services-left"]} xs={24} md={8}>
                 <div className={styles["background"]}>
                   <img src="/staff.svg" alt="" />
-                  <p className={styles["col-title"]}>IT Staff Augmentation</p>
+                  <p className={styles["col-title"]}>Tech Team Augmentation</p>
                   <p className={styles["content"]}>
                     We assist your business in accessing top global tech talents
                     irrespective of your location. Find the expertise you need,

@@ -507,7 +507,7 @@ const ITStaff = () => {
   ];
 
   return (
-    <CustomLayout link={"it-staff-augmentation"}>
+    <CustomLayout link={"tech-team-augmentation"}>
       <div className={styles["it-staff-container"]}>
         <Row className={styles["it-staff-1"]}>
           <Col className={styles["left-col"]} lg={12} xs={24}>
@@ -519,7 +519,7 @@ const ITStaff = () => {
                 Homepage
               </p>
               <p className={styles["line"]}>/</p>
-              <p className={styles["page-title"]}>IT staff augmentation</p>
+              <p className={styles["page-title"]}>Tech Team Augmentation</p>
             </div>
             <p className={styles["title"]}>
               Effortlessly Expand Your Team with Global Tech Expertise
@@ -637,7 +637,7 @@ const ITStaff = () => {
         <div className={styles["services"]}>
           <p className={styles["title"]}>Services Introduction</p>
           <p className={styles["content"]}>
-            IT Staff Augmentation is a strategic approach that elevates your
+            Tech Team Augmentation is a strategic approach that elevates your
             tech team with specialized talent on-demand
           </p>
           <Row className={styles["it-staff-2"]}>
@@ -774,7 +774,7 @@ const ITStaff = () => {
           </div>
         )}
         <div className={styles["benefit"]}>
-          <p className={styles["title"]}>Benefits of IT Staff Augmentation</p>
+          <p className={styles["title"]}>Benefits of Tech Team Augmentation</p>
           <Row className={styles["benefit-row"]}>
             <Col xs={24} lg={6} className={styles["benefit-col"]}>
               <div
