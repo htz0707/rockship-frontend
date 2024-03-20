@@ -259,7 +259,7 @@ const HomePage = () => {
                     save time, and reduce costs by hiring on-demand.
                   </p>
                   <Button
-                    onClick={() => router.push("/it-staff-augmentation")}
+                    onClick={() => router.push("/tech-team-augmentation")}
                     className={styles["explore-btn"]}
                   >
                     Explore <img src="/our-services-arrow.svg" />
