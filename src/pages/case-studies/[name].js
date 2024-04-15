@@ -94,7 +94,7 @@ const MenuItem = ({ title, lsValue, content }) => {
     </div>
   );
 };
-const CaseStudiesDetail = ({itemCaseStudy}) => {
+const CaseStudiesDetail = ({ itemCaseStudy }) => {
   const router = useRouter();
   const size = useWindowSize();
   const [isShowContact, setIsShowContact] = useState(false);
@@ -120,7 +120,7 @@ const CaseStudiesDetail = ({itemCaseStudy}) => {
   }, [size.width]);
 
   const renderContent = (id) => {
-    if (id === 1 || id === 5 || id === 7 || id === 8 || id === 12) {
+    if (id === 1 || id === 5 || id === 7 || id === 8 || id === 12 || id === 13 || id === 14 || id === 15 || id === 16 || id === 17) {
       return (
         <>
           <div className={styles["description"]}>
@@ -134,7 +134,16 @@ const CaseStudiesDetail = ({itemCaseStudy}) => {
             />
           </div>
           <div className={styles["menu-list"]}>
-            {itemCaseStudy?.mains?.map((item, index) => {
+            {
+              itemCaseStudy?.id === 16 &&
+              <div style={{ display: 'flex', justifyContent: 'space-between', overflow:'auto', marginBottom: '15px', marginTop: '15px' }}>
+                {itemCaseStudy?.mains?.map((item, index) => { return (<img key={index} style={{ width: '250px' }} src={item?.src} alt={"menu"} />); })}
+              </div>
+            }
+            {itemCaseStudy?.id !== 16 && itemCaseStudy?.mains?.map((item, index) => {
+              if (item.content.length === 0 && item.title.length === 0) {
+                return (<img key={index} style={{ marginTop: '15px', marginBottom: '15px' }} src={item?.src} alt={"menu"} />);
+              }
               if (item.content && !item.src) {
                 return (
                   <div className={styles["menu"]} key={index}>
@@ -346,7 +355,7 @@ const CaseStudiesDetail = ({itemCaseStudy}) => {
 export default CaseStudiesDetail;
 
 export const getStaticProps = async ({ params }) => {
-  const {data} =  await getCaseStudiesDetail(params.name);
+  const { data } = await getCaseStudiesDetail(params.name);
 
   return {
     props: {
