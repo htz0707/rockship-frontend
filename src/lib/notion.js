@@ -1,6 +1,6 @@
 const { Client } = require('@notionhq/client');
 const notion = new Client({
-  auth: process.env.NEXT_APP_NOTION_ACCESS_TOKEN,
+  auth: 'secret_Hd41PC90FQ741AK1FjoNWUqJL31lKZo4P3RCP3O75c3',
 });
 
 export const getAllPublished = async () => {
