@@ -13,7 +13,7 @@ export const getAllPublished = async () => {
     },
   ];
   const posts = await notion.databases.query({
-    database_id: process.env.NEXT_APP_NOTION_BLOG_DATABASE_ID,
+    database_id: 'bc25b89fbab74dbd8820628b30177370',
     filter: {
       and: filter,
     },
