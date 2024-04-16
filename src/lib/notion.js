@@ -47,7 +47,7 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export const getSingleBlogPostBySlug = async slug => {
   const response = await notion.databases.query({
-    database_id: process.env.NEXT_APP_NOTION_BLOG_DATABASE_ID,
+    database_id: 'bc25b89fbab74dbd8820628b30177370',
     filter: {
       property: 'Slug',
       formula: {
