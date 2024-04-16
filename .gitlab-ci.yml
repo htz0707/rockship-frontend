@@ -48,8 +48,6 @@ build:
     - echo "{\"auths\":{\"${CI_REGISTRY_IMAGE}\":{\"auth\":\"$(printf "%s:%s" "${ROCKSHIP_REGISTRY_USERNAE}" "${ROCKSHIP_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
-      --cache=true
-      --cache-ttl=6h
       --build-arg BOT_PRIVATE_TOKEN=$BOT_PRIVATE_TOKEN
       --build-arg DEPLOY_TAG=$DEPLOY_TAG
       --build-arg CACHEBUST=$CI_COMMIT_SHORT_SHA
