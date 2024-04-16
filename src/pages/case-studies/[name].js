@@ -141,7 +141,7 @@ const CaseStudiesDetail = ({ itemCaseStudy }) => {
               </div>
             }
             {itemCaseStudy?.id !== 16 && itemCaseStudy?.mains?.map((item, index) => {
-              if (item.content.length === 0 && item.title.length === 0) {
+              if (item?.content?.length === 0 && item?.title?.length === 0) {
                 return (<img key={index} style={{ marginTop: '15px', marginBottom: '15px' }} src={item?.src} alt={"menu"} />);
               }
               if (item.content && !item.src) {
