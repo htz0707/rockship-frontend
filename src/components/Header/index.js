@@ -205,9 +205,9 @@ const CustomHeader = ({ link, isBack, title, onClickTitle }) => {
   const onClickStartBuilding = () => {
     if (link !== "solutions") {
       router.push("/");
-      scrollToElement("#chat_bot");
+      window.open('https://t.me/Test_Rockship_Chatbot')
     } else {
-      scrollToElement("#chat_bot");
+      window.open('https://t.me/Test_Rockship_Chatbot')
     }
   };
 
@@ -331,7 +331,7 @@ const CustomHeader = ({ link, isBack, title, onClickTitle }) => {
                   buttonStyle="homepage-button-2"
                 />
               </div>
-              <div
+              {/* <div
                 className={styles["chatbot-box"]}
                 data-aos="fade-up"
                 data-aos-delay="1000"
@@ -340,7 +340,7 @@ const CustomHeader = ({ link, isBack, title, onClickTitle }) => {
                 id="chat_bot"
               >
                 <Chatbot />
-              </div>
+              </div> */}
             </div>
           )}
         </>
