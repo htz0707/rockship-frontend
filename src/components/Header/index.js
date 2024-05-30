@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { Layout, Button, Drawer, Dropdown, Space } from "antd";
 
 import Chatbot from "../ChatBot";
+import ChatComponent from "../ChatBot/ChatComponent";
 import styles from "./header.module.scss";
 import arrowLeft from "../../../public/arrow-left.svg";
 import useScrollToElement from "@/hooks/useScrollToElement";
@@ -331,7 +332,7 @@ const CustomHeader = ({ link, isBack, title, onClickTitle }) => {
                   buttonStyle="homepage-button-2"
                 />
               </div>
-              {/* <div
+              <div
                 className={styles["chatbot-box"]}
                 data-aos="fade-up"
                 data-aos-delay="1000"
@@ -339,8 +340,8 @@ const CustomHeader = ({ link, isBack, title, onClickTitle }) => {
                 data-aos-anchor-placement="top-bottom"
                 id="chat_bot"
               >
-                <Chatbot />
-              </div> */}
+                <ChatComponent />
+              </div>
             </div>
           )}
         </>
