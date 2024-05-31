@@ -200,7 +200,7 @@ const ChatComponent = () => {
               className={styles["custom-input"]}
               disabled={loading}
               value={inputValue}
-              maxLength={150}
+              // maxLength={150}
               onPressEnter={(event) => {
                 if (event.key === "Enter" && inputValue.length > 0) {
                   handleSendMessage();
