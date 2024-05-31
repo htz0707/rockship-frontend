@@ -13,7 +13,7 @@ export default async function handler(req, res) {
       method: 'post',
       url: 'https://api.coze.com/open_api/v2/chat',
       headers: {
-        'Authorization': 'Bearer pat_IIcpYPnD5dY2JA7puDooEMvLrwuhONNTJQo2ncpyZoywE5zOJyTBG8lMDnh6Oz3S',
+        'Authorization': 'Bearer pat_h4ortUK170WKW0LUafvarJKH1cRgeTXiJubDO1G3wrL4WamOtSrKP0ydmcDYmQHP',
         'Content-Type': 'application/json',
         'Accept': '*/*',
         'Host': 'api.coze.com',

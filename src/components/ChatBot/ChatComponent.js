@@ -75,7 +75,7 @@ const ChatComponent = () => {
         ({ event, message }) =>
           event === "message" &&
           message.role === "assistant" &&
-          message.type !== "verbose"
+          message.type === "answer"
       )
       .map(({ message }) => message.content)
       .filter((content) => content !== "");
