@@ -11,7 +11,12 @@ import styles from "@/styles/case-studies.module.scss";
 import filter from "../../../public/filter.svg";
 import Card from "@/components/Card";
 import MetaTags from "@/components/MetaTags";
-import { getCaseStudies, getLsCompanySize, getLsIndustry, getLsMarket } from "../api/case-studies";
+import {
+  getCaseStudies,
+  getLsCompanySize,
+  getLsIndustry,
+  getLsMarket,
+} from "../api/case-studies";
 
 const CaseStudies = () => {
   const router = useRouter();
@@ -21,43 +26,40 @@ const CaseStudies = () => {
   const [lsCompanySize, setLsCompanySize] = useState([]);
   const [lsIndustry, setLsIndustry] = useState([]);
 
-
   const handleGetCaseStudies = async () => {
-    const {success, data} =  await getCaseStudies(router.query);
+    const { success, data } = await getCaseStudies(router.query);
     if (success) {
       setCaseStudies(data);
     }
-  }
+  };
 
   const handleGetMarket = async () => {
-    const {success, data} =  await getLsMarket();
+    const { success, data } = await getLsMarket();
     if (success) {
       setLsMarket(data);
     }
-  }
+  };
 
   const handleGetIndustry = async () => {
-    const {success, data} =  await getLsIndustry();
+    const { success, data } = await getLsIndustry();
     if (success) {
       setLsIndustry(data);
     }
-  }
+  };
 
   const handleGetCompanySize = async () => {
-    const {success, data} =  await getLsCompanySize();
+    const { success, data } = await getLsCompanySize();
     if (success) {
       setLsCompanySize(data);
     }
-  }
+  };
 
   const handleOnClickFilter = () => {
     const currentQuery = { ...router.query };
-    router.push(
-      {
-        pathname: "/case-studies/filter",
-        query:currentQuery,
-      },
-    );
+    router.push({
+      pathname: "/case-studies/filter",
+      query: currentQuery,
+    });
   };
 
   const handleOnClickCard = (item) => {
@@ -66,16 +68,16 @@ const CaseStudies = () => {
   };
 
   const handleOnChangeSelectFilter = (value, type) => {
-  const currentQuery = { ...router.query };
-  currentQuery[type] = value?.value || '';
-  router.push(
-    {
-      pathname: router.pathname,
-      query:currentQuery,
-    },
-    undefined,
-    { shallow: true }
-  );
+    const currentQuery = { ...router.query };
+    currentQuery[type] = value?.value || "";
+    router.push(
+      {
+        pathname: router.pathname,
+        query: currentQuery,
+      },
+      undefined,
+      { shallow: true }
+    );
   };
 
   function chunkArray(array, chunkSize) {
@@ -126,9 +128,7 @@ const CaseStudies = () => {
                 <SelectCustom
                   title={"Industry"}
                   lsOption={lsIndustry}
-                  value={
-                    industry
-                  }
+                  value={industry}
                   onChange={(value) =>
                     handleOnChangeSelectFilter(
                       lsIndustry.find((item) => item.key === value),
@@ -139,9 +139,7 @@ const CaseStudies = () => {
                 <SelectCustom
                   title={"Company Size"}
                   lsOption={lsCompanySize}
-                  value={
-                   companySize 
-                  }
+                  value={companySize}
                   onChange={(value) =>
                     handleOnChangeSelectFilter(
                       lsCompanySize.find((item) => item.key === value),
@@ -165,9 +163,9 @@ const CaseStudies = () => {
                 className={styles["button-filter"]}
                 onClick={handleOnClickFilter}
                 style={
-                  industry !== 'All' ||
-                  companySize  !== 'All' ||
-                  market !== 'All'
+                  industry !== "All" ||
+                  companySize !== "All" ||
+                  market !== "All"
                     ? { border: "1px solid #5FFE9F" }
                     : {}
                 }
@@ -214,4 +212,3 @@ export const getStaticProps = async ({ params }) => {
     },
   };
 };
-

@@ -8,14 +8,12 @@ export const getCaseStudies = (params) => {
     }
     const filteredCaseStudies = data["case-studies"].filter((caseStudy) => {
       return (
-        (industry === 'All' ||
-        caseStudy.industry === industry) &&
-        (companySize === 'All' ||
-        caseStudy.companySize === companySize) && 
-        (market === 'All'  ||
-        caseStudy.market === market)
+        (industry === "All" || !industry || caseStudy.industry === industry) &&
+        (companySize === "All" || !companySize || caseStudy.companySize === companySize) &&
+        (market === "All" || !market || caseStudy.market === market)
       );
     });
+    console.log(filteredCaseStudies);
     return { success: true, data: filteredCaseStudies };
   } catch (error) {
     return { success: false, error };
