@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import getStream from "get-stream";
@@ -83,10 +83,27 @@ const ChatComponent = () => {
     // Concatenate all message contents into a single sentence
     const concatenatedSentence = newMessages.join(" ");
 
+    let formattedText = concatenatedSentence
+      .replace(/\s+([:.,!?])/g, "$1")
+      .replace(/(\d\.)/g, "\n$1");
+
+    formattedText = formattedText
+      .split("\n")
+      .filter((line) => line.trim() !== "")
+      .map((line, index) => (
+        <React.Fragment key={index}>
+          {line}
+          <br />
+        </React.Fragment>
+      ));
+
     // Add bot response to chat history
     setChatHistory((prevHistory) => [
       ...prevHistory,
-      { role: "bot", content: concatenatedSentence },
+      {
+        role: "bot",
+        content: formattedText,
+      },
     ]);
 
     // Update state with the concatenated sentence
@@ -145,7 +162,11 @@ const ChatComponent = () => {
             {chatHistory.map((message, index) => (
               <div
                 key={index}
-                className={message.role === "user" ? styles["user-message"] : styles["bot-message"]}
+                className={
+                  message.role === "user"
+                    ? styles["user-message"]
+                    : styles["bot-message"]
+                }
                 // style={{
                 //   textAlign: message.role === "user" ? "right" : "left",
                 // }}
@@ -211,7 +232,7 @@ const ChatComponent = () => {
               ref={inputTagRef}
             />
             <Button
-            disabled={loading}
+              disabled={loading}
               onClick={handleSendMessage}
               className={styles["send-button"] + " " + styles["send-btn"]}
             ></Button>
