@@ -44,7 +44,7 @@ const ChatComponent = () => {
       },
       body: JSON.stringify({
         conversation_id: "123",
-        bot_id: "7366946159866593281",
+        bot_id: "7374721154529640466",
         user: "29032201862555",
         query: userMessage,
       }),
