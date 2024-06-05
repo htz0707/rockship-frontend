@@ -11,13 +11,18 @@ const { TextArea } = Input;
 const ChatComponent = () => {
   const inputTagRef = useRef(null);
   const [inputValue, setInputValue] = useState("");
-  const [sentence, setSentence] = useState("");
-  const [query, setQuery] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
-  const [disabled, setDisabled] = useState(true);
   const [loading, setLoading] = useState(false);
   const containerRef = useRef(null);
   const router = useRouter(); // Initialize the router
+
+  const generateConversationId = () => {
+    return Math.floor(100 + Math.random() * 900).toString(); // Generate a 3-digit number
+  };
+
+  const generateUserId = () => {
+    return Math.floor(1e13 + Math.random() * 9e13).toString(); // Generate a 14-digit number
+  };
 
   const handleReset = () => {
     router.reload();
@@ -34,7 +39,6 @@ const ChatComponent = () => {
       { role: "user", content: userMessage },
     ]);
 
-    setSentence(""); // Reset sentence on new query
     setInputValue(""); // Reset input value
 
     const response = await fetch("/api/chat", {
@@ -43,9 +47,9 @@ const ChatComponent = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        conversation_id: "123",
+        conversation_id: generateConversationId(),
         bot_id: "7374721154529640466",
-        user: "29032201862555",
+        user: generateUserId(),
         query: userMessage,
       }),
     });
@@ -105,9 +109,6 @@ const ChatComponent = () => {
         content: formattedText,
       },
     ]);
-
-    // Update state with the concatenated sentence
-    setSentence(concatenatedSentence);
   };
 
   useEffect(() => {
@@ -150,97 +151,61 @@ const ChatComponent = () => {
               height={40}
               width={40}
               src={ResetBtn}
-              alt=""
+              alt="Reset Button"
             />
           </Tooltip>
         </div>
-        <>
-          <div className={styles["chat-window"]} ref={containerRef}>
-            <div className={styles["description"]}>
-              We will propose you a solution to build your app.
-            </div>
-            {chatHistory.map((message, index) => (
-              <div
-                key={index}
-                className={
-                  message.role === "user"
-                    ? styles["user-message"]
-                    : styles["bot-message"]
-                }
-                // style={{
-                //   textAlign: message.role === "user" ? "right" : "left",
-                // }}
-              >
-                <p>
-                  {/* <strong>{message.role === "user" ? "You: " : "Bot: "}</strong> */}
-                  {message.content}
-                </p>
-              </div>
-            ))}
-            {/* {loading && !!newMessage.length && (
-              <div className={styles["user-message"]}>
-                <p>{newMessage}</p>
-              </div>
-            )} */}
-            {loading && (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              >
-                <ThreeDots color={"#0094ff"} />
-              </div>
-            )}
+        <div className={styles["chat-window"]} ref={containerRef}>
+          <div className={styles["description"]}>
+            We will propose you a solution to build your app.
           </div>
-          {/* <div>
+          {chatHistory.map((message, index) => (
             <div
-              ref={containerRef}
-              style={{ maxHeight: "400px", overflowY: "auto" }}
+              key={index}
+              className={
+                message.role === "user"
+                  ? styles["user-message"]
+                  : styles["bot-message"]
+              }
             >
-              {chatHistory.map((message, index) => (
-                <div
-                  key={index}
-                  style={{
-                    textAlign: message.role === "user" ? "right" : "left",
-                  }}
-                >
-                  <p>
-                    <strong>
-                      {message.role === "user" ? "You: " : "Bot: "}
-                    </strong>
-                    {message.content}
-                  </p>
-                </div>
-              ))}
+              <p>{message.content}</p>
             </div>
-          </div> */}
-          <Space.Compact className={styles["button-group"]}>
-            <TextArea
-              autoSize
-              className={styles["custom-input"]}
-              disabled={loading}
-              value={inputValue}
-              // maxLength={150}
-              onPressEnter={(event) => {
-                if (event.key === "Enter" && inputValue.length > 0) {
-                  handleSendMessage();
-                }
+          ))}
+          {loading && (
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
               }}
-              onChange={(event) => setInputValue(event.target.value)}
-              placeholder="Send your demand, no more than 150 characters..."
-              ref={inputTagRef}
-            />
-            <Button
-              disabled={loading}
-              onClick={handleSendMessage}
-              className={styles["send-button"] + " " + styles["send-btn"]}
-            ></Button>
-          </Space.Compact>
-          <p className={styles["privacy"]}>
-            <u>Privacy Protection</u>
-          </p>
-        </>
+            >
+              <ThreeDots color={"#0094ff"} />
+            </div>
+          )}
+        </div>
+        <Space.Compact className={styles["button-group"]}>
+          <TextArea
+            autoSize
+            className={styles["custom-input"]}
+            disabled={loading}
+            value={inputValue}
+            onPressEnter={(event) => {
+              if (event.key === "Enter" && inputValue.length > 0) {
+                handleSendMessage();
+              }
+            }}
+            onChange={(event) => setInputValue(event.target.value)}
+            placeholder="Send your demand, no more than 150 characters..."
+            ref={inputTagRef}
+          />
+          <Button
+            disabled={loading}
+            onClick={handleSendMessage}
+            className={styles["send-button"] + " " + styles["send-btn"]}
+          ></Button>
+        </Space.Compact>
+        <p className={styles["privacy"]}>
+          <u>Privacy Protection</u>
+        </p>
       </div>
     </div>
   );
