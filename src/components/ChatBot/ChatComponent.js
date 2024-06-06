@@ -8,21 +8,35 @@ import ResetBtn from "../../../public/new-reset.svg";
 import { ThreeDots } from "react-loader-spinner";
 const { TextArea } = Input;
 
+const generateConversationId = () => {
+  return Math.floor(100 + Math.random() * 900).toString(); // Generate a 3-digit number
+};
+
+const generateUserId = () => {
+  return Math.floor(1e13 + Math.random() * 9e13).toString(); // Generate a 14-digit number
+};
+
+const randomUserId = generateUserId();
+const randomConversationId = generateConversationId();
+
 const ChatComponent = () => {
   const inputTagRef = useRef(null);
   const [inputValue, setInputValue] = useState("");
-  const [chatHistory, setChatHistory] = useState([]);
+  const [chatHistory, setChatHistory] = useState([
+    {
+      role: "bot",
+      content: `
+        Good day! I am a consultant representing Rockship, dedicated to
+        simplifying your journey by providing tailored solutions. My expertise
+        lies in understanding your unique needs and guiding you towards the
+        most suitable options. Please feel free to share your requirements,
+        and I will try my best to assist you.
+      `,
+    },
+  ]);
   const [loading, setLoading] = useState(false);
   const containerRef = useRef(null);
   const router = useRouter(); // Initialize the router
-
-  const generateConversationId = () => {
-    return Math.floor(100 + Math.random() * 900).toString(); // Generate a 3-digit number
-  };
-
-  const generateUserId = () => {
-    return Math.floor(1e13 + Math.random() * 9e13).toString(); // Generate a 14-digit number
-  };
 
   const handleReset = () => {
     router.reload();
@@ -47,9 +61,9 @@ const ChatComponent = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        conversation_id: generateConversationId(),
+        conversation_id: randomConversationId,
         bot_id: "7374721154529640466",
-        user: generateUserId(),
+        user: randomUserId,
         query: userMessage,
       }),
     });
@@ -87,19 +101,13 @@ const ChatComponent = () => {
     // Concatenate all message contents into a single sentence
     const concatenatedSentence = newMessages.join(" ");
 
-    let formattedText = concatenatedSentence
-      .replace(/\s+([:.,!?])/g, "$1")
-      .replace(/(\d\.)/g, "\n$1");
+    let formattedText = concatenatedSentence.replace(/\s+([:.,!?])/g, "$1");
+    // .replace(/(\d\.)/g, "\n$1");
 
-    formattedText = formattedText
-      .split("\n")
-      .filter((line) => line.trim() !== "")
-      .map((line, index) => (
-        <React.Fragment key={index}>
-          {line}
-          <br />
-        </React.Fragment>
-      ));
+    // Replace **text** with <b>text</b>
+    formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+    formattedText = formattedText.replace(/\n/g, '<br />');
+
 
     // Add bot response to chat history
     setChatHistory((prevHistory) => [
@@ -168,7 +176,11 @@ const ChatComponent = () => {
                   : styles["bot-message"]
               }
             >
-              <p>{message.content}</p>
+              {message.role === "user" ? (
+                <p>{message.content}</p>
+              ) : (
+                <p dangerouslySetInnerHTML={{ __html: message.content }} />
+              )}
             </div>
           ))}
           {loading && (
