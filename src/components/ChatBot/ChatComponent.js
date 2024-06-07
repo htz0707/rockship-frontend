@@ -99,7 +99,7 @@ const ChatComponent = () => {
       .filter((content) => content !== "");
 
     // Concatenate all message contents into a single sentence
-    const concatenatedSentence = newMessages.join(" ");
+    const concatenatedSentence = newMessages.join("");
 
     let formattedText = concatenatedSentence.replace(/\s+([:.,!?])/g, "$1");
     // .replace(/(\d\.)/g, "\n$1");

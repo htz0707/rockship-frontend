@@ -178,6 +178,7 @@
         color: $black;
         width: fit-content;
         max-width: 450px;
+        word-break: break-word;
         span {
           white-space: nowrap;
           color: $blue;
