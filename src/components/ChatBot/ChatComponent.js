@@ -117,7 +117,7 @@ const ChatComponent = () => {
       ...prevHistory,
       {
         role: "bot",
-        content: formattedText,
+        content: formattedText.replace(/^###\s*/, ""),
         suggestions,
       },
     ]);
