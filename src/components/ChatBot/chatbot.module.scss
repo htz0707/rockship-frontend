@@ -198,7 +198,7 @@
         width: fit-content;
         max-width: 450px;
         overflow-x: hidden;
-        word-break: break-word; 
+        word-break: break-word;
       }
     }
 
@@ -321,5 +321,24 @@
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
+  line-height: normal;
+}
+
+.suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.suggestion-button {
+  max-width: 450px;
+  word-break: break-word;
+  white-space: normal; // Ensure text wraps within the button
+  display: block; // Ensure each button takes up the full width and appears on a new line
+  width: fit-content;
+  height: fit-content;
+  text-align: left; // Align text to the left for better readability
+  font-size: 2rem;
   line-height: normal;
 }

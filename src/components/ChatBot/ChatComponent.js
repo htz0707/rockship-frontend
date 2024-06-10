@@ -32,6 +32,7 @@ const ChatComponent = () => {
         most suitable options. Please feel free to share your requirements,
         and I will try my best to assist you.
       `,
+      suggestions: [],
     },
   ]);
   const [loading, setLoading] = useState(false);
@@ -42,9 +43,9 @@ const ChatComponent = () => {
     router.reload();
   };
 
-  const handleSendMessage = async () => {
+  const handleSendMessage = async (message = null) => {
     setLoading(true);
-    const userMessage = inputValue.trim();
+    const userMessage = message || inputValue.trim();
     if (userMessage === "") return;
 
     // Add user message to chat history
@@ -87,27 +88,29 @@ const ChatComponent = () => {
       })
       .filter(Boolean);
 
-    // Filter and map the messages to get the content
+    // Filter and map the messages to get the content and suggestions
     const newMessages = parsedMessages
       .filter(
         ({ event, message }) =>
           event === "message" &&
-          message.role === "assistant" &&
-          message.type === "answer"
+          message.role === "assistant"
       )
-      .map(({ message }) => message.content)
-      .filter((content) => content !== "");
+      .map(({ message }) => ({
+        content: message.content,
+        type: message.type,
+      }));
 
-    // Concatenate all message contents into a single sentence
-    const concatenatedSentence = newMessages.join("");
+    // Process the bot messages and suggestions
+    const botMessages = newMessages.filter(msg => msg.type === "answer").map(msg => msg.content);
+    const suggestions = newMessages.filter(msg => msg.type === "follow_up").map(msg => msg.content);
+
+    const concatenatedSentence = botMessages.join("");
 
     let formattedText = concatenatedSentence.replace(/\s+([:.,!?])/g, "$1");
-    // .replace(/(\d\.)/g, "\n$1");
 
     // Replace **text** with <b>text</b>
     formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
     formattedText = formattedText.replace(/\n/g, '<br />');
-
 
     // Add bot response to chat history
     setChatHistory((prevHistory) => [
@@ -115,6 +118,7 @@ const ChatComponent = () => {
       {
         role: "bot",
         content: formattedText,
+        suggestions,
       },
     ]);
   };
@@ -179,7 +183,22 @@ const ChatComponent = () => {
               {message.role === "user" ? (
                 <p>{message.content}</p>
               ) : (
-                <p dangerouslySetInnerHTML={{ __html: message.content }} />
+                <div>
+                  <p dangerouslySetInnerHTML={{ __html: message.content }} />
+                  {message.suggestions && message.suggestions.length > 0 && (
+                    <div className={styles["suggestions"]}>
+                      {message.suggestions.map((suggestion, index) => (
+                        <Button
+                          key={index}
+                          className={styles["suggestion-button"]}
+                          onClick={() => handleSendMessage(suggestion)}
+                        >
+                          {suggestion}
+                        </Button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               )}
             </div>
           ))}
@@ -211,7 +230,7 @@ const ChatComponent = () => {
           />
           <Button
             disabled={loading}
-            onClick={handleSendMessage}
+            onClick={() => handleSendMessage()}
             className={styles["send-button"] + " " + styles["send-btn"]}
           ></Button>
         </Space.Compact>
